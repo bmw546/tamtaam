@@ -34,17 +34,19 @@ Date                    Nom                 Description
     <label for="numero" style="padding-right:50px;"><b>No :</b></label>
     <input type="text" name="numero" id="numero" size="5" required/>
 
+    <label for="date" style="padding-left:188px;"><b>Date :</b></label>
+    <input type="text" name="date" id="date"  size="30" required/>
+
     <br><br>
     <label for="nom" style="padding-right:37px;"><b>Nom :</b></label>
     <input type="text" name="nom" id="nom" size="30" required/>
 
-    <br><br>
-    <label for="adresse" style="padding-right:17px;"><b>Adresse :</b></label>
+    <label for="adresse" style="padding-left:17px;"><b>Adresse :</b></label>
     <input type="text" name="adresse" id="adresse" size="30" required/>
-
     <br><br>
-    <label for="date" style="padding-right:38px;"><b>Date :</b></label>
-    <input type="text" name="date" id="date"  size="30" required/>
+
+    <input type="radio" name="livraison" value="Livraison" checked> Livraison<br>
+    <input type="radio" name="livraison" value="Ramassage"> Ramassage en magasin<br>
     <br><br>
 
     <table  style="width:60%">
@@ -54,12 +56,20 @@ Date                    Nom                 Description
             <th>Description</th>
             <th>Prix</th>
         </tr>
-
     </table>
     <br><br>
 
+    <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Ajouter/Supprimer un produit"/>
+    <br><br>
+
+    <label  style="padding-right:37px;"><b>Livraison :</b></label>
+    <br><br>
+
+    <label  style="padding-right:37px;"><b>Total :</b></label>
+    <br><br>
+
+
     <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
-    <button style="margin-right:80px; background-color:black; color:white; border-color:black;" name="modifier" value="Modifier">Modifier</button>
     <button style="background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
 </form>
 </body>
