@@ -13,7 +13,7 @@ class Connexion
     $this->nom_serveur = "localhost";
     $this->nom_utilisateur_bd = "root";
     $this->mot_de_passe_bd = "";
-    $this->nom_bd = "tamtaam";
+    $this->nom_bd = "php1";
   }
 
   public function connexion(){
@@ -23,10 +23,12 @@ class Connexion
 
     // Vérifier connexion
     if ($this->conn->connect_error) {
-        die("La connexion a échouée: " . $this->conn->connect_error);
+        die("La connexion vers la bd a échouée: " . $this->conn->connect_error);
+        echo "<br>";
     }
     else {
-      echo "La connexion a réussi";
+      echo "La connexion vers la bd a réussie";
+      echo "<br>";
     }
   }
 
