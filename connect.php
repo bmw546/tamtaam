@@ -88,9 +88,10 @@ class Connexion
         while($row = mysqli_fetch_array($result))
         {
             echo "one more line of result done ";
-
+            $response[] = $row;
         }
   	$this->disconnect();
+    print_r($response);
     }
     // executeur de code SQL
     public function execute($sql){
