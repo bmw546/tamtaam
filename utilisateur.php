@@ -5,23 +5,27 @@
  Auteur : Roméo Tsarafodiana-Bugeaud
  Fonctionnalité : Informations de l'utilisateur
  Date : 2018-04-23
+ 
  Vérification :
- Date Nom Approuvé
+ Date 				Nom 					Approuvé
  =========================================================
+ 2018-04-23			Rémi Létourneau			Oui
+ 
  Historique de modifications :
- Date Nom Description
+ Date 				Nom 					Description
  =========================================================
+  2018-04-23		Rémi Létourneau			changer la variable type pour typeUser
 ****************************************/
 
- class Utilisateur
- {
+class Utilisateur {
+	
    private $id;
    private $nom_utilisateur;
    private $mot_de_passe;
    private $email;
    private $adresse;
    private $telephone;
-   private $type;  //Si client est admin ou client
+   private $typeUser;  //Si client est admin ou client
 
    public function setId($id){
      $this->id = $id;
@@ -30,10 +34,10 @@
      return $this->id;
    }
 
-   public function getType(){
+   public function getTypeUser(){
    return $this->type;
    }
-   public function setType($type){
+   public function setTypeUser($type){
     $this->type = $type;
    }
 
@@ -71,5 +75,5 @@
    public function getTelephone(){
     return $this->telephone;
    }
- }
+}
  ?>
