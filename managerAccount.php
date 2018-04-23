@@ -1,5 +1,5 @@
 <!--****************************************
-Fichier : managerAccount.html
+Fichier : inscription.php
 Auteur : Rémi Létourneau
 Fonctionnalité : Gestion des comptes utilisateurs
 Date : 2018-04-23
