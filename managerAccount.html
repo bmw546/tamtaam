@@ -25,10 +25,10 @@ Date                    Nom                 Description
 			<h1 style="text-align:center;"><i>Inscription des utilisateurs</i></h1>
 		</header>
 
-		<form id="formUser" action="managerAccount.php" method="post" style="padding:20px; border:solid black;">
+		<form action="managerAccount.php" method="post" style="padding:20px; border:solid black;">
                     <br>
-                    <label for="adresse" style="padding-right:50px;"><b>Entrer votre nom d'utilisateur :</b></label>
-                    <input type="text" name="adresse" id="adresse" size="30" required/>
+                    <label for="user" style="padding-right:50px;"><b>Entrer votre nom d'utilisateur :</b></label>
+                    <input type="text" name="user" id="user" size="30" required/>
                     
                     <br><br>
                     <label for="adresse" style="padding-right:118px;"><b>Entrer votre adresse :</b></label>
@@ -52,7 +52,7 @@ Date                    Nom                 Description
                     
                     <br><br> 
                     <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="inscrire" type="submit" value="S'inscrire"/>
-                    <button style="background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
+                    <button style="background-color:black; color:white; border-color:black;" type="reset" name="cancel" value="Annuler">Annuler</button>
 		</form>
 	</body>
 </html>
