@@ -1,0 +1,54 @@
+<!--****************************************
+Fichier : SuiviDeCommandes.html
+Auteur : Rémi Létourneau
+Fonctionnalité : Gestion des comptes utilisateurs
+Date : 2018-04-23
+
+Vérification :
+Date                    Nom 		    Approuvé
+=========================================================
+
+Historique de modifications :
+Date                    Nom                 Description
+=========================================================
+
+****************************************-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Suivi des commandes</title>
+	</head>
+
+	<body style="margin:auto; width:950px;">
+		<header>
+			<h1 style="text-align:center;"><i>Inscription des utilisateurs</i></h1>
+		</header>
+
+		<form action="SuiviDeCommandes.php" method="post" style="padding:20px; border:solid black;">
+                    <br>
+                    <label for="orderNumber" style="padding-right:105px;"><b>Numéro de commande:</b></label>
+                    <input type="text" name="orderNumber" id="orderNumber" size="10" required/>
+
+                    <br><br>
+                    <label for="datePrevue" style="padding-right:100px;"><b>Date de livraison prévue:</b></label>
+                    <input type="text" name="datePrevue" id="datePrevue" size="30"/>
+
+                    <br><br>
+                    <label for="etat" style="padding-right:122px;"><b>État de la commande:</b></label>
+                    <input type="text" name="etat" id="etat" size="30" />
+
+                    <br><br>
+                    <label for="adresse" style="padding-right:25px;"><b>Adresse de livraison :</b></label>
+                    <input textarea name="adresse" id="adresse" rows="5" size="30" />
+
+                    <br><br>
+                    <label for="montant" style="padding-right:80px;"><b>Montant:</b></label>
+                    <input type="text" name="montant" id="montant" size="30" />
+
+                    <br><br>
+                    <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="inscrire" type="submit" value="S'inscrire"/>
+                    <button style="background-color:black; color:white; border-color:black;" type="reset" name="cancel" value="Annuler">Annuler</button>
+		</form>
+	</body>
+</html>
