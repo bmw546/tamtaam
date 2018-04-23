@@ -1,6 +1,6 @@
 ﻿
 /****************************************
-Fichier : connect.php
+Fichier : connection.php
 Auteur : Marc-Étienne Pépin
 Fonctionnalité : Sert a ce connecté a la base de donnée, executé un code sql et soi retourner un resultset
 ou rien retrouner et finalement se déconnecter
@@ -89,7 +89,7 @@ class Connexion
 // setteur et getteur ==================================================================================================
 // function pour operer cette class ====================================================================================
 // connection
-    private function connect(){
+    private function connexion(){
 
         // Créer connexion
         $this->conn = new mysqli($this->nom_serveur, $this->nom_utilisateur_bd, $this->mot_de_passe_bd, $this->nom_bd);
@@ -104,15 +104,15 @@ class Connexion
     }
 
     // deconnection
-    private function disconnect(){
+    private function deconnexion(){
         echo " Déconnexion ";
         $this->conn->close();
     }
     // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
     // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
     // executeur de code SQL et retourne une array d'array de response de response
-    public function executewithresult($sql){
-        $this->connect();
+    public function execution_avec_return($sql){
+        $this->connexion();
         $response = array();
         // test
         $sql = "SELECT * FROM `client` WHERE 1";
@@ -122,17 +122,18 @@ class Connexion
             // echo "one more line of result done ";
             $response[] = $row;
         }
-        $this->disconnect();
+        $this->deconnexion();
+        // prochaine ligne a enlever si vous voulez pas que cela print (mais utile pour les test)
         print_r($response);
         return $response;
     }
 
     // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
     // executeur de code SQL
-    public function execute($sql){
-        $this->connect();
+    public function execution($sql){
+        $this->connexion();
         mysqli_query($this->conn,$sql);
-        $this->disconnect();
+        $this->deconnexion();
     }
     // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
     // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
