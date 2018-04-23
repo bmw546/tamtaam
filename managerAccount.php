@@ -22,14 +22,14 @@ Date                    Nom             Description
 	<body>
 		<?php
 
-		
+
 		echo "<p>".$_POST['user']."</p>".
 			 "<p>".$_POST['adresse']."</p>".
 			 "<p>".$_POST['email']."</p>".
 			 "<p>".$_POST['noTelephone']."</p>".
 			 "<p>".$_POST['passwd']."</p>".
 			 "<p>".$_POST['confirmer']."</p>";
-			
+
 		?>
 	</body>
 </html>

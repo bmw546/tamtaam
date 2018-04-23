@@ -13,7 +13,7 @@
  =========================================================
 ****************************************/
 
-include_once 'connexion.php';
+include_once 'connect.php';
 include_once 'utilisateur.php';
 
 class Authentification{
@@ -57,16 +57,15 @@ class Authentification{
     $this->connexion->connexion();
 
     $nom =  $this->utilisateur->getNomUtilisateur();
-    $sql = "SELECT * FROM client WHERE nom = '$nom'";
+    $sql = "SELECT * FROM client WHERE nom_utilisateur = '$nom'";
     $result = $this->connexion->getConn()->query($sql);
 
     //si il y a un résultat
     if ($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) {
-          echo "id: " . $row["id"]. " - Name: " . $row["nom"]. " " . $row["prenom"]. "<br>";
+          echo "id: " . $row["id_client"]. " - username: " . $row["nom_utilisateur"]. " " . $row["mot_de_passe"]. "<br>";
 
           //si le mot de passe ne correspond pas au bon mot de passe
-          if ($row["prenom"] != $this->utilisateur->getMotDePasse()) {
             $this->setEtat('Mauvais mot de passe');
           }
           //sinon les informations sont bonnes
