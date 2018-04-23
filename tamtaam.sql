@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2018 at 05:02 PM
+-- Generation Time: Apr 23, 2018 at 07:51 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -339,7 +339,7 @@ ALTER TABLE `rabais`
 --
 ALTER TABLE `ta_produit_commande`
   ADD CONSTRAINT `_produit_` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
-  ADD CONSTRAINT `commande` FOREIGN KEY (`id_commande`) REFERENCES `etat_commande` (`id_etat`);
+  ADD CONSTRAINT `commande` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`);
 
 --
 -- Constraints for table `ta_produit_recette`
