@@ -1,6 +1,6 @@
 <!--****************************************
 Fichier : SuiviDeCommandes.php
-Auteur : Rémi Létourneau
+Auteur : Benoit Audette-Chavigny
 Fonctionnalité : Gestion des demandes et suivi de livraison
 Date : 2018-04-23
 
@@ -20,11 +20,6 @@ Date                    Nom             Description
 		<title>cible suivi des commandes</title>
 	</head>
 	<body>
-		<?php
-
-
-		echo "<p>".$_POST['orderNumber']."</p>".
-
-		?>
+		Number is <?php echo $_GET["orderNumber"];	?>
 	</body>
 </html>

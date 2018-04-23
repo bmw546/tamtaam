@@ -1,7 +1,7 @@
 <!--****************************************
 Fichier : SuiviDeCommandes.html
-Auteur : Rémi Létourneau
-Fonctionnalité : Gestion des comptes utilisateurs
+Auteur : Benoit Audette-Chavigny
+Fonctionnalité : Gestion des demandes et suivi de livraison
 Date : 2018-04-23
 
 Vérification :
@@ -22,10 +22,10 @@ Date                    Nom                 Description
 
 	<body style="margin:auto; width:950px;">
 		<header>
-			<h1 style="text-align:center;"><i>Inscription des utilisateurs</i></h1>
+			<h1 style="text-align:center;"><i>SuiviDeCommandes</i></h1>
 		</header>
 
-		<form action="SuiviDeCommandes.php" method="post" style="padding:20px; border:solid black;">
+		<form action="SuiviDeCommandes.php" method="get" style="padding:20px; border:solid black;">
                     <br>
                     <label for="orderNumber" style="padding-right:105px;"><b>Numéro de commande:</b></label>
                     <input type="text" name="orderNumber" id="orderNumber" size="10" required/>
