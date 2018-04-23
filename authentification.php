@@ -53,7 +53,7 @@ class Authentification{
     //1.va manquer a prendre le username/password dans les variables de la classe a partir du formulaire
     //2.marche pas quand je mets directement "$this->utilisateur->getNomUtilisateur()" dans le WHERE
     //3.le code marche sur une vielle bd, va manquer à l'adapter à la nouvelle bd quand elle sera crée (pas long)
-
+    //4. Implémenter le bon connexion.php
     $this->connexion->connexion();
 
     $nom =  $this->utilisateur->getNomUtilisateur();
@@ -83,5 +83,11 @@ class Authentification{
 
     $this->connexion->getConn()->close();
   }
+
+  public function motDePasseOublie()
+  {
+
+  }
+
 }
 ?>
