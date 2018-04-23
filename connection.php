@@ -1,9 +1,10 @@
-﻿
-/****************************************
+﻿<?php
+/*************************************************************
 Fichier : connection.php
 Auteur : Marc-Étienne Pépin
-Fonctionnalité : Sert a ce connecté a la base de donnée, executé un code sql et soi retourner un resultset
-ou rien retrouner et finalement se déconnecter
+Fonctionnalité : Sert à ce connecter à la base de donnée,
+				 execute un code sql qui retourne un resultset
+				 ou pas et finalement se déconnecter de la BD.
 Date : 2018-04-23
 
 Vérification :
@@ -17,18 +18,14 @@ Date               Nom                   Description
 ===========================================================
 2018-04-23			Roméo                Version Pre- 1.0
 
-****************************************/
+************************************************************/
 
-<?php
 /*
- ________  ________  ________   ________   _______   ________ _________            ________  ___  ___  ________
-|\   ____\|\   __  \|\   ___  \|\   ___  \|\  ___ \ |\   ____\\___   ___\         |\   __  \|\  \|\  \|\   __  \
-\ \  \___|\ \  \|\  \ \  \\ \  \ \  \\ \  \ \   __/|\ \  \___\|___ \  \_|         \ \  \|\  \ \  \\\  \ \  \|\  \
- \ \  \    \ \  \\\  \ \  \\ \  \ \  \\ \  \ \  \_|/_\ \  \       \ \  \           \ \   ____\ \   __  \ \   ____\
-  \ \  \____\ \  \\\  \ \  \\ \  \ \  \\ \  \ \  \_|\ \ \  \____   \ \  \ ___       \ \  \___|\ \  \ \  \ \  \___|
-   \ \_______\ \_______\ \__\\ \__\ \__\\ \__\ \_______\ \_______\  \ \__\\__\       \ \__\    \ \__\ \__\ \__\
-    \|_______|\|_______|\|__| \|__|\|__| \|__|\|_______|\|_______|   \|__\|__|        \|__|     \|__|\|__|\|__|
-
+  / ____/ __ \| \ | | \ | |  ____/ ____|__   __|  ____|  |  __ \| |  | |  __ \ 
+ | |   | |  | |  \| |  \| | |__ | |       | |  | |__     | |__) | |__| | |__) |
+ | |   | |  | | . ` | . ` |  __|| |       | |  |  __|    |  ___/|  __  |  ___/ 
+ | |___| |__| | |\  | |\  | |___| |____   | |  | |____   | |    | |  | | |     
+  \_____\____/|_| \_|_| \_|______\_____|  |_|  |______|  |_|    |_|  |_|_|     
 */
 class Connexion
 {
@@ -36,17 +33,18 @@ class Connexion
     private $nom_serveur;
     private $nom_utilisateur_bd;
     private $mot_de_passe_bd;
-    private $nom_bd ="tamtaam";
-      public function __construct()
-      {
-        $this->nom_serveur  = "localhost";
-        $this->nom_utilisateur_bd = "root";
-        $this->mot_de_passe_bd = "";
-        $this->nom_bd = "tamtaam";
-      }
+    private $nom_bd;
+	
+	public function __construct()
+	{
+		$this->nom_serveur  = "localhost";
+		$this->nom_utilisateur_bd = "root";
+		$this->mot_de_passe_bd = "";
+		$this->nom_bd = "tamtaam";
+	}
 
 
-// setteur et getteur ==================================================================================================
+//=============== setteur et getteur =====================
     public function getConn(){
         return $this->conn;
     }
@@ -86,9 +84,12 @@ class Connexion
     public function setNom_bd($nom_bd){
         $this->nom_bd = $nom_bd;
     }
-// setteur et getteur ==================================================================================================
-// function pour operer cette class ====================================================================================
-// connection
+
+// ============================== Méthode de la classe ==============================
+
+	/**
+	* Connecte à la base de donnée
+	*/
     private function connexion(){
 
         // Créer connexion
@@ -103,15 +104,20 @@ class Connexion
         }
     }
 
-    // deconnection
+	/**
+	* Déconnecte de la base de donnée
+	*/
     private function deconnexion(){
+		
         echo " Déconnexion ";
         $this->conn->close();
     }
-    // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
-    // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
-    // executeur de code SQL et retourne une array d'array de response de response
+	
+    /** 
+	*  Execute du code SQL et retourne une array d'array de réponse
+	*/
     public function execution_avec_return($sql){
+		
         $this->connexion();
         $response = array();
         // test
@@ -123,19 +129,19 @@ class Connexion
             $response[] = $row;
         }
         $this->deconnexion();
-        // prochaine ligne a enlever si vous voulez pas que cela print (mais utile pour les test)
-        print_r($response);
+        
+        print_r($response); // ligne à enlever si vous voulez pas que cela print (mais utile pour les test)
         return $response;
     }
 
-    // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
-    // executeur de code SQL
+    /**
+	*  Execute du code SQL sans retour
+	*/
     public function execution($sql){
+		
         $this->connexion();
         mysqli_query($this->conn,$sql);
         $this->deconnexion();
     }
-    // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
-    // ----------- ------------ ------------- -------------- ------------- -------------- --------------- ----------
 }
 ?>

@@ -15,6 +15,7 @@ Date                    Nom             Description
 
 *********************************************************/
 require_once 'utilisateur.php';
+require_once 'connection.php';
 
 class GestionnaireUtilisateur {
 
