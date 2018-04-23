@@ -16,8 +16,7 @@ Date                    Nom             Description
 <?php
 	require_once 'utilisateur.php';
 
-	$aUser = new Utilisateur($_POST['user'], $_POST['adresse'], $_POST['email'], 
-	$_POST['noTelephone'], $_POST['passwd']);
+	$aUser = new Utilisateur();
 
 	//ajoute l'utilisateur a la base de donnée
 	//TODO
