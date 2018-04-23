@@ -21,7 +21,13 @@ Date                    Nom             Description
 	</head>
 	<body>
 		<?php
+		require_once 'utilisateur.php';
+		
+		$aUser = new Utilisateur($_POST['user'], $_POST['adresse'], $_POST['email'], 
+		$_POST['noTelephone'], $_POST['passwd']);
 
+		//ajoute l'utilisateur a la base de donnée
+		//TODO
 
 		echo "<p>".$_POST['user']."</p>".
 			 "<p>".$_POST['adresse']."</p>".
