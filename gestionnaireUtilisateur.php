@@ -12,6 +12,9 @@ Date                    Nom 		    Approuvé
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
+2018-04-23				Rémi			Modification de la classe, 
+										ajout des instructions pour ajouter 
+										un utilisateur a la BD. (Erreur avec propriété)
 
 *********************************************************/
 require_once 'utilisateur.php';
@@ -26,7 +29,7 @@ class GestionnaireUtilisateur {
 	*/
 	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
 	
-		$unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);  
+		$unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
     }
 	
 	/**
