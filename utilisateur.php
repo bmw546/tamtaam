@@ -1,6 +1,5 @@
 <?php
-
-/****************************************
+/********************************************************************************
  Fichier : utilisateur.php
  Auteur : Roméo Tsarafodiana-Bugeaud
  Fonctionnalité : Informations de l'utilisateur
@@ -14,66 +13,113 @@
  Historique de modifications :
  Date 				Nom 					Description
  =========================================================
-  2018-04-23		Rémi Létourneau			changer la variable type pour typeUser
-****************************************/
+  2018-04-23		Rémi Létourneau			Enlever la variable type utilisateur
+  2018-04-24		Rémi Létourneau			Ajouter des commentaires
+********************************************************************************/
 
 class Utilisateur {
 	
-   private $id;
-   private $nom_utilisateur;
-   private $mot_de_passe;
-   private $email;
-   private $adresse;
-   private $telephone;
-   private $typeUser;  //Si client est admin ou client
+	private $id;
+	private $nom_utilisateur;
+	private $mot_de_passe;
+	private $email;
+	private $adresse;
+	private $telephone;
+	
+	/**
+	* Constructeur
+	*/
+	public function __construct($id, $nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
+        $this->id = $id;
+        $this->nom_utilisateur = $nom_utilisateur;
+        $this->mot_de_passe = $mot_de_passe;
+        $this->email = $email;
+		$this->adresse = $adresse;
+		$this->telephone = $telephone;
+    }
+	
+	/**
+	* Modifie l'id de l'utilisateur
+	*/
+	public function setId($id){
+		$this->id = $id;
+	}
+	
+	/**
+	* Obtiens l'id de l'utilisateur
+	*/
+	public function getId(){
+		return $this->id;
+	}
+	
+	/**
+	* Modifie le nom de l'utilisateur
+	*/
+	public function setNomUtilisateur($nom){
+		$this->nom_utilisateur = $nom;
+	}
+	
+	/**
+	* Obtiens le nom de l'utilisateur
+	*/
+	public function getNomUtilisateur(){
+		return $this->nom_utilisateur;
+	}
 
-   public function setId($id){
-     $this->id = $id;
-   }
-   public function getId(){
-     return $this->id;
-   }
+	/**
+	* Modifier le mot de passe
+	*/
+	public function setMotDePasse($mdp){
+		$this->mot_de_passe = $mdp;
+	}
+	
+	/**
+	* Obtiens le mot de passe
+	*/
+	public function getMotDePasse(){
+		return $this->mot_de_passe;
+	}
 
-   public function getTypeUser(){
-   return $this->type;
-   }
-   public function setTypeUser($type){
-    $this->type = $type;
-   }
+	/**
+	* Modifie l'adresse email
+	*/
+	public function setEmail($adresseEmail){
+		$this->email = $adresseEmail;
+	}
+	
+	/**
+	* Obtiens l'adresse email
+	*/
+	public function getEmail(){
+		return $this->email;
+	}
 
-   public function setNomUtilisateur($nom){
-     $this->nom_utilisateur = $nom;
-   }
-   public function getNomUtilisateur(){
-    return $this->nom_utilisateur;
-   }
+	/**
+	* Modifie l'adresse de l'utilisateur
+	*/
+	public function setAdresse($adresseMaison){
+	 $this->adresse =  $adresseMaison;
+	}
+	
+	/**
+	* Obtiens l'adresse de l'utilisateur
+	*/
+	public function getAdresse(){
+		return $this->adresse;
+	}
 
-   public function setMotDePasse($mdp){
-     $this->mot_de_passe = $mdp;
-   }
-   public function getMotDePasse(){
-    return $this->mot_de_passe;
-   }
-
-   public function setEmail($adresseEmail){
-     $this->email = $adresseEmail;
-   }
-   public function getEmail(){
-    return $this->email;
-   }
-
-   public function setAdresse($adresseMaison){
-     $this->adresse =  $adresseMaison;
-   }
-   public function getAdresse(){
-    return $this->adresse;
-   }
-
-   public function setTelephone($tel){
-     $this->telephone =  $tel;
-   }
-   public function getTelephone(){
-    return $this->telephone;
-   }
+	/**
+	* Modifie le numéro de téléphone
+	*/
+	public function setTelephone($tel){
+	 $this->telephone =  $tel;
+	}
+	
+	/**
+	* Obtiens le numéro de téléphone
+	*/
+	public function getTelephone(){
+		return $this->telephone;
+	}
 }
  ?>
