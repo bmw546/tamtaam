@@ -1,0 +1,3 @@
+modifier là ligne 
+sendmail_path ="C:\Users\Roméo\Documents\GitHub\tamtaam\sendmail/sendmail.exe"
+dans php.ini de easyphp/xamp pour le bon chemin

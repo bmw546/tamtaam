@@ -66,6 +66,7 @@ class Authentification{
           echo "id: " . $row["id_client"]. " - username: " . $row["nom_utilisateur"]. " " . $row["mot_de_passe"]. "<br>";
 
           //si le mot de passe ne correspond pas au bon mot de passe
+          if ($row["mot_de_passe"] != $this->utilisateur->getMotDePasse()) {
             $this->setEtat('Mauvais mot de passe');
           }
           //sinon les informations sont bonnes
