@@ -25,6 +25,9 @@ class Utilisateur {
 	private $adresse;
 	private $telephone;
 	
+	/**
+	* Constructeur
+	*/
 	public function __construct($id, $nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
         $this->id = $id;
         $this->nom_utilisateur = $nom_utilisateur;
@@ -34,16 +37,30 @@ class Utilisateur {
 		$this->telephone = $telephone;
     }
 	
+	/**
+	* Modifie l'id de l'utilisateur
+	*/
 	public function setId($id){
 		$this->id = $id;
 	}
+	
+	/**
+	* Obtiens l'id de l'utilisateur
+	*/
 	public function getId(){
 		return $this->id;
 	}
-
+	
+	/**
+	* Modifie le nom de l'utilisateur
+	*/
 	public function setNomUtilisateur($nom){
 		$this->nom_utilisateur = $nom;
 	}
+	
+	/**
+	* Obtiens le nom de l'utilisateur
+	*/
 	public function getNomUtilisateur(){
 		return $this->nom_utilisateur;
 	}
