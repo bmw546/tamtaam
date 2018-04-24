@@ -65,9 +65,16 @@ class Utilisateur {
 		return $this->nom_utilisateur;
 	}
 
+	/**
+	* Modifier le mot de passe
+	*/
 	public function setMotDePasse($mdp){
 		$this->mot_de_passe = $mdp;
 	}
+	
+	/**
+	* Obtiens le mot de passe
+	*/
 	public function getMotDePasse(){
 		return $this->mot_de_passe;
 	}
