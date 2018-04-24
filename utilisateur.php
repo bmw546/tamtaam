@@ -14,6 +14,7 @@
  Date 				Nom 					Description
  =========================================================
   2018-04-23		Rémi Létourneau			Enlever la variable type utilisateur
+  2018-04-24		Rémi Létourneau			Ajouter des commentaires
 ********************************************************************************/
 
 class Utilisateur {
@@ -79,23 +80,44 @@ class Utilisateur {
 		return $this->mot_de_passe;
 	}
 
+	/**
+	* Modifie l'adresse email
+	*/
 	public function setEmail($adresseEmail){
 		$this->email = $adresseEmail;
 	}
+	
+	/**
+	* Obtiens l'adresse email
+	*/
 	public function getEmail(){
 		return $this->email;
 	}
 
+	/**
+	* Modifie l'adresse de l'utilisateur
+	*/
 	public function setAdresse($adresseMaison){
 	 $this->adresse =  $adresseMaison;
 	}
+	
+	/**
+	* Obtiens l'adresse de l'utilisateur
+	*/
 	public function getAdresse(){
 		return $this->adresse;
 	}
 
+	/**
+	* Modifie le numéro de téléphone
+	*/
 	public function setTelephone($tel){
 	 $this->telephone =  $tel;
 	}
+	
+	/**
+	* Obtiens le numéro de téléphone
+	*/
 	public function getTelephone(){
 		return $this->telephone;
 	}
