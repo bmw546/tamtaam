@@ -19,8 +19,9 @@ Date                    Nom             Description
 	<?php
 		require_once 'commande.php';
 		require_once 'GestionnaireSuiviCommandes.php';
-		$gestionnaire = new GestionnaireSuiviCommandes(1,$_POST["username"],"123 somewhere","Mai 1",30,"Limbo","");
+		$gestionnaire = new GestionnaireSuiviCommandes($_POST["username"]);
 		$uneCommande = $gestionnaire->getUneCommande();
+		$noCommande = $uneCommande->getNumeroCommande();
 		$datePrevue = $uneCommande->getDate();
 		$etatCommande = $uneCommande->getEtat();
 		$adresse = $uneCommande->getAdresse();
@@ -31,7 +32,7 @@ Date                    Nom             Description
 		<title>cible suivi des commandes</title>
 	</head>
 	<body>
-		Numéro de commande :<?php echo $_POST["orderNumber"];	?>
+		Numéro de commande :<?php echo $noCommande;	?>
 		<br>
 		Date de livraison prévue : <?php echo $datePrevue;?>
 		<br>
