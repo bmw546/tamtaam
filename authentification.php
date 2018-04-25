@@ -14,7 +14,7 @@
 ****************************************/
 
 include_once 'connect.php';
-include_once 'utilisateur.php';
+include_once 'Utilisateur.php';
 
 class Authentification{
 

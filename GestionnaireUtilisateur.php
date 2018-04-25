@@ -17,7 +17,7 @@ Date                    Nom             Description
 										 un utilisateur a la BD. (Erreur avec propriété résolue)
 2018-04-25             Rémi Létourneau  Ajout des pré et post conditions
 *********************************************************/
-require_once 'utilisateur.php';
+require_once 'Utilisateur.php';
 require_once 'connection.php';
 
 /**

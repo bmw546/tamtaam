@@ -1,6 +1,6 @@
 <?php
 /********************************************************************************
- Fichier : utilisateur.php
+ Fichier : Utilisateur.php
  Auteur : Roméo Tsarafodiana-Bugeaud
  Fonctionnalité : Informations de l'utilisateur
  Date : 2018-04-23
