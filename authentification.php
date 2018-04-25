@@ -131,7 +131,7 @@ class Authentification{
           $msg = "Votre nom d'utilisateur est: ";
           $msg .= $username;
           $this->courriel->setType("nom d'utilisateur oublié");
-          
+
           //à enlever plus tard, j'envoi tous les email à tamtaam pour les tests
           $email = "tamtaamsherbrooke@gmail.com";
           $this->courriel->sentMail("Tamtaam.com",$email, "Récupération de votre nom d'utilisateur (ne pas répondre à ce message)", $msg);
