@@ -16,6 +16,8 @@
   2018-04-23		Rémi Létourneau			Enlever la variable type utilisateur
   2018-04-24		Rémi Létourneau			Ajouter des commentaires et retirer l'id
   2018-04-25		Rémi Létourneau			Ajout des préconditions et postconditions
+	2018-04-25	  Roméo 							Ajout de courriel, connexion, etat
+	2018-04-25	  Roméo 							Ajout de constructeur sans paramètre
 ********************************************************************************/
 
 class Utilisateur {
@@ -34,14 +36,28 @@ class Utilisateur {
      * @param $adresse l'adresse de la maison de l'utilisateur
      * @param $telephone le téléphone de l'utilisateur
 	*/
-	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
+	public function __construct(){
 
-    $this->nom_utilisateur = $nom_utilisateur;
-    $this->mot_de_passe = $mot_de_passe;
-    $this->email = $email;
-		$this->adresse = $adresse;
-		$this->telephone = $telephone;
-    }
+			$argv = func_get_args();
+
+			if (func_num_args() == 4) {
+			 	 self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3]);
+			}
+  }
+
+	public function __construct2($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
+
+		setInfosUtilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
+	}
+
+	public function setInfosUtilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
+
+		$this->setNomUtilisateur($nom_utilisateur);
+		$this->setMotDePasse($mot_de_passe);
+		$this->setEmail($email);
+		$this->setAdresse($adresse);
+		$this->setTelephone($telephone);
+  }
 
 	/**
 	 * Modifie le nom de l'utilisateur
