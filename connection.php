@@ -123,10 +123,21 @@ class Connexion
         // test
         //$sql = "SELECT * FROM `client` WHERE 1";
         $result = mysqli_query($this->conn,$sql);
+
+
+
+
         while($row = mysqli_fetch_array($result))
         {
+		if($row == 0) {
+     		// row not found, do stuff...
+			$this->deconnexion();
+			return null;
+		    } else {
+   		    $response[] = $row;
+		}
             // echo "one more line of result done ";
-            $response[] = $row;
+
         }
         $this->deconnexion();
 

@@ -23,4 +23,6 @@ $courriel = $_POST['email'];
 $telephone = $_POST['noTelephone'];
 $sms = $_POST['sms'];
 $notification = $_POST['notification'];
+echo "pass 1";
+$Email->chercher_si_existe($courriel,$telephone,$sms,$notification);
 ?>
