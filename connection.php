@@ -121,7 +121,7 @@ class Connexion
         $this->connexion();
         $response = array();
         // test
-        $sql = "SELECT * FROM `client` WHERE 1";
+        //$sql = "SELECT * FROM `client` WHERE 1";
         $result = mysqli_query($this->conn,$sql);
         while($row = mysqli_fetch_array($result))
         {
