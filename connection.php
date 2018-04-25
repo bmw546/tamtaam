@@ -134,15 +134,16 @@ class Connexion
         return $response;
     }
 
-    /**
-	*  Execute du code SQL sans retour
-	*/
-  /*  public function execution($sql){
+
+	  //Execute du code SQL sans retour
+    public function execution($sql){
 
         $this->connexion();
         mysqli_query($this->conn,$sql);
         $this->deconnexion();
-    }*/
+    }
+
+    //temporaire
     public function execute($sql){
         $this->connexion();
         $result = mysqli_query($this->conn,$sql);
