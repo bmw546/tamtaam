@@ -123,26 +123,32 @@ class Connexion
         // test
         //$sql = "SELECT * FROM `client` WHERE 1";
         $result = mysqli_query($this->conn,$sql);
+			/*
+			 ________  ________  ________     
+			|\   __  \|\   __  \|\   __  \    
+			\ \  \|\ /\ \  \|\  \ \  \|\  \   
+			 \ \   __  \ \  \\\  \ \  \\\  \  
+			  \ \  \|\  \ \  \\\  \ \  \\\  \ 
+			   \ \_______\ \_______\ \_______\
+				\|_______|\|_______|\|_______|
+			*/
+        if ($result){
 
 
-
-
-        while($row = mysqli_fetch_array($result))
-        {
-		if($row == 0) {
-     		// row not found, do stuff...
-			$this->deconnexion();
-			return null;
-		    } else {
-   		    $response[] = $row;
-		}
-            // echo "one more line of result done ";
+            while($row = mysqli_fetch_array($result))
+            {
+                $response[] = $row;
+                $this->deconnexion();
+            }
+        }
+		else {
+           $result = null;
 
         }
-        $this->deconnexion();
-
-        print_r($response); // ligne à enlever si vous voulez pas que cela print (mais utile pour les test)
+        print_r($response);
         return $response;
+         // ligne à enlever si vous voulez pas que cela print (mais utile pour les test)
+
     }
 
 
@@ -153,7 +159,7 @@ class Connexion
         mysqli_query($this->conn,$sql);
         $this->deconnexion();
     }
-
+    /*
     //temporaire
     public function execute($sql){
         $this->connexion();
@@ -162,5 +168,6 @@ class Connexion
 
         return $result;
     }
+    */
 }
 ?>
