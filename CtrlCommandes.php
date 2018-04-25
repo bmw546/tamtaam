@@ -15,9 +15,14 @@ Date                Nom                 Description
  *****************************/
 
     require_once 'GestionnaireCommande.php';
+    require_once 'connection.php';
 
-    $manager = new GestionnaireCommande($_POST['numero'],$_POST['nom'],$_POST['adresse'],$_POST['date'],
-        $_POST['montant'],$_POST['etat'],$_POST['type'] );
+    $connection = new Connexion();
+    $query  = "SELECT LAST (id_commande) FROM commande;";
+    $result = $connection->execution_avec_return($query);
+    $numero = $result[0][0] + 1;
 
+    $manager = new GestionnaireCommande($numero,$_POST['nom'],$_POST['adresse'],$_POST['date'],
+        $_POST['montant'],1,$_POST['livraison'] );
     $manager->ajouterCommande();
  ?>

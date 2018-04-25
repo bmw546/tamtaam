@@ -43,8 +43,8 @@ Date                    Nom                 Description
             <input type="text" name="adresse" id="adresse" size="30" required/>
             <br><br>
 
-            <input type="radio" name="livraison" value="Livraison" checked required> Livraison<br>
-            <input type="radio" name="livraison" value="Ramassage"> Ramassage en magasin<br>
+            <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
+            <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
             <br><br>
 
             <table  style="width:60%">
@@ -52,17 +52,51 @@ Date                    Nom                 Description
                     <th>No</th>
                     <th>Nom</th>
                     <th>Description</th>
-                    <th>Prix</th>
+                    <th>Prix Unitaire</th>
+                    <th>Quantité</th>
+                    <th>Montant</th>
                     <th>Ajouter</th>
                 </tr>
+                <?php
+                require_once 'connection.php';
+
+                $connection = new Connexion();
+                $query  = "SELECT COUNT(*) FROM `produit`";
+                $result = array();
+                $result = $connection->execution_avec_return($query);
+                $nbProduit = $result[0][0];
+
+                $query2 = "SELECT * FROM `produit`";
+                $result = $connection->execution_avec_return($query2);
+
+                for ($x =0; $x < $nbProduit; $x++){
+                    $produit = $result[$x];
+                    echo "<tr>";
+                        echo "<td>".$produit[0]."</td>";
+                        echo "<td>" .$produit[1]. "</td>" ;
+                        echo "<td align='center'>" . $produit[2]. "</td>" ;
+                        echo "<td align='right'>".number_format($produit[3],2)." $"."</td>";
+                        echo "<td align='center'>"."<input type=\"text\" maxlength=\"2\" size=\"2\">"."</td>";
+                        echo "<td align='center'>" ."<input type=\"text\" maxlength=\"6\" size=\"6\" disabled>". "</td>" ;
+                        echo "<td align='center'>"."<input type=\"checkbox\">"."</td>";
+                    echo "</tr>";
+                }
+
+                ?>
             </table>
             <br><br>
 
-            <label  style="padding-right:37px;"><b>Livraison :</b></label>
+            <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
+            <input  type="text" maxlength="6" size="6" disabled"> </input>
             <br><br>
 
-            <label  style="padding-right:37px;"><b>Total :</b></label>
+            <label  style="padding-right:42px;"><b>Livraison :</b></label>
+            <input  type="text" maxlength="6" size="6" disabled"> </input>
             <br><br>
+
+            <label  style="padding-right:72px;"><b>Total :</b></label>
+            <input  name="montant" type="text" maxlength="6" size="6" disabled"> </input>
+            <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
             <button style="background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
