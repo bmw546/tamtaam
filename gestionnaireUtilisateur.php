@@ -20,6 +20,10 @@ Date                    Nom             Description
 require_once 'utilisateur.php';
 require_once 'connection.php';
 
+/**
+ * Class GestionnaireUtilisateur
+ * fait le lien entre l'objet utilisateur et le controlleur et communique avec la bd
+ */
 class GestionnaireUtilisateur {
 
 	private $unUtilisateur;
@@ -27,40 +31,42 @@ class GestionnaireUtilisateur {
 	/**
 	* Constructeur
 	*/
-	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
-	
-		$unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
+	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
+
+        $this->unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
     }
 	
 	/**
 	* modifier l'utilisateur
 	*/
-	public function setUtilisateur($utilisateur){
-		$this->unUtilisateur = $utilisateur;
+	public function setUnUtilisateur($unUtilisateur){
+		$this->unUtilisateur = $unUtilisateur;
 	}
 	
 	/**
 	* retourne l'utilisateur
 	*/
-	public function getUtilisateur(){
+	public function getUnUtilisateur(){
 		return $this->unUtilisateur;
 	}
 	
 	/**
 	* Ajouter un utilisateur avec les informations de l'interface inscription à la BD.
 	*/
-	public function ajouterUtilisateur(){		
-		
-		// $connection = new Connexion();
+	public function ajouterUtilisateur(){
 
-		// $query = "INSERT INTO client( nom_utilisateur, mot_de_passe, adresse_email, adresse, telephone)".
-							// "VALUES (".$this->unUtilisateur->getNomUtilisateur() .", 
-									// ". $this->unUtilisateur->getMotDePasse() .", 
-									// ". $this->unUtilisateur->getEmail() .", 
-									// ". $this->unUtilisateur->getAdresse() .", 
-									// ". $this->unUtilisateur->getTelephone() .")";
-		
-		// $connection->execution($query);
+	    $nom = $this->unUtilisateur->getNomUtilisateur();
+        $mdp = $this->unUtilisateur->getMotDePasse();
+        $email = $this->unUtilisateur->getEmail();
+        $adresse = $this->unUtilisateur->getAdresse();
+        $phone = $this->unUtilisateur->getTelephone();
+
+        $connection = new Connexion();
+
+        $query = "INSERT INTO client( nom_utilisateur, mot_de_passe, adresse_email, adresse, telephone)".
+                         "VALUES ('$nom', '$mdp', '$email', '$adresse', $phone)";
+
+        $connection->execution($query);
     }
 }
 ?>
