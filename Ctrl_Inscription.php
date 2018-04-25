@@ -1,5 +1,5 @@
 <!--****************************************
-Fichier : inscription.php
+Fichier : Ctrl_Inscription.php
 Auteur : Rémi Létourneau
 Fonctionnalité : Gestion des comptes utilisateurs
 Date : 2018-04-23

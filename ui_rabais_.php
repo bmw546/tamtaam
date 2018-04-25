@@ -41,7 +41,7 @@
             </p>
                 <label for="Produit">Prix original: </label>
                 <label> <?php echo $prix; ?> </label>
-                <form action="commentaire.php" method="post">
+                <form action="CtrlSuggestions.php" method="post">
                      <p>
                          <label for="code">Code: </label>
                          <input type="text" name="code" id="code" required/>

@@ -22,7 +22,7 @@ Date          Nom             			Description
 2018-04-25	  Roméo 					Ajout de mot de passe/ nom d'utilisateur oublié
 ***********************************************************************************************/
 require_once 'Utilisateur.php';
-require_once 'gestionnaire_courriel.php';
+require_once 'GestionnaireSuggestions.php';
 require_once 'connection.php';
 
 /**
