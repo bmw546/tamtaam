@@ -47,9 +47,21 @@ CREATE TABLE `commande` (
   `id_commande` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
   `id_etat` int(11) NOT NULL,
-  `date` date NOT NULL
+  `id_type_commande` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `montant` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type_commande`
+--
+
+CREATE TABLE `type_commande` (
+  `id_type_commande` int(11) NOT NULL,
+  `description_type_commande` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 
 --
@@ -253,6 +265,13 @@ ALTER TABLE `ta_rabais_produit`
   ADD PRIMARY KEY (`id_produit`,`code_rabais`),
   ADD KEY `rabais` (`code_rabais`);
 
+  --
+-- Indexes for table `type_commande`
+--
+ALTER TABLE `type_commande`
+  ADD PRIMARY KEY (`id_type_commande`);
+
+
 --
 -- Indexes for table `type_rabais`
 --
@@ -320,6 +339,7 @@ ALTER TABLE `type_rabais`
 --
 ALTER TABLE `commande`
   ADD CONSTRAINT `client` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
+  ADD CONSTRAINT `type_commande` FOREIGN KEY (`id_type_commande`) REFERENCES `type_commande` (`id_type_commande`),
   ADD CONSTRAINT `etat` FOREIGN KEY (`id_etat`) REFERENCES `etat_commande` (`id_etat`);
 
 --
