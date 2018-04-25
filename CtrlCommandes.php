@@ -19,10 +19,14 @@ Date                Nom                 Description
 
     $connection = new Connexion();
     $query  = "SELECT LAST (id_commande) FROM commande;";
-    $result = $connection->execution_avec_return($query);
-    $numero = $result[0][0] + 1;
+    $result = array();
 
-    $manager = new GestionnaireCommande($numero,$_POST['nom'],$_POST['adresse'],$_POST['date'],
+
+
+    $result = $connection->execution_avec_return($query);
+    $numero = $result[0][0];
+
+    $manager = new GestionnaireCommande($numero,$_POST['nom'],$_POST['adresse'],date("Y-m-d"),
         $_POST['montant'],1,$_POST['livraison'] );
     $manager->ajouterCommande();
  ?>
