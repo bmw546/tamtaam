@@ -17,10 +17,14 @@ Date                    Nom             Description
 <html>
 
 	<?php
-		$datePrevue="Mai 1";
-		$etatCommande="Limbo";
-		$adresse="123 somewhere";
-		$montant=30;
+		require_once 'commande.php';
+		require_once 'GestionnaireSuiviCommandes.php';
+		$gestionnaire = new GestionnaireSuiviCommandes(1,$_POST["username"],"123 somewhere","Mai 1",30,"Limbo","");
+		$uneCommande = $gestionnaire->getUneCommande();
+		$datePrevue = $uneCommande->getDate();
+		$etatCommande = $uneCommande->getEtat();
+		$adresse = $uneCommande->getAdresse();
+		$montant = $uneCommande->getMontant();
 	?>
 	<head>
 		<meta charset='utf-8'/>

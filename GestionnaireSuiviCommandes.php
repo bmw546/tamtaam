@@ -14,5 +14,19 @@ Date                    Nom             Description
 
 ***********************************************-->
 <?php
+  require_once 'commande.php';
 
+class GestionnaireSuiviCommandes{
+
+  private $uneCommande;
+
+  public function __construct($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,$type){
+      $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,$type);
+  }
+
+  public function getUneCommande(){
+      return $this->uneCommande;
+  }
+
+}
 ?>
