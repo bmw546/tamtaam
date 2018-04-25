@@ -53,11 +53,9 @@ Date                    Nom                 Description
                     <th>Nom</th>
                     <th>Description</th>
                     <th>Prix</th>
+                    <th>Ajouter</th>
                 </tr>
             </table>
-            <br><br>
-
-            <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Ajouter/Supprimer un produit"/>
             <br><br>
 
             <label  style="padding-right:37px;"><b>Livraison :</b></label>
