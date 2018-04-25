@@ -4,12 +4,12 @@
  Auteur : Roméo Tsarafodiana-Bugeaud
  Fonctionnalité : Informations de l'utilisateur
  Date : 2018-04-23
- 
+
  Vérification :
  Date 				Nom 					Approuvé
  =========================================================
  2018-04-23			Rémi Létourneau			Oui
- 
+
  Historique de modifications :
  Date 				Nom 					Description
  =========================================================
@@ -19,13 +19,13 @@
 ********************************************************************************/
 
 class Utilisateur {
-	
+
 	private $nom_utilisateur;
 	private $mot_de_passe;
 	private $email;
 	private $adresse;
 	private $telephone;
-	
+
 	/**
 	 * Constructeur
      * @param $nom_utilisateur le nom de l'utilisateur
@@ -34,15 +34,15 @@ class Utilisateur {
      * @param $adresse l'adresse de la maison de l'utilisateur
      * @param $telephone le téléphone de l'utilisateur
 	*/
-	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
-    
+	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
+
         $this->nom_utilisateur = $nom_utilisateur;
         $this->mot_de_passe = $mot_de_passe;
         $this->email = $email;
 		$this->adresse = $adresse;
 		$this->telephone = $telephone;
     }
-		
+
 	/**
 	 * Modifie le nom de l'utilisateur
 	 * @param $nom le nom de l'utilisateur
@@ -52,7 +52,7 @@ class Utilisateur {
 	public function setNomUtilisateur($nom){
 		$this->nom_utilisateur = $nom;
 	}
-	
+
 	/**
 	 * Obtiens le nom de l'utilisateur
      * (Precondition: $this->nom_utilisateur != null)
@@ -71,7 +71,7 @@ class Utilisateur {
 	public function setMotDePasse($mdp){
 		$this->mot_de_passe = $mdp;
 	}
-	
+
 	/**
 	 * Obtiens le mot de passe
      * (Precondition: $this->mot_de_passe != null)
@@ -90,7 +90,7 @@ class Utilisateur {
 	public function setEmail($adresseEmail){
 		$this->email = $adresseEmail;
 	}
-	
+
 	/**
 	 * Obtiens l'adresse email
      * (Precondition: $this->email != null)
@@ -109,7 +109,7 @@ class Utilisateur {
 	public function setAdresse($adresseMaison){
 	 $this->adresse =  $adresseMaison;
 	}
-	
+
 	/**
 	 * Obtiens l'adresse de l'utilisateur
      * (Precondition: $this->adresse != null)
@@ -128,7 +128,7 @@ class Utilisateur {
 	public function setTelephone($tel){
 	 $this->telephone =  $tel;
 	}
-	
+
 	/**
 	 * Obtiens le numéro de téléphone
      * (Precondition: $this->telephone != null)
