@@ -14,7 +14,7 @@ Date                    Nom             Description
 
 ***********************************************-->
 <?php
-	require_once 'gestionnaireUtilisateur.php';
+	require_once 'GestionnaireUtilisateur.php';
 
 	$manager = new GestionnaireUtilisateur($_POST['user'], $_POST['passwd'], $_POST['email'], $_POST['adresse'], $_POST['noTelephone']);
 	
