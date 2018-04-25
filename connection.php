@@ -17,6 +17,8 @@ Historique de modifications :
 Date               Nom                   Description
 ===========================================================
 2018-04-23			Roméo                Version Pre- 1.0
+2018-04-25		Marc-Étienne	Correction de bug, le programme peut
+					Maintenant supporter des resultat null
 
 ************************************************************/
 
@@ -100,7 +102,6 @@ class Connexion
             die(" La connexion a échouée: " . $this->conn->connect_error);
         }
         else {
-            echo " La connexion a réussi ";
         }
     }
 
@@ -109,7 +110,6 @@ class Connexion
 	*/
     private function deconnexion(){
 
-        echo " Déconnexion ";
         $this->conn->close();
     }
 
