@@ -1,18 +1,41 @@
-﻿<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset='utf-8'/>
-		<title>cible gestion users</title>
-	</head>
-	<body>
-		<?php
-		include ("gestionnaire_commentaire.php");
-		$Email = new mail();
-		//$aUser = new Utilisateur($_POST['user'], $_POST['adresse'], $_POST['email'],
-		//$_POST['noTelephone'], $_POST['passwd']);
+﻿		<?php
+        /****************************************
+        Fichier : commentaire.php
+        Auteur : Marc-Étienne Pépin
+        Fonctionnalité : Sert Recupérer les information du forumlaire HTML
+         * et de les formatter et envoyer a la fonction envoyer une email
 
-		//ajoute l'utilisateur a la base de donn�e
-		//TODO
+        Date : 2018-04-23
+
+        Vérification :
+        Date               Nom                   Approuvé
+        ===========================================================
+
+
+
+        Historique de modifications :
+        Date               Nom                   Description
+        ===========================================================
+        2018-04-25		Marc-Étienne			Ajoute de commentaire
+         *
+         *
+         *
+         *
+         *
+         *
+         ****************************************/
+/*
+ ________  ________  _____ ______   _____ ______   _______   ________   _________  ________  ___  ________  _______            ________  ___  ___  ________   
+|\   ____\|\   __  \|\   _ \  _   \|\   _ \  _   \|\  ___ \ |\   ___  \|\___   ___\\   __  \|\  \|\   __  \|\  ___ \          |\   __  \|\  \|\  \|\   __  \  
+\ \  \___|\ \  \|\  \ \  \\\__\ \  \ \  \\\__\ \  \ \   __/|\ \  \\ \  \|___ \  \_\ \  \|\  \ \  \ \  \|\  \ \   __/|         \ \  \|\  \ \  \\\  \ \  \|\  \ 
+ \ \  \    \ \  \\\  \ \  \\|__| \  \ \  \\|__| \  \ \  \_|/_\ \  \\ \  \   \ \  \ \ \   __  \ \  \ \   _  _\ \  \_|/__        \ \   ____\ \   __  \ \   ____\
+  \ \  \____\ \  \\\  \ \  \    \ \  \ \  \    \ \  \ \  \_|\ \ \  \\ \  \   \ \  \ \ \  \ \  \ \  \ \  \\  \\ \  \_|\ \      __\ \  \___|\ \  \ \  \ \  \___|
+   \ \_______\ \_______\ \__\    \ \__\ \__\    \ \__\ \_______\ \__\\ \__\   \ \__\ \ \__\ \__\ \__\ \__\\ _\\ \_______\    |\__\ \__\    \ \__\ \__\ \__\   
+    \|_______|\|_______|\|__|     \|__|\|__|     \|__|\|_______|\|__| \|__|    \|__|  \|__|\|__|\|__|\|__|\|__|\|_______|    \|__|\|__|     \|__|\|__|\|__|   
+
+*/
+		include ("gestionnaire_courriel.php");
+		$Email = new mail();
         /*
 		echo "<p>".$_POST['nom']."</p>".
 			 "<p>".$_POST['courriel']."</p>".
@@ -25,5 +48,3 @@
         $question = $_POST['question'];
         $Email->sentMail($nom,$courriel,$sujet,$question);
         ?>
-	</body>
-</html>

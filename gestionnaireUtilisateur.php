@@ -12,108 +12,78 @@ Date                    Nom 		    Approuvé
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
+2018-04-23				Rémi			Modification de la classe.
+										Ajout des instructions pour ajouter
+										un utilisateur a la BD. (Erreur avec propriété résolue)
 
 *********************************************************/
 require_once 'utilisateur.php';
 require_once 'connection.php';
 
+/**
+ * Class GestionnaireUtilisateur
+ * fait le lien entre l'objet utilisateur et le controlleur et communique avec la bd
+ */
 class GestionnaireUtilisateur {
 
-	private $nom_utilisateur;
-	private $mot_de_passe;
-	private $email;
-	private $adresse;
-	private $telephone;
+    /**
+     * @var Utilisateur un utilisateur du systéme
+     */
+    private $unUtilisateur;
 	
 	/**
-	* Constructeur
+	 * Constructeur
+     * @param $nom_utilisateur le nom de l'utilisateur
+     * @param $mot_de_passe le mot de passe de l'utilisateur
+     * @param $email l'adresse email de l'utilisateur
+     * @param $adresse l'adresse de la maison de l'utilisateur
+     * @param $telephone le téléphone de l'utilisateur
+     * (Precondition: $nom_utilisateur != null && $mot_de_passe != null)
+     * (Postcondition: $this->unUtilisateur != null)
 	*/
-	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
-        $this->nom_utilisateur = $nom_utilisateur;
-        $this->mot_de_passe = $mot_de_passe;
-        $this->email = $email;
-		$this->adresse = $adresse;
-		$this->telephone = $telephone;
+	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
+
+        $this->unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
     }
 	
 	/**
-	* modifier le nom d'utilisateur
+	 * modifier l'utilisateur
+     * @param $unUtilisateur  l'utilisateur
+     *(Precondition: $unUtilisateur != null)
+     *(Postcondition: $this->unUtilisateur == $unUtilisateur)
 	*/
-	public function setNomUtilisateur($nom){
-		$this->nom_utilisateur = $nom;
+	public function setUnUtilisateur($unUtilisateur){
+		$this->unUtilisateur = $unUtilisateur;
 	}
 	
 	/**
-	* retourne le nom d'utilisateur
+     * Retourne l'utilisateur
+     * (Precondition: $this->unUtilisateur != null)
+     * (Postcondition: getUnUtilisateur() == $this->unUtilisateur)
 	*/
-	public function getNomUtilisateur(){
-		return $this->nom_utilisateur;
+	public function getUnUtilisateur(){
+		return $this->unUtilisateur;
 	}
+	
+	/**
+     * Ajouter un utilisateur avec les informations de l'interface inscription à la BD.
+     * (Precondition: $this->unUtilisateur != null)
+     * (Postcondition: $this->unUtilisateur == BD)
+	*/
+	public function ajouterUtilisateur(){
 
-	/**
-	* modifie le mot de passe
-	*/
-	public function setMotDePasse($mdp){
-		$this->mot_de_passe = $mdp;
-	}
-	
-	/**
-	* Retourne le mot de passe
-	*/
-	public function getMotDePasse(){
-		return $this->mot_de_passe;
-	}
-	
-	/**
-	* Modifie l'email
-	*/
-	public function setEmail($adresseEmail){
-		$this->email = $adresseEmail;
-	}
-	
-	/**
-	* retourne l'email
-	*/
-	public function getEmail(){
-		return $this->email;
-	}
+	    $nom = $this->unUtilisateur->getNomUtilisateur();
+        $mdp = $this->unUtilisateur->getMotDePasse();
+        $email = $this->unUtilisateur->getEmail();
+        $adresse = $this->unUtilisateur->getAdresse();
+        $phone = $this->unUtilisateur->getTelephone();
 
-	/**
-	* modifie l'adresse
-	*/
-	public function setAdresse($adresseMaison){
-		$this->adresse =  $adresseMaison;
-	}
-	
-	/**
-	* retourne l'adresse
-	*/
-	public function getAdresse(){
-		return $this->adresse;
-	}
+        $connection = new Connexion();
 
-	/**
-	* modifie le numéro de telephone
-	*/
-	public function setTelephone($tel){
-		$this->telephone =  $tel;
-	}
-	
-	/**
-	* retourne le numéro de téléphone
-	*/
-	public function getTelephone(){
-		return $this->telephone;
-	}
-	
-	/**
-	* Ajouter un utilisateur avec les informations de l'interface inscription
-	*/
-	public function ajouterUtilisateur(){		
-	
-        $aUser = new Utilisateur(0, $this->nom_utilisateur, $this->mot_de_passe, $this->email, $this->adresse, $this->telephone);
-		
-		//ajoute un utilisateur à la base de donnée
+        $query = "INSERT INTO client( nom_utilisateur, mot_de_passe, adresse_email, adresse, telephone)".
+                         "VALUES ('$nom', '$mdp', '$email', '$adresse', $phone)";
+
+        $connection->execution($query);
     }
 }
 ?>

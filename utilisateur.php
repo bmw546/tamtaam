@@ -14,12 +14,11 @@
  Date 				Nom 					Description
  =========================================================
   2018-04-23		Rémi Létourneau			Enlever la variable type utilisateur
-  2018-04-24		Rémi Létourneau			Ajouter des commentaires
+  2018-04-24		Rémi Létourneau			Ajouter des commentaires et retirer l'id
 ********************************************************************************/
 
 class Utilisateur {
 	
-	private $id;
 	private $nom_utilisateur;
 	private $mot_de_passe;
 	private $email;
@@ -29,29 +28,15 @@ class Utilisateur {
 	/**
 	* Constructeur
 	*/
-	public function __construct($id, $nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
-        $this->id = $id;
+	public function __construct($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){		
+    
         $this->nom_utilisateur = $nom_utilisateur;
         $this->mot_de_passe = $mot_de_passe;
         $this->email = $email;
 		$this->adresse = $adresse;
 		$this->telephone = $telephone;
     }
-	
-	/**
-	* Modifie l'id de l'utilisateur
-	*/
-	public function setId($id){
-		$this->id = $id;
-	}
-	
-	/**
-	* Obtiens l'id de l'utilisateur
-	*/
-	public function getId(){
-		return $this->id;
-	}
-	
+		
 	/**
 	* Modifie le nom de l'utilisateur
 	*/

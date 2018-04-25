@@ -1,3 +1,7 @@
+
+
+<html>
+<!--
 /****************************************
 Fichier : commentaire.html
 Auteur : Marc-Étienne Pépin
@@ -14,10 +18,9 @@ Date               Nom                   Approuvé
 Historique de modifications :
 Date               Nom                   Description
 ===========================================================
-
+2018-04-25		Marc-Étienne			Ajoute de commentaire, ajout des "required"
 ****************************************/
-
-<html>
+-->
     <head>
         <meta charset="utf-8" />
         <title>Formulaire &eacute;leve</title>
@@ -31,19 +34,19 @@ Date               Nom                   Description
             <form action="commentaire.php" method="post">
                 <p>
                     <label for="nom">Nom: </label>
-                    <input type="text" name="nom" id="nom" />
+                    <input type="text" name="nom" id="nom" required/>
                 </p>
                 <p>
                     <label for="courriel">Courriel: </label>
-                    <input type="text" name="courriel" id="courriel" />
+                    <input type="text" name="courriel" id="courriel" required/>
                 </p>
                 <p>
                     <label for="sujet">Sujet: </label>
-                    <input type="text" name="sujet" id="sujet" />
+                    <input type="text" name="sujet" id="sujet" required/>
                 </p>
                 <p>
                 <p for="commentaire">Commentaire/suggestion: </p>
-                <textarea name="question" rows="10" cols="30" id="question"> </textarea>
+                <textarea name="question" rows="10" cols="30" id="question" required/> </textarea>
                 </p>
                 <p>
                     <input  style="margin-left:80px; margin-right:30%; background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
