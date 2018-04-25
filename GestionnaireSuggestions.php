@@ -50,7 +50,7 @@ class GestionnaireSuggestions{
 		$header.='Content-Transfer-Encoding: 8bit';
 		//$sujet .= "  provient de :  ".$nom;
 
-     if ($this->type == "commentaire") {
+     if ($this->type == "commentaire"){
       $corps .= " provient de l'adresse email suivant : " . $courriel;
       $courriel = "tamtaamsherbrooke@gmail.com";
      }

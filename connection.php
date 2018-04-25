@@ -21,11 +21,11 @@ Date               Nom                   Description
 ************************************************************/
 
 /*
-  / ____/ __ \| \ | | \ | |  ____/ ____|__   __|  ____|  |  __ \| |  | |  __ \ 
+  / ____/ __ \| \ | | \ | |  ____/ ____|__   __|  ____|  |  __ \| |  | |  __ \
  | |   | |  | |  \| |  \| | |__ | |       | |  | |__     | |__) | |__| | |__) |
- | |   | |  | | . ` | . ` |  __|| |       | |  |  __|    |  ___/|  __  |  ___/ 
- | |___| |__| | |\  | |\  | |___| |____   | |  | |____   | |    | |  | | |     
-  \_____\____/|_| \_|_| \_|______\_____|  |_|  |______|  |_|    |_|  |_|_|     
+ | |   | |  | | . ` | . ` |  __|| |       | |  |  __|    |  ___/|  __  |  ___/
+ | |___| |__| | |\  | |\  | |___| |____   | |  | |____   | |    | |  | | |
+  \_____\____/|_| \_|_| \_|______\_____|  |_|  |______|  |_|    |_|  |_|_|
 */
 class Connexion
 {
@@ -34,7 +34,7 @@ class Connexion
     private $nom_utilisateur_bd;
     private $mot_de_passe_bd;
     private $nom_bd;
-	
+
 	public function __construct()
 	{
 		$this->nom_serveur  = "localhost";
@@ -108,16 +108,16 @@ class Connexion
 	* Déconnecte de la base de donnée
 	*/
     private function deconnexion(){
-		
+
         echo " Déconnexion ";
         $this->conn->close();
     }
-	
-    /** 
+
+    /**
 	*  Execute du code SQL et retourne une array d'array de réponse
 	*/
     public function execution_avec_return($sql){
-		
+
         $this->connexion();
         $response = array();
         // test
@@ -129,7 +129,7 @@ class Connexion
             $response[] = $row;
         }
         $this->deconnexion();
-        
+
         print_r($response); // ligne à enlever si vous voulez pas que cela print (mais utile pour les test)
         return $response;
     }
@@ -137,11 +137,18 @@ class Connexion
     /**
 	*  Execute du code SQL sans retour
 	*/
-    public function execution($sql){
-		
+  /*  public function execution($sql){
+
         $this->connexion();
         mysqli_query($this->conn,$sql);
         $this->deconnexion();
+    }*/
+    public function execute($sql){
+        $this->connexion();
+        $result = mysqli_query($this->conn,$sql);
+        $this->deconnexion();
+
+        return $result;
     }
 }
 ?>

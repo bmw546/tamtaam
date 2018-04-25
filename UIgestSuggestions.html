@@ -19,6 +19,7 @@ Historique de modifications :
 Date               Nom                   Description
 ===========================================================
 2018-04-25		Marc-Étienne			Ajoute de commentaire, ajout des "required"
+2018-04-25    Roméo             Ajouter formnovalidate pou le bouton annuler
 ****************************************/
 -->
     <head>
@@ -31,7 +32,11 @@ Date               Nom                   Description
     </header>
         <p> MAYBY ADD TEXTE HERE ME DUDE</p>
         <fieldset>
+<<<<<<< HEAD:commentaire.html
+            <form action="comments.php" method="post">
+=======
             <form action="CtrlSuggestions.php" method="post">
+>>>>>>> 66b68dd6a1e84053bd96ed73078ccf707c4e2907:UIgestSuggestions.html
                 <p>
                     <label for="nom">Nom: </label>
                     <input type="text" name="nom" id="nom" required/>
@@ -50,7 +55,7 @@ Date               Nom                   Description
                 </p>
                 <p>
                     <input  style="margin-left:80px; margin-right:30%; background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
-                    <button style=" margin-left:25%; margin-right:100px; background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
+                    <button formnovalidate style=" margin-left:25%; margin-right:100px; background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
 
                 </p>
             </form>
