@@ -56,8 +56,8 @@ class GestionnaireUtilisateur {
 
         $argv = func_get_args();
 
-        if (func_num_args() == 4) {
-           self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3]);
+        if (func_num_args() == 5) {
+           self::__construct2( $argv[0], $argv[1], $argv[2], $argv[3], $argv[4]);
         }
         else {
            $this->utilisateur = new Utilisateur("", "", "", "", "");
@@ -133,7 +133,14 @@ class GestionnaireUtilisateur {
             //sinon les informations sont bonnes
             else {
               $this->setEtat('Authentification réussie');
-              $this->utilisateur->setInfosUtilisateur($row["nom_utilisateur"], $row["mot_de_passe"], $row["adresse_email"], $row["adresse"], $row["telephone"]);
+
+              //cette fonction donne des erreurs for some reason
+              //$this->utilisateur->setInfosUtilisateur(, $row["mot_de_passe"], $row["adresse_email"], $row["adresse"], $row["telephone"]);
+              $this->utilisateur->setNomUtilisateur($row["nom_utilisateur"]);
+              $this->utilisateur->setMotDePasse( $row["mot_de_passe"]);
+              $this->utilisateur->setEmail( $row["adresse_email"]);
+              $this->utilisateur->setAdresse($row["adresse"]);
+              $this->utilisateur->setTelephone($row["telephone"]);
             }
 
       }
