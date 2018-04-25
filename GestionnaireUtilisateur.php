@@ -1,5 +1,5 @@
 <?php
-/********************************************************
+/********************************************************************************************
 Fichier : GestionnaireUtilisateur.php
 Auteur :  Rémi Létourneau
 Fonctionnalité : Gestion des comptes utilisateurs
@@ -10,17 +10,17 @@ Date                    Nom 		    Approuvé
 =========================================================
 
 Historique de modifications :
-Date                    Nom             Description
+Date          Nom             			Description
 =========================================================
-2018-04-24				Rémi Létourneau	 Modification de la classe.
-									Ajout des instructions pour ajouter
-									un utilisateur a la BD. (Erreur avec propriété résolue)
-2018-04-25    Rémi Létourneau  Ajout des pré et post conditions
-2018-04-25	  Roméo 							Ajout du constructeur sans paramètre
-2018-04-25	  Roméo 							Ajout de fonctions getters et setters des 3 variables
-2018-04-25	  Roméo 							Ajout d'Authentification
-2018-04-25	  Roméo 							Ajout de mot de passe/ nom d'utilisateur oublié
-*********************************************************/
+2018-04-24	  Rémi Létourneau	 		Modification de la classe.
+										Ajout des instructions pour ajouter
+										un utilisateur a la BD. (Erreur avec propriété résolue)
+2018-04-25    Rémi Létourneau  			Ajout des pré et post conditions
+2018-04-25	  Roméo 					Ajout du constructeur sans paramètre
+2018-04-25	  Roméo 					Ajout de fonctions getters et setters des 3 variables
+2018-04-25	  Roméo 					Ajout d'Authentification
+2018-04-25	  Roméo 					Ajout de mot de passe/ nom d'utilisateur oublié
+***********************************************************************************************/
 require_once 'Utilisateur.php';
 require_once 'gestionnaire_courriel.php';
 require_once 'connection.php';
