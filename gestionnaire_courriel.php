@@ -54,9 +54,9 @@ class mail{
 		$header.='Content-Transfer-Encoding: 8bit';
 		//$sujet .= "  provient de :  ".$nom;
 
-     if ($this->type == "commentaire") {
+     if ($this->type == "commentaire"){
       $corps .= " provient de l'adresse email suivant : " . $courriel;
-      $courriel = "tamtaamsherbrooke@gmail.com"
+      $courriel = "tamtaamsherbrooke@gmail.com";
      }
 
 		 mail($courriel,$sujet,$corps,$header);
