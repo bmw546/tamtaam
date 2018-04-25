@@ -50,7 +50,7 @@ class GestionnaireUtilisateur {
 	*/
 	public function __construct(){
 
-        $this->courriel    = new mail();
+        $this->courriel    = new GestionnaireSuggestions();
         $this->connexion   = new Connexion;
         $this->etat        = "";
 
@@ -104,7 +104,7 @@ class GestionnaireUtilisateur {
 	*/
 	public function ajouterUtilisateur(){
 
-	      $nom = $this->unUtilisateur->getNomUtilisateur();
+	    $nom = $this->unUtilisateur->getNomUtilisateur();
         $mdp = $this->unUtilisateur->getMotDePasse();
         $email = $this->unUtilisateur->getEmail();
         $adresse = $this->unUtilisateur->getAdresse();
@@ -113,7 +113,7 @@ class GestionnaireUtilisateur {
         $query = "INSERT INTO client( nom_utilisateur, mot_de_passe, adresse_email, adresse, telephone)".
                          "VALUES ('$nom', '$mdp', '$email', '$adresse', $phone)";
 
-        $this->connection->execution($query);
+        $this->connexion->execution($query);
     }
 
   public function authentification($nom_utilisateur, $mot_de_passe){
