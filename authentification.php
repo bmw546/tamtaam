@@ -15,7 +15,7 @@
 
 include_once 'connect.php';
 include_once 'utilisateur.php';
-require_once 'gestionnaire_courriel.php';
+require_once 'GestionnaireSuggestions.php';
 
 class Authentification{
 
@@ -25,7 +25,7 @@ class Authentification{
   private $courriel;
   //constructeur sans paramètre
   public function __construct(){
-    $this->courriel    = new mail();
+    $this->courriel    = new GestionnaireSuggestions();
     $this->utilisateur = new Utilisateur;
     $this->connexion   = new Connexion;
     $this->etat        = "";
