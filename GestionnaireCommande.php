@@ -21,12 +21,13 @@
 
         private $uneCommande;
         private $numeroCommande,$nomClient, $adresse, $date, $montant, $etat, $type;
+        private $listeProduit = array();
 
         /**
          * GestionnaireCommande constructor.
          * @param $uneCommande
          */
-        public function __construct( $numeroCommande,$nomClient, $adresse, $date, $montant, $etat, $type){
+        public function __construct( $numeroCommande,$nomClient, $adresse, $date, $montant, $etat, $type,$listeProduit){
             $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type);
         }
 
@@ -58,26 +59,26 @@
             //Id client 1 pour test
             $query = "INSERT INTO commande(id_client, id_etat,id_type_commande, date, montant, nom )".
                 "VALUES ('1', '$etat', '$type', '$date','$montant','$nomClient')";
-
             $connection->execution($query);
 
             //Si c'est une livraison
             if ($etat == 1 )
             {
                 $query = "SELECT * FROM commande ORDER BY id_commande DESC LIMIT 1";
-                $result = $connection->execution($query);
-                $id_commande = $result[0][0];
 
+                $result = $connection->execution_avec_return($query);
+                echo $result;
+                $id_commande = $result[0][0];
+                echo $id_commande;
+
+                //$date_livraison = date_add(date("Y-m-d"),date_interval_create_from_date_string('3 days'));
+                $date_livraison = date('Y-m-d', strtotime($date. ' + 2 days'));
                 $query2 = "INSERT INTO livraison(id_commande, adresse,adresse_latitude, adresse_longitude, 
                                                 date_livraison_prevue, date_livraison_reel )".
-                    "VALUES ('$id_commande', '$adresse', '0', '0','$date','NULL')";
+                    "VALUES ('$id_commande', '$adresse', '0', '0','$date_livraison','NULL')";
                 $connection->execution($query2);
+                echo $query2;
             }
         }
-
-        public function modifierCommande(){
-
-        }
-
     }
     ?>

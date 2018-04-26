@@ -60,6 +60,8 @@ Date                    Nom                 Description
                 <?php
                 require_once 'MoteurRequeteBD.php';
 
+
+
                 $connection = new Connexion();
                 $query  = "SELECT COUNT(*) FROM `produit`";
                 $result = array();
@@ -69,16 +71,22 @@ Date                    Nom                 Description
                 $query2 = "SELECT * FROM `produit`";
                 $result = $connection->execution_avec_return($query2);
 
-                for ($x =0; $x < $nbProduit; $x++){
+
+
+                /*htmlspecialchars("<?php the_author_meta('description'); ?>") */
+
+                for ($x =1; $x <= $nbProduit; $x++){
                     $produit = $result[$x];
+                    $qty = "qty" . $x;
+                    $chk = $x;
                     echo "<tr>";
                         echo "<td>".$produit[0]."</td>";
                         echo "<td>" .$produit[1]. "</td>" ;
                         echo "<td align='center'>" . $produit[2]. "</td>" ;
                         echo "<td align='right'>".number_format($produit[3],2)." $"."</td>";
-                        echo "<td align='center'>"."<input type=\"text\" maxlength=\"2\" size=\"2\">"."</td>";
+                        echo "<td align='center'>"."<input name=\"$qty\" type=\"text\" maxlength=\"2\" size=\"2\">"."</td>";
                         echo "<td align='center'>" ."<input type=\"text\" maxlength=\"6\" size=\"6\" disabled>". "</td>" ;
-                        echo "<td align='center'>"."<input type=\"checkbox\">"."</td>";
+                        echo "<td align='center'>"."<input name=\"$chk\" type=\"checkbox\">"."</td>";
                     echo "</tr>";
                 }
 
