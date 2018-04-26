@@ -32,14 +32,21 @@ class GestionnaireSuiviCommandes{
       if (sizeof($result)>0) {
           $resultComm = array();
           $resultComm=end($result);
-          end($resultComm);
-          $etat = current($resultComm);
-          prev($resultComm);
-          $date = current($resultComm);
-          prev($resultComm);
-          $adresse = current($resultComm);
-          prev($resultComm);
+          //end($resultComm);
           $numeroCommande = current($resultComm);
+          next($resultComm);
+          next($resultComm);
+          $adresse = current($resultComm);
+          next($resultComm);
+          next($resultComm);
+          $date = current($resultComm);
+          next($resultComm);
+          next($resultComm);
+          $etat = current($resultComm);
+
+
+
+
     }
 
 
