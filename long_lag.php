@@ -2,7 +2,7 @@
 //class adresse {
     //function adresse($dlocation){
         // Get lat and long by address
-        $_POST['adresse'] = $dlocation;
+        $dlocation =  $_POST['nom'];
         $address = $dlocation; // Google HQ
         $prepAddr = str_replace(' ','+',$address);
         $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
