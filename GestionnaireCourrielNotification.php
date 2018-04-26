@@ -17,7 +17,7 @@ Date               Nom                   Description
 ===========================================================
 
  *****************************************************************/
-include_once ("connection.php");
+include_once("MoteurRequeteBD.php");
 class CourrielNotification{
 
     function chercher_si_existe($courriel,$telephone,$sms,$notification){

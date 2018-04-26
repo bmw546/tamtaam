@@ -22,8 +22,8 @@ Date          Nom             			Description
 2018-04-25	  Roméo 					Ajout de mot de passe/ nom d'utilisateur oublié
 ***********************************************************************************************/
 require_once 'Utilisateur.php';
-require_once 'GestionnaireSuggestions.php';
-require_once 'connection.php';
+require_once 'GestionnaireCourriel.php';
+require_once 'MoteurRequeteBD.php';
 
 /**
  * Class GestionnaireUtilisateur
@@ -50,7 +50,7 @@ class GestionnaireUtilisateur {
 	*/
 	public function __construct(){
 
-        $this->courriel    = new GestionnaireSuggestions();
+        $this->courriel    = new GestionnaireCourriel();
         $this->connexion   = new Connexion;
         $this->etat        = "";
 

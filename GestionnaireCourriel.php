@@ -21,7 +21,7 @@ Date               Nom                   Description
 2018-04-25       Roméo                 Rajouté le type de mail
 
  *******************************************************************************/
-class GestionnaireSuggestions{
+class GestionnaireCourriel{
 
     /**
      * @param $type         Le type de courriel qu'on veut envoyer

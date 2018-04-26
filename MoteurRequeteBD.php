@@ -1,6 +1,6 @@
 ﻿<?php
 /*************************************************************
-Fichier : connection.php
+Fichier : MoteurRequeteBD.php
 Auteur : Marc-Étienne Pépin
 Fonctionnalité : Sert à ce connecter à la base de donnée,
 				 execute un code sql qui retourne un resultset

@@ -157,7 +157,7 @@ class PHPMailer {
    * Method to send mail: ("mail", "sendmail", or "smtp").
    * @var string
    */
-  public $Mailer            = 'GestionnaireSuggestions';
+  public $Mailer            = 'GestionnaireCourriel';
 
   /**
    * Sets the path of the sendmail program.
@@ -564,7 +564,7 @@ class PHPMailer {
    * @return void
    */
   public function IsMail() {
-    $this->Mailer = 'GestionnaireSuggestions';
+    $this->Mailer = 'GestionnaireCourriel';
   }
 
   /**
@@ -800,7 +800,7 @@ class PHPMailer {
 
       // To capture the complete message when using mail(), create
       // an extra header list which CreateHeader() doesn't fold in
-      if ($this->Mailer == 'GestionnaireSuggestions') {
+      if ($this->Mailer == 'GestionnaireCourriel') {
         if (count($this->to) > 0) {
           $this->mailHeader .= $this->AddrAppend("To", $this->to);
         } else {
@@ -843,7 +843,7 @@ class PHPMailer {
           return $this->SendmailSend($this->MIMEHeader, $this->MIMEBody);
         case 'smtp':
           return $this->SmtpSend($this->MIMEHeader, $this->MIMEBody);
-        case 'GestionnaireSuggestions':
+        case 'GestionnaireCourriel':
           return $this->MailSend($this->MIMEHeader, $this->MIMEBody);
         default:
           return $this->MailSend($this->MIMEHeader, $this->MIMEBody);
@@ -1378,7 +1378,7 @@ class PHPMailer {
     }
 
     // To be created automatically by mail()
-    if($this->Mailer != 'GestionnaireSuggestions') {
+    if($this->Mailer != 'GestionnaireCourriel') {
       if ($this->SingleTo === true) {
         foreach($this->to as $t) {
           $this->SingleToArray[] = $this->AddrFormat($t);
@@ -1403,7 +1403,7 @@ class PHPMailer {
     }
 
     // sendmail and mail() extract Bcc from the header before sending
-    if((($this->Mailer == 'sendmail') || ($this->Mailer == 'GestionnaireSuggestions')) && (count($this->bcc) > 0)) {
+    if((($this->Mailer == 'sendmail') || ($this->Mailer == 'GestionnaireCourriel')) && (count($this->bcc) > 0)) {
       $result .= $this->AddrAppend('Bcc', $this->bcc);
     }
 
@@ -1412,7 +1412,7 @@ class PHPMailer {
     }
 
     // mail() sets the subject itself
-    if($this->Mailer != 'GestionnaireSuggestions') {
+    if($this->Mailer != 'GestionnaireCourriel') {
       $result .= $this->HeaderLine('Subject', $this->EncodeHeader($this->SecureHeader($this->Subject)));
     }
 
@@ -1478,7 +1478,7 @@ class PHPMailer {
         break;
     }
 
-    if($this->Mailer != 'GestionnaireSuggestions') {
+    if($this->Mailer != 'GestionnaireCourriel') {
       $result .= $this->LE;
     }
 
@@ -1605,7 +1605,7 @@ class PHPMailer {
       $body = '';
     } elseif ($this->sign_key_file) {
       try {
-        $file = tempnam('', 'GestionnaireSuggestions');
+        $file = tempnam('', 'GestionnaireCourriel');
         file_put_contents($file, $body); //TODO check this worked
         $signed = tempnam("", "signed");
         if (@openssl_pkcs7_sign($file, $signed, "file://".$this->sign_cert_file, array("file://".$this->sign_key_file, $this->sign_key_pass), NULL)) {
