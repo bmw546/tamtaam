@@ -25,19 +25,21 @@ class GestionnaireSuiviCommandes{
 
   public function __construct($nomClient){
       $this->connexion   = new Connexion;
-
+      $result = array();
       $query  = "SELECT commande.id_commande, livraison.adresse, livraison.date_livraison_prevue, etat_commande.nom_etat FROM commande JOIN client ON commande.id_client=client.id_client JOIN livraison ON commande.id_commande=livraison.id_commande JOIN etat_commande ON commande.id_etat=etat_commande.id_etat WHERE client.nom_utilisateur = '$nomClient'";
-      $result = $this->connexion->execute($query);
+      $result = $this->connexion->execution_avec_return($query);
 
-      if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-
-          $numeroCommande = $row["id_commande"];
-          $adresse = $row["adresse"];
-          $date = $row["date_livraison_prevue"];
-          $etat = $row["nom_etat"];
-
-      }
+      if (sizeof($result)>0) {
+          $resultComm = array();
+          $resultComm=end($result);
+          end($resultComm);
+          $etat = current($resultComm);
+          prev($resultComm);
+          $date = current($resultComm);
+          prev($resultComm);
+          $adresse = current($resultComm);
+          prev($resultComm);
+          $numeroCommande = current($resultComm);
     }
 
 
