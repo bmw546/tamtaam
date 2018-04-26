@@ -13,7 +13,7 @@
     Date                Nom                 Description
     ======================================================
 *****************************/
-    require_once 'connection.php';
+    require_once 'MoteurRequeteBD.php';
     require_once 'commande.php';
     require_once 'produit.php';
 

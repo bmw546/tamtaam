@@ -58,7 +58,7 @@ Date                    Nom                 Description
                     <th>Ajouter</th>
                 </tr>
                 <?php
-                require_once 'connection.php';
+                require_once 'MoteurRequeteBD.php';
 
                 $connection = new Connexion();
                 $query  = "SELECT COUNT(*) FROM `produit`";

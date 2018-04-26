@@ -15,7 +15,7 @@ Date                    Nom             Description
 ***********************************************-->
 <?php
   require_once 'commande.php';
-  require_once 'connection.php';
+  require_once 'MoteurRequeteBD.php';
 
 class GestionnaireSuiviCommandes{
 

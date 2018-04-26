@@ -23,7 +23,7 @@ Date          Nom             			Description
 ***********************************************************************************************/
 require_once 'Utilisateur.php';
 require_once 'GestionnaireSuggestions.php';
-require_once 'connection.php';
+require_once 'MoteurRequeteBD.php';
 
 /**
  * Class GestionnaireUtilisateur
