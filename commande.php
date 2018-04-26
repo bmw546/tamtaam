@@ -46,24 +46,6 @@
         }
 
         /**
-         * Commande constructor2.
-         * @param $nomClient
-         * @param $adresse
-         * @param $date
-         * @param $montant
-         * @param $etat
-         * @param $type
-         */
-        public function __construct2($nomClient, $adresse, $date, $montant, $etat,$type){
-            $this->nomClient = $nomClient;
-            $this->adresse = $adresse;
-            $this->date = $date;
-            $this->montant = $montant;
-            $this->etat = $etat;
-            $this->type = $type;
-        }
-
-        /**
          * @return mixed
          */
         public function getNumeroCommande()

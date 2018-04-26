@@ -25,8 +25,8 @@
          * GestionnaireCommande constructor.
          * @param $uneCommande
          */
-        public function __construct( $nomClient, $adresse, $date, $montant, $etat, $type){
-            $this->uneCommande = new Commande( $nomClient, $adresse, $date, $montant, $etat, $type);
+        public function __construct( $numeroCommande,$nomClient, $adresse, $date, $montant, $etat, $type){
+            $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type);
         }
 
         /**

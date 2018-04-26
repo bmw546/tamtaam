@@ -16,7 +16,7 @@ Date                Nom                 Description
 
     require_once 'GestionnaireCommande.php';
 
-    $manager = new GestionnaireCommande($_POST['nom'],$_POST['adresse'],date("Y-m-d"),
+    $manager = new GestionnaireCommande(0,$_POST['nom'],$_POST['adresse'],date("Y-m-d"),
         $_POST['montant'],1,$_POST['livraison'] );
     
     $manager->ajouterCommande();
