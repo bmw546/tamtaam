@@ -54,8 +54,7 @@ class Utilisateur {
 		$this->setTelephone($telephone);
 	}
 
-//donne des erreurs for some reason
-/*
+	//donne des erreurs for some reason
 	public function setInfosUtilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
 
 		$this->setNomUtilisateur($nom_utilisateur);
@@ -63,8 +62,8 @@ class Utilisateur {
 		$this->setEmail($email);
 		$this->setAdresse($adresse);
 		$this->setTelephone($telephone);
-  }
-*/
+	}
+
 	/**
 	 * Modifie le nom de l'utilisateur
 	 * @param $nom le nom de l'utilisateur

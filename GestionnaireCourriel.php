@@ -1,6 +1,6 @@
 ﻿<?php
 /*******************************************************************************
-Fichier : gestionnaireSuggestionsns.php
+Fichier : GestionnaireCourriel.php
 Auteur : Marc-Étienne Pépin, Roméo Tsarafodiana-Bugeaud
 Fonctionnalité : Sert Recupérer les information du forumlaire HTML
                  et de les formatter et envoyer a la fonction
@@ -21,17 +21,7 @@ Date               Nom                   Description
 2018-04-25       Roméo                 Rajouté le type de mail
 
  *******************************************************************************/
-class GestionnaireCourriel{
-
-    /**
-     * @param $type         Le type de courriel qu'on veut envoyer
-     * @param $nom          Le nom de qui le courriel vient
-     * @param $courriel     Le courriel de qui le courriel provient
-     * @param $sujet        Le sujet du courriel
-     * @param $corps        Le body du email
-     * (Precondition: $nom != null && $courriel != null && $sujet != null && $question != null)
-     * (le programme peut runner correctement sans $nom et $courriel mais il sera bizarre)
-     */
+class GestionnaireCourriel {
 
     private $type;
 
@@ -39,10 +29,20 @@ class GestionnaireCourriel{
       $this->type = "commentaire";
     }
 
+    /**
+     * @param $type         Le type de courriel qu'on veut envoyer
+     */
     public function setType($type){
       $this->type = $type;
     }
 
+    /**
+     * @param $nom          Le nom de qui le courriel vient
+     * @param $courriel     Le courriel de qui le courriel provient
+     * @param $sujet        Le sujet du courriel
+     * @param $corps        Le body du email
+     * (Precondition: $nom != null && $courriel != null && $sujet != null && $question != null)
+     */
     function sentMail($nom, $courriel, $sujet, $corps){
     $header="MIME-Version: 1.0\r\n";
 		$header.='From:"'.$nom.'"<'.$courriel.'>'."\n";

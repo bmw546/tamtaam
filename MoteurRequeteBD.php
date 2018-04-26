@@ -133,8 +133,6 @@ class Connexion
 				\|_______|\|_______|\|_______|
 			*/
         if ($result){
-
-
             while($row = mysqli_fetch_array($result))
             {
                 $response[] = $row;
@@ -142,13 +140,10 @@ class Connexion
         }
 		else {
            $result = null;
-
         }
         $this->deconnexion();
         //print_r($response);
         return $response;
-         // ligne à enlever si vous voulez pas que cela print (mais utile pour les test)
-
     }
 
 
