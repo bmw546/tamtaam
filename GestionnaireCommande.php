@@ -25,8 +25,8 @@
          * GestionnaireCommande constructor.
          * @param $uneCommande
          */
-        public function __construct($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type){
-            $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type);
+        public function __construct( $nomClient, $adresse, $date, $montant, $etat, $type){
+            $this->uneCommande = new Commande( $nomClient, $adresse, $date, $montant, $etat, $type);
         }
 
         /**
@@ -45,7 +45,6 @@
 
 
         public function ajouterCommande(){
-            $numeroCommande = $this->uneCommande->getNumeroCommande();
             $nomClient = $this->uneCommande->getNomClient();
             $adresse = $this->uneCommande->getAdresse();
             $date = $this->uneCommande->getDate();
@@ -55,8 +54,8 @@
 
             $connection = new Connexion();
 
-            $query = "INSERT INTO commande( id_commande, id_client, id_etat, adresse, date, montant, $type )".
-                "VALUES ('$numeroCommande', '$nomClient', '$etat', '$adresse', $date,$montant,$type)";
+            $query = "INSERT INTO commande(id_client, id_etat, adresse, date, montant, $type )".
+                "VALUES ('$nomClient', '$etat', '$adresse', $date,$montant,$type)";
 
             $connection->execution($query);
 
