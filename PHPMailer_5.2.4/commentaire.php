@@ -7,7 +7,7 @@
 	<body>
 		<?php
         include"gestionnaire_commentaire.php";
-        $comments= new GestionnaireSuggestions();
+        $comments= new GestionnaireCourriel();
         // ajouter les commentaire a la BD
         $nom = $_POST['nom'];
         $courriel = $_POST['courriel'];

@@ -20,9 +20,9 @@ Date               Nom                   Description
 
  *****************************************************************/
 
-    include("GestionnaireSuggestions.php");
+    include("GestionnaireCourriel.php");
 
-    $Email = new GestionnaireSuggestions();
+    $Email = new GestionnaireCourriel();
     /*
     echo "<p>".$_POST['nom']."</p>".
          "<p>".$_POST['courriel']."</p>".

@@ -154,7 +154,7 @@ if ( $_POST['submit'] == "Submit" ) {
   <input type="hidden" name="Subject" value="<?php echo $value; ?>">
   <?php $value = ( $_POST['Message'] != '' ) ? $_POST['Message'] : ''; ?>
   <input type="hidden" name="Message" value="<?php echo $value; ?>">
-  <?php $value = ( $_POST['test_type'] != '' ) ? $_POST['test_type'] : 'GestionnaireSuggestions'; ?>
+  <?php $value = ( $_POST['test_type'] != '' ) ? $_POST['test_type'] : 'GestionnaireCourriel'; ?>
   <input type="hidden" name="test_type" value="<?php echo $value; ?>">
   <?php $value = ( $_POST['smtp_debug'] != '' ) ? $_POST['smtp_debug'] : $CFG['smtp_debug']; ?>
   <input type="hidden" name="smtp_debug" value="<?php echo $value; ?>">
@@ -357,7 +357,7 @@ if ( count($errorMsg) > 0 ) {
             <td class="colleft">Test Type</td>
             <td class="colrite"><table>
                 <tr>
-                  <td><input type="radio" name="test_type" value="mail" <?php echo ( $_POST['test_type'] == 'GestionnaireSuggestions') ? 'checked' : ''; ?>></td>
+                  <td><input type="radio" name="test_type" value="mail" <?php echo ( $_POST['test_type'] == 'GestionnaireCourriel') ? 'checked' : ''; ?>></td>
                   <td>Mail()</td>
                 </tr>
                 <tr>
