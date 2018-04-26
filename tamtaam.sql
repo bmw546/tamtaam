@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  mer. 25 avr. 2018 à 20:21
--- Version du serveur :  10.1.30-MariaDB
--- Version de PHP :  7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: Apr 26, 2018 at 03:31 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `tamtaam`
+-- Database: `tamtaam`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `client`
+-- Table structure for table `client`
 --
 
 CREATE TABLE `client` (
@@ -40,7 +40,7 @@ CREATE TABLE `client` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commande`
+-- Table structure for table `commande`
 --
 
 CREATE TABLE `commande` (
@@ -49,13 +49,14 @@ CREATE TABLE `commande` (
   `id_etat` int(11) NOT NULL,
   `id_type_commande` int(11) NOT NULL,
   `date` date NOT NULL,
-  `montant` date NOT NULL
+  `montant` date NOT NULL,
+  `nom` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etat_commande`
+-- Table structure for table `etat_commande`
 --
 
 CREATE TABLE `etat_commande` (
@@ -67,7 +68,7 @@ CREATE TABLE `etat_commande` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evenement`
+-- Table structure for table `evenement`
 --
 
 CREATE TABLE `evenement` (
@@ -81,7 +82,7 @@ CREATE TABLE `evenement` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `livraison`
+-- Table structure for table `livraison`
 --
 
 CREATE TABLE `livraison` (
@@ -97,20 +98,7 @@ CREATE TABLE `livraison` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `notification`
---
-
-CREATE TABLE `notification` (
-  `courriel` varchar(100) NOT NULL,
-  `telephone` bigint(20) NOT NULL,
-  `sms` tinytext NOT NULL,
-  `notification` tinytext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `produit`
+-- Table structure for table `produit`
 --
 
 CREATE TABLE `produit` (
@@ -120,10 +108,24 @@ CREATE TABLE `produit` (
   `prix` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `produit`
+--
+
+INSERT INTO `produit` (`id_produit`, `nom`, `description`, `prix`) VALUES
+(1, 'Hibiscus', '230ML', 3.25),
+(2, 'Hibiscus', '500ML', 7),
+(3, 'Hibiscus', '1L', 12),
+(4, 'Hibiscus', '2L', 22),
+(5, 'Gingembre', '230ML', 3.25),
+(6, 'Gingembre', '500ML', 7),
+(7, 'Gingembre', '1L', 12),
+(8, 'Gingembre', '2L', 22);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rabais`
+-- Table structure for table `rabais`
 --
 
 CREATE TABLE `rabais` (
@@ -136,7 +138,7 @@ CREATE TABLE `rabais` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `recette`
+-- Table structure for table `recette`
 --
 
 CREATE TABLE `recette` (
@@ -148,7 +150,7 @@ CREATE TABLE `recette` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ta_produit_commande`
+-- Table structure for table `ta_produit_commande`
 --
 
 CREATE TABLE `ta_produit_commande` (
@@ -160,7 +162,7 @@ CREATE TABLE `ta_produit_commande` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ta_produit_recette`
+-- Table structure for table `ta_produit_recette`
 --
 
 CREATE TABLE `ta_produit_recette` (
@@ -171,7 +173,7 @@ CREATE TABLE `ta_produit_recette` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ta_rabais_produit`
+-- Table structure for table `ta_rabais_produit`
 --
 
 CREATE TABLE `ta_rabais_produit` (
@@ -182,7 +184,7 @@ CREATE TABLE `ta_rabais_produit` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_commande`
+-- Table structure for table `type_commande`
 --
 
 CREATE TABLE `type_commande` (
@@ -193,7 +195,7 @@ CREATE TABLE `type_commande` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_rabais`
+-- Table structure for table `type_rabais`
 --
 
 CREATE TABLE `type_rabais` (
@@ -203,17 +205,17 @@ CREATE TABLE `type_rabais` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `client`
+-- Indexes for table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id_client`);
 
 --
--- Index pour la table `commande`
+-- Indexes for table `commande`
 --
 ALTER TABLE `commande`
   ADD PRIMARY KEY (`id_commande`),
@@ -222,134 +224,134 @@ ALTER TABLE `commande`
   ADD KEY `type_commande` (`id_type_commande`);
 
 --
--- Index pour la table `etat_commande`
+-- Indexes for table `etat_commande`
 --
 ALTER TABLE `etat_commande`
   ADD PRIMARY KEY (`id_etat`);
 
 --
--- Index pour la table `evenement`
+-- Indexes for table `evenement`
 --
 ALTER TABLE `evenement`
   ADD PRIMARY KEY (`id_evenement`);
 
 --
--- Index pour la table `livraison`
+-- Indexes for table `livraison`
 --
 ALTER TABLE `livraison`
   ADD PRIMARY KEY (`id_livraison`),
   ADD KEY `_commande` (`id_commande`);
 
 --
--- Index pour la table `produit`
+-- Indexes for table `produit`
 --
 ALTER TABLE `produit`
   ADD PRIMARY KEY (`id_produit`);
 
 --
--- Index pour la table `rabais`
+-- Indexes for table `rabais`
 --
 ALTER TABLE `rabais`
   ADD PRIMARY KEY (`code_rabais`),
   ADD KEY `rabais_type_FK` (`type`);
 
 --
--- Index pour la table `recette`
+-- Indexes for table `recette`
 --
 ALTER TABLE `recette`
   ADD PRIMARY KEY (`id_recette`);
 
 --
--- Index pour la table `ta_produit_commande`
+-- Indexes for table `ta_produit_commande`
 --
 ALTER TABLE `ta_produit_commande`
   ADD PRIMARY KEY (`id_produit`,`id_commande`),
   ADD KEY `commande` (`id_commande`);
 
 --
--- Index pour la table `ta_produit_recette`
+-- Indexes for table `ta_produit_recette`
 --
 ALTER TABLE `ta_produit_recette`
   ADD PRIMARY KEY (`id_recette`,`id_produit`),
   ADD KEY `_produit` (`id_produit`);
 
 --
--- Index pour la table `ta_rabais_produit`
+-- Indexes for table `ta_rabais_produit`
 --
 ALTER TABLE `ta_rabais_produit`
   ADD PRIMARY KEY (`id_produit`,`code_rabais`),
   ADD KEY `rabais` (`code_rabais`);
 
 --
--- Index pour la table `type_commande`
+-- Indexes for table `type_commande`
 --
 ALTER TABLE `type_commande`
   ADD PRIMARY KEY (`id_type_commande`);
 
 --
--- Index pour la table `type_rabais`
+-- Indexes for table `type_rabais`
 --
 ALTER TABLE `type_rabais`
   ADD PRIMARY KEY (`id_rabais`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `client`
+-- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `commande`
+-- AUTO_INCREMENT for table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `etat_commande`
+-- AUTO_INCREMENT for table `etat_commande`
 --
 ALTER TABLE `etat_commande`
   MODIFY `id_etat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `evenement`
+-- AUTO_INCREMENT for table `evenement`
 --
 ALTER TABLE `evenement`
   MODIFY `id_evenement` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `livraison`
+-- AUTO_INCREMENT for table `livraison`
 --
 ALTER TABLE `livraison`
-  MODIFY `id_livraison` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_livraison` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `produit`
+-- AUTO_INCREMENT for table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pour la table `recette`
+-- AUTO_INCREMENT for table `recette`
 --
 ALTER TABLE `recette`
   MODIFY `id_recette` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `type_rabais`
+-- AUTO_INCREMENT for table `type_rabais`
 --
 ALTER TABLE `type_rabais`
   MODIFY `id_rabais` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `commande`
+-- Constraints for table `commande`
 --
 ALTER TABLE `commande`
   ADD CONSTRAINT `client` FOREIGN KEY (`id_client`) REFERENCES `client` (`id_client`),
@@ -357,33 +359,33 @@ ALTER TABLE `commande`
   ADD CONSTRAINT `type_commande` FOREIGN KEY (`id_type_commande`) REFERENCES `type_commande` (`id_type_commande`);
 
 --
--- Contraintes pour la table `livraison`
+-- Constraints for table `livraison`
 --
 ALTER TABLE `livraison`
   ADD CONSTRAINT `_commande` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`);
 
 --
--- Contraintes pour la table `rabais`
+-- Constraints for table `rabais`
 --
 ALTER TABLE `rabais`
   ADD CONSTRAINT `rabais_type_FK` FOREIGN KEY (`type`) REFERENCES `type_rabais` (`id_rabais`);
 
 --
--- Contraintes pour la table `ta_produit_commande`
+-- Constraints for table `ta_produit_commande`
 --
 ALTER TABLE `ta_produit_commande`
   ADD CONSTRAINT `_produit_` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
   ADD CONSTRAINT `commande` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`);
 
 --
--- Contraintes pour la table `ta_produit_recette`
+-- Constraints for table `ta_produit_recette`
 --
 ALTER TABLE `ta_produit_recette`
   ADD CONSTRAINT `_produit` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
   ADD CONSTRAINT `recette` FOREIGN KEY (`id_recette`) REFERENCES `recette` (`id_recette`);
 
 --
--- Contraintes pour la table `ta_rabais_produit`
+-- Constraints for table `ta_rabais_produit`
 --
 ALTER TABLE `ta_rabais_produit`
   ADD CONSTRAINT `produit` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`),
