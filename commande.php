@@ -24,6 +24,7 @@
         public $montant;
         public $etat;
         public $type;
+        public $listeProduit;
         /**
          * Commande constructor.
          * @param $numeroCommande
@@ -34,7 +35,7 @@
          * @param $etat
          * @param $type
          */
-        public function __construct($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,$type)
+        public function __construct($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,$type,$listeProduit)
         {
             $this->numeroCommande = $numeroCommande;
             $this->nomClient = $nomClient;
@@ -43,6 +44,7 @@
             $this->montant = $montant;
             $this->etat = $etat;
             $this->type = $type;
+            $this->listeProduit = $listeProduit;
         }
 
         /**
@@ -155,6 +157,22 @@
         public function setType($type)
         {
             $this->type = $type;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getListeProduit()
+        {
+            return $this->listeProduit;
+        }
+
+        /**
+         * @param mixed $listeProduit
+         */
+        public function setListeProduit($listeProduit)
+        {
+            $this->listeProduit = $listeProduit;
         }
 
 
