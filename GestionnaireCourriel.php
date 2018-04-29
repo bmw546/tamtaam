@@ -5,21 +5,19 @@ Auteur : Marc-Étienne Pépin, Roméo Tsarafodiana-Bugeaud
 Fonctionnalité : Sert Recupérer les information du forumlaire HTML
                  et de les formatter et envoyer a la fonction
                  envoyer une email.
-
 Date : 2018-04-23
 
 Vérification :
 Date               Nom                   Approuvé
 ===========================================================
-
+2018-04-29         Rémi Létourneau       Oui
 
 Historique de modifications :
-Date               Nom                   Description
+Date            Nom                   Description
 ===========================================================
-2018-04-24	     Marc-Étienne	        Tout a été refait. (il marche finalement)
-2018-04-25       Marc-Étienne          Ajoute de commentaire, Changement de nom.
-2018-04-25       Roméo                 Rajouté le type de mail
-
+2018-04-24      Marc-Étienne	       Tout a été refait. (il marche finalement)
+2018-04-25      Marc-Étienne          Ajoute de commentaire, Changement de nom.
+2018-04-25      Roméo                 Rajouté le type de mail
  *******************************************************************************/
 class GestionnaireCourriel {
 
@@ -30,17 +28,17 @@ class GestionnaireCourriel {
     }
 
     /**
-     * @param $type         Le type de courriel qu'on veut envoyer
+     * @param $type    String Le type de courriel qu'on veut envoyer
      */
     public function setType($type){
       $this->type = $type;
     }
 
     /**
-     * @param $nom          Le nom de qui le courriel vient
-     * @param $courriel     Le courriel de qui le courriel provient
-     * @param $sujet        Le sujet du courriel
-     * @param $corps        Le body du email
+     * @param $nom       String Le nom de qui le courriel vient
+     * @param $courriel  String Le courriel de qui le courriel provient
+     * @param $sujet     String Le sujet du courriel
+     * @param $corps     String Le body du email
      * (Precondition: $nom != null && $courriel != null && $sujet != null && $question != null)
      */
     function sentMail($nom, $courriel, $sujet, $corps){

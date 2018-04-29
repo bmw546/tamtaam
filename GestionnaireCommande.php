@@ -1,5 +1,5 @@
 <?php
-/********************************
+/********************************************************
     Fichier : GestionnaireCommande.php
     Auteur : Joel Lapointe
     Fonctionnalité : WEB-02 - Gestion des commandes
@@ -8,11 +8,11 @@
     Vérification :
     Date                Nom                 Approuvé
     ====================================================
-
+    2018-04-29          Rémi Létourneau     Oui
     Historique de modifications :
     Date                Nom                 Description
     ======================================================
-*****************************/
+***********************************************************/
     require_once 'MoteurRequeteBD.php';
     require_once 'commande.php';
     require_once 'produit.php';
@@ -32,14 +32,14 @@
         }
 
         /**Getteur d'une commande
-         * @return mixed
+         * @return Commande
          */
         public function getUneCommande(){
             return $this->uneCommande;
         }
 
         /**Setteur d'une commande
-         * @param mixed $uneCommande
+         * @param Commande $uneCommande
          */
         public function setUneCommande($uneCommande){
             $this->uneCommande = $uneCommande;
@@ -103,4 +103,4 @@
             }
         }
     }
-    ?>
+?>
