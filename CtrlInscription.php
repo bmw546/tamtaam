@@ -12,19 +12,14 @@ Date                    Nom 		    Approuvé
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
-
+2018-04-29							Roméo           Ajouté l'envoie de messages d'erreurs/succès
 ***********************************************/
-	require_once 'GestionnaireUtilisateur.php';
+require_once 'GestionnaireUtilisateur.php';
 
+if (isset($_POST['inscrire'])) {
 	$manager = new GestionnaireUtilisateur($_POST['user'], $_POST['passwd'], $_POST['email'], $_POST['adresse'], $_POST['noTelephone']);
-	
 	$manager->ajouterUtilisateur();
-	
-	echo "<p>".$_POST['user']."</p>".
-		 "<p>".$_POST['adresse']."</p>".
-		 "<p>".$_POST['email']."</p>".
-		 "<p>".$_POST['noTelephone']."</p>".
-		 "<p>".$_POST['passwd']."</p>";
-
+	$msg = $manager->getEtat();
+	header("Location: UI_Inscription.php?$msg");
+}
 ?>
-

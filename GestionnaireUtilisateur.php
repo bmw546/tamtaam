@@ -21,7 +21,9 @@ Date          Nom             			Description
 2018-04-25    Roméo 					Ajout de fonctions getters et setters des 3 variables
 2018-04-25    Roméo 					Ajout d'Authentification
 2018-04-25    Roméo 					Ajout de mot de passe/ nom d'utilisateur oublié
-2018-04-26    Rémi Létourneau          Corriger exécution de code sql et ajout de commentaire.
+2018-04-26    Rémi Létourneau Corrigé l'éxécution du code sql et ajout de commentaire.
+2018-04-29    Roméo           Modification de la méthode ajouterUtilisateur pour valider si
+                              le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
 ***********************************************************************************************/
 require_once 'Utilisateur.php';
 require_once 'GestionnaireCourriel.php';
@@ -120,11 +122,33 @@ class GestionnaireUtilisateur {
         $adresse = $this->unUtilisateur->getAdresse();
         $phone = $this->unUtilisateur->getTelephone();
 
-        $query = "INSERT INTO client( nom_utilisateur, mot_de_passe, adresse_email, adresse, telephone)".
-                         "VALUES ('$nom', '$mdp', '$email', '$adresse', $phone)";
+        $query = "SELECT * FROM client WHERE nom_utilisateur = '$nom'";
+        $result = $this->connexion->execution_avec_return($query);
 
-        $this->connexion->execution($query);
-    }
+        //si le nom d'utilisateur est déja dans la bd
+        if (sizeof($result) > 0) {
+
+        $this->setEtat("nomUtilisateurInvalide");
+        }
+        else {
+
+          $query = "SELECT * FROM client WHERE adresse_email = '$email'";
+          $result = $this->connexion->execution_avec_return($query);
+
+          //si l'adresse email est déja dans la bd
+          if (sizeof($result) > 0) {
+            $this->setEtat("emailInvalide");
+          }
+          else {
+
+            $query = "INSERT INTO client( nom_utilisateur, mot_de_passe, adresse_email, adresse, telephone)".
+                             "VALUES ('$nom', '$mdp', '$email', '$adresse', $phone)";
+
+            $this->setEtat("success");
+            $this->connexion->execution($query);
+          }
+        }
+      }
 
     /**
      * Connecte un utilisateur avec un nom et un mot de passe
@@ -139,13 +163,13 @@ class GestionnaireUtilisateur {
           foreach($result as $row){
               //si le mot de passe ne correspond pas au bon mot de passe
               if ($row["mot_de_passe"] != $mot_de_passe) {
-                  $this->setEtat('Mauvais mot de passe');
+                  $this->setEtat('mdpInvalide');
               }
               //sinon les informations sont bonnes
               else {
-                  $this->setEtat('Authentification réussie');
+                  $this->setEtat('success');
 
-                  //ajoute les infos de l'utilisateur dans un objet Utilisateur
+                  //ajoute les infos de l'utilisateur dans la propriété Utilisateur
                   $this->utilisateur->setInfosUtilisateur($row["nom_utilisateur"], $row["mot_de_passe"],
                                             $row["adresse_email"], $row["adresse"], $row["telephone"]);
               }
@@ -154,7 +178,7 @@ class GestionnaireUtilisateur {
       }
       //s'il n'y a aucun résultat pour le nom d'utilisateur
       else {
-          $this->setEtat('Mauvais nom d\'utilisateur');
+          $this->setEtat('nomUtilisateurInvalide');
       }
     }
 
@@ -171,17 +195,13 @@ class GestionnaireUtilisateur {
             $msg = "Votre mot de passe est: ";
             $msg .= $mdp;
             $this->courriel->setType("mot de passe oublié");
-
-            //à enlever plus tard, j'envoi tous les email à tamtaam pour les tests
-            $email = "tamtaamsherbrooke@gmail.com";
             $this->courriel->sentMail("Tamtaam.com",$email, "Récupération de votre mot de passe (ne pas répondre à ce message)", $msg);
-            $this->setEtat('Email envoyé');
+            $this->setEtat('emailEnvoye');
           }
         }
         else {
-           $this->setEtat('Adresse email non valide');
+           $this->setEtat('emailInvalide');
         }
-        echo $this->getEtat();
     }
 
     /**
@@ -202,11 +222,11 @@ class GestionnaireUtilisateur {
           //à enlever plus tard, j'envoi tous les email à tamtaam pour les tests
           $email = "tamtaamsherbrooke@gmail.com";
           $this->courriel->sentMail("Tamtaam.com",$email, "Récupération de votre nom d'utilisateur (ne pas répondre à ce message)", $msg);
-          $this->setEtat('Email envoyé');
+          $this->setEtat('emailEnvoye');
           }
         }
         else {
-           $this->setEtat('Adresse email non valide');
+           $this->setEtat('emailInvalide');
         }
     }
 }

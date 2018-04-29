@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+
 <!--******************************************************
-Fichier : UI_Inscription.html
+Fichier : UI_Inscription.php
 Auteur : Rémi Létourneau
 Fonctionnalité : Gestion des comptes utilisateurs
 Date : 2018-04-23
@@ -12,14 +12,15 @@ Date                    Nom 		    Approuvé
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
-
+2018-04-25							Roméo          Modifié textfield pour password pour le champ mot de passe
+2018-04-29							Roméo 				 Rajouté les messages d'erreurs/succès
 ********************************************************-->
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<title>Gestion des comptes utilisateurs</title>
 	</head>
-	
+
 	<body style="margin:auto; width:950px;">
 		<header>
 			<h1 style="text-align:center;"><i>Inscription des utilisateurs</i></h1>
@@ -29,7 +30,7 @@ Date                    Nom             Description
                     <br>
                     <label for="user" style="padding-right:50px;"><b>Entrer votre nom d'utilisateur :</b></label>
                     <input type="text" name="user" id="user" size="30" required/>
-                    
+
                     <br><br>
                     <label for="adresse" style="padding-right:118px;"><b>Entrer votre adresse :</b></label>
                     <input type="text" name="adresse" id="adresse" size="30" required/>
@@ -44,15 +45,29 @@ Date                    Nom             Description
 
                     <br><br>
                     <label for="passwd" style="padding-right:80px;"><b>Entrer votre mot de passe :</b></label>
-                    <input type="text" name="passwd" id="passwd" size="30" required/>
-                    
+                    <input type="password" name="passwd" id="passwd" size="30" required/>
+
                     <br><br>
                     <label for="confirmer" style="padding-right:54px;"><b>Confirmer votre mot de passe :</b></label>
-                    <input type="text" name="confirmer" id="confirmer" size="30" required/>
-                    
-                    <br><br> 
+                    <input type="password" name="confirmer" id="confirmer" size="30" required/>
+
+                    <br><br>
                     <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="inscrire" type="submit" value="S'inscrire"/>
                     <button style="background-color:black; color:white; border-color:black;" type="reset" name="cancel" value="Annuler">Annuler</button>
 		</form>
+								<center>
+										<?php
+										$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+										if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
+											echo "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre.";
+										}
+										elseif (strpos($fullUrl, "emailInvalide") == true) {
+											echo "Adresse email déja utilisée. Veuillez en entrer une autre.";
+										}
+										elseif (strpos($fullUrl, "success") == true) {
+											echo "Inscription réussie";
+										}
+										 ?>
+							 </center>
 	</body>
 </html>

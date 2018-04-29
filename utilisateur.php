@@ -16,7 +16,7 @@
   2018-04-23		Rémi Létourneau			Enlever la variable type utilisateur
   2018-04-24		Rémi Létourneau			Ajouter des commentaires et retirer l'id
   2018-04-25		Rémi Létourneau			Ajout des préconditions et postconditions
-	2018-04-25	  Roméo 							Ajout de constructeur sans paramètre
+	2018-04-25	  Roméo 							Ajout de constructeur avec et sans paramètre
 ********************************************************************************/
 
 class Utilisateur {
@@ -54,7 +54,15 @@ class Utilisateur {
 		$this->setTelephone($telephone);
 	}
 
-	//donne des erreurs for some reason
+
+	/**
+	 * Modifie les infos d'un utilisateur
+     * @param $nom_utilisateur le nom de l'utilisateur
+     * @param $mot_de_passe le mot de passe de l'utilisateur
+     * @param $email l'adresse email de l'utilisateur
+     * @param $adresse l'adresse de la maison de l'utilisateur
+     * @param $telephone le téléphone de l'utilisateur
+	*/
 	public function setInfosUtilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone){
 
 		$this->setNomUtilisateur($nom_utilisateur);
