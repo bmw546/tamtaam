@@ -10,7 +10,7 @@ Date : 2018-04-23
 Vérification :
 Date               Nom                   Approuvé
 ===========================================================
-
+2018-04-29         Rémi Létourneau       Oui
 
 
 Historique de modifications :
@@ -23,16 +23,11 @@ Date               Nom                   Description
     include("GestionnaireCourriel.php");
 
     $Email = new GestionnaireCourriel();
-    /*
-    echo "<p>".$_POST['nom']."</p>".
-         "<p>".$_POST['courriel']."</p>".
-         "<p>".$_POST['sujet']."</p>".
-         "<p>".$_POST['question']."</p>"
-    */
+
     $nom = $_POST['nom'];
     $courriel = $_POST['courriel'];
     $sujet = $_POST['sujet'];
     $question = $_POST['question'];
-    $Email->sentMail($nom,$courriel,$sujet,$question);
 
+    $Email->sentMail($nom,$courriel,$sujet,$question);
 ?>

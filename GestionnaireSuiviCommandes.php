@@ -23,7 +23,7 @@ class GestionnaireSuiviCommandes{
   private $connexion;
 
   /**
-   *  GestionnaireSuiviCommandes constructor.
+   * GestionnaireSuiviCommandes constructor.
    * @param $nomClient nom du client
    */
   public function __construct($nomClient){
