@@ -15,7 +15,7 @@ Date                    Nom             Description
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Nom d'utilisateur oublié;leve</title>
+        <title>Nom d'utilisateur oublié</title>
     </head>
     <body style="margin:auto; width:950px;">
     <header>
