@@ -17,7 +17,7 @@ Date                    Nom             Description
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Formulaire &eacute;leve</title>
+        <title>Mot de passe oublié</title>
     </head>
     <body style="margin:auto; width:950px;">
     <header>
