@@ -10,15 +10,14 @@ Date : 2018-04-23
 Vérification :
 Date               Nom                   Approuvé
 ===========================================================
-
-
+2018-04-29         Rémi Létourneau       Oui
 
 Historique de modifications :
-Date               Nom                   Description
+Date               Nom                  Description
 ===========================================================
 2018-04-23			Roméo                Version Pre- 1.0
-2018-04-25		Marc-Étienne	Correction de bug, le programme peut
-					Maintenant supporter des resultat null
+2018-04-25		    Marc-Étienne	     Correction de bug, le programme peut
+                                        Maintenant supporter des resultat null
 
 ************************************************************/
 
@@ -101,8 +100,6 @@ class Connexion
         if ($this->conn->connect_error) {
             die(" La connexion a échouée: " . $this->conn->connect_error);
         }
-        else {
-        }
     }
 
 	/**
@@ -114,8 +111,10 @@ class Connexion
     }
 
     /**
-	*  Execute du code SQL et retourne une array d'array de réponse
-	*/
+     * Execute du code SQL et retourne une array d'array de réponse
+     * @param $sql mysqli la requete à executer
+     * @return array le résultat de la requete
+     */
     public function execution_avec_return($sql){
 
         $this->connexion();
@@ -123,15 +122,7 @@ class Connexion
         // test
         //$sql = "SELECT * FROM `client` WHERE 1";
         $result = mysqli_query($this->conn,$sql);
-			/*
-			 ________  ________  ________     
-			|\   __  \|\   __  \|\   __  \    
-			\ \  \|\ /\ \  \|\  \ \  \|\  \   
-			 \ \   __  \ \  \\\  \ \  \\\  \  
-			  \ \  \|\  \ \  \\\  \ \  \\\  \ 
-			   \ \_______\ \_______\ \_______\
-				\|_______|\|_______|\|_______|
-			*/
+
         if ($result){
             while($row = mysqli_fetch_array($result))
             {
