@@ -18,7 +18,7 @@
                 <label >Produit: </label >
 
                     <?php
-                    echo '<form name="form1" method="post" action="UI_rabais_.php" onselect="this.submit();">';
+                    echo '<form name="form1" method="post" action="ui_rabais_.php" onselect="this.submit();">';
                     $value1 = 0;
                     echo '<select  name="select1" onchange="form1.submit()">';
                     include("MoteurRequeteBD.php");

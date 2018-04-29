@@ -14,8 +14,8 @@
     ======================================================
 *****************************/
     require_once 'MoteurRequeteBD.php';
-    require_once 'Commande.php';
-    require_once 'Produit.php';
+    require_once 'commande.php';
+    require_once 'produit.php';
 
     class GestionnaireCommande{
 

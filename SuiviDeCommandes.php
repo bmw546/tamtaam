@@ -17,7 +17,7 @@ Date                    Nom             Description
 <html>
 
 	<?php
-		require_once 'Commande.php';
+		require_once 'commande.php';
 		require_once 'GestionnaireSuiviCommandes.php';
 		$gestionnaire = new GestionnaireSuiviCommandes($_POST["username"]);
 		$uneCommande = $gestionnaire->getUneCommande();
