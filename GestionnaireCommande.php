@@ -77,11 +77,18 @@
                 $id_commande = $result[0][0];
                 //echo $id_commande;
 
+                // Get lat and long by address
+                $prepAddr = str_replace(' ','+',$address);
+                $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+                $output= json_decode($geocode);
+                $latitude = $output->results[0]->geometry->location->lat;
+                $longitude = $output->results[0]->geometry->location->lng;
+
                 //$date_livraison = date_add(date("Y-m-d"),date_interval_create_from_date_string('3 days'));
                 $date_livraison = date('Y-m-d', strtotime($date. ' + 2 days'));
                 $query2 = "INSERT INTO livraison(id_commande, adresse,adresse_latitude, adresse_longitude, 
                                                 date_livraison_prevue, date_livraison_reel )".
-                    "VALUES ('$id_commande', '$adresse', '0', '0','$date_livraison','NULL')";
+                    "VALUES ('$id_commande', '$adresse', '$latitude', '$longitude','$date_livraison','NULL')";
                 $connection->execution($query2);
               //  echo $query2;
             }
