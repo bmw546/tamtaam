@@ -57,7 +57,7 @@ Date                    Nom                 Description
                     <th>Montant</th>
                     <th>Ajouter</th>
                 </tr>
-                <?php
+                <?php //Code php pour charger les produits de la BD
                 require_once 'MoteurRequeteBD.php';
 
                 $connection = new Connexion();
@@ -83,7 +83,6 @@ Date                    Nom                 Description
                         echo "<td align='center'>"."<input type=checkbox name=chk[] id='chk' value='$produit[0]'>"."</td>";
                     echo "</tr>";
                 }
-
                 ?>
             </table>
             <br><br>

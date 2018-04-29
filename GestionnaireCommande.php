@@ -31,21 +31,21 @@
             $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type,$listeProduit );
         }
 
-        /**
+        /**Getteur d'une commande
          * @return mixed
          */
         public function getUneCommande(){
             return $this->uneCommande;
         }
 
-        /**
+        /**Setteur d'une commande
          * @param mixed $uneCommande
          */
         public function setUneCommande($uneCommande){
             $this->uneCommande = $uneCommande;
         }
 
-
+        //Ajoute une commande dans la base de données
         public function ajouterCommande(){
             $nomClient = $this->uneCommande->getNomClient();
             $adresse = $this->uneCommande->getAdresse();
@@ -66,7 +66,8 @@
             $query = "SELECT * FROM commande ORDER BY commande.id_commande DESC LIMIT 1";
             $result = $connection->execution_avec_return($query);
             $numeroCommande=$result[0][0];
-            //Si c'est une livraison
+
+            //Ajout d'une livraison dans la BD si c'est une livraison
             if ($etat == 1 )
             {
                 $query = "SELECT * FROM commande ORDER BY id_commande DESC LIMIT 1";
@@ -85,12 +86,7 @@
               //  echo $query2;
             }
 
-
-            foreach ($listeProduit as $cb){
-                echo $cb. "<br/>";;
-            }
-
-            //Insertion dans la table d'association
+            //Insertion dans la table d'association de produit et commande
             $i = 0;
             $nbElement = count($listeProduit)/2;
             for ($x = 0; $x < $nbElement; $x++){

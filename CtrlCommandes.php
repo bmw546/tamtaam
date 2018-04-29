@@ -16,13 +16,13 @@ Date                Nom                 Description
 
     require_once 'GestionnaireCommande.php';
 
-    $produit_commande = array();
-    $quantite_commande = array();
+    $produit_commande = array();    //Liste des produits
+    $quantite_commande = array();   //Liste des quantités
 
     $qty = $_POST['qty'];
     $produit = $_POST['chk'];
 
-    $i = 0;
+    //Ignore les quantités 0
     foreach ($qty as $q){
         if ($q > 0) {
             $quantite_commande[$i] = $q;
@@ -31,17 +31,19 @@ Date                Nom                 Description
 
     }
 
+    //Compte le nombre d'élément dans quantité
     $nb = 0;
     foreach($quantite_commande as $qty){
         $nb++;
     }
 
+    //Ajoute les produits avec leur quantité
     for ($x = 0; $x < $nb ; $x++) {
         array_push($produit_commande, $produit[$x], $quantite_commande[$x]);
     }
 
+
     $manager = new GestionnaireCommande(0,$_POST['nom'],$_POST['adresse'],date("Y-m-d"),
         $_POST['montant'],1,$_POST['livraison'],$produit_commande);
-    
     $manager->ajouterCommande();
  ?>
