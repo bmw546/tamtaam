@@ -44,13 +44,32 @@ class GestionnaireSuiviCommandes{
           next($resultComm);
           $etat = current($resultComm);
 
+          $query  = "SELECT `id_produit`, `nb_produit` FROM `ta_produit_commande` WHERE `id_commande` = '$numeroCommande'";
+          $result = $this->connexion->execution_avec_return($query);
 
+          $montant = 0;
+
+          for ($x =0; $x <= sizeof($result); $x++)
+        	{
+        		$produit = $result[$x];
+
+        		$noProduit = $produit[0];
+
+            $quantite = $produit[1];
+
+            $query  = "SELECT `prix` FROM `produit` WHERE `id_produit` = '$noProduit'";
+            $result2 = array();
+
+            $result2 = $this->connexion->execution_avec_return($query);
+
+            $montant += $result2[0][0]*$quantite;
+        	}
 
 
     }
 
 
-      $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, 30, $etat,"");
+      $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,"");
   }
 
   public function getUneCommande(){
