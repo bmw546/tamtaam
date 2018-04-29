@@ -2,9 +2,7 @@
 /*******************************************************************************
 Fichier : GestionnaireCourriel.php
 Auteur : Marc-Étienne Pépin, Roméo Tsarafodiana-Bugeaud
-Fonctionnalité : Sert Recupérer les information du forumlaire HTML
-                 et de les formatter et envoyer a la fonction
-                 envoyer une email.
+Fonctionnalité : Sert à envoyer des mails à une adresse selon son type
 
 Date : 2018-04-23
 
@@ -16,7 +14,7 @@ Date               Nom                   Approuvé
 Historique de modifications :
 Date               Nom                   Description
 ===========================================================
-2018-04-24	     Marc-Étienne	        Tout a été refait. (il marche finalement)
+2018-04-24	     Marc-Étienne	         Tout a été refait. (il marche finalement)
 2018-04-25       Marc-Étienne          Ajoute de commentaire, Changement de nom.
 2018-04-25       Roméo                 Rajouté le type de mail
 
@@ -48,7 +46,6 @@ class GestionnaireCourriel {
 		$header.='From:"'.$nom.'"<'.$courriel.'>'."\n";
 		$header.='Content-Type:text/html; charset="uft-8"'."\n";
 		$header.='Content-Transfer-Encoding: 8bit';
-		//$sujet .= "  provient de :  ".$nom;
 
      if ($this->type == "commentaire"){
       $corps .= " provient de l'adresse email suivant : " . $courriel;

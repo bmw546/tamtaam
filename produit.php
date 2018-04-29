@@ -1,6 +1,6 @@
 <?php
 /********************************
-    Fichier : produit.php
+    Fichier : Produit.php
     Auteur : Joel Lapointe
     Fonctionnalité : WEB-02 - Gestion des commandes
     Date : 23 avril 2018
