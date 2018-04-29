@@ -23,7 +23,7 @@ class GestionnaireSuiviCommandes{
   private $connexion;
 
   /**
-   * GestionnaireSuiviCommandes constructor.
+   *  GestionnaireSuiviCommandes constructor.
    * @param $nomClient nom du client
    */
   public function __construct($nomClient){
@@ -54,7 +54,7 @@ class GestionnaireSuiviCommandes{
           $result = $this->connexion->execution_avec_return($query);
 
           $montant = 0;
-          //pour chaque produit
+
           for ($x =0; $x <= sizeof($result); $x++)
         	{
         		$produit = $result[$x];
@@ -67,27 +67,8 @@ class GestionnaireSuiviCommandes{
             $result2 = array();
 
             $result2 = $this->connexion->execution_avec_return($query);
+
             //calcul du montant
-
-          $query  = "SELECT `id_produit`, `nb_produit` FROM `ta_produit_commande` WHERE `id_commande` = '$numeroCommande'";
-          $result = $this->connexion->execution_avec_return($query);
-
-          $montant = 0;
-
-          for ($x =0; $x <= sizeof($result); $x++)
-        	{
-        		$produit = $result[$x];
-
-        		$noProduit = $produit[0];
-
-            $quantite = $produit[1];
-
-            $query  = "SELECT `prix` FROM `produit` WHERE `id_produit` = '$noProduit'";
-            $result2 = array();
-
-            $result2 = $this->connexion->execution_avec_return($query);
-
-
             $montant += $result2[0][0]*$quantite;
         	}
 
@@ -98,7 +79,7 @@ class GestionnaireSuiviCommandes{
 
       $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,"","");
 
-      $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,"");
+
 
   }
 
