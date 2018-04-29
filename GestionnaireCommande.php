@@ -71,26 +71,24 @@
             if ($etat == 1 )
             {
                 $query = "SELECT * FROM commande ORDER BY id_commande DESC LIMIT 1";
-
                 $result = $connection->execution_avec_return($query);
-                //echo $result;
                 $id_commande = $result[0][0];
-                //echo $id_commande;
 
-                // Get lat and long by address
-                $prepAddr = str_replace(' ','+',$address);
+                //Trouve la longitude/latitude
+                $prepAddr = str_replace(' ','+',$adresse);
                 $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
                 $output= json_decode($geocode);
                 $latitude = $output->results[0]->geometry->location->lat;
                 $longitude = $output->results[0]->geometry->location->lng;
+                echo "Latitude : " . $latitude;
+                echo "Longitude :" . $longitude;
 
-                //$date_livraison = date_add(date("Y-m-d"),date_interval_create_from_date_string('3 days'));
+                //2 jour de livraison est temporaire
                 $date_livraison = date('Y-m-d', strtotime($date. ' + 2 days'));
                 $query2 = "INSERT INTO livraison(id_commande, adresse,adresse_latitude, adresse_longitude, 
                                                 date_livraison_prevue, date_livraison_reel )".
                     "VALUES ('$id_commande', '$adresse', '$latitude', '$longitude','$date_livraison','NULL')";
                 $connection->execution($query2);
-              //  echo $query2;
             }
 
             //Insertion dans la table d'association de produit et commande

@@ -23,6 +23,7 @@ Date                Nom                 Description
     $produit = $_POST['chk'];
 
     //Ignore les quantités 0
+    $i= 0;
     foreach ($qty as $q){
         if ($q > 0) {
             $quantite_commande[$i] = $q;
