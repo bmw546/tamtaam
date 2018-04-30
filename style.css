@@ -1,6 +1,6 @@
 /**CSS RESET **/
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -14,8 +14,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -26,7 +26,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -53,7 +53,12 @@ table {
 
 /** --------------------------------------------------------------------- **/
 
-/** Début de votre CSS **/
+/** Dï¿½but de votre CSS **/
+
+
+* {
+    box-sizing: border-box;
+}
 
 /* Header */
 .inscriptionheader{
@@ -62,15 +67,54 @@ table {
 }
 
 /* Nav */
+.menu {
+    text-decoration: none;
+    margin-top: 25px;
+    height: 50px;
+    background: #000000;
+    color: #FFFFFF;
+    display: block;
+    text-align: center;
+}
+a{
+    color:white;
+    text-decoration: none;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    padding: 8px;
+    margin-bottom: 7px;
+    color:#FFFFFF;
+}
 
+nav li:hover {
+    background-color: #990000;
+}
 
 /* Body */
 .inscriptionBody{
     margin-right: 45px;
 }
+<<<<<<< HEAD
+.formInscription{
+    margin-top: 350px;
+}
+=======
 
+.txtSuiviComm{
+	text-align: center;
+	border-width: 2px;
+	
+}
+
+>>>>>>> 13632e8e8593300580227aef87f87e93994115b7
 .btnInscrire{
-    margin:5px;
+    margin-top: 10px;
+    margin-right: 5px;
     background-color:black;
     color:white;
     border-color:black;
@@ -80,6 +124,34 @@ table {
     display: inline-block;
     min-width: 199px;
 }
+
+.entete{
+    border:0;
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 140px;
+    background-color: #000000;
+    color:#ffffff;
+    display:block;
+}
+
+.entete img {
+    float: left;
+    margin: 20px;
+    margin-left: 5%;
+}
+
+head {
+    padding:0;
+    margin: 0;
+}
+
+body {
+    padding:0;
+    margin: 0;
+}
+
 /* Side */
 
 
@@ -93,6 +165,8 @@ table {
 /* Section Responsive */
 [class*="col-"] {
     width: 100%;
+    float: left;
+    padding: 0px;
 }
 
 
@@ -112,7 +186,7 @@ table {
 
 
 
-/* Si l'écran est au moins 600px */
+/* Si l'ï¿½cran est au moins 600px */
 @media only screen and (min-width: 600px) {
     /* Pour tablettes: */
     .col-t-1 {width: 8.33%;}
@@ -128,10 +202,12 @@ table {
     .col-t-11 {width: 91.66%;}
     .col-t-12 {width: 100%;}
 
-
+    .menu{
+        display: inline;
+    }
 }
 
-/* Si l'écran est au moins 768px */
+/* Si l'ï¿½cran est au moins 768px */
 @media only screen and (min-width: 768px) {
     /* Pour desktop: */
     .col-1 {width: 8.33%;}
@@ -150,13 +226,19 @@ table {
     .inscriptionheader {
         text-align: center;
     }
-    .inscriptionBody{
-        margin:auto;
-        width:950px;
+
+    .formInscription{
+        margin-top: 0px;
+    }
+
+    .menu{
+        display: inline;
+        float: left;
+        padding: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+
     }
 
 
 }
-
-
-
