@@ -7,13 +7,14 @@ Date : 2018-04-23
 Vérification :
 Date                Nom 		          Approuvé
 =========================================================
-2018-04-29         Joel Lapointe         Oui
+2018-04-29          Joel Lapointe         Oui
 
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
-2018-04-25							Roméo          Modifié textfield pour password pour le champ mot de passe
-2018-04-29							Roméo 		   Rajouté les messages d'erreurs/succès
+2018-04-25				Roméo            Modifié textfield pour password pour le champ mot de passe
+2018-04-29				Roméo 		     Rajouté les messages d'erreurs/succès
+2018-04-30             Rémi             Rajout lien avec css, ajout de css
 ********************************************************-->
 <html>
 	<head>
@@ -31,28 +32,28 @@ Date                    Nom             Description
         <section>
             <form class="col-12" action="CtrlInscription.php" method="post" style="padding:20px; border:solid black;">
                 <br>
-                <label class="col-6" for="user" style="padding-right:50px;"><b>Entrer votre nom d'utilisateur :</b></label>
-                <input class="col-6" type="text" name="user" id="user" size="30" required/>
+                <label class=" label" for="user" ><b>Nom d'utilisateur :</b></label>
+                <input class="col-6" type="text" name="user" id="user"  required/>
 
                 <br><br>
-                <label class="col-6" for="adresse" style="padding-right:118px;"><b>Entrer votre adresse :</b></label>
-                <input class="col-6" type="text" name="adresse" id="adresse" size="30" required/>
+                <label class=" label" for="adresse" ><b>Adresse :</b></label>
+                <input class="col-6" type="text" name="adresse" id="adresse"  required/>
 
                 <br><br>
-                <label class="col-6" for="email" style="padding-right:122px;"><b>Entrer votre E-mail :</b></label>
-                <input class="col-6" type="text" name="email" id="email" size="30" required/>
+                <label class=" label" for="email" ><b>E-mail :</b></label>
+                <input class="col-6" type="text" name="email" id="email"  required/>
 
                 <br><br>
-                <label class="col-6" for="noTelephone" style="padding-right:25px;"><b>Entrer votre numéro de téléphone :</b></label>
-                <input class="col-6" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required/>
+                <label class=" label" for="noTelephone" ><b>Numéro de téléphone :</b></label>
+                <input class="col-6" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000"  required/>
 
                 <br><br>
-                <label class="col-6" for="passwd" style="padding-right:80px;"><b>Entrer votre mot de passe :</b></label>
-                <input class="col-6" type="password" name="passwd" id="passwd" size="30" required/>
+                <label class=" label" for="passwd" ><b>Mot de passe :</b></label>
+                <input class="col-6" type="password" name="passwd" id="passwd"  required/>
 
                 <br><br>
-                <label class="col-6" for="confirmer" style="padding-right:54px;"><b>Confirmer votre mot de passe :</b></label>
-                <input class="col-6" type="password" name="confirmer" id="confirmer" size="30" required/>
+                <label class="" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
+                <input class="col-6" type="password" name="confirmer" id="confirmer"  required/>
 
                 <br><br>
                 <input class="btnInscrire col-1" name="inscrire" type="submit" value="S'inscrire"/>

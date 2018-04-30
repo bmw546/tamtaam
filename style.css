@@ -57,7 +57,6 @@ table {
 
 /* Header */
 .inscriptionheader{
-    text-align:center;
     font-size: 36px;
     font-family: 'Playfair Display', sans-serif;
 }
@@ -77,6 +76,10 @@ table {
     border-color:black;
 }
 
+.label{
+    display: inline-block;
+    min-width: 199px;
+}
 /* Side */
 
 
@@ -144,8 +147,13 @@ table {
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
 
+    .inscriptionheader {
+        text-align: center;
+    }
     .inscriptionBody{
         margin:auto;
         width:950px;
     }
+
+
 }
