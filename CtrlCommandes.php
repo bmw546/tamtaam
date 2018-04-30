@@ -1,5 +1,5 @@
 <?php
-/********************************
+/*****************************************************
 Fichier : GestionnaireCommande.php
 Auteur : Joel Lapointe
 Fonctionnalité : WEB-02 - Gestion des commandes
@@ -8,11 +8,12 @@ Date : 25 avril 2018
 Vérification :
 Date                Nom                 Approuvé
 ====================================================
+2018-04-29          Rémi Létourneau     Oui
 
 Historique de modifications :
 Date                Nom                 Description
 ======================================================
- *****************************/
+ *****************************************************/
 
     require_once 'GestionnaireCommande.php';
 

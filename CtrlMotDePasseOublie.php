@@ -1,5 +1,4 @@
 <?php
-
 /*****************************************************************
 Fichier : CtrlMotDePasseOublie.php
 Auteur :  Roméo Tsarafodiana-Bugeaud
@@ -10,7 +9,7 @@ Date : 2018-04-25
 Vérification :
 Date               Nom                   Approuvé
 ===========================================================
-
+2018-04-29         Rémi Létourneau       Oui
 
 
 Historique de modifications :
