@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 30 avr. 2018 à 16:00
+-- Généré le :  lun. 30 avr. 2018 à 16:02
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -261,6 +261,13 @@ CREATE TABLE `notification` (
   `sms` tinytext NOT NULL,
   `notification` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `notification`
+--
+
+INSERT INTO `notification` (`id_notification`, `courriel`, `telephone`, `sms`, `notification`) VALUES
+(1, 'oui', 123987132, 'oui', 'oui');
 
 -- --------------------------------------------------------
 
@@ -538,7 +545,7 @@ ALTER TABLE `livraison`
 -- AUTO_INCREMENT pour la table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
