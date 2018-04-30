@@ -29,17 +29,27 @@ Date                    Nom             Description
 	?>
 	<head>
 		<meta charset='utf-8'/>
+		<link rel="stylesheet" href="style.css" />
 		<title>cible suivi des commandes</title>
 	</head>
-	<body>
-		Numéro de commande :<?php echo $noCommande;	?>
-		<br>
-		Date de livraison prévue : <?php echo $datePrevue;?>
-		<br>
-		État de la commande : <?php echo $etatCommande;?>
-		<br>
-		Adresse de livraison : <?php echo $adresse;?>
-		<br>
-		Montant : <?php echo $montant;?>$
+	<body style="margin:auto; width:950px;">
+		<header>
+			<h1 ><i>SuiviDeCommandes</i></h1>
+		</header>
+		<p>
+			Numéro de commande :<?php echo $noCommande;?>
+			<br>
+			<br>
+			Date de livraison prévue : <?php echo $datePrevue;?>
+			<br>
+			<br>
+			État de la commande :<?php echo $etatCommande;?>
+			<br>
+			<br>
+			Adresse de livraison :<?php echo $adresse;?>
+			<br>
+			<br>
+			Montant : <?php echo $montant;?>$
+		</p>
 	</body>
 </html>
