@@ -55,7 +55,6 @@ Date                    Nom                 Description
                     <th>Prix Unitaire</th>
                     <th>Quantité</th>
                     <th>Montant</th>
-                    <th>Ajouter</th>
                 </tr>
                 <?php //Code php pour charger les produits de la BD
                 require_once 'MoteurRequeteBD.php';
@@ -74,7 +73,6 @@ Date                    Nom                 Description
                     $qty = "qty"."$x";
                     $nb = $qty."nb";
                     $mnt = "mnt"."$x";
-                    $chk = "chk".$x;
                     $price = number_format($produit[3],2);
                     echo "<tr>";
                         echo "<td>".$produit[0]."</td>";
@@ -83,7 +81,6 @@ Date                    Nom                 Description
                         echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly>  "." $"."</td>"    ;
                         echo "<td align='center'>"."<input name=$qty id='$qty' type=\"number\" min=\"0\"  max=\"99\">  "."</td>";
                         echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
-                        echo "<td align='center'>"."<input type=checkbox name=chk[] id='$chk' value='$produit[0]'>"."</td>";
                     echo "</tr>";
                 }
                 ?>

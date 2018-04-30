@@ -40,15 +40,9 @@ function commencer(nb){
             document.getElementById(("qty"+index)).addEventListener("click", function(){
                 clic((index));
             });
-            var checkbox = document.querySelector("input[id= chk"+index+"]");
-            checkbox.addEventListener( 'click', function() {
-            if(this.checked) {
-                addbox(index);
-            } else {
-                remove(index);
-            }
-
-        });
+            document.getElementById(("qty"+index)).addEventListener("change", function(){
+                clic((index));
+            });
             // Ajouter un EventListener sur chaque case qui appel la méthode clic et lui passe en paramètre l'index de la case
         }());
     }
@@ -57,9 +51,7 @@ function commencer(nb){
 
 function clic (n) {
 
-    if (document.getElementById('chk'+n).checked) {
         remove(n);
-    }
 
     var w = ("qty" + n);
     var b = (w + "nb");
@@ -76,9 +68,7 @@ function clic (n) {
     chercher = "mnt" + n;
     document.getElementById(chercher).value = resultat;
 
-    if (document.getElementById('chk'+n).checked) {
         addbox(n);
-    }
 }
 
 function addbox(index){
