@@ -69,7 +69,7 @@ class GestionnaireSuiviCommandes{
       return $this->uneCommande;
   }
 
-  
+
 
   private function calculMontant($numeroCommande){
     $result = array();
