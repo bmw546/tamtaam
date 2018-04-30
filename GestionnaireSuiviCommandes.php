@@ -79,7 +79,7 @@ class GestionnaireSuiviCommandes{
 
     $montant = 0;
 
-    for ($x =0; $x <= sizeof($result); $x++)
+    for ($x =0; $x < sizeof($result); $x++)
     {
       $produit = $result[$x];
 
