@@ -69,6 +69,12 @@ table {
     margin-right: 45px;
 }
 
+.txtSuiviComm{
+	text-align: center;
+	border-width: 2px;
+	
+}
+
 .btnInscrire{
     margin:5px;
     background-color:black;
