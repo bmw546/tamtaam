@@ -46,9 +46,9 @@ Date               Nom                   Description
             if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
               echo "<p style='color:red;'>". "Nom d'utilisateur invalide" ."</p>";
             }
-            elseif (strpos($fullUrl, "success") == true) {
+            /*elseif (strpos($fullUrl, "success") == true) {
               echo "<p style='color:green;'>". "Authentification réussie" ."</p>";
-            }
+            }*/
             elseif (strpos($fullUrl, "mdpInvalide") == true) {
               echo "<p style='color:red;'>". "Mot de passe invalide" ."</p>";
             }
