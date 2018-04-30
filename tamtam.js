@@ -37,7 +37,7 @@ function commencer(nb){
         (function(){
             var index = i;
             console.log(index);
-            document.getElementById(("qty"+index)).addEventListener("change", function(){
+            document.getElementById(("qty"+index)).addEventListener("click", function(){
                 clic((index));
             });
             var checkbox = document.querySelector("input[id= chk"+index+"]");
