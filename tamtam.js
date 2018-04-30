@@ -1,3 +1,7 @@
+var total;
+function valeur(valeur){
+    total = valeur;
+}
 function dateAujourdhui(){
     var today = new Date();
     var dd = today.getDate();
@@ -28,6 +32,7 @@ function updateMontant(prix, idQty,idMnt) {
 
 
 function commencer(nb){
+    var index;
     for(i=0; i<=nb;i++){
         (function(){
             var index = i;
@@ -35,6 +40,15 @@ function commencer(nb){
             document.getElementById(("qty"+index)).addEventListener("change", function(){
                 clic((index));
             });
+            var checkbox = document.querySelector("input[id= chk"+index+"]");
+            checkbox.addEventListener( 'click', function() {
+            if(this.checked) {
+                addbox(index);
+            } else {
+                remove(index);
+            }
+
+        });
             // Ajouter un EventListener sur chaque case qui appel la méthode clic et lui passe en paramètre l'index de la case
         }());
     }
@@ -42,21 +56,59 @@ function commencer(nb){
 
 
 function clic (n) {
+
+    if (document.getElementById('chk'+n).checked) {
+        remove(n);
+    }
+
     var w = ("qty" + n);
     var b = (w + "nb");
     prix = document.getElementById((b)).value;
     qt = document.getElementById((w)).value;
-    price = parseInt(prix);
-    quantite = parseInt(qt);
+    if (qt==null||qt==""){
+        qt=0;
+    }
+
+    price = parseFloat(prix);
+    quantite = parseFloat(qt);
     var resultat = (price*quantite);
-    console.log(resultat);
+    //console.log(resultat);
     chercher = "mnt" + n;
     document.getElementById(chercher).value = resultat;
 
+    if (document.getElementById('chk'+n).checked) {
+        addbox(n);
+    }
 }
 
-function updateTotal(valeur){
-    document.getElementById("total").value = valeur;
+function addbox(index){
+    var temp =  (document.getElementById(("mnt"+index)).value);
+    if (temp==null||temp==""){
+        temp=0;
+    }
+    var newtotal = parseFloat(temp);
+    total += newtotal;
+    console.log(total);
+    updateTotal();
+}
+function remove(index){
+    var temp =  (document.getElementById(("mnt"+index)).value);
+    if (temp==null||temp==""){
+        temp=0;
+    }
+    var newtotal = parseFloat(temp);
+    total -= newtotal;
+
+    //var newtotal = (total - parseFloat(document.getElementById(("mnt"+index)).value));
+    //total = newtotal;
+    console.log(total);
+    updateTotal();
+}
+function updateTotal(){
+    document.getElementById("sous_total").value = total;
+    var grandtotal = (total + 0 )
+    //var grandtotal = (total + parseFloat(document.getElementById(("livraison")).value) )
+    document.getElementById("total").value = grandtotal;
 }
 function Montant(){
     return 5;
