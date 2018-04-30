@@ -18,13 +18,14 @@ Date                    Nom                 Description
     <head>
         <meta charset="utf-8" />
         <title>Gestion des commandes</title>
+        <script src="tamtam.js"></script>
     </head>
     <style>
         table, th, td {
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;">
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui())">
         <header>
             <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
         </header>
@@ -35,9 +36,8 @@ Date                    Nom                 Description
             <input type="text" name="nom" id="nom" size="30" required/>
 
             <label for="date" style="padding-left:188px;"><b>Date :</b></label>
-            <input type="text" name="date" id="date"  size="30" disabled/>
+            <input type="text" name="date" id="date"  size="30" readonly />
             <br><br>
-
 
             <label for="adresse"style="padding-right:17px;"><b>Adresse :</b></label>
             <input type="text" name="adresse" id="adresse" size="30" required/>
@@ -71,15 +71,16 @@ Date                    Nom                 Description
 
                 for ($x =0; $x < $nbProduit; $x++){
                     $produit = $result[$x];
-
+                    $qty = "qty"."$x";
+                    $mnt = "mnt"."$x";
                     $chk = $x;
                     echo "<tr>";
                         echo "<td>".$produit[0]."</td>";
                         echo "<td>" .$produit[1]. "</td>" ;
                         echo "<td align='center'>" . $produit[2]. "</td>" ;
-                        echo "<td align='right'>".number_format($produit[3],2)." $"."</td>";
-                        echo "<td align='center'>"."<input name=qty[] id='qty' "."</td>";
-                        echo "<td align='center'>" ."<input type=\"text\" maxlength=\"6\" size=\"6\" disabled>". "</td>" ;
+                        echo "<td align='right' >".number_format($produit[3],2)." $"."</td>";
+                        echo "<td align='center'>"."<input name=$qty id='$qty' type=\"text\" maxlength=\"2\" size=\"2\" >  "."</td>";
+                        echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
                         echo "<td align='center'>"."<input type=checkbox name=chk[] id='chk' value='$produit[0]'>"."</td>";
                     echo "</tr>";
                 }
@@ -88,15 +89,15 @@ Date                    Nom                 Description
             <br><br>
 
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
-            <input  type="text" maxlength="6" size="6" disabled"> </input>
+            <input  type="text" maxlength="6" size="6" readonly"> </input>
             <br><br>
 
             <label  style="padding-right:42px;"><b>Livraison :</b></label>
-            <input  type="text" maxlength="6" size="6" disabled"> </input>
+            <input  type="text" maxlength="6" size="6" readonly"> </input>
             <br><br>
 
             <label  style="padding-right:72px;"><b>Total :</b></label>
-            <input  name="montant" type="text" maxlength="6" size="6" disabled"> </input>
+            <input  name="montant" type="text" maxlength="6" size="6" readonly"> </input>
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
