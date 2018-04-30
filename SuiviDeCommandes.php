@@ -36,7 +36,7 @@ Date                    Nom             Description
 		<header class="inscriptionheader col-12">
 			SuiviDeCommandes
 		</header>
-		<p class="txtSuiviComm">
+		<p class="txtSuiviComm" border=2px>
 			<br>
 			<br>
 			<br>
