@@ -1,6 +1,7 @@
 var total;
-function valeur(valeur){
-    total = valeur;
+function valeur(){
+    total = 0;
+
 }
 function dateAujourdhui(){
     var today = new Date();
