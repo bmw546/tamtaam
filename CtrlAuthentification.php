@@ -17,6 +17,7 @@ Date               Nom                   Description
 
  *****************************************************************/
 
+include 'Utilisateur.php';
 include ("GestionnaireUtilisateur.php");
 if (isset($_POST['connexion'])) {
 
@@ -31,7 +32,7 @@ if (isset($_POST['connexion'])) {
         session_start();
         $usr = $auth->getUnUtilisateur();
         $_SESSION['utilisateur'] = serialize($usr);
-        //header("Location: UI_menu.php");
+        header("Location: temp_menu.php");
 
         //pour avoir accès à la variable dans les autres pages: dans les autres pages:
         // session_start();
