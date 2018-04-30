@@ -38,10 +38,10 @@ Date                    Nom             Description
             <?php
               $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               if (strpos($fullUrl, "emailInvalide") == true) {
-              echo "Adresse email non valide";
+              echo "<p style='color:red;'>".  "Adresse email non valide" ."</p>";
               }
               elseif (strpos($fullUrl, "emailEnvoye") == true) {
-                echo "Votre nom d'utilisateur a été envoyé à votre adresse email";
+                echo "<p style='color:green;'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
               }
              ?>
            </center>

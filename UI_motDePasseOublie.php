@@ -35,15 +35,15 @@ Date                    Nom             Description
                 </p>
             </form>
             <center>
-            <?php
-              $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-              if (strpos($fullUrl, "emailInvalide") == true) {
-                echo "Adresse email non valide";
-              }
-              elseif (strpos($fullUrl, "emailEnvoye") == true) {
-                echo "Votre mot de passe a été envoyé à votre adresse email";
-              }
-             ?>
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                if (strpos($fullUrl, "emailInvalide") == true) {
+                    echo  "<p style='color:red;'>". "Adresse email non valide" ."</p>";
+                }
+                elseif (strpos($fullUrl, "emailEnvoye") == true) {
+                    echo "<p style='color:green;'>" . "Votre mot de passe a été envoyé à votre adresse email" ."</p>";
+                }
+                ?>
            </center>
         </fieldset>
 
