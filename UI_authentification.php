@@ -1,5 +1,4 @@
-<!--
-/****************************************
+<!--*****************************************************************************************************
 Fichier : UI_authentification.php
 Auteur :  Roméo Tsarafodiana-Bugeaud
 Fonctionnalité : Interface qui ser à authentifier un utilisateur au système (interface d'utilisateur)
@@ -16,8 +15,7 @@ Historique de modifications :
 Date               Nom                   Description
 ===========================================================
 2018-04-25		    Roméo			Ajout de commentaire, ajout des "required"
-****************************************/
--->
+******************************************************************************************************-->
 <html>
     <head>
         <meta charset="utf-8" />

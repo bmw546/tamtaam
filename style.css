@@ -56,26 +56,40 @@ table {
 /** Début de votre CSS **/
 
 /* Header */
-
+.inscriptionheader{
+    text-align:center;
+    font-size: 36px;
+    font-family: 'Playfair Display', sans-serif;
+}
 
 /* Nav */
 
 
 /* Body */
+.inscriptionBody{
+    margin-right: 45px;
+}
 
+.btnInscrire{
+    margin:5px;
+    background-color:black;
+    color:white;
+    border-color:black;
+}
 
 /* Side */
 
 
 /* Footer */
-
+.inscriptionFooter {
+    text-align:center;
+}
 
 
 
 /* Section Responsive */
 [class*="col-"] {
-	float: left;
-    padding: 15px;
+    width: 100%;
 }
 
 
@@ -129,7 +143,11 @@ table {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-	
+
+    .inscriptionBody{
+        margin:auto;
+        width:950px;
+    }
 }
 
 
