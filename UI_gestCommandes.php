@@ -25,7 +25,7 @@ Date                    Nom                 Description
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui())">
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),updateTotal(Montant()),commencer(7)">
         <header>
             <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
         </header>
@@ -72,13 +72,15 @@ Date                    Nom                 Description
                 for ($x =0; $x < $nbProduit; $x++){
                     $produit = $result[$x];
                     $qty = "qty"."$x";
+                    $nb = $qty."nb";
                     $mnt = "mnt"."$x";
                     $chk = $x;
+                    $price = number_format($produit[3],2);
                     echo "<tr>";
                         echo "<td>".$produit[0]."</td>";
                         echo "<td>" .$produit[1]. "</td>" ;
                         echo "<td align='center'>" . $produit[2]. "</td>" ;
-                        echo "<td align='right' >".number_format($produit[3],2)." $"."</td>";
+                        echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\" size=\"2\" value=$price readonly>  "." $"."</td>"    ;
                         echo "<td align='center'>"."<input name=$qty id='$qty' type=\"text\" maxlength=\"2\" size=\"2\" >  "."</td>";
                         echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
                         echo "<td align='center'>"."<input type=checkbox name=chk[] id='chk' value='$produit[0]'>"."</td>";
@@ -87,7 +89,6 @@ Date                    Nom                 Description
                 ?>
             </table>
             <br><br>
-
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
             <input  type="text" maxlength="6" size="6" readonly"> </input>
             <br><br>
@@ -97,7 +98,7 @@ Date                    Nom                 Description
             <br><br>
 
             <label  style="padding-right:72px;"><b>Total :</b></label>
-            <input  name="montant" type="text" maxlength="6" size="6" readonly"> </input>
+            <input  name="montant" id="total" type="text" maxlength="6" size="6" readonly"> </input>
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>

@@ -24,3 +24,40 @@ function updateMontant(prix, idQty,idMnt) {
     montant = document.getElementById(idQty).value;
     document.getElementById("idMnt").value = montant;
 }
+
+
+
+function commencer(nb){
+    for(i=0; i<=nb;i++){
+        (function(){
+            var index = i;
+            console.log(index);
+            document.getElementById(("qty"+index)).addEventListener("change", function(){
+                clic((index));
+            });
+            // Ajouter un EventListener sur chaque case qui appel la méthode clic et lui passe en paramètre l'index de la case
+        }());
+    }
+}
+
+
+function clic (n) {
+    var w = ("qty" + n);
+    var b = (w + "nb");
+    prix = document.getElementById((b)).value;
+    qt = document.getElementById((w)).value;
+    price = parseInt(prix);
+    quantite = parseInt(qt);
+    var resultat = (price*quantite);
+    console.log(resultat);
+    chercher = "mnt" + n;
+    document.getElementById(chercher).value = resultat;
+
+}
+
+function updateTotal(valeur){
+    document.getElementById("total").value = valeur;
+}
+function Montant(){
+    return 5;
+}
