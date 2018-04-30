@@ -60,13 +60,13 @@ Date                    Nom             Description
 										<?php
 										$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 										if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-											echo "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre.";
+											echo "<p style='color:red;'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
 										}
 										elseif (strpos($fullUrl, "emailInvalide") == true) {
-											echo "Adresse email déja utilisée. Veuillez en entrer une autre.";
+											echo "<p style='color:red;'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
 										}
 										elseif (strpos($fullUrl, "success") == true) {
-											echo "Inscription réussie";
+											echo "<p style='color:green;'>". "Inscription réussie" ."</p>";
 										}
 										 ?>
 							 </center>

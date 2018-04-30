@@ -46,13 +46,13 @@ Date               Nom                   Description
             <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-              echo "Nom d'utilisateur invalide";
+              echo "<p style='color:red;'>". "Nom d'utilisateur invalide" ."</p>";
             }
             elseif (strpos($fullUrl, "success") == true) {
-              echo "Authentification réussie";
+              echo "<p style='color:green;'>". "Authentification réussie" ."</p>";
             }
             elseif (strpos($fullUrl, "mdpInvalide") == true) {
-              echo "Mot de passe invalide";
+              echo "<p style='color:red;'>". "Mot de passe invalide" ."</p>";
             }
              ?>
            </center>
