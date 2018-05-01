@@ -58,6 +58,7 @@ table {
 
 * {
     box-sizing: border-box;
+    font-family: 'Playfair Display', sans-serif;
 }
 
 /* Header */
@@ -69,6 +70,7 @@ table {
 
 /****** Nav *******/
 .menu {
+    font-size: 18px;
     text-decoration: none;
     height: 50px;
     background: #222;
@@ -96,7 +98,7 @@ nav li:hover {
 /******* Body *******/
 
 .formInscription {
-    padding: 30px 30px 100px;
+    padding: 30px 30px 150px;
 }
 
 
@@ -114,10 +116,16 @@ nav li:hover {
 }
 
 .btnInscrire{
-    margin: 10px;
+    margin: 35px;
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.btnStyle{
     background-color:black;
     color:white;
     border-color:black;
+    padding: 5px;
 }
 
 .label{
@@ -214,6 +222,12 @@ body {
         color:#FFFFFF;
     }
 
+    .menu{
+        display: block;
+        float: left;
+        width: 124px;
+    }
+
     .entete img {
         margin: 20px 20px 20px 5%;
     }
@@ -243,9 +257,12 @@ body {
         margin-top: 0;
     }
 
+    .entete{
+        padding-left: 100px;
+    }
     .menu{
         display: block;
         float: left;
-        width:100px;
+        width: 124px;
     }
 }
