@@ -31,10 +31,10 @@ Date                    Nom             Description
             <img  src="HTML/image/logo.png" alt="logo"/>
             <ul>
                 <li class="menu col-2 col-t-2"><a href="#">Accueil</a></li>
-                <li class="menu col-2 col-t-2"><a href="#">Nos produits</a></li>
-                <li class="menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
-                <li class="menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
-                <li class="menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
+                <li class="pointMenu menu col-2 col-t-2"><a href="#">Nos produits</a></li>
+                <li class="pointMenu menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
+                <li class="pointMenu menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
+                <li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
             </ul>
         </nav>
 
@@ -42,29 +42,29 @@ Date                    Nom             Description
 
         <section class="sectionInscription col-12">
             <div class="inscriptionheader"><i>Inscription des utilisateurs</i></div>
-            <form  class="formInscription" action="CtrlInscription.php" method="post" style=" border:solid black;">
+            <form  class="formInscription" action="CtrlInscription.php" method="post">
                 <br>
-                <label class=" label" for="user" ><b>Nom d'utilisateur :</b></label>
+                <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
                 <input class="" type="text" name="user" id="user" size="30" required/>
 
                 <br><br>
-                <label class=" label" for="adresse" ><b>Adresse :</b></label>
+                <label class="label" for="adresse" ><b>Adresse :</b></label>
                 <input class="" type="text" name="adresse" id="adresse" size="30" required/>
 
                 <br><br>
-                <label class=" label" for="email" ><b>E-mail :</b></label>
+                <label class="label" for="email" ><b>E-mail :</b></label>
                 <input class="" type="text" name="email" id="email" size="30" required/>
 
                 <br><br>
-                <label class=" label" for="noTelephone" ><b>Numéro de téléphone :</b></label>
+                <label class="label" for="noTelephone" ><b>Numéro de téléphone :</b></label>
                 <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required/>
 
                 <br><br>
-                <label class=" label" for="passwd" ><b>Mot de passe :</b></label>
+                <label class="label" for="passwd" ><b>Mot de passe :</b></label>
                 <input class="" type="password" name="passwd" id="passwd" size="30" required/>
 
                 <br><br>
-                <label class="" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
+                <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
                 <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
 
                 <br>
@@ -78,13 +78,13 @@ Date                    Nom             Description
                 <?php
                 $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-                    echo "<p style='color:red;'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
+                    echo "<p class='redText'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
                 }
                 elseif (strpos($fullUrl, "emailInvalide") == true) {
-                    echo "<p style='color:red;'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
+                    echo "<p class='redText'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
                 }
                 elseif (strpos($fullUrl, "success") == true) {
-                    echo "<p style='color:green;'>". "Inscription réussie" ."</p>";
+                    echo "<p class='greenText'>". "Inscription réussie" ."</p>";
                 }
                 ?>
             </div>
