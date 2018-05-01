@@ -39,36 +39,36 @@ Date                    Nom             Description
 
 
 
-        <section class="formInscription col-12">
+        <section class="sectionInscription col-12">
             <div class="inscriptionheader"><i>Inscription des utilisateurs</i></div>
-            <form  action="CtrlInscription.php" method="post" style="padding:20px; border:solid black;">
+            <form  class="formInscription" action="CtrlInscription.php" method="post" style=" border:solid black;">
                 <br>
                 <label class=" label" for="user" ><b>Nom d'utilisateur :</b></label>
-                <input class="" type="text" name="user" id="user"  required/>
+                <input class="" type="text" name="user" id="user" size="30" required/>
 
                 <br><br>
                 <label class=" label" for="adresse" ><b>Adresse :</b></label>
-                <input class="" type="text" name="adresse" id="adresse"  required/>
+                <input class="" type="text" name="adresse" id="adresse" size="30" required/>
 
                 <br><br>
                 <label class=" label" for="email" ><b>E-mail :</b></label>
-                <input class="" type="text" name="email" id="email"  required/>
+                <input class="" type="text" name="email" id="email" size="30" required/>
 
                 <br><br>
                 <label class=" label" for="noTelephone" ><b>Numéro de téléphone :</b></label>
-                <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000"  required/>
+                <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required/>
 
                 <br><br>
                 <label class=" label" for="passwd" ><b>Mot de passe :</b></label>
-                <input class="" type="password" name="passwd" id="passwd"  required/>
+                <input class="" type="password" name="passwd" id="passwd" size="30" required/>
 
                 <br><br>
                 <label class="" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
-                <input class="" type="password" name="confirmer" id="confirmer"  required/>
+                <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
 
                 <br>
-                <input class="btnInscrire col-1" name="inscrire" type="submit" value="S'inscrire"/>
-                <button class="btnInscrire col-1" type="reset" name="cancel" value="Annuler">Annuler</button>
+                <input class="btnInscrire col-2" name="inscrire" type="submit" value="S'inscrire"/>
+                <button class="btnInscrire col-2" type="reset" name="cancel" value="Annuler">Annuler</button>
             </form>
         </section>
 
