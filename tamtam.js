@@ -101,6 +101,3 @@ function updateTotal(){
     //var grandtotal = (total + parseFloat(document.getElementById(("livraison")).value) )
     document.getElementById("total").value = grandtotal;
 }
-function Montant(){
-    return 5;
-}
