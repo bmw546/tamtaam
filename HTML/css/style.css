@@ -70,7 +70,6 @@ table {
 /****** Nav *******/
 .menu {
     text-decoration: none;
-    margin-top: 30px;
     height: 50px;
     background: #222;
     color: #FFFFFF;
@@ -81,16 +80,14 @@ a{
     color:white;
     text-decoration: none;
 }
+
 nav ul {
+    float: left;
     list-style-type: none;
-    margin: 0;
+    margin: 30px 0 0;
     padding: 0;
 }
-nav li {
-    padding: 15px;
-    margin-bottom: 7px;
-    color:#FFFFFF;
-}
+
 
 nav li:hover {
     background-color: #990000;
@@ -99,8 +96,7 @@ nav li:hover {
 /******* Body *******/
 
 .formInscription {
-    padding: 30px;
-    padding-bottom: 100px;
+    padding: 30px 30px 100px;
 }
 
 
@@ -130,6 +126,7 @@ nav li:hover {
 }
 
 .entete{
+    float:left;
     border:0;
     margin:0;
     padding:0;
@@ -142,9 +139,7 @@ nav li:hover {
 
 .entete img {
     float: left;
-
-    margin: 20px;
-    margin-left: 20%;
+    margin: 20px 20px 20px 20%;
 }
 
 head {
@@ -192,7 +187,7 @@ body {
 
 
 /* Si l'ecran est au moins 600px */
-@media only screen and (min-width: 635px) {
+@media only screen and (min-width: 500px) {
     /* Pour tablettes: */
     .col-t-1 {width: 8.33%;}
     .col-t-2 {width: 16.66%;}
@@ -207,13 +202,20 @@ body {
     .col-t-11 {width: 91.66%;}
     .col-t-12 {width: 100%;}
 
+
     .inscriptionheader {
         text-align: center;
     }
+
+    nav li {
+        padding: 10px;
+        vertical-align: middle;
+        text-align: center;
+        color:#FFFFFF;
+    }
+
     .entete img {
-        float: left;
-        margin: 20px;
-        margin-left: 5%;
+        margin: 20px 20px 20px 5%;
     }
 }
 
@@ -242,9 +244,8 @@ body {
     }
 
     .menu{
-        display: inline;
+        display: block;
         float: left;
-        padding: 15px;
-
+        width:100px;
     }
 }
