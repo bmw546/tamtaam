@@ -14,8 +14,9 @@ Date                    Nom             Description
 =========================================================
 2018-04-25				Roméo            Modifié textfield pour password pour le champ mot de passe
 2018-04-29				Roméo 		     Rajouté les messages d'erreurs/succès
-2018-04-30             Rémi             Rajout lien avec css, ajout de css
-********************************************************-->
+2018-04-30             Rémi             Rajout lien avec css, ajout de style css
+2018-05-01             Rémi             Modification style css
+***********************************************************-->
 <html>
 	<head>
 		<meta charset="utf-8" />
