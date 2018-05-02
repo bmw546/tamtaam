@@ -150,7 +150,41 @@ class GestionnaireUtilisateur {
             }
         }
     }
+    public function modifier($nom_utilisateur, $email)
+    {
+        //si on change le nom d'utilisateur
+        if ($this->getUnUtilisateur()->getNomUtilisateur() != $nom_utilisateur ) {
+            //si le nom d'utilisateur est déja dans la bd
+            if () {
+                //message d'erreur
+                $this->setEtat("nomUtilisateurInvalide");
+                return;
+            } else {
+                //changer le nom d'utilisateur dans la bd
+                //...
+                //changer le nom d'utilisateur dans l'objet
+                $this->getUnUtilisateur()->setNomUtilisateur($nom_utilisateur);
+            }
+        }
 
+        //si on change d'email
+        if ($this->getUnUtilisateur()->getEmail() != $email){
+
+            //si l'email est déja dans la bd
+            if (){
+                $this->setEtat("emailInvalide");
+                return;
+            }
+            else{
+                //changer l'email dans la bd
+                //...
+                //changer l'email dans l'objet
+                $this->getUnUtilisateur()->setEmail($email);
+            }
+        }
+        $this->setEtat("success");
+        //changer les autres infos
+    }
     /**
      * Connecte un utilisateur avec un nom et un mot de passe
      */
