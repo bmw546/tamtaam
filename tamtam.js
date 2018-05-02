@@ -30,8 +30,6 @@ function updateMontant(prix, idQty,idMnt) {
     document.getElementById("idMnt").value = montant;
 }
 
-
-
 function commencer(nb){
     var index;
     for(i=0; i<=nb;i++){
@@ -48,7 +46,6 @@ function commencer(nb){
         }());
     }
 }
-
 
 function clic (n) {
 
@@ -100,4 +97,19 @@ function updateTotal(){
     var grandtotal = (total + 0 )
     //var grandtotal = (total + parseFloat(document.getElementById(("livraison")).value) )
     document.getElementById("total").value = grandtotal;
+}
+function test(){
+    $("#nouvProduit").click(function(){
+        var elem = $("<select/>",{
+            value: "hisbicuss",
+            name: "produit[]"
+        });
+
+        var removeLink = $("<span/>").html("Supprimer").click(function(){
+            $(elem).remove();
+            $(this).remove();
+        });
+
+        $("#nouvProduit").append(elem).append(removeLink);
+    });
 }

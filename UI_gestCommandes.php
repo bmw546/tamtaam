@@ -19,13 +19,15 @@ Date                    Nom                 Description
         <meta charset="utf-8" />
         <title>Gestion des commandes</title>
         <script src="tamtam.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <style>
         table, th, td {
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(Montant()),commencer(7)">
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer(7),test()">
         <header>
             <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
         </header>
@@ -47,15 +49,24 @@ Date                    Nom                 Description
             <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
             <br><br>
 
+            <div class="control-group">
+                <div id="produit"class="controls">
+                    <input type="combobox" name="produit[]">
+                </div>
+                <a id="nouvProduit">Ajouter un produit</a>
+            </div>
+
+
+
             <table  style="width:60%">
                 <tr>
-                    <th>No</th>
                     <th>Nom</th>
                     <th>Description</th>
                     <th>Prix Unitaire</th>
                     <th>Quantité</th>
                     <th>Montant</th>
                 </tr>
+
                 <?php //Code php pour charger les produits de la BD
                 require_once 'MoteurRequeteBD.php';
 
@@ -75,7 +86,6 @@ Date                    Nom                 Description
                     $mnt = "mnt"."$x";
                     $price = number_format($produit[3],2);
                     echo "<tr>";
-                        echo "<td>".$produit[0]."</td>";
                         echo "<td>" .$produit[1]. "</td>" ;
                         echo "<td align='center'>" . $produit[2]. "</td>" ;
                         echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly >  "." $"."</td>"    ;
