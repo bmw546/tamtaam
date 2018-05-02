@@ -29,7 +29,7 @@ Date                    Nom                 Description
     </style>
     <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer(7),test()">
         <header>
-            <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
+            <h1 style="text-align:center;"><i>Placer une commande</i></h1>
         </header>
 
         <form id="formUser" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
@@ -49,51 +49,76 @@ Date                    Nom                 Description
             <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
             <br><br>
 
-            <div class="control-group">
-                <div id="produit"class="controls">
-                    <input type="combobox" name="produit[]">
-                </div>
-                <a id="nouvProduit">Ajouter un produit</a>
-            </div>
-
 
 
             <table  style="width:60%">
                 <tr>
                     <th>Nom</th>
-                    <th>Description</th>
+                    <th>Format</th>
                     <th>Prix Unitaire</th>
                     <th>Quantité</th>
                     <th>Montant</th>
                 </tr>
 
-                <?php //Code php pour charger les produits de la BD
+                <?php
                 require_once 'MoteurRequeteBD.php';
+                echo "<tr>";
+                    echo "<td><select name=listProduit id=listProduit>";
+                    echo "<option disabled selected>--Choisir un produit--</option>";
 
-                $connection = new Connexion();
-                $query  = "SELECT COUNT(*) FROM `produit`";
-                $result = array();
-                $result = $connection->execution_avec_return($query);
-                $nbProduit = $result[0][0];
+                    $connection = new Connexion();
+                    $query  = "SELECT DISTINCT  nom FROM `produit` ORDER BY nom";
+                    $result = $connection->execution_avec_return($query);
 
-                $query2 = "SELECT * FROM `produit`";
-                $result = $connection->execution_avec_return($query2);
+                    $i=0;
+                    foreach ($result as $rs){
+                        echo $rs[0] . "</br>";
+                        echo "<option value='$i'>$rs[0]</option>";
+                    }
+                    echo "</select></td>";
 
-                for ($x =0; $x < $nbProduit; $x++){
-                    $produit = $result[$x];
-                    $qty = "qty"."$x";
-                    $nb = $qty."nb";
-                    $mnt = "mnt"."$x";
-                    $price = number_format($produit[3],2);
-                    echo "<tr>";
-                        echo "<td>" .$produit[1]. "</td>" ;
-                        echo "<td align='center'>" . $produit[2]. "</td>" ;
-                        echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly >  "." $"."</td>"    ;
-                        echo "<td align='center'>"."<input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
-                        echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
-                    echo "</tr>";
-                }
+                    echo "<td><select name=format id='format'>
+                              <option disabled selected>--Choisir un format-- </option></select>";
+                    echo "<td align='right' ><input type=\"text\" maxlength=\"2\"  size=\"2\" value=0 readonly>$"."</td>"    ;
+                    echo "<td align='center'><input type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
+                    echo "<td align='center'><input type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
+                $query = ""
                 ?>
+            </table>
+                <div class="control-group">
+                    <div id="produit"class="controls">
+                        <input type="combobox" name="produit[]">
+                    </div>
+                    <a id="nouvProduit">Ajouter un produit</a>
+                </div>
+
+<!--                --><?php ////Code php pour charger les produits de la BD
+//                require_once 'MoteurRequeteBD.php';
+//
+//                $connection = new Connexion();
+//                $query  = "SELECT COUNT(*) FROM `produit`";
+//                $result = array();
+//                $result = $connection->execution_avec_return($query);
+//                $nbProduit = $result[0][0];
+//
+//                $query2 = "SELECT * FROM `produit`";
+//                $result = $connection->execution_avec_return($query2);
+//
+//                for ($x =0; $x < $nbProduit; $x++){
+//                    $produit = $result[$x];
+//                    $qty = "qty"."$x";
+//                    $nb = $qty."nb";
+//                    $mnt = "mnt"."$x";
+//                    $price = number_format($produit[3],2);
+//                    echo "<tr>";
+//                        echo "<td>" .$produit[1]. "</td>" ;
+//                        echo "<td align='center'>" . $produit[2]. "</td>" ;
+//                        echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly >  "." $"."</td>"    ;
+//                        echo "<td align='center'>"."<input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
+//                        echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
+//                    echo "</tr>";
+//                }
+//                ?>
             </table>
             <br><br>
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
