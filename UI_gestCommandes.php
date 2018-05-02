@@ -58,7 +58,7 @@ Date                    Nom                 Description
             if (isset($_SESSION['utilisateur'])) {
                 $usr = unserialize($_SESSION['utilisateur']);
                 $adr = $usr->getAdresse();  ?>
-                <input type="text" name="adresse" id="adresse" size="30" value="<?php echo $nom ?>" disabled="disabled"/>
+                <input type="text" name="adresse" id="adresse" size="30" value="<?php echo $adr ?>" disabled="disabled"/>
 
                 <?php
             }
