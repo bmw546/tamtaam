@@ -50,14 +50,15 @@ Date               Nom                   Description
                     <label class="label" for="nom_utilisateur">Nom d'utilisateur: </label>
                     <input type="text" name="nom_utilisateur" id="nom_utilisateur" required/>
                 </p>
+                <br>
                 <p>
                     <label class="label" for="mot_de_passe">Mot de passe: </label>
                     <input type="password" name="mot_de_passe" id="mot_de_passe" required/>
                 </p>
 
                 <p class="col-12">
-                    <input  class="btnInscrire btnStyle col-2" name="connexion" type="submit" value="Se connecter"/>
-                    <button class="btnInscrire btnStyle col-2" name="cancel" type="reset" value="Annuler">Annuler</button>
+                    <input  class="btnInscrire btnStyle " name="connexion" type="submit" value="Se connecter"/>
+                    <button class="btnInscrire btnStyle " name="cancel" type="reset" value="Annuler">Annuler</button>
                 </p>
             </div>
         </form>

@@ -68,7 +68,17 @@ table {
 }
 
 /* Nav */
+.mainMenu {
+    font-size: 18px;
+    background: #222;
+    color: #FFFFFF;
+    display: block;
+    text-align: center;
+    font-family: 'Playfair Display', sans-serif;
+    padding:15px;
+}
 .menu {
+    font-size: 18px;
     text-decoration: none;
     margin-top: 30px;
     height: 50px;
@@ -76,6 +86,7 @@ table {
     color: #FFFFFF;
     display: block;
     text-align: center;
+    font-family: 'Playfair Display', sans-serif;
 }
 a{
     color:white;
@@ -83,7 +94,7 @@ a{
 }
 nav ul {
     list-style-type: none;
-    margin: 0;
+    margin: 30px 0 0;
     padding: 0;
 }
 nav li {
@@ -92,26 +103,19 @@ nav li {
     color:#FFFFFF;
 }
 
-nav li:hover {
-    background-color: #990000;
+li a:hover {
+    content: normal; /* Insert content that looks like bullets */
+    color: #c39738;
 }
 
 /* Body */
-.inscriptionBody{
-
+.centerForm {
+    text-align: center;
 }
 
 .formInscription {
-    padding: 30px;
-    padding-bottom: 100px;
-}
-
-
-
-.txtSuiviComm{
-	text-align: center;
-	border-width: 2px;
-	
+    padding: 30px 30px 150px;
+    border: solid black;
 }
 
 .txtSuiviComm{
@@ -120,11 +124,21 @@ nav li:hover {
 	
 }
 
+.txtSuiviComm{
+	text-align: center;
+	border-width: 2px;
+	
+}
+
+.btnInscrire{
+    margin: 35px 35px 0 0;
+    width: 100%;
+}
 .btnStyle{
-    margin: 10px;
     background-color:black;
     color:white;
     border-color:black;
+    padding: 5px;
 }
 
 .label{
@@ -133,6 +147,7 @@ nav li:hover {
 }
 
 .entete{
+    float:left;
     border:0;
     margin:0;
     padding:0;
@@ -145,9 +160,7 @@ nav li:hover {
 
 .entete img {
     float: left;
-
-    margin: 20px;
-    margin-left: 20%;
+    margin: 20px 20px 20px 20%;
 }
 
 head {
@@ -174,17 +187,15 @@ body {
 
 /* resize images */
 .container img {
-	
 	overflow: hidden;
     display: block;
 	height:517px;
-
 }
+
 .central{
-    transition-duration: 2s;
+    transition: transform 2s;
 }
 .central:hover{
-	transition-duration: 2s;
 	transform: scale(1.25);
 }
 
@@ -231,10 +242,22 @@ body {
     .inscriptionheader {
         text-align: center;
     }
-    .entete img {
+
+    nav li {
+        padding: 10px;
+        vertical-align: middle;
+        text-align: center;
+        color:#FFFFFF;
+    }
+
+    .menu{
+        display: block;
         float: left;
-        margin: 20px;
-        margin-left: 5%;
+        width: 124px;
+    }
+
+    .entete img {
+        margin: 20px 20px 20px 5%;
     }
 }
 
@@ -258,14 +281,34 @@ body {
         text-align: center;
     }
 
-    .sectionInscription{
-        margin-top: 0;
+    .entete{
+        padding-left: 100px;
+    }
+
+    .mainMenu{
+        float: left;
+        display: block;
+        list-style-type: disc;
+        text-align: center;
     }
 
     .menu{
-        display: inline;
-        float: left;
-        padding: 15px;
+        display: block;
+        list-style-type: disc;
+        text-align: right;
+        width: 200px;
+    }
 
+    .pointMenu::before {
+        content: "•";
+        color: #444444;
+        padding-right: 20px;
+    }
+    .labelDate{
+        padding-left:188px;
+    }
+    .btnInscrire{
+        margin: 35px 35px 0 0;
+        width: 16.66%;
     }
 }

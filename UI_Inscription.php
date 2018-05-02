@@ -43,7 +43,7 @@ Date                    Nom             Description
 
         <section class="sectionInscription col-12">
             <div class="inscriptionheader"><i>Inscription des utilisateurs</i></div>
-            <form  class="formInscription" action="CtrlInscription.php" method="post">
+            <form  class="centerForm formInscription" action="CtrlInscription.php" method="post">
                 <br>
                 <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
                 <input class="" type="text" name="user" id="user" size="30" required/>
@@ -69,8 +69,9 @@ Date                    Nom             Description
                 <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
 
                 <br>
-                <input class="btnInscrire btnStyle col-2" name="inscrire" type="submit" value="S'inscrire"/>
-                <button class="btnInscrire btnStyle col-2" type="reset" name="cancel" value="Annuler">Annuler</button>
+
+                <input class="btnInscrire btnStyle " name="inscrire" type="submit" value="S'inscrire"/>
+                <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Annuler</button>
             </form>
         </section>
 
