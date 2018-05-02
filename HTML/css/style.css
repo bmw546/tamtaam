@@ -48,6 +48,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+h1{
+	font-size: 24pt;
+}	
 
 /** Fin du CSS RESET **/
 
@@ -90,7 +93,32 @@ table {
     color:white;
     text-decoration: none;
 }
-
+.nav {
+	padding: 40px;
+    font-size: 18px;
+    background: #222;
+    color: #FFFFFF;
+    display: block;
+    text-align: center;
+    font-family: 'Playfair Display', sans-serif;
+}
+.center{
+	vertical-align: middle;
+	display: inline-block;
+	}
+	
+.right{
+	float: right;
+	}
+	
+.left{
+	background-color: #292929 ;
+vertical-align: left;
+float:left;
+	}
+.backgroudgrey{
+	background-color: #292929 ;
+}	
 ul a{
     color:white;
     text-decoration: none;
