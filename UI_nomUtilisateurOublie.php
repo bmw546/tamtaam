@@ -12,39 +12,58 @@ Date                    Nom 		    Approuvé
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
+2018-05-02              Roméo           Ajouté CSS
 ********************************************************-->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Nom d'utilisateur oublié</title>
-    </head>
-    <body style="margin:auto; width:950px;">
-    <header>
-        <h1 style="text-align:center;"><i>Récuperer votre nom d'utilisateur</i></h1>
-    </header>
-        <fieldset>
-            <form action="CtrlNomUtilisateurOublie.php" method="post">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="HTML/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <title>Nom d'utilisateur oublié</title>
+</head>
+<body class="inscriptionBody">
+
+<nav class="entete col-12">
+    <img src="HTML/image/logo.png" alt="logo"/>
+    <ul>
+        <li class="menu col-2 col-t-2"><a href="#">Accueil</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nos produits</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
+    </ul>
+</nav>
+<section class="sectionInscription col-12">
+    <br>
+    <div class="inscriptionheader"><i>Récupérer votre nom d'utilisateur</i></div>
+    <br>
+    <fieldset>
+        <form class="formInscription" action="CtrlNomUtilisateurOublie.php" method="post">
+            <div class="centerForm">
+                <br><br><br>
                 <p>
-                    <label for="email">Entrez votre adresse email</label>
+                    <label class="label" for="email">Entrez votre adresse email</label>
                     <input type="text" name="email" id="email" required/>
                 </p>
                 <p>
-                    <input  style="margin-left:80px; margin-right:30%; background-color:black; color:white; border-color:black;" name="envoi" type="submit" value="Envoyer"/>
-                    <button formnovalidate style=" margin-left:25%; margin-right:100px; background-color:black; color:white; border-color:black;" name="cancel" type="reset" value="Annuler">Annuler</button>
+                    <input   class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
+                    <button  class="btnInscrire btnStyle" formnovalidate name="cancel" type="reset" value="Annuler">Annuler</button>
                 </p>
-            </form>
+            </div>
+        </form>
 
-            <center>
+        <footer class="inscriptionFooter">
             <?php
-              $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-              if (strpos($fullUrl, "emailInvalide") == true) {
-              echo "<p style='color:red;'>".  "Adresse email non valide" ."</p>";
-              }
-              elseif (strpos($fullUrl, "emailEnvoye") == true) {
+            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            if (strpos($fullUrl, "emailInvalide") == true) {
+                echo "<p style='color:red;'>".  "Adresse email non valide" ."</p>";
+            }
+            elseif (strpos($fullUrl, "emailEnvoye") == true) {
                 echo "<p style='color:green;'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
-              }
-             ?>
-           </center>
-        </fieldset>
-    </body>
+            }
+            ?>
+        </footer>
+    </fieldset>
+</section>
+</body>
 </html>

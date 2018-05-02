@@ -25,7 +25,7 @@ Date               Nom                   Description
     <title>Connexion</title>
 </head>
 
-<body class="inscriptionBody"">
+<body class="inscriptionBody">
 
 
 <nav class="entete col-12">
