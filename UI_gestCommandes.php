@@ -41,7 +41,7 @@ Date                    Nom                 Description
             <br><br>
 
             <label for="adresse"style="padding-right:17px;"><b>Adresse :</b></label>
-            <input type="text" name="adresse" id="adresse" size="30" required/>
+            <input type="text" name="adresse" id="adresse" size="30" placeholder="ex : 475 Rue du Cegep, Sherbrooke, QC J1A 4K1" required/>
             <br><br>
 
             <input type="radio" name="livraison" checked<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
