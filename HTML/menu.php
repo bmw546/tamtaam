@@ -50,18 +50,18 @@
         if (isset($_SESSION['utilisateur'])){
 
             ?>
-            <li class="mainMenu central col-3 col-t-4"><a href="#tru1"> Gestionnaire de commande </a></li>
-            <li class="mainMenu central col-3 col-t-4"><a href="#truc2"> Notification par courriel </a></li>
-            <li class="mainMenu central col-3 col-t-4"><a href="#truc3"> Suivit de commande </a></li>
-            <li class="mainMenu central col-3 col-t-4"><a href="#truc2"> Envoyer un commentaire </a></li>
+            <li class="mainMenu central col-3 col-t-4"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
+            <li class="mainMenu central col-3 col-t-4"><a href="../UIgestCourrielNotification.html"> Notification par courriel </a></li>
+            <li class="mainMenu central col-3 col-t-4"><a href="../suiviDeCommandes.html"> Suivi de commande </a></li>
+            <li class="mainMenu central col-3 col-t-4"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
             <?php
         }
         else
         {
             ?>
-            <li class="mainMenu central col-4 col-t-4"><a href="#tru1"> Authentification </a></li>
-            <li class="mainMenu central col-4 col-t-4"><a href="#truc2"> Envoyer un commentaire </a></li>
-            <li class="mainMenu central col-4 col-t-4"><a href="#truc3"> Inscription </a></li>
+            <li class="mainMenu central col-4 col-t-4"><a href="../UI_authentification.php"> Authentification </a></li>
+            <li class="mainMenu central col-4 col-t-4"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
+            <li class="mainMenu central col-4 col-t-4"><a href="../UI_Inscription.php"> Inscription </a></li>
             <?php
         }
         ?>
