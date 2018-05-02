@@ -22,61 +22,79 @@ Date               Nom                   Description
 <head>
     <meta charset="utf-8" />
     <title>Formulaire &eacute;leve</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
-<body style="margin:auto; width:950px;">
-<header>
-    <h1 style="text-align:center;"><i>Commentaire et inscription</i></h1>
-</header>
-<fieldset>
+<body class="inscriptionBody" onload="updateDate(dateAujourdhui())">
+    <nav class="entete col-12">
+        <img  src="image/logo.png" alt="logo"/>
+        <ul>
+            <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
+        </ul>
+    </nav>
+    <div style="width:980px; margin:auto" >
+        <header class="inscriptionheader" >
+            <h1 style="text-align:center;"><i>Commentaire et inscription</i></h1>
+        </header>
+        <fieldset>
 
-    <form action="CtrlSuggestions.php" method="post">
-        <p>
-            <label for="nom">Nom: </label>
-            <?php
-            require_once 'utilisateur.php';
-            session_start();
+            <form  class="centerForm formInscription"  action="CtrlSuggestions.php" method="post">
+                <br>
+                <p class="label">
+                    <br>
+                    <label class="label" for="nom">Nom: </label>
+                    <?php
+                    require_once 'utilisateur.php';
+                    session_start();
 
-            if (isset($_SESSION['utilisateur'])){
-                $usr = unserialize($_SESSION['utilisateur']);
-                $nom = $usr->getNomUtilisateur();
-                ?>
-                <input type="text" name="nom" id="nom" size="30" value="<?php echo $nom ?>" disabled="disabled"/>
-                <?php
-            }
-            else{
-                ?> <input type="text" name="nom" id="nom" size="30" required/><?php
-            }?>
-        </p>
-        <p>
-            <label for="courriel">Courriel: </label>
-            <?php
-            if (isset($_SESSION['utilisateur'])) {
-                $usr = unserialize($_SESSION['utilisateur']);
-                $email = $usr->getEmail();  ?>
-                <input type="text" name="courriel" id="courriel" required
-                       value="<?php echo $email ?>" disabled="disabled"/>
+                    if (isset($_SESSION['utilisateur'])){
+                        $usr = unserialize($_SESSION['utilisateur']);
+                        $nom = $usr->getNomUtilisateur();
+                        ?>
+                        <input type="text" name="nom" id="nom" value="<?php echo $nom ?>" disabled="disabled"/>
+                        <?php
+                    }
+                    else{
+                        ?> <input type="text" name="nom" id="nom" required/><?php
+                    }?>
+                </p>
+                <br><br>
+                <p class="label">
+                    <label class="label" for="courriel">Courriel: </label>
+                    <?php
+                    if (isset($_SESSION['utilisateur'])) {
+                        $usr = unserialize($_SESSION['utilisateur']);
+                        $email = $usr->getEmail();  ?>
+                        <input type="text" name="courriel" id="courriel" required
+                               value="<?php echo $email ?>" disabled="disabled"/>
 
-                <?php
-            }
-            else{
-                ?><input type="text" name="courriel" id="courriel" required/><?php
-            }?>
-        </p>
-        <p>
-            <label for="sujet">Sujet: </label>
-            <input type="text" name="sujet" id="sujet" required/>
-        </p>
-        <p>
-        <p for="commentaire">Commentaire/suggestion: </p>
-        <textarea name="question" rows="10" cols="30" id="question" required/> </textarea>
-        </p>
-        <p>
-            <input  style="margin-left:80px; margin-right:30%; background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
-            <button formnovalidate style=" margin-left:25%; margin-right:100px; background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
+                        <?php
+                    }
+                    else{
+                        ?><input type="text" name="courriel" id="courriel" required/><?php
+                    }?>
+                </p>
+                <br><br>
+                <p class="label">
+                    <label class="label" for="sujet">Sujet: </label>
+                    <input type="text" name="sujet" id="sujet" required/>
+                </p>
+                <br><br>
+                <br><br>
+                <p class="label" for="commentaire">Commentaire/suggestion: </p>
+                <textarea name="question" rows="10" cols="30" id="question" required/> </textarea>
+                </p>
+                <p>
+                    <input  style="margin-left:80px; margin-right:30%; background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
+                    <button formnovalidate style=" margin-left:25%; margin-right:100px; background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
 
-        </p>
-    </form>
-</fieldset>
+                </p>
+            </form>
+        </fieldset>
+    </div>
 </body>
 
 </html>
