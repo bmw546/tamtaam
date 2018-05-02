@@ -27,7 +27,6 @@ Date                    Nom             Description
 
 	<body class="inscriptionBody">
 
-
         <nav class="entete col-12">
             <img  src="HTML/image/logo.png" alt="logo"/>
             <ul>
@@ -38,8 +37,6 @@ Date                    Nom             Description
                 <li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
             </ul>
         </nav>
-
-
 
         <section class="sectionInscription col-12">
             <div class="inscriptionheader"><i>Inscription des utilisateurs</i></div>
@@ -69,7 +66,7 @@ Date                    Nom             Description
                 <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
 
                 <br>
-
+                <!-- (Remi nouvelle fonction : captcha dans Inscription) -->
                 <input class="btnInscrire btnStyle " name="inscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Annuler</button>
             </form>
