@@ -32,9 +32,10 @@ function updateMontant(prix, idQty,idMnt) {
 
 
 
-function commencer(nb){
+function commencer(valeur){
+    nb = document.getElementById((valeur)).value;
     var index;
-    for(i=0; i<=nb;i++){
+    for(i=0; i<nb;i++){
         (function(){
             var index = i;
             console.log(index);
@@ -101,6 +102,21 @@ function updateTotal(){
     //var grandtotal = (total + parseFloat(document.getElementById(("livraison")).value) )
     document.getElementById("total").value = grandtotal;
 }
-function checkadresse(adresse){
-    myRegex = /(([0-9]+)(([0-9]+)
+function checkadress(who){
+    var myRegex;
+    //myRegex = /(([0-9a-z]+):\/\/((\S)+))/i;
+    myRegex =/((([0-9]+))(\w+(\s\w+){2,})(,)(\s{0,})([a-z]{0,})(\s{0,})(,)(\s{0,})([a-z]{0,})(\s{0,})([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i;
+    var value = document.getElementById((who)).value;
+    if(myRegex.test(value)){
+    }
+    else{
+        alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
+    }
+}
+function checkadresse(who){
+    document.getElementById((who)).addEventListener("change", function(){
+        checkadress((who));
+    });
+
+
 }

@@ -26,7 +26,7 @@ Date                    Nom                 Description
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer(7)">
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer('nb'),checkadresse('adresse')">
         <header>
             <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
         </header>
@@ -34,40 +34,16 @@ Date                    Nom                 Description
         <form id="formUser" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
             <br>
             <label for="nom" style="padding-right:37px;"><b>Nom :</b></label>
-            <?php
-            require_once 'utilisateur.php';
-            session_start();
-
-            if (isset($_SESSION['utilisateur'])){
-                $usr = unserialize($_SESSION['utilisateur']);
-                $nom = $usr->getNomUtilisateur();
-                ?>
-                <input type="text" name="nom" id="nom" size="30" value="<?php echo $nom ?>" disabled="disabled"/>
-                <?php
-            }
-            else{
-                ?> <input type="text" name="nom" id="nom" size="30" required/><?php
-            }?>
+            <input type="text" name="nom" id="nom" size="30" required/>
 
             <label for="date" style="padding-left:188px;"><b>Date :</b></label>
             <input type="text" name="date" id="date"  size="30" readonly />
             <br><br>
 
             <label for="adresse"style="padding-right:17px;"><b>Adresse :</b></label>
-            <?php
-            if (isset($_SESSION['utilisateur'])) {
-                $usr = unserialize($_SESSION['utilisateur']);
-                $adr = $usr->getAdresse();  ?>
-                <input type="text" name="adresse" id="adresse" size="30" value="<?php echo $adr ?>" disabled="disabled"/>
-
-                <?php
-            }
-            else{
-                ?> <input type="text" name="adresse" id="adresse" size="30" placeholder="ex : 475 Rue du Cegep, Sherbrooke, QC J1A 4K1" required/>
-                <?php
-            }?>
-
+            <input type="text" name="adresse" id="adresse" size="30" placeholder="ex : 475 Rue du Cegep, Sherbrooke, QC J1A 4K1" required/>
             <br><br>
+
             <input type="radio" name="livraison" checked<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
             <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
             <br><br>
@@ -92,7 +68,7 @@ Date                    Nom                 Description
 
                 $query2 = "SELECT * FROM `produit`";
                 $result = $connection->execution_avec_return($query2);
-
+				echo "<input type='hidden' id='nb' value=".$nbProduit.">";
                 for ($x =0; $x < $nbProduit; $x++){
                     $produit = $result[$x];
                     $qty = "qty"."$x";
