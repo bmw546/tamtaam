@@ -1,4 +1,20 @@
 <?php
+/*****************************************************************
+Fichier : CtrlAuthentification.php
+Auteur :  Roméo Tsarafodiana-Bugeaud
+Fonctionnalité : Sert Recupérer les information du forumlaire HTML
+et de les formatter et envoyer a la fonction modifierUtilisateur
+Date : 2018-04-25
+
+Vérification :
+Date               Nom                   Approuvé
+===========================================================
+
+Historique de modifications :
+Date               Nom                   Description
+===========================================================
+
+ *****************************************************************/
 
 //va devoir exclure son propre courriel/nom d'utilisateur pour les messages d'erreurs, sinon marche pas
 require_once 'GestionnaireUtilisateur.php';
