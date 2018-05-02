@@ -12,6 +12,7 @@ Historique de modifications :
 Date                    Nom                 Description
 =========================================================
 2018-04-25              Joel Lapointe       Enlever le numéro de commande
+2018-05-02              Roméo               Ajouté les infos de l'utilisateur authentifié
 ****************************************-->
 <!DOCTYPE html>
 <html>
