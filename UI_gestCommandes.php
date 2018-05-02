@@ -19,13 +19,14 @@ Date                    Nom                 Description
         <meta charset="utf-8" />
         <title>Gestion des commandes</title>
         <script src="tamtam.js"></script>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <style>
         table, th, td {
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(Montant()),commencer(7)">
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer('nb'),checkadresse('adresse')">
         <header>
             <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
         </header>
@@ -33,14 +34,37 @@ Date                    Nom                 Description
         <form id="formUser" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
             <br>
             <label for="nom" style="padding-right:37px;"><b>Nom :</b></label>
-            <input type="text" name="nom" id="nom" size="30" required/>
+            <?php
+            require_once 'utilisateur.php';
+            session_start();
 
+            if (isset($_SESSION['utilisateur'])){
+                $usr = unserialize($_SESSION['utilisateur']);
+                $nom = $usr->getNomUtilisateur();
+                ?>
+                <input type="text" name="nom" id="nom" size="30" value="<?php echo $nom ?>" disabled="disabled"/>
+                <?php
+            }
+            else{
+                ?> <input type="text" name="nom" id="nom" size="30" required/><?php
+            }?>
             <label for="date" style="padding-left:188px;"><b>Date :</b></label>
             <input type="text" name="date" id="date"  size="30" readonly />
             <br><br>
 
             <label for="adresse"style="padding-right:17px;"><b>Adresse :</b></label>
-            <input type="text" name="adresse" id="adresse" size="30" required/>
+            <?php
+            if (isset($_SESSION['utilisateur'])) {
+                $usr = unserialize($_SESSION['utilisateur']);
+                $adr = $usr->getAdresse();  ?>
+                <input type="text" name="adresse" id="adresse" size="30" value="<?php echo $adr ?>" disabled="disabled"/>
+
+                <?php
+            }
+            else{
+            ?>      <input type="text" name="adresse" id="adresse" size="30" placeholder="ex : 475 Rue du Cegep, Sherbrooke, QC J1A 4K1" required/>
+                <?php
+            }?>
             <br><br>
 
             <input type="radio" name="livraison" checked<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
@@ -67,35 +91,41 @@ Date                    Nom                 Description
 
                 $query2 = "SELECT * FROM `produit`";
                 $result = $connection->execution_avec_return($query2);
-
+				echo "<input type='hidden' id='nb' value=".$nbProduit.">";
                 for ($x =0; $x < $nbProduit; $x++){
                     $produit = $result[$x];
                     $qty = "qty"."$x";
                     $nb = $qty."nb";
                     $mnt = "mnt"."$x";
-                    $price = number_format($produit[3],2);
+                    //$price = number_format($produit[3],2);
                     echo "<tr>";
                         echo "<td>".$produit[0]."</td>";
                         echo "<td>" .$produit[1]. "</td>" ;
                         echo "<td align='center'>" . $produit[2]. "</td>" ;
-                        echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly >  "." $"."</td>"    ;
-                        echo "<td align='center'>"."<input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
-                        echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
+                        echo "<td align='right' > <span class='argent'> <input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$produit[3] readonly > $</span> </td>";
+                        echo "<td align='center'> <input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0> </td>";
+                        echo "<td align='center'> <span class='argent'> <input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>$</span> </td>" ;
                     echo "</tr>";
                 }
                 ?>
             </table>
             <br><br>
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
-            <input  type="text" maxlength="6" size="6" id="sous_total" readonly"> </input>
+            <span class='argent'>
+                <input  type="text" maxlength="6" size="6" id="sous_total" readonly"> </input>
+            $</span>
             <br><br>
 
             <label  style="padding-right:42px;"><b>Livraison :</b></label>
-            <input  type="text" maxlength="6" size="6" id="livraison" readonly"> </input>
+            <span class='argent'>
+                   <input  type="text" maxlength="6" size="6" id="livraison" readonly"> </input>
+            $</span>
             <br><br>
 
             <label  style="padding-right:72px;"><b>Total :</b></label>
-            <input  name="montant" id="total" type="text" maxlength="6" size="6" readonly"> </input>
+            <span class='argent'>
+                <input  name="montant" id="total" type="text" maxlength="6" size="6" readonly"> </input>
+            $</span>
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
