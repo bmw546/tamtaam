@@ -32,7 +32,7 @@ if (isset($_POST['connexion'])) {
         session_start();
         $usr = $auth->getUnUtilisateur();
         $_SESSION['utilisateur'] = serialize($usr);
-        header("Location: temp_menu.php");
+        header("Location: HTML/menu.php");
 
         //pour avoir accès à la variable dans les autres pages: dans les autres pages:
         // session_start();
