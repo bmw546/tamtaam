@@ -65,28 +65,40 @@ Date                    Nom             Description
                 <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
                 <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
 
+                <br><br>
+
+                <p><img src="verif_code_gen.php" alt="Code de vérification" /></p>
                 <br>
-                <!-- (Remi nouvelle fonction : captcha dans Inscription) -->
+                <p><label>Merci de retaper le code de l'image ci-dessus</label> : <input type="text" name="verif_code" /></p>
+
                 <input class="btnInscrire btnStyle " name="inscrire" type="submit" value="S'inscrire"/>
-                <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Annuler</button>
+                <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
+
+                <div class="inscriptionFooter">
+                    <?php
+                    $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
+                        echo "<p class='redText'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
+                    }
+                    elseif (strpos($fullUrl, "emailInvalide") == true) {
+                        echo "<p class='redText'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
+                    }
+                    elseif (strpos($fullUrl, "success") == true) {
+                        echo "<p class='greenText'>". "Inscription réussie" ."</p>";
+                    }
+                    elseif (strpos($fullUrl, "mauvais") == true) {
+                        echo "<p class='redText'>". "Votre code de confirmation n'est pas bon ! Merci de réessayer." ."</p>";
+                    }
+                    elseif (strpos($fullUrl, "nothing") == true) {
+                        echo "<p class='redText'>". "Vous devez remplir le champ du code de confirmation !" ."</p>";
+                    }
+                    ?>
+                </div>
             </form>
         </section>
 
-        <footer class="inscriptionFooter">
-            <div>
-                <?php
-                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-                    echo "<p class='redText'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
-                }
-                elseif (strpos($fullUrl, "emailInvalide") == true) {
-                    echo "<p class='redText'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
-                }
-                elseif (strpos($fullUrl, "success") == true) {
-                    echo "<p class='greenText'>". "Inscription réussie" ."</p>";
-                }
-                ?>
-            </div>
+        <footer >
+
         </footer>
 	</body>
 </html>

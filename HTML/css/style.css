@@ -184,6 +184,15 @@ body {
 /* Footer */
 .inscriptionFooter {
     text-align:center;
+    margin:15px;
+}
+
+.redText {
+    color:red;
+}
+
+.greenText {
+    color:green;
 }
 
 .container {
