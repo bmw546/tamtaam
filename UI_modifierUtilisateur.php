@@ -1,21 +1,17 @@
 <!--******************************************************
-Fichier : UI_Inscription.php
-Auteur : Rémi Létourneau
-Fonctionnalité : Gestion des comptes utilisateurs
-Date : 2018-04-23
+Fichier : UI_modifierUtilisateur.php
+Auteur : Roméo
+Fonctionnalité : Modifier les infos d'un utilisateur authentifié
+Date : 2018-05-02
 
 Vérification :
 Date                Nom 		          Approuvé
 =========================================================
-2018-04-29          Joel Lapointe         Oui
 
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
-2018-04-25				Roméo            Modifié textfield pour password pour les champs mot de passe
-2018-04-29				Roméo 		     Rajouté les messages d'erreurs/succès
-2018-04-30             Rémi             Rajout lien avec css, ajout de style css
-2018-05-01             Rémi             Modification style css
+
 ***********************************************************-->
 <html>
 <head>
@@ -45,12 +41,12 @@ Date                    Nom             Description
         <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
         <?php
         if (isset($_SESSION['utilisateur'])){
-                $usr = unserialize($_SESSION['utilisateur']);
-                $nom = $usr->getNomUtilisateur();
-                $adr = $usr->getAdresse();
-                $email = $usr->getEmail();
-                $tel = $usr->getTelephone();
-                $passwd = $usr->getMotDePasse(); ?>
+        $usr = unserialize($_SESSION['utilisateur']);
+        $nom = $usr->getNomUtilisateur();
+        $adr = $usr->getAdresse();
+        $email = $usr->getEmail();
+        $tel = $usr->getTelephone();
+        $passwd = $usr->getMotDePasse(); ?>
 
         <input class="" type="text" name="user" id="user" size="30" value="<?php echo $nom ?>"/>
 

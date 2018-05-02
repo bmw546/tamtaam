@@ -24,6 +24,7 @@ un utilisateur a la BD. (Erreur avec propriété résolue)
 2018-04-26    Rémi Létourneau          Corrigé l'éxécution du code sql et ajout de commentaire.
 2018-04-29    Roméo                    Modification de la méthode ajouterUtilisateur pour valider si
 le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
+2018-05-02    Roméo                    Ajout méthode modifierUtilisateur
  ***********************************************************************************************/
 require_once 'Utilisateur.php';
 require_once 'GestionnaireCourriel.php';
