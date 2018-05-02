@@ -47,7 +47,7 @@ Date                    Nom             Description
 
                 <br><br>
                 <label class="label" for="adresse" ><b>Adresse :</b></label>
-                <input class="" type="text" name="adresse" id="adresse" size="30" required/>
+                <input class="" type="text" name="adresse" id="adresse" onblur="checkadress('adresse')" size="30" required/>
 
                 <br><br>
                 <label class="label" for="email" ><b>E-mail :</b></label>
@@ -102,3 +102,17 @@ Date                    Nom             Description
         </footer>
 	</body>
 </html>
+
+<script>
+    function checkadress(who){
+        var myRegex;
+        myRegex = /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(\s{0,})([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i;
+
+        var value = document.getElementById((who)).value;
+        if(myRegex.test(value)){
+        }
+        else{
+            alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
+        }
+    }
+</script>

@@ -176,6 +176,7 @@ li a:hover {
 
 .label{
     display: inline-block;
+    text-align: left;
     min-width: 199px;
 }
 
