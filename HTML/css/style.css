@@ -170,15 +170,23 @@ body {
 
 .container {
     width: 100%;
-    height: 10%;
 }
 
 /* resize images */
 .container img {
-    width: 100%;
-    height: auto;
-}
+	
+	overflow: hidden;
+    display: block;
+	height:517px;
 
+}
+.central{
+    transition-duration: 2s;
+}
+.central:hover{
+	transition-duration: 2s;
+	transform: scale(1.25);
+}
 
 /****** Section Responsive *******/
 [class*="col-"] {
