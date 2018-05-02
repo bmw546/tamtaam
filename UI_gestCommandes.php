@@ -19,13 +19,14 @@ Date                    Nom                 Description
         <meta charset="utf-8" />
         <title>Gestion des commandes</title>
         <script src="tamtam.js"></script>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <style>
         table, th, td {
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(Montant()),commencer(7)">
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer(7)">
         <header>
             <h1 style="text-align:center;"><i>Gestion des commandes</i></h1>
         </header>
@@ -73,29 +74,35 @@ Date                    Nom                 Description
                     $qty = "qty"."$x";
                     $nb = $qty."nb";
                     $mnt = "mnt"."$x";
-                    $price = number_format($produit[3],2);
+                    //$price = number_format($produit[3],2);
                     echo "<tr>";
                         echo "<td>".$produit[0]."</td>";
                         echo "<td>" .$produit[1]. "</td>" ;
                         echo "<td align='center'>" . $produit[2]. "</td>" ;
-                        echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly >  "." $"."</td>"    ;
-                        echo "<td align='center'>"."<input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
-                        echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
+                        echo "<td align='right' > <span class='argent'> <input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$produit[3] readonly > $</span> </td>";
+                        echo "<td align='center'> <input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0> </td>";
+                        echo "<td align='center'> <span class='argent'> <input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>$</span> </td>" ;
                     echo "</tr>";
                 }
                 ?>
             </table>
             <br><br>
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
-            <input  type="text" maxlength="6" size="6" id="sous_total" readonly"> </input>
+            <span class='argent'>
+                <input  type="text" maxlength="6" size="6" id="sous_total" readonly"> </input>
+            $</span>
             <br><br>
 
             <label  style="padding-right:42px;"><b>Livraison :</b></label>
-            <input  type="text" maxlength="6" size="6" id="livraison" readonly"> </input>
+            <span class='argent'>
+                   <input  type="text" maxlength="6" size="6" id="livraison" readonly"> </input>
+            $</span>
             <br><br>
 
             <label  style="padding-right:72px;"><b>Total :</b></label>
-            <input  name="montant" id="total" type="text" maxlength="6" size="6" readonly"> </input>
+            <span class='argent'>
+                <input  name="montant" id="total" type="text" maxlength="6" size="6" readonly"> </input>
+            $</span>
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>

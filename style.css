@@ -168,7 +168,12 @@ body {
     text-align:center;
 }
 
-
+.argent {
+    border: 1px inset #ccc;
+}
+.argent input {
+    border: 0;
+}
 
 /****** Section Responsive *******/
 [class*="col-"] {
