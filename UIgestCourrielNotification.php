@@ -39,6 +39,10 @@ Date                    Nom             Description
         </header>
 
         <form class="centerForm formInscription adapt"  action="CtrlCourrielNotification.php" method="post" style="padding:20px; border:solid black;">
+            <?php
+                $id_client = $_POST['id_client'];
+                echo '<input type="hidden" name="id_client" id="id_client" value="$id_client">';
+            ?>
             <br>
             <label for="email" style="padding-right:122px;"><b>Courriel :</b></label>
             <input type="text" name="email" id="email" size="30" required/>
@@ -61,15 +65,22 @@ Date                    Nom             Description
 
             <br><br>
             <label ><b>Type de notification :</b></label>
-            <input style="margin-left:89px;" type="checkbox" name="type" value="1" required/>Nouvelles et nouveautés <br>
-            <input style="margin-left:238px;" type="checkbox" name="type" value="2" required/>Réception de commande <br>
-            <input style="margin-left:238px;" type="checkbox" name="type" value="3" required/>Changement sur l'état de la livraison
+            <input style="margin-left:89px;" type="checkbox" name="type" value="1" id="nouveau" required/>Nouvelles et nouveautés <br>
+            <input style="margin-left:238px;" type="checkbox" name="type" value="2" id="reception" required/>Réception de commande <br>
+            <input style="margin-left:238px;" type="checkbox" name="type" value="3" id="etat" required/>Changement sur l'état de la livraison
 
 
 
             <br><br>
             <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="modifier" type="submit" value="Modifier"/>
             <button style="background-color:black; color:white; border-color:black;" type="reset" name="cancel" value="Annuler">Annuler</button>
+        </form>
+        <form class="centerForm formInscription adapt"  action="HTML/menu.php" method="post" style="padding:20px; border:solid black;">
+            <?php
+            $id_client = $_POST['id_client'];
+            echo '<input type="hidden" name="id_client" id="id_client" value="$id_client">';
+            ?>
+            <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="modifier" type="submit" value="Retour au menu"/>
         </form>
     </body>
 </html>

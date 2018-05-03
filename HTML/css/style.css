@@ -119,6 +119,9 @@ float:left;
 .backgroudgrey{
 	background-color: #292929 ;
 }	
+.white{
+	background-color: white ;
+}	
 ul a{
     color:white;
     text-decoration: none;
@@ -176,7 +179,6 @@ li a:hover {
 
 .label{
     display: inline-block;
-    text-align: left;
     min-width: 199px;
 }
 
