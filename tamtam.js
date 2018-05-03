@@ -118,22 +118,23 @@ function test(){
     });
 }
 
-function loadFormat(){
-    var dropDown = document.getElementById("listeProduit");
-    var produit = dropDown.options[dropDown.selectedIndex].value;
-
+function loadFormat(obj){
+    var produit = obj.value;
 
     $.ajax({
         type: 'POST',
         url: 'getFormat.php',
-        //data: {"produitId":produitId},
+        data: {prod:produit},
         dataType: 'json',
-        success:function(json){
-            var HTML = "";
-            $.each(json,function(i,value){
-                HTML = HTML+"<option>"+value+"</option>";
-            });
-            $('#selectSt').append(HTML);
+        success:function(response){
+            var len = response.length;
+
+            $("#format").empty();
+
+            for (var i = 0; i<len ; i++){
+                var nom = response[i][0];
+                $("#format").append("<option value='"+i+"'>"+nom+"</option>");
+            }
         }
     });
 }
@@ -154,7 +155,7 @@ function ajouterLigne(tblCommandes,array_produit){
 
     for (var i = 0;i < array_produit.length;i++){
         var option2 = document.createElement("option");
-        option2.value=i;
+        option2.value='i';
         option2.innerHTML = array_produit[i][0];
         element1.appendChild(option2);
     }
@@ -208,4 +209,16 @@ function ajouterLigne(tblCommandes,array_produit){
 }
 
 
+function check(who, label, myRegex){
 
+    var value;
+    value = document.getElementById((who)).value;
+    if(!myRegex.test(value)){
+        document.getElementById(label).style.color = 'red';
+        document.getElementById(who).select();
+        //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
+    }
+    else{
+        document.getElementById(label).style.color = 'black';
+    }
+}

@@ -41,7 +41,7 @@ Date                    Nom                 Description
             <br><br>
 
             <label for="adresse"style="padding-right:17px;"><b>Adresse :</b></label>
-            <input type="text" name="adresse" id="adresse" size="30" required/>
+            <input type="text" name="adresse" id="adresse" size="50" required/>
             <br><br>
 
             <input type="radio" name="livraison" checked<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
@@ -63,7 +63,7 @@ Date                    Nom                 Description
                 <?php
                 require_once 'MoteurRequeteBD.php';
                     echo "<tr>
-                        <td><select name=listeProduit id=listeProduit onchange='loadFormat()'>
+                        <td><select name=listeProduit id=listeProduit onchange='loadFormat(this)'>
                         <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
@@ -92,12 +92,9 @@ Date                    Nom                 Description
                 $query = ""
                 ?>
             </table>
-                <div class="control-group">
-                    <div id="produit"class="controls">
-                        <input type="combobox" name="produit[]">
-                    </div>
-                    <input type="button" id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne('tblCommandes',array_produit)">Ajouter un produit </input>
-                </div>
+
+            <input type="button" id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne('tblCommandes',array_produit)">Ajouter un produit </input>
+
 
 <!--                --><?php ////Code php pour charger les produits de la BD
 //                require_once 'MoteurRequeteBD.php';

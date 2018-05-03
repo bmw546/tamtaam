@@ -1,7 +1,7 @@
 <?php
 require_once 'MoteurRequeteBD.php';
 
-    $nomProduit = $_POST['produit'];
+    $nomProduit = $_POST['prod'];
     $connection = new Connexion();
     $query  = "SELECT description FROM 'produit' WHERE  nom = '".$nomProduit."'";
     $result = $connection->execution_avec_return($query);
