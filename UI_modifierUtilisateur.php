@@ -38,41 +38,44 @@ Date                    Nom             Description
     <div class="inscriptionheader"><i>Modifier votre compte</i></div>
     <form class="centerForm formInscription" action="CtrlModifierUtilisateur.php" method="post">
         <br>
-        <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
         <?php
+        require_once 'utilisateur.php';
+        session_start();
         if (isset($_SESSION['utilisateur'])){
-        $usr = unserialize($_SESSION['utilisateur']);
-        $nom = $usr->getNomUtilisateur();
-        $adr = $usr->getAdresse();
-        $email = $usr->getEmail();
-        $tel = $usr->getTelephone();
-        $passwd = $usr->getMotDePasse(); ?>
+            $usr = unserialize($_SESSION['utilisateur']);
+            $nom = $usr->getNomUtilisateur();
+            $adr = $usr->getAdresse();
+            $email = $usr->getEmail();
+            $tel = $usr->getTelephone();
+            $passwd = $usr->getMotDePasse(); ?>
 
-        <input class="" type="text" name="user" id="user" size="30" value="<?php echo $nom ?>"/>
+            <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
+            <input class="" required type="text" name="user" id="user" size="30" value="<?php echo $nom ?>"/>
 
-        <br><br>
-        <label class="label" for="adresse" ><b>Adresse :</b></label>
-        <input class="" type="text" name="adresse" id="adresse" size="30"  value="<?php echo $adr ?>"/>
+            <br><br>
+            <label class="label" for="adresse" ><b>Adresse :</b></label>
+            <input class="" required type="text" name="adresse" id="adresse" size="30"  value="<?php echo $adr ?>"/>
 
-        <br><br>
-        <label class="label" for="email" ><b>E-mail :</b></label>
-        <input class="" type="text" name="email" id="email" size="30"  value="<?php echo $email ?>"/>
+            <br><br>
+            <label class="label" for="email" ><b>E-mail :</b></label>
+            <input class="" required type="text" name="email" id="email" size="30"  value="<?php echo $email ?>"/>
 
-        <br><br>
-        <label class="label" for="noTelephone" ><b>Numéro de téléphone :</b></label>
-        <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30"  value="<?php echo $tel ?>"/>
+            <br><br>
+            <label class="label" for="noTelephone" ><b>Numéro de téléphone :</b></label>
+            <input class="" required type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30"  value="<?php echo $tel ?>"/>
 
-        <br><br>
-        <label class="label" for="passwd" ><b>Mot de passe :</b></label>
-        <input class="" type="password" name="passwd" id="passwd" size="30"  value="<?php echo $passwd ?>">
+            <br><br>
+            <label class="label" for="passwd" ><b>Mot de passe :</b></label>
+            <input class="" required type="password" name="passwd" id="passwd" size="30"  value="<?php echo $passwd ?>">
 
-        <br><br>
-        <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
-        <input class="" type="password" name="confirmer" id="confirmer" size="30" value="<?php echo $passwd; }?> required/>
+            <br><br>
+            <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
+            <input class="" required type="password" name="confirmer" id="confirmer" size="30" value="<?php echo $passwd; ?>"
 
-        <br>
-        <!-- (Remi nouvelle fonction : captcha dans Inscription) -->
-        <input class="btnInscrire btnStyle " name="Modifier" type="submit" value="Modifier"/>
+            <br><br>
+            <!-- (Remi nouvelle fonction : captcha dans Inscription) -->
+            <input class="btnInscrire btnStyle " name="modifier" type="submit" value="Modifier"/>
+        <?php }else{echo "Vous n'êtes pas connecté"; echo "<br>";} ?>
         <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Annuler</button>
     </form>
 </section>
