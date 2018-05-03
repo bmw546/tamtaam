@@ -14,8 +14,8 @@ Historique de modifications :
 Date          Nom             			Description
 =========================================================
 2018-04-24	  Rémi Létourneau	 		Modification de la classe.
-Ajout des instructions pour ajouter
-un utilisateur a la BD. (Erreur avec propriété résolue)
+                                       Ajout des instructions pour ajouter
+                                       un utilisateur a la BD. (Erreur avec propriété résolue)
 2018-04-25    Rémi Létourneau  			Ajout des pré et post conditions
 2018-04-25    Roméo 					Ajout du constructeur sans paramètre
 2018-04-25    Roméo 					Ajout de fonctions getters et setters des 3 variables
@@ -23,8 +23,9 @@ un utilisateur a la BD. (Erreur avec propriété résolue)
 2018-04-25    Roméo 					Ajout de mot de passe/ nom d'utilisateur oublié
 2018-04-26    Rémi Létourneau          Corrigé l'éxécution du code sql et ajout de commentaire.
 2018-04-29    Roméo                    Modification de la méthode ajouterUtilisateur pour valider si
-le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
+                                       le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
 2018-05-02    Roméo                    Ajout méthode modifierUtilisateur
+2018-05-02    Rémi                     Dans fonction modifier, Ajout requete select nom et email.
  ***********************************************************************************************/
 require_once 'Utilisateur.php';
 require_once 'GestionnaireCourriel.php';
@@ -151,18 +152,28 @@ class GestionnaireUtilisateur {
             }
         }
     }
+
+    /**
+     * Modifie les infos d'un utilisateur
+     * @param $nom_utilisateur String le nom d'utilisateur a modifier
+     * @param $email String l'adresse mail a modifier
+     */
     public function modifier($nom_utilisateur, $email)
     {
         //si on change le nom d'utilisateur
         if ($this->getUnUtilisateur()->getNomUtilisateur() != $nom_utilisateur ) {
+
+            $query = "SELECT * FROM client WHERE nom_utilisateur = '$nom_utilisateur'";
+            $result = $this->connexion->execution_avec_return($query);
+
             //si le nom d'utilisateur est déja dans la bd
-            if () {
+            if (sizeof($result) > 0) {
                 //message d'erreur
                 $this->setEtat("nomUtilisateurInvalide");
                 return;
             } else {
                 //changer le nom d'utilisateur dans la bd
-                //...
+                //TODO requete update nom utilisateur...
                 //changer le nom d'utilisateur dans l'objet
                 $this->getUnUtilisateur()->setNomUtilisateur($nom_utilisateur);
             }
@@ -171,21 +182,24 @@ class GestionnaireUtilisateur {
         //si on change d'email
         if ($this->getUnUtilisateur()->getEmail() != $email){
 
+            $query = "SELECT * FROM client WHERE adresse_email = '$email'";
+            $result = $this->connexion->execution_avec_return($query);
+
             //si l'email est déja dans la bd
-            if (){
+            if (sizeof($result) > 0){
                 $this->setEtat("emailInvalide");
                 return;
             }
             else{
                 //changer l'email dans la bd
-                //...
+                //TODO Requete UPDATE email...
                 //changer l'email dans l'objet
                 $this->getUnUtilisateur()->setEmail($email);
             }
         }
         $this->setEtat("success");
-        //changer les autres infos
     }
+
     /**
      * Connecte un utilisateur avec un nom et un mot de passe
      */
