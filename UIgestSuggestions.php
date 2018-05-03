@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--/****************************************************************************
 Fichier : UIgestSuggestions.php
 Auteur : Marc-Étienne Pépin
@@ -21,25 +21,25 @@ Date               Nom                   Description
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Formulaire &eacute;leve</title>
+    <title>Commentaire et inscription</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="inscriptionBody" onload="updateDate(dateAujourdhui())">
-    <nav class="entete col-12">
+    <nav class="entete col-12 col-t-12">
         <img  src="image/logo.png" alt="logo"/>
         <ul>
-            <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
-            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
-            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
-            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
-            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
+            <li class="menu ccol-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/">Accueil</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
         </ul>
     </nav>
-    <div style="width:980px; margin:auto" >
+    <div>
         <header class="inscriptionheader" >
             <h1 style="text-align:center;"><i>Commentaire et inscription</i></h1>
         </header>
-        <fieldset>
+        <fieldset class="adapt">
 
             <form  class="centerForm formInscription"  action="CtrlSuggestions.php" method="post">
                 <br>
@@ -88,8 +88,8 @@ Date               Nom                   Description
                 <textarea name="question" rows="10" cols="30" id="question" required/> </textarea>
                 </p>
                 <p>
-                    <input  style="margin-left:80px; margin-right:30%; background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
-                    <button formnovalidate style=" margin-left:25%; margin-right:100px; background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
+                    <input  class="label" style=" background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
+                    <button formnovalidate class="label" style="  background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
 
                 </p>
             </form>
