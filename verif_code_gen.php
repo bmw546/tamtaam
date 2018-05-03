@@ -1,5 +1,15 @@
 <?php
+/*************************************************************************
+Fichier : verif_code_gen.php
+Auteur :  Rémi Létourneau
+But : Créer l'image pour le captcha (nouvelle fonctionnalité)
+Date : 2018-05-02
 
+Vérification :
+Date                    Nom 		    Approuvé
+=========================================================
+
+ *************************************************************************/
 session_start();
 
 $nbr_chiffres = 6;

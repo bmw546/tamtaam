@@ -8,11 +8,11 @@ Date : 2018-04-23
 Vérification :
 Date                    Nom 		    Approuvé
 =========================================================
-2018-04-29							Roméo        Oui
+2018-04-29				Roméo        Oui
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
-2018-04-29							Roméo           Ajouté l'envoie de messages d'erreurs/succès
+2018-04-29			    Roméo           Ajouté l'envoie de messages d'erreurs/succès
 ***********************************************/
 require_once 'GestionnaireUtilisateur.php';
 
@@ -36,7 +36,5 @@ if (isset($_POST['inscrire'])) {
         $msg = 'nothing';
         header("Location: UI_Inscription.php?$msg");
     }
-
-
 }
 ?>

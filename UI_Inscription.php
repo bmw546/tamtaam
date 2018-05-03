@@ -16,6 +16,7 @@ Date                    Nom             Description
 2018-04-29				Roméo 		     Rajouté les messages d'erreurs/succès
 2018-04-30             Rémi             Rajout lien avec css, ajout de style css
 2018-05-01             Rémi             Modification style css
+2018-05-02             Rémi             Ajout nouvelle fonctionnalité (captcha)
 2018-05-03             Rémi             Ajout javascript temporaire pour valider les regex.
 ******************************************************************************************************-->
 <html>
@@ -42,6 +43,7 @@ Date                    Nom             Description
         <section class="sectionInscription col-12">
             <div class="inscriptionheader"><i>Inscription des utilisateurs</i></div>
             <form  class="centerForm formInscription" action="CtrlInscription.php" method="post">
+                <!--------------------------Informations du client------------------------>
                 <br>
                 <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
                 <input class="" type="text" name="user" id="user" size="30" required/>
@@ -61,6 +63,7 @@ Date                    Nom             Description
                 <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required
                        onblur="check('noTelephone', 'lNoTelephone', /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/)"/>
 
+                <!-----------------------------Champs Mot de passe et confirmation----------------------->
                 <br><br>
                 <label class="label" for="passwd" ><b>Mot de passe :</b></label>
                 <input class="" type="password" name="passwd" id="passwd" size="30" required/>
@@ -69,16 +72,19 @@ Date                    Nom             Description
                 <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
                 <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
                 <br><br>
+
                 <!-------------------- Validation anti-robot captcha------------------------------>
                 <p><img src="verif_code_gen.php" alt="Code de vérification" /></p>
                 <br>
                 <label for="verif_code">Merci de retaper le code de l'image ci-dessus :</label>
                 <input type="text" name="verif_code" id="verif_code"/>
                 <br><br>
-                <!-------------------------------------------------------------------------------->
+
+                <!-------------------------------Bouton inscrire et annuler ------------------------>
                 <input class="btnInscrire btnStyle " name="inscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
 
+                <!-- message qui indique l'état de l'inscription -->
                 <div class="inscriptionFooter">
                     <?php
                     $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -101,10 +107,6 @@ Date                    Nom             Description
                 </div>
             </form>
         </section>
-
-        <footer >
-
-        </footer>
 	</body>
 </html>
 
