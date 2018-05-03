@@ -18,9 +18,11 @@ Date               Nom                   Description
  *****************************************************************/
 include("GestionnaireCourrielNotification.php");
     $Email = new CourrielNotification();
-    $courriel = $_POST['email'];
-    $telephone = $_POST['noTelephone'];
+    $id_client = $_POST['id_client'];
     $sms = $_POST['sms'];
     $notification = $_POST['notification'];
-    $Email->chercher_si_existe($courriel,$telephone,$sms,$notification);
+    $nouveau = $_POST['nouveau'];
+    $reception = $_POST['reception'];
+    $etat = $_POST['etat'];
+    $Email->chercher_si_existe($id_client,$sms,$notification,$nouveau,$reception,$etat);
 ?>

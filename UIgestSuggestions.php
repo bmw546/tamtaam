@@ -25,9 +25,9 @@ Date               Nom                   Description
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="inscriptionBody" onload="updateDate(dateAujourdhui())">
-    <nav class="entete col-12 col-t-12">
+    <nav >
         <img  src="image/logo.png" alt="logo"/>
-        <ul>
+        <ul class="entete col-12 col-t-12">
             <li class="menu ccol-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/">Accueil</a></li>
             <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
             <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
