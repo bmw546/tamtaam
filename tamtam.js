@@ -119,7 +119,7 @@ function test(){
 }
 
 function loadFormat(obj){
-    var produit = obj.value;
+    var produit = $(this).val();
 
     $.ajax({
         type: 'POST',
