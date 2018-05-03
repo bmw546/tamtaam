@@ -26,9 +26,7 @@ Date                    Nom                 Description
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),test()">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="tamtam.js"></script>
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui())">
     <header>
             <h1 style="text-align:center;"><i>Placer une commande</i></h1>
         </header>
@@ -97,7 +95,7 @@ Date                    Nom                 Description
                     <div id="produit"class="controls">
                         <input type="combobox" name="produit[]">
                     </div>
-                    <button id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne(tblCommandes)">Ajouter un produit</button>
+                    <input type="button" id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne('tblCommandes')">Ajouter un produit </input>
                 </div>
 
 <!--                --><?php ////Code php pour charger les produits de la BD

@@ -31,20 +31,24 @@ function updateMontant(prix, idQty,idMnt) {
 }
 
 function commencer(nb){
-    var index;
-    for(i=0; i<=nb;i++){
-        (function(){
-            var index = i;
-            console.log(index);
-            document.getElementById(("qty"+index)).addEventListener("click", function(){
-                clic((index));
-            });
-            document.getElementById(("qty"+index)).addEventListener("change", function(){
-                clic((index));
-            });
-            // Ajouter un EventListener sur chaque case qui appel la méthode clic et lui passe en paramètre l'index de la case
-        }());
-    }
+    document.getElementById(('tblCommandes')).addEventListener("click", function(){
+        ajouterLigne();
+    });
+//     var index;
+//     for(i=0; i<=nb;i++){
+//         (function(){
+//             var index = i;
+//             console.log(index);
+//             document.getElementById(("qty"+index)).addEventListener("click", function(){
+//                 clic((index));
+//             });
+//             document.getElementById(("qty"+index)).addEventListener("change", function(){
+//                 clic((index));
+//             });
+//
+//             // Ajouter un EventListener sur chaque case qui appel la méthode clic et lui passe en paramètre l'index de la case
+//         }());
+//     }
 }
 
 function clic (n) {
@@ -131,17 +135,19 @@ function loadFormat(){
     });
 }
 
-function ajouterLigne(tblCOmmande){
-    var table = document.getElementById(tblCOmmande);
+function ajouterLigne(tblCommandes){
+    var table = document.getElementById(tblCommandes);
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
     var cell1 = row.insertCell(0);
     var element1 = document.createElement("select");
     var option1 = document.createElement("option");
+    option1.value="1";
     option1.innerHTML= "--Choisir un produit--";
     option1.selected;
     option1.disabled;
+    element1.appendChild(option1);
     cell1.appendChild(element1);
 
 
