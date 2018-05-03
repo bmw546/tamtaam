@@ -113,3 +113,39 @@ function test(){
         $("#nouvProduit").append(elem).append(removeLink);
     });
 }
+
+function loadFormat(){
+    var dropDown = document.getElementById("listeProduit");
+    var produitId = dropDown.options[dropDown.selectedIndex].value;
+    $.ajax({
+        type: 'POST',
+        url: 'getFormat.php',
+        data: {"produitId":produitId},
+        dataType: 'json',
+        success:function(response){
+            var opts = $.parseJSON(data);
+            $.each(opts,function(i,d){
+                $
+            });
+        }
+    });
+}
+
+function ajouterLigne(tblCOmmande){
+    var table = document.getElementById(tblCOmmande);
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+
+    var cell1 = row.insertCell(0);
+    var element1 = document.createElement("select");
+    var option1 = document.createElement("option");
+    option1.innerHTML= "--Choisir un produit--";
+    option1.selected;
+    option1.disabled;
+    cell1.appendChild(element1);
+
+
+
+
+}
+

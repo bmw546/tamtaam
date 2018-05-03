@@ -18,17 +18,18 @@ Date                    Nom                 Description
     <head>
         <meta charset="utf-8" />
         <title>Gestion des commandes</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="tamtam.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <style>
         table, th, td {
             border: 1px solid black;
         }
     </style>
-    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),valeur(),updateTotal(),commencer(7),test()">
-        <header>
+    <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui()),test()">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="tamtam.js"></script>
+    <header>
             <h1 style="text-align:center;"><i>Placer une commande</i></h1>
         </header>
 
@@ -51,19 +52,20 @@ Date                    Nom                 Description
 
 
 
-            <table  style="width:60%">
+            <table  id='tblCommandes' style="width:60%">
                 <tr>
                     <th>Nom</th>
                     <th>Format</th>
                     <th>Prix Unitaire</th>
                     <th>Quantité</th>
                     <th>Montant</th>
+                    <th></th>
                 </tr>
 
                 <?php
                 require_once 'MoteurRequeteBD.php';
                     echo "<tr>
-                        <td><select name=listProduit id=listProduit>
+                        <td><select name=listeProduit id=listeProduit onchange='loadFormat()'>
                         <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
@@ -72,25 +74,22 @@ Date                    Nom                 Description
 
                     $i=0;
                     foreach ($result as $rs){
-                        echo $rs[0] . "</br>";
                         echo "<option value='$i'>$rs[0]</option>";
                     }
                     echo "</select></td>";
 
-                    echo "<script>
-                            function showFormat(str){
-                                var xhttp;
-                                if(str=\"\"{
-                                document.getElementById()
-                            }";
-
-
 
                     echo "<td><select name=format id='format'>
                               <option disabled selected>--Choisir un format-- </option></select>";
+
+
+
+
+
                     echo "<td align='right' ><input type=\"text\" maxlength=\"2\"  size=\"2\" value=0 readonly>$"."</td>";
                     echo "<td align='center'><input type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
                     echo "<td align='center'><input type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
+                    echo "<td align='center'> <button>Supprimer</button>";
                 $query = ""
                 ?>
             </table>
@@ -98,7 +97,7 @@ Date                    Nom                 Description
                     <div id="produit"class="controls">
                         <input type="combobox" name="produit[]">
                     </div>
-                    <a id="nouvProduit">Ajouter un produit</a>
+                    <button id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne(tblCommandes)">Ajouter un produit</button>
                 </div>
 
 <!--                --><?php ////Code php pour charger les produits de la BD
