@@ -48,15 +48,18 @@ Date                    Nom             Description
 
                 <br><br>
                 <label class="label" for="adresse" id="lAdresse"><b>Adresse :</b></label>
-                <input class="" type="text" name="adresse" id="adresse" size="30" required onblur="check('adresse')"/>
+                <input class="" type="text" name="adresse" id="adresse" size="30" required
+                       onblur="check('adresse', 'lAdresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(\s{0,})([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
 
                 <br><br>
                 <label class="label" for="email" id="lemail"><b>E-mail :</b></label>
-                <input class="" type="text" name="email" id="email" size="30" required  onblur="check('email')"/>
+                <input class="" type="text" name="email" id="email" size="30" required
+                       onblur="check('email', 'lemail', /([a-z0-9\.-_]+)@([a-z0-9]+)\.([a-z]{2,})|(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/i)"/>
 
                 <br><br>
                 <label class="label" for="noTelephone" id="lNoTelephone"><b>Numéro de téléphone :</b></label>
-                <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required onblur="check('noTelephone')"/>
+                <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required
+                       onblur="check('noTelephone', 'lNoTelephone', /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/)"/>
 
                 <br><br>
                 <label class="label" for="passwd" ><b>Mot de passe :</b></label>
@@ -106,51 +109,25 @@ Date                    Nom             Description
 </html>
 
 <script>
-    //peut être simplifier en mettant en parametre : (who, label et regex)
+    //pour utiliser dans le formuliare :
+    //onblur="check('noTelephone', 'lNoTelephone', /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/)"
     /**
      * valide les informations des champs d'un formulaire
      * @param who string  le nom de l'id du champ
+     * @param label l'étiquette associé au champs
+     * @param myRegex l'expression regex pour valider un champ
      */
-    function check(who){
-        var myRegex;
+    function check(who, label, myRegex){
+
         var value;
-
-        if(who === 'adresse'){
-
-            myRegex = /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(\s{0,})([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i;
-            value = document.getElementById((who)).value;
-            if(!myRegex.test(value)){
-                document.getElementById('lAdresse').style.color = 'red';
-                document.getElementById('adresse').select();
-                //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
-            }
-            else{
-                document.getElementById('lAdresse').style.color = 'black';
-            }
+        value = document.getElementById((who)).value;
+        if(!myRegex.test(value)){
+            document.getElementById(label).style.color = 'red';
+            document.getElementById(who).select();
+            //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
         }
-        else if (who === 'email'){
-
-            myRegex = /([a-z0-9\.-_]+)@([a-z0-9]+)\.([a-z]{2,})|(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/i;
-            value = document.getElementById((who)).value;
-            if(!myRegex.test(value)){
-                document.getElementById('lemail').style.color = 'red';
-                document.getElementById('email').select();
-                //alert("ERREUR l'email contient des informations invalides :"+ value +" nom@hotmail.com");
-            }else{
-                document.getElementById('lemail').style.color = 'black';
-            }
-        }
-        else if (who === 'noTelephone'){
-
-            myRegex = /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/;
-            value = document.getElementById((who)).value;
-            if(!myRegex.test(value)){
-                document.getElementById('lNoTelephone').style.color = 'red';
-                document.getElementById('noTelephone').select();
-                //alert("ERREUR l'email contient des informations invalides :"+ value +" nom@hotmail.com");
-            }else{
-                document.getElementById('lNoTelephone').style.color = 'black';
-            }
+        else{
+            document.getElementById(label).style.color = 'black';
         }
     }
 </script>
