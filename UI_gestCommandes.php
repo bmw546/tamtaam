@@ -62,9 +62,9 @@ Date                    Nom                 Description
 
                 <?php
                 require_once 'MoteurRequeteBD.php';
-                echo "<tr>";
-                    echo "<td><select name=listProduit id=listProduit>";
-                    echo "<option disabled selected>--Choisir un produit--</option>";
+                    echo "<tr>
+                        <td><select name=listProduit id=listProduit>
+                        <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
                     $query  = "SELECT DISTINCT  nom FROM `produit` ORDER BY nom";
@@ -77,9 +77,18 @@ Date                    Nom                 Description
                     }
                     echo "</select></td>";
 
+                    echo "<script>
+                            function showFormat(str){
+                                var xhttp;
+                                if(str=\"\"{
+                                document.getElementById()
+                            }";
+
+
+
                     echo "<td><select name=format id='format'>
                               <option disabled selected>--Choisir un format-- </option></select>";
-                    echo "<td align='right' ><input type=\"text\" maxlength=\"2\"  size=\"2\" value=0 readonly>$"."</td>"    ;
+                    echo "<td align='right' ><input type=\"text\" maxlength=\"2\"  size=\"2\" value=0 readonly>$"."</td>";
                     echo "<td align='center'><input type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
                     echo "<td align='center'><input type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
                 $query = ""
