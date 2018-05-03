@@ -75,5 +75,12 @@ Date                    Nom             Description
             <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="modifier" type="submit" value="Modifier"/>
             <button style="background-color:black; color:white; border-color:black;" type="reset" name="cancel" value="Annuler">Annuler</button>
         </form>
+        <form class="centerForm formInscription adapt"  action="HTML/menu.php" method="post" style="padding:20px; border:solid black;">
+            <?php
+            $id_client = $_POST['id_client'];
+            echo '<input type="hidden" name="id_client" id="id_client" value="$id_client">';
+            ?>
+            <input  style="margin-left:80px; margin-right:100px; background-color:black; color:white; border-color:black;" name="modifier" type="submit" value="Retour au menu"/>
+        </form>
     </body>
 </html>
