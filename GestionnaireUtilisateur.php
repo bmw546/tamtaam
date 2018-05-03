@@ -76,6 +76,8 @@ class GestionnaireUtilisateur {
         $this->unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
     }
 
+
+
     /**
      * modifier l'utilisateur
      * @param $unUtilisateur  l'utilisateur
@@ -246,6 +248,10 @@ class GestionnaireUtilisateur {
                     //ajoute les infos de l'utilisateur dans la propriété Utilisateur
                     $this->unUtilisateur->setInfosUtilisateur($row["nom_utilisateur"], $row["mot_de_passe"],
                         $row["adresse_email"], $row["adresse"], $row["telephone"]);
+
+                    //set l'id de l'utilisateur
+                    $this->unUtilisateur->setId($row["id_client"]);
+
                 }
 
             }

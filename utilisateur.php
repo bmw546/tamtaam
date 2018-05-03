@@ -21,6 +21,7 @@
 
 class Utilisateur {
 
+	private $id;
 	private $nom_utilisateur;
 	private $mot_de_passe;
 	private $email;
@@ -54,6 +55,27 @@ class Utilisateur {
 		$this->setTelephone($telephone);
 	}
 
+
+    /**
+     * modifier l'id de l'utilisateur
+     * @param $id
+     *(Precondition: $id > 0)
+     *(Postcondition: $this->id == $id)
+     */
+    public  function setId($id){
+
+        $this->id = $id;
+    }
+
+    /**
+     * Retourne l'id
+     * (Precondition: $this->id > 0)
+     * (Postcondition: getId() == $this->id)
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
 	/**
 	 * Modifie les infos d'un utilisateur
