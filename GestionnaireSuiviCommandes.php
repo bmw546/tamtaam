@@ -21,6 +21,8 @@ class GestionnaireSuiviCommandes{
 
   private $uneCommande;
   private $connexion;
+  private $latitude;
+  private $longitude;
 
   /**
    *  GestionnaireSuiviCommandes constructor.
@@ -30,7 +32,7 @@ class GestionnaireSuiviCommandes{
       $this->connexion   = new Connexion;
       $result = array();
       //SELECT de la plupart des informations
-      $query  = "SELECT commande.id_commande, livraison.adresse, livraison.date_livraison_prevue, etat_commande.description_etat FROM commande JOIN client ON commande.id_client=client.id_client JOIN livraison ON commande.id_commande=livraison.id_commande JOIN etat_commande ON commande.id_etat=etat_commande.id_etat WHERE client.nom_utilisateur = '$nomClient'";
+      $query  = "SELECT commande.id_commande, livraison.adresse, livraison.date_livraison_prevue, etat_commande.description_etat, livraison.adresse_latitude, livraison.adresse_longitude FROM commande JOIN client ON commande.id_client=client.id_client JOIN livraison ON commande.id_commande=livraison.id_commande JOIN etat_commande ON commande.id_etat=etat_commande.id_etat WHERE client.nom_utilisateur = '$nomClient'";
       $result = $this->connexion->execution_avec_return($query);
 
       if (sizeof($result)>0) {
@@ -47,6 +49,12 @@ class GestionnaireSuiviCommandes{
           next($resultComm);
           next($resultComm);
           $etat = current($resultComm);
+          next($resultComm);
+          next($resultComm);
+          $this->latitude = current($resultComm);
+          next($resultComm);
+          next($resultComm);
+          $this->longitude = current($resultComm);
 
 
           $montant = $this->calculMontant($numeroCommande);
@@ -69,7 +77,14 @@ class GestionnaireSuiviCommandes{
       return $this->uneCommande;
   }
 
+  public function getLatitude(){
+    return $this->latitude;
+  }
 
+
+  public function getLongitude(){
+    return $this->longitude;
+  }
 
   private function calculMontant($numeroCommande){
     $result = array();
