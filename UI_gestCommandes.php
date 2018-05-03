@@ -57,7 +57,7 @@ Date                    Nom                 Description
                     <th>Prix Unitaire</th>
                     <th>Quantité</th>
                     <th>Montant</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
 
                 <?php
@@ -69,11 +69,15 @@ Date                    Nom                 Description
                     $connection = new Connexion();
                     $query  = "SELECT DISTINCT  nom FROM `produit` ORDER BY nom";
                     $result = $connection->execution_avec_return($query);
-
                     $i=0;
-                    foreach ($result as $rs){
+                    foreach ($result as $rs) {
                         echo "<option value='$i'>$rs[0]</option>";
                     }
+                       ?>
+
+                  <script> var array_produit = <?php echo json_encode($result);?>;</script>
+
+                <?php
                     echo "</select></td>";
 
 
@@ -81,13 +85,10 @@ Date                    Nom                 Description
                               <option disabled selected>--Choisir un format-- </option></select>";
 
 
-
-
-
                     echo "<td align='right' ><input type=\"text\" maxlength=\"2\"  size=\"2\" value=0 readonly>$"."</td>";
                     echo "<td align='center'><input type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
                     echo "<td align='center'><input type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
-                    echo "<td align='center'> <button>Supprimer</button>";
+
                 $query = ""
                 ?>
             </table>
@@ -95,7 +96,7 @@ Date                    Nom                 Description
                     <div id="produit"class="controls">
                         <input type="combobox" name="produit[]">
                     </div>
-                    <input type="button" id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne('tblCommandes')">Ajouter un produit </input>
+                    <input type="button" id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne('tblCommandes',array_produit)">Ajouter un produit </input>
                 </div>
 
 <!--                --><?php ////Code php pour charger les produits de la BD

@@ -120,38 +120,92 @@ function test(){
 
 function loadFormat(){
     var dropDown = document.getElementById("listeProduit");
-    var produitId = dropDown.options[dropDown.selectedIndex].value;
+    var produit = dropDown.options[dropDown.selectedIndex].value;
+
+
     $.ajax({
         type: 'POST',
         url: 'getFormat.php',
-        data: {"produitId":produitId},
+        //data: {"produitId":produitId},
         dataType: 'json',
-        success:function(response){
-            var opts = $.parseJSON(data);
-            $.each(opts,function(i,d){
-                $
+        success:function(json){
+            var HTML = "";
+            $.each(json,function(i,value){
+                HTML = HTML+"<option>"+value+"</option>";
             });
+            $('#selectSt').append(HTML);
         }
     });
 }
 
-function ajouterLigne(tblCommandes){
+function ajouterLigne(tblCommandes,array_produit){
     var table = document.getElementById(tblCommandes);
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
+    //Produit
     var cell1 = row.insertCell(0);
     var element1 = document.createElement("select");
     var option1 = document.createElement("option");
-    option1.value="1";
     option1.innerHTML= "--Choisir un produit--";
     option1.selected;
     option1.disabled;
     element1.appendChild(option1);
+
+    for (var i = 0;i < array_produit.length;i++){
+        var option2 = document.createElement("option");
+        option2.value=i;
+        option2.innerHTML = array_produit[i][0];
+        element1.appendChild(option2);
+    }
     cell1.appendChild(element1);
 
+    //Format
+    var cell2 = row.insertCell(1);
+    var element2 = document.createElement("select");
+    var option1 = document.createElement("option");
+    option1.value="1";
+    option1.innerHTML= "--Choisir un format--";
+    option1.selected;
+    option1.disabled;
+    element2.appendChild(option1);
+    cell2.appendChild(element2);
 
+    //Prix Unitaire
+    var cell3 = row.insertCell(2);
+    var element3 = document.createElement("input");
+    element3.type="text";
+    element3.maxLength="2";
+    element3.size="2";
+    element3.value=0;
+    element3.readOnly = true;
+    cell3.appendChild(element3);
 
+    //Quantite
+    var cell4 = row.insertCell(3);
+    var element4 = document.createElement("input");
+    element4.type="number";
+    element4.min="0";
+    element4.max="99";
+    element4.value=0;
+    cell4.appendChild(element4);
 
+    //Montant
+    var cell5 = row.insertCell(4);
+    var element5 = document.createElement("input");
+    element5.type="text";
+    element5.maxLength="7";
+    element5.size="7";
+    element5.readOnly = true;
+    cell5.appendChild(element5);
+
+    //Bouton Supprimer
+    var cell6 = row.insertCell(5);
+    var element6 = document.createElement("input");
+    element6.type="button";
+    element6.value= "Supprimer";
+    cell6.appendChild(element6);
 }
+
+
 
