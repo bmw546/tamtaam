@@ -1,4 +1,5 @@
 var total;
+
 function valeur(){
     total = 0;
 
@@ -119,7 +120,7 @@ function test(){
 }
 
 function loadFormat(obj){
-    var produit = $(this).val();
+    var produit = obj.options[obj.selectedIndex].text;
 
     $.ajax({
         type: 'POST',

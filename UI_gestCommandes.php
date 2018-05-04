@@ -71,7 +71,7 @@ Date                    Nom                 Description
                     $result = $connection->execution_avec_return($query);
                     $i=0;
                     foreach ($result as $rs) {
-                        echo "<option value='$i'>$rs[0]</option>";
+                        echo "<option value='$rs[0]'>$rs[0]</option>";
                     }
                        ?>
 
