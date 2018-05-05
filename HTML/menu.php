@@ -49,20 +49,13 @@
             if (isset($_SESSION['utilisateur'])){
 
                 ?>
-<<<<<<< HEAD
-                <li class="mainMenu central"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
-                <li class="mainMenu central"><a href="../UIgestCourrielNotification.html"> Notification par courriel </a></li>
-                <li class="mainMenu central"><a href="../suiviDeCommandes.php"> Suivi de commande </a></li>
-                <li class="mainMenu central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
-=======
+
                 <li class="nav central"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
                 <li class="nav central"><a href="../UIgestCourrielNotification.php"> Notification par courriel </a></li>
-                <li class="nav central"><a href="../suiviDeCommandes.html"> Suivi de commande </a></li>
+                <li class="mainMenu central"><a href="../suiviDeCommandes.php"> Suivi de commande </a></li>
                 <li class="nav central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
                 <li class="nav central"><a href="../UI_modifierUtilisateur.php">Modifier mes informations</a></li>
                 <li class="nav central"><a href="../deconnexion.php">Se déconnecter</a></li>
-
->>>>>>> e393c00ceeb07997c7ddfe18a4bbea28e2f597ba
                 <?php
             }
             else
