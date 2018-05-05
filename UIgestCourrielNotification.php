@@ -84,7 +84,7 @@ Date                    Nom             Description
     <br><br>
     <input   class="btnInscrire btnStyle" name="modifier" type="submit" value="Modifier"/>
     <button  class="btnInscrire btnStyle" type="reset" name="cancel" value="Annuler">Annuler</button>
-    <button  class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button"">Retour au menu</button>
+    <button  class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button">Retour au menu</button>
 </form>
 
 </body>

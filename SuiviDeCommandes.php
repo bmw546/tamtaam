@@ -13,13 +13,18 @@ Date                    Nom             Description
 =========================================================
 
 ***********************************************-->
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 	<?php
+		require_once 'utilisateur.php';
+		$usr = unserialize($_SESSION['utilisateur']);
 		require_once 'commande.php';
 		require_once 'GestionnaireSuiviCommandes.php';
-		$gestionnaire = new GestionnaireSuiviCommandes($_POST["username"]);
+		$gestionnaire = new GestionnaireSuiviCommandes($usr->getNomUtilisateur());
 		$uneCommande = $gestionnaire->getUneCommande();
 		$noCommande = $uneCommande->getNumeroCommande();
 		$datePrevue = $uneCommande->getDate();
@@ -49,7 +54,7 @@ Date                    Nom             Description
 		<header class="inscriptionheader col-12">
 			SuiviDeCommandes
 		</header>
-		<table  style="border:solid black; align:center; margin:28%; margin-top:5%;margin-bottom:10%;"class="col-5">
+		<table class="col-5 col-t-8 suivi">
 			<tr>
 				<td>Numéro de commande :</td>
 				<td><?php echo $noCommande;?></td>
@@ -71,8 +76,9 @@ Date                    Nom             Description
 				<td><?php echo $montant;?>$</td>
 			</tr>
 		</table>
+		
 
-		<div id="googleMap" style="width:100%;height:500px"></div>
+		<div id="googleMap" class="col-8 col-t-10 map"></div>
 
 <script>
 function myMap() {
