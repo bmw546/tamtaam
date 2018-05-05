@@ -13,19 +13,26 @@ Date                    Nom             Description
 =========================================================
 
 ***********************************************-->
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 	<?php
+		require_once 'utilisateur.php';
+		$usr = unserialize($_SESSION['utilisateur']);
 		require_once 'commande.php';
 		require_once 'GestionnaireSuiviCommandes.php';
-		$gestionnaire = new GestionnaireSuiviCommandes($_POST["username"]);
+		$gestionnaire = new GestionnaireSuiviCommandes($usr->getNomUtilisateur());
 		$uneCommande = $gestionnaire->getUneCommande();
 		$noCommande = $uneCommande->getNumeroCommande();
 		$datePrevue = $uneCommande->getDate();
 		$etatCommande = $uneCommande->getEtat();
 		$adresse = $uneCommande->getAdresse();
 		$montant = $uneCommande->getMontant();
+		$lat = $gestionnaire->getLatitude();
+		$lon = $gestionnaire->getLongitude();
 	?>
 	<head>
 		<meta charset='utf-8'/>
@@ -35,19 +42,19 @@ Date                    Nom             Description
 	</head>
 	<body class="txtSuiviComm">
 		<nav class="entete col-12">
-				<img  src="HTML/image/logo.png" alt="logo"/>
-				<ul>
-						<li class="menu col-2 col-t-2"><a href="#">Accueil</a></li>
-						<li class="pointMenu menu col-2 col-t-2"><a href="#">Nos produits</a></li>
-						<li class="pointMenu menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
-						<li class="pointMenu menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
-						<li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
-				</ul>
+		    <img src="HTML/image/logo.png" alt="logo"/>
+		    <ul>
+		        <li class="menu col-2 col-t-2"><a href="#">Accueil</a></li>
+		        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nos produits</a></li>
+		        <li class="pointMenu menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
+		        <li class="pointMenu menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
+		        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
+		    </ul>
 		</nav>
 		<header class="inscriptionheader col-12">
 			SuiviDeCommandes
 		</header>
-		<table  style="border:solid black; align:center; margin:28%; margin-top:5%;margin-bottom:10%;"class="col-5">
+		<table class="col-5 col-t-8 suivi">
 			<tr>
 				<td>Numéro de commande :</td>
 				<td><?php echo $noCommande;?></td>
@@ -69,35 +76,28 @@ Date                    Nom             Description
 				<td><?php echo $montant;?>$</td>
 			</tr>
 		</table>
+		
 
-		<div id="googleMap" style="width:100%;height:500px"></div>
+		<div id="googleMap" class="col-8 col-t-10 map"></div>
 
 <script>
 function myMap() {
-  var myCenter = new google.maps.LatLng(45.4110,-71.8859);
+	var directionsService = new google.maps.DirectionsService;
+	var directionsDisplay = new google.maps.DirectionsRenderer;
+  var myCenter = new google.maps.LatLng(<?php echo json_encode($lat);?>,<?php echo json_encode($lon);?>);
   var mapCanvas = document.getElementById("googleMap");
   var mapOptions = {center: myCenter, zoom: 12};
   var map = new google.maps.Map(mapCanvas, mapOptions);
-  var marker = new google.maps.Marker({
-		position:myCenter,
-		animation:google.maps.Animation.BOUNCE
-	});
-  //marker.setMap(map);
-	infoWindow = new google.maps.InfoWindow;
 
-	// Try HTML5 geolocation.
+	directionsDisplay.setMap(map);
+
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-
-            marker.setPosition(pos);
-            //infoWindow.setContent('Location found.');
-            //infoWindow.open(map);
-						marker.setMap(map);
-            map.setCenter(pos);
+						calculateAndDisplayRoute(directionsService, directionsDisplay,pos,myCenter);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -107,6 +107,7 @@ function myMap() {
         }
 
       }
+
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 				infoWindow.setPosition(pos);
 				infoWindow.setContent(browserHasGeolocation ?
@@ -114,6 +115,34 @@ function myMap() {
 															'Error: Your browser doesn\'t support geolocation.');
 				infoWindow.open(map);
 			}
+
+
+		function calculateAndDisplayRoute(directionsService, directionsDisplay,pos,myCenter){
+			directionsService.route({
+				origin: pos,
+				destination: myCenter,
+				travelMode: 'DRIVING'
+			}, function(response, status) {
+				if (status === 'OK') {
+					directionsDisplay.setDirections(response);
+					var route = response.routes[0];
+					var summaryPanel = document.getElementById('directions-panel');
+					summaryPanel.innerHTML = '';
+					// For each route, display summary information.
+					for (var i = 0; i < route.legs.length; i++) {
+						var routeSegment = i + 1;
+						summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+								'</b><br>';
+						summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+						summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+						summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+					}
+				} else {
+					window.alert('Directions request failed due to ' + status);
+				}
+			});
+		}
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2DoS7rI7KbNt_FTauYlTFH2kgPx2wc3I&callback=myMap"></script>

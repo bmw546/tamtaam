@@ -51,7 +51,7 @@
                 ?>
                 <li class="mainMenu central"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
                 <li class="mainMenu central"><a href="../UIgestCourrielNotification.html"> Notification par courriel </a></li>
-                <li class="mainMenu central"><a href="../suiviDeCommandes.html"> Suivi de commande </a></li>
+                <li class="mainMenu central"><a href="../suiviDeCommandes.php"> Suivi de commande </a></li>
                 <li class="mainMenu central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
                 <?php
             }
@@ -69,11 +69,11 @@
     </div>
 
     <div class="center">
-        
+
 
     </div>
     <div class="right" >
-       
+
     </div>
 <div class="container">
     <img class="container" src="image/head.jpg" alt="image" />
