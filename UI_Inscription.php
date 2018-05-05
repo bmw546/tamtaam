@@ -19,7 +19,7 @@ Date                    Nom             Description
 2018-05-02             Rémi             Ajout nouvelle fonctionnalité (captcha)
 2018-05-03             Rémi             Ajout javascript temporaire pour valider les regex.
 ******************************************************************************************************-->
-<html class="rebondirversBas">
+<html class="transition rebondirversBas">
 	<head>
 		<meta charset="utf-8" />
         <link rel="stylesheet" href="HTML/css/style.css" />
