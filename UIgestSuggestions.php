@@ -25,16 +25,16 @@ Date               Nom                   Description
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="inscriptionBody" onload="updateDate(dateAujourdhui())">
-    <nav >
-        <img  src="image/logo.png" alt="logo"/>
-        <ul class="entete col-12 col-t-12">
-            <li class="menu ccol-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/">Accueil</a></li>
-            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
-            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
-            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
-            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
-        </ul>
-    </nav>
+<nav class="entete col-12">
+    <img src="HTML/image/logo.png" alt="logo"/>
+    <ul>
+        <li class="menu col-2 col-t-2"><a href="#">Accueil</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nos produits</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
+    </ul>
+</nav>
     <div>
         <header class="inscriptionheader" >
             <h1 style="text-align:center;"><i>Commentaire et inscription</i></h1>
