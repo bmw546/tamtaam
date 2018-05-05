@@ -121,23 +121,39 @@ function test(){
 
 function loadFormat(obj){
     var produit = obj.options[obj.selectedIndex].text;
-
-    $.ajax({
-        type: 'POST',
-        url: 'getFormat.php',
-        data: {prod:produit},
-        dataType: 'json',
-        success:function(response){
-            var len = response.length;
-
-            $("#format").empty();
-
-            for (var i = 0; i<len ; i++){
-                var nom = response[i][0];
-                $("#format").append("<option value='"+i+"'>"+nom+"</option>");
-            }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST","getFormat.php",true);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState ==4 && xhr.status==200){
+            var text = xhr.responseText;
+            var target = document.getElementById("format");
+            target.innerHTML = text;
         }
-    });
+    }
+    xhr.setRequestHeader("Content-type","application/x-www.-form-urlencoded");
+    xhr.send("produit");
+
+
+
+    // $.ajax({
+    //     type: 'POST',
+    //     url: 'getFormat.php',
+    //     data: {prod:produit},
+    //     dataType: 'json',
+    //     success:function(response){
+    //         var len = response.length;
+    //
+    //         $("#format").empty();
+    //
+    //         for (var i = 0; i<len ; i++){
+    //             var nom = response[i][0];
+    //             $("#format").append("<option value='"+i+"'>"+nom+"</option>");
+    //         }
+    //     },
+    //     error: function(jqxhr, status, exception) {
+    //         alert('Exception:', exception);
+    //     }
+    // });
 }
 
 function ajouterLigne(tblCommandes,array_produit){
@@ -148,6 +164,7 @@ function ajouterLigne(tblCommandes,array_produit){
     //Produit
     var cell1 = row.insertCell(0);
     var element1 = document.createElement("select");
+    element1.setAttribute("id","listeProduit"+rowCount);
     var option1 = document.createElement("option");
     option1.innerHTML= "--Choisir un produit--";
     option1.selected;
@@ -223,3 +240,39 @@ function check(who, label, myRegex){
         document.getElementById(label).style.color = 'black';
     }
 }
+
+//$('[id^=listeProduit]').on('change',function(){
+$(document).on('change',"#listeProduit",function(){
+    var prod = this.value;
+
+    $.ajax({
+        type: 'POST',
+        url: 'getFormat.php',
+        data: {produit:prod},
+        success:function(data){
+            console.log(data);
+            var str_away = data.split(',');
+            str_away[0] = str_away[0].replace(/^\s*/, "").replace(/\s*$/, "");
+            str_away.pop(); //efface la derniere position qui est vide
+            console.log(str_away);
+
+            var element = document.getElementById('format');
+            removeOptions(document.getElementById('format'));
+
+            str_away.forEach(function(entry){
+                var option2 = document.createElement("option");
+                option2.value='entry';
+                option2.innerHTML = entry;
+                element.appendChild(option2);
+            });
+        }
+    });
+});
+
+function removeOptions(selectbox) {
+    var i;
+    for (i = selectbox.options.length - 1; i > 0; i--) {
+        selectbox.remove(i);
+    }
+}
+

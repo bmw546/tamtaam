@@ -63,7 +63,7 @@ Date                    Nom                 Description
                 <?php
                 require_once 'MoteurRequeteBD.php';
                     echo "<tr>
-                        <td><select name=listeProduit id=listeProduit onchange='loadFormat(this)'>
+                        <td><select name=listeProduit id='listeProduit'>
                         <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
@@ -139,6 +139,10 @@ Date                    Nom                 Description
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
             <button style="background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
+
+            <script src="http://code.jquery.com/jquery-3.3.1.js"> </script>
+            <script src="tamtam.js"> </script>
         </form>
     </body>
 </html>
+

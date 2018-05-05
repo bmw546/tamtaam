@@ -1,15 +1,18 @@
+
 <?php
 require_once 'MoteurRequeteBD.php';
 
-    $nomProduit = $_POST['prod'];
+    $nomProduit = $_POST['produit'];
     $connection = new Connexion();
-    $query  = "SELECT description FROM 'produit' WHERE  nom = '".$nomProduit."'";
+    $query  = "SELECT description FROM produit WHERE nom = '$nomProduit'";
     $result = $connection->execution_avec_return($query);
 
-   $format_arr = array();
+    $arrayKeys = array_keys($result);
+    $lastArrayKey = array_pop($arrayKeys);
 
     foreach ($result as $rs){
-        array_push($format_arr,$rs[0]);
+        echo $rs[0];
+        echo ",";
     }
-    echo json_encode($format_arr);
+
 ?>
