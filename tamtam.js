@@ -132,28 +132,6 @@ function loadFormat(obj){
     }
     xhr.setRequestHeader("Content-type","application/x-www.-form-urlencoded");
     xhr.send("produit");
-
-
-
-    // $.ajax({
-    //     type: 'POST',
-    //     url: 'getFormat.php',
-    //     data: {prod:produit},
-    //     dataType: 'json',
-    //     success:function(response){
-    //         var len = response.length;
-    //
-    //         $("#format").empty();
-    //
-    //         for (var i = 0; i<len ; i++){
-    //             var nom = response[i][0];
-    //             $("#format").append("<option value='"+i+"'>"+nom+"</option>");
-    //         }
-    //     },
-    //     error: function(jqxhr, status, exception) {
-    //         alert('Exception:', exception);
-    //     }
-    // });
 }
 
 function ajouterLigne(tblCommandes,array_produit){
@@ -194,8 +172,8 @@ function ajouterLigne(tblCommandes,array_produit){
     var cell3 = row.insertCell(2);
     var element3 = document.createElement("input");
     element3.type="text";
-    element3.maxLength="2";
-    element3.size="2";
+    element3.maxLength="4";
+    element3.size="4";
     element3.value=0;
     element3.readOnly = true;
     cell3.appendChild(element3);
@@ -241,10 +219,8 @@ function check(who, label, myRegex){
     }
 }
 
-//$('[id^=listeProduit]').on('change',function(){
-$(document).on('change',"#listeProduit",function(){
-    var prod = this.value;
-
+$(document).on('change',('[id^=listeProduit]'),function(){
+    var prod = this.options[this.selectedIndex].text;
     $.ajax({
         type: 'POST',
         url: 'getFormat.php',
@@ -256,8 +232,8 @@ $(document).on('change',"#listeProduit",function(){
             str_away.pop(); //efface la derniere position qui est vide
             console.log(str_away);
 
-            var element = document.getElementById('format');
-            removeOptions(document.getElementById('format'));
+            var element = document.getElementById('0');
+            removeOptions(document.getElementById('0'));
 
             str_away.forEach(function(entry){
                 var option2 = document.createElement("option");
@@ -267,6 +243,27 @@ $(document).on('change',"#listeProduit",function(){
             });
         }
     });
+
+
+});
+
+$(document).on('change',('[name^=format]'),function(){
+    var format = this.options[this.selectedIndex].text;
+    console.log(format);
+    var listeId = "listeProduit"+this.id;
+    console.log(listeId);
+    var prod = document.getElementById(listeId).value;
+    var zoneId = "prix"+this.id;
+    $.ajax({
+        type: 'POST',
+        url: 'getPrixUnitaire.php',
+        data: {produit:prod,qty:format},
+        success:function(data){
+            console.log(data);
+            document.getElementById(zoneId).value = data;
+        }
+    });
+
 });
 
 function removeOptions(selectbox) {
@@ -275,4 +272,3 @@ function removeOptions(selectbox) {
         selectbox.remove(i);
     }
 }
-

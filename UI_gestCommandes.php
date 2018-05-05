@@ -63,7 +63,7 @@ Date                    Nom                 Description
                 <?php
                 require_once 'MoteurRequeteBD.php';
                     echo "<tr>
-                        <td><select name=listeProduit id='listeProduit'>
+                        <td><select name=listeProduit id='listeProduit0'>
                         <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
@@ -81,12 +81,12 @@ Date                    Nom                 Description
                     echo "</select></td>";
 
 
-                    echo "<td><select name=format id='format'>
+                    echo "<td><select name='format0' id='0'>
                               <option disabled selected>--Choisir un format-- </option></select>";
 
 
-                    echo "<td align='right' ><input type=\"text\" maxlength=\"2\"  size=\"2\" value=0 readonly>$"."</td>";
-                    echo "<td align='center'><input type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
+                    echo "<td align='right' ><input id ='prix0' type=\"text\" maxlength=\"4\"  size=\"4\" value=0 readonly>"."</td>";
+                    echo "<td align='center'><input  type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
                     echo "<td align='center'><input type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
 
                 $query = ""
