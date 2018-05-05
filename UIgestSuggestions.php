@@ -87,12 +87,14 @@ Date               Nom                   Description
                 <p class="label" for="commentaire">Commentaire/suggestion: </p>
                 <textarea name="question" rows="10" cols="30" id="question" required/> </textarea>
                 </p>
-                <p>
+                <p style=" margin-top: 25px;">
                     <input  class="label" style=" background-color:black; color:white; border-color:black;" name="Envoyer" type="submit" value="Envoyer"/>
                     <button formnovalidate class="label" style="  background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
 
                 </p>
+                <button style=" margin-top: 25px; background-color:black; color:white; border-color:black;" href="menu.php"> Retour au menu </button>
             </form>
+
         </fieldset>
     </div>
 </body>
