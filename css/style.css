@@ -208,6 +208,11 @@ body {
     padding:0;
     margin: 0;
 }
+.adapt{
+	border-style: solid;
+	border-color: #000000;
+	background-color: #FFFFFF; 
+}
 
 /* Side */
 
@@ -270,6 +275,10 @@ body {
 
 /* Si l'ecran est au moins 600px */
 @media only screen and (min-width: 635px) {
+	.adapt{
+	max-width: 500px;
+	margin: auto;
+	}
     /* Pour tablettes: */
     .col-t-1 {width: 8.33%;}
     .col-t-2 {width: 16.66%;}
@@ -309,6 +318,10 @@ body {
 /* Si l'ecran est au moins 768px */
 @media only screen and (min-width: 768px) {
     /* Pour desktop: */
+	.adapt{
+	max-width: 980px;
+	margin: auto;
+	}
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}

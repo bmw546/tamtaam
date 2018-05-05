@@ -39,6 +39,7 @@ if (isset($_POST['connexion'])) {
         // $usr = unserialize($_SESSION['utilisateur']);
 
         //lors de la déconnexion:
+        //session_unset(
         // session_destroy();
         //unset($_SESSION['utilisateur']);
     }

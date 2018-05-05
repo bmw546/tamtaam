@@ -20,29 +20,26 @@ Date               Nom                   Description
 include_once("MoteurRequeteBD.php");
 class CourrielNotification{
 
-    function chercher_si_existe($courriel,$telephone,$sms,$notification){
+    function chercher_si_existe($id_client,$sms,$notification,$nouveau,$reception,$etat){
         $bd = new Connexion();
-        $sql = "SELECT * FROM `notification` WHERE ( `courriel` = \"".$courriel."\" )";
+        $sql = "SELECT * FROM `notification` WHERE ( `id_client` = \"".$id_client."\" )";
         $result = $bd->execution_avec_return($sql);
         if ($result != null){
-            $this->modifier($courriel,$telephone,$sms,$notification);
+            $this->modifier($id_client,$sms,$notification,$nouveau,$reception,$etat);
         }
         else{
-            $this->ajouter($courriel,$telephone,$sms,$notification);
+            $this->ajouter($id_client,$sms,$notification,$nouveau,$reception,$etat);
         }
     }
-    function modifier($courriel,$telephone,$sms,$notification){
+    function modifier($id_client,$sms,$notification,$nouveau,$reception,$etat){
         $bd = new Connexion();
-        $sql = ("UPDATE `notification` SET `courriel` = \"".$courriel."\" , `telephone` =".$telephone." , `sms` = \"".$sms."\" , `notification` =\"".$notification."\" WHERE `courriel`  =\"".$courriel."\" AND `telephone` =".$telephone." ");
-        $result = $bd->execution($sql);
+        $sql = ("UPDATE `notification` SET `nouvelle` = ".$nouveau." , `reception` =".$reception." , `etat` =".$etat.", `sms` = \"".$sms."\" , `notification` =\"".$notification."\" WHERE `id_client`  =\"".$id_client);
+        $bd->execution($sql);
     }
-    function ajouter($courriel,$telephone,$sms,$notification){
+    function ajouter($id_client,$sms,$notification,$nouveau,$reception,$etat){
         $bd = new Connexion();
-        $sql = ("INSERT INTO  `notification`(`courriel`, `telephone`, `sms`, `notification`) VALUES (\"".$courriel."\" , \"".$telephone."\" , \"".$sms."\" , \"".$notification."\")");
-        $result = $bd->execution($sql);
+        $sql = ("INSERT INTO `notification`('sms`, `notification`, `nouvelle`, `reception`, `etat`, `id_client`) VALUES (\"".$sms."\" , \"".$notification."\",\"".$nouveau."\" ,\"".$reception."\" ,\"".$etat."\" ,\"".$id_client."\" ,)");
+        $bd->execution($sql);
     }
 }
-
-
-
 ?>

@@ -19,13 +19,26 @@ Date                    Nom             Description
 <head>
     <meta charset="UTF-8">
     <title>Gestion des courriels et des notifications</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
-    <body style="margin:auto; width:950px;">
+
+    <body class="inscriptionBody">
+    <nav class="entete col-12 col-t-12">
+        <img  src="image/logo.png" alt="logo"/>
+        <ul>
+            <li class="menu ccol-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/">Accueil</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
+            <li class="pointMenu menu col-1 col-3 col-t-1 col-t-3"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
+        </ul>
+    </nav>
+
         <header>
             <h1 style="text-align:center;"><i>Gestion des courriels/Notifications</i></h1>
         </header>
 
-        <form action="CtrlCourrielNotification.php" method="post" style="padding:20px; border:solid black;">
+        <form class="centerForm formInscription adapt"  action="CtrlCourrielNotification.php" method="post" style="padding:20px; border:solid black;">
             <br>
             <label for="email" style="padding-right:122px;"><b>Courriel :</b></label>
             <input type="text" name="email" id="email" size="30" required/>

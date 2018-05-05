@@ -14,8 +14,8 @@ Historique de modifications :
 Date          Nom             			Description
 =========================================================
 2018-04-24	  Rémi Létourneau	 		Modification de la classe.
-                                       Ajout des instructions pour ajouter
-                                       un utilisateur a la BD. (Erreur avec propriété résolue)
+Ajout des instructions pour ajouter
+un utilisateur a la BD. (Erreur avec propriété résolue)
 2018-04-25    Rémi Létourneau  			Ajout des pré et post conditions
 2018-04-25    Roméo 					Ajout du constructeur sans paramètre
 2018-04-25    Roméo 					Ajout de fonctions getters et setters des 3 variables
@@ -23,7 +23,7 @@ Date          Nom             			Description
 2018-04-25    Roméo 					Ajout de mot de passe/ nom d'utilisateur oublié
 2018-04-26    Rémi Létourneau          Corrigé l'éxécution du code sql et ajout de commentaire.
 2018-04-29    Roméo                    Modification de la méthode ajouterUtilisateur pour valider si
-                                       le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
+le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
 2018-05-02    Roméo                    Ajout méthode modifierUtilisateur
 2018-05-02    Rémi                     Dans fonction modifier, Ajout requete select nom et email.
  ***********************************************************************************************/
@@ -75,6 +75,8 @@ class GestionnaireUtilisateur {
 
         $this->unUtilisateur = new Utilisateur($nom_utilisateur, $mot_de_passe, $email, $adresse, $telephone);
     }
+
+
 
     /**
      * modifier l'utilisateur
@@ -158,10 +160,13 @@ class GestionnaireUtilisateur {
      * @param $nom_utilisateur String le nom d'utilisateur a modifier
      * @param $email String l'adresse mail a modifier
      */
-    public function modifier($nom_utilisateur, $email)
+    public function modifier($nom_utilisateur, $email, $mdp, $adresse, $tel)
     {
+        $ancienNomUtilisateur = $this->unUtilisateur->getNomUtilisateur();
+        $ancienMail = $this->unUtilisateur->getEmail();
+
         //si on change le nom d'utilisateur
-        if ($this->getUnUtilisateur()->getNomUtilisateur() != $nom_utilisateur ) {
+        if ($ancienNomUtilisateur != $nom_utilisateur) {
 
             $query = "SELECT * FROM client WHERE nom_utilisateur = '$nom_utilisateur'";
             $result = $this->connexion->execution_avec_return($query);
@@ -173,14 +178,15 @@ class GestionnaireUtilisateur {
                 return;
             } else {
                 //changer le nom d'utilisateur dans la bd
-                //TODO requete update nom utilisateur...
+                $query = "UPDATE `client` SET `nom_utilisateur`='$nom_utilisateur' WHERE nom_utilisateur = '$ancienNomUtilisateur'";
+                $this->connexion->execution($query);
+
                 //changer le nom d'utilisateur dans l'objet
                 $this->getUnUtilisateur()->setNomUtilisateur($nom_utilisateur);
             }
         }
-
         //si on change d'email
-        if ($this->getUnUtilisateur()->getEmail() != $email){
+        if ($ancienMail != $email){
 
             $query = "SELECT * FROM client WHERE adresse_email = '$email'";
             $result = $this->connexion->execution_avec_return($query);
@@ -192,11 +198,31 @@ class GestionnaireUtilisateur {
             }
             else{
                 //changer l'email dans la bd
-                //TODO Requete UPDATE email...
+                $query = "UPDATE `client` SET `adresse_email`='$email' WHERE adresse_email = '$ancienMail'";
+                $this->connexion->execution($query);
+
                 //changer l'email dans l'objet
                 $this->getUnUtilisateur()->setEmail($email);
             }
         }
+
+
+        //changer les infos dans l'objet
+
+        //javascript pour confirmer si les 2 mots de passe sont les mêmes
+        $this->getUnUtilisateur()->setMotDePasse($mdp);
+
+        //javascript pour le format de l'adresse
+        $this->getUnUtilisateur()->setAdresse($adresse);
+
+        //javascript pour le format no tel (seulement des nombres sont valides, 10 numéros)
+        $this->getUnUtilisateur()->setTelephone($tel);
+        //changer les infos dans la bd
+        $newUserName = $this->getUnUtilisateur()->getNomUtilisateur();
+        $query = "UPDATE `client` SET `mot_de_passe`='$mdp', `adresse`='$adresse',`telephone`='$tel' WHERE nom_utilisateur = '$newUserName'";
+        $this->connexion->execution($query);
+
+
         $this->setEtat("success");
     }
 
@@ -222,6 +248,10 @@ class GestionnaireUtilisateur {
                     //ajoute les infos de l'utilisateur dans la propriété Utilisateur
                     $this->unUtilisateur->setInfosUtilisateur($row["nom_utilisateur"], $row["mot_de_passe"],
                         $row["adresse_email"], $row["adresse"], $row["telephone"]);
+
+                    //set l'id de l'utilisateur
+                    $this->unUtilisateur->setId($row["id_client"]);
+
                 }
 
             }
