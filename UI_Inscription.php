@@ -23,7 +23,7 @@ Date                    Nom             Description
 	<head>
 		<meta charset="utf-8" />
         <link rel="stylesheet" href="HTML/css/style.css" />
-        <link rel="stylesheet" href="pageTransition.css" />
+        <link rel="stylesheet" href="HTML/css/pageTransition.css" />
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 		<title>Gestion des comptes utilisateurs</title>
 	</head>
