@@ -53,6 +53,7 @@
                 <li class="nav central"><a href="../UIgestCourrielNotification.php"> Notification par courriel </a></li>
                 <li class="nav central"><a href="../suiviDeCommandes.html"> Suivi de commande </a></li>
                 <li class="nav central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
+                <li class="nav central"><a href="../UI_modifierUtilisateur.php">Modifier mes informations</a></li>
                 <li class="nav central"><a href="../deconnexion.php">Se déconnecter</a></li>
 
                 <?php
