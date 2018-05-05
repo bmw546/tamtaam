@@ -14,10 +14,11 @@ Date                    Nom             Description
 =========================================================
 2018-05-02              Roméo           Ajouté CSS
 ********************************************************-->
-<html>
+<html class="transition rebondirversBas">
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="HTML/css/style.css" />
+    <link rel="stylesheet" href="HTML/css/pageTransition.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <title>Nom d'utilisateur oublié</title>
 </head>

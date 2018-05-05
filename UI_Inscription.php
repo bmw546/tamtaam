@@ -19,10 +19,11 @@ Date                    Nom             Description
 2018-05-02             Rémi             Ajout nouvelle fonctionnalité (captcha)
 2018-05-03             Rémi             Ajout javascript temporaire pour valider les regex.
 ******************************************************************************************************-->
-<html>
+<html class="rebondirversBas">
 	<head>
 		<meta charset="utf-8" />
         <link rel="stylesheet" href="HTML/css/style.css" />
+        <link rel="stylesheet" href="pageTransition.css" />
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 		<title>Gestion des comptes utilisateurs</title>
 	</head>
