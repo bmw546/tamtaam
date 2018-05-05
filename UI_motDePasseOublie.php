@@ -49,7 +49,7 @@ Date                    Nom             Description
                 </p>
                 <p>
                     <input  class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
-                    <button class="btnInscrire btnStyle" formnovalidate name="cancel" type="reset" value="Annuler">Annuler</button>
+                    <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
                 </p>
             </div>
         </form>

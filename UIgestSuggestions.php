@@ -92,7 +92,7 @@ Date               Nom                   Description
                     <button formnovalidate class="label" style="  background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
 
                 </p>
-                <button style=" margin-top: 25px; background-color:black; color:white; border-color:black;" href="menu.php"> Retour au menu </button>
+                <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"">Retour au menu</button>
             </form>
 
         </fieldset>
