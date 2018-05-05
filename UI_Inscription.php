@@ -46,31 +46,31 @@ Date                    Nom             Description
                 <!--------------------------Informations du client------------------------>
                 <br>
                 <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
-                <input class="" type="text" name="user" id="user" size="30" required/>
+                <input class="" type="text" name="user" id="user" size="36" required/>
 
                 <br><br>
-                <label class="label" for="adresse" id="lAdresse"><b>Adresse :</b></label>
-                <input class="" type="text" name="adresse" id="adresse" size="30" required
-                       onblur="check('adresse', 'lAdresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(\s{0,})([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
+                <label class="label" for="adresse" id="lAdresse"><b>Adresse complète:</b></label>
+                <input class="" type="text" name="adresse" id="adresse" placeholder="32 rue du cegep, Sherbrooke, Qc, J1E 4E2" size="36" required
+                       onblur="check('adresse', 'lAdresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(,)?(\s)([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
 
                 <br><br>
                 <label class="label" for="email" id="lemail"><b>E-mail :</b></label>
-                <input class="" type="text" name="email" id="email" size="30" required
+                <input class="" type="text" name="email" id="email" placeholder="nom@email.com" size="36" required
                        onblur="check('email', 'lemail', /([a-z0-9\.-_]+)@([a-z0-9]+)\.([a-z]{2,})|(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/i)"/>
 
                 <br><br>
                 <label class="label" for="noTelephone" id="lNoTelephone"><b>Numéro de téléphone :</b></label>
-                <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="30" required
+                <input class="" type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="36" required
                        onblur="check('noTelephone', 'lNoTelephone', /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/)"/>
 
                 <!-----------------------------Champs Mot de passe et confirmation----------------------->
                 <br><br>
                 <label class="label" for="passwd" ><b>Mot de passe :</b></label>
-                <input class="" type="password" name="passwd" id="passwd" size="30" required/>
+                <input class="" type="password" name="passwd" id="passwd" size="36" required/>
 
                 <br><br>
                 <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
-                <input class="" type="password" name="confirmer" id="confirmer" size="30" required/>
+                <input class="" type="password" name="confirmer" id="confirmer" size="36" required/>
                 <br><br>
 
                 <!-------------------- Validation anti-robot captcha------------------------------>
@@ -78,10 +78,10 @@ Date                    Nom             Description
                 <br>
                 <label for="verif_code">Merci de retaper le code de l'image ci-dessus :</label>
                 <input type="text" name="verif_code" id="verif_code"/>
-                <br><br>
+                <br>
 
                 <!-------------------------------Bouton inscrire et annuler ------------------------>
-                <input class="btnInscrire btnStyle " name="inscrire" type="submit" value="S'inscrire"/>
+                <input class="btnInscrire btnStyle " name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
 
                 <!-- message qui indique l'état de l'inscription -->
@@ -126,6 +126,7 @@ Date                    Nom             Description
         if(!myRegex.test(value)){
             document.getElementById(label).style.color = 'red';
             document.getElementById(who).select();
+            //a mettre si l'on veut empecher inscrire avec erreur : document.getElementById("btnInscrire").disabled = true; ajouter un parametre pour le bouton
             //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
         }
         else{

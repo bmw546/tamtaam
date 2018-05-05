@@ -113,9 +113,9 @@ h1{
 	
 .left{
 	background-color: #292929 ;
-vertical-align: left;
-float:left;
-	}
+    text-align: left;
+    float:left;
+}
 .backgroudgrey{
 	background-color: #292929 ;
 }	
@@ -150,7 +150,7 @@ li a:hover {
 }
 
 .formInscription {
-    padding: 30px 30px 150px;
+    padding: 30px 30px 100px;
     border: solid black;
 }
 
@@ -331,7 +331,7 @@ body {
     }
     .entete img {
         float: left;
-        margin-top: 14.5px;
+        margin-top: 15px;
         margin-right: 150px;
     }
     .mainMenu{
