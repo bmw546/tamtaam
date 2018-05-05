@@ -17,10 +17,11 @@ Date               Nom                   Description
 2018-04-25		    Roméo			Ajout de commentaire, ajout des "required"
 2018-05-01          Roméo          Implémenté CSS
 ******************************************************************************************************-->
-<html>
+<html class="transition apparaitreVersGauche">
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="HTML/css/style.css" />
+    <link rel="stylesheet" href="HTML/css/pageTransition.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <title>Connexion</title>
 </head>

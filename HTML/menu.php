@@ -49,10 +49,13 @@
             if (isset($_SESSION['utilisateur'])){
 
                 ?>
+
                 <li class="nav central"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
                 <li class="nav central"><a href="../UIgestCourrielNotification.php"> Notification par courriel </a></li>
-                <li class="nav central"><a href="../suiviDeCommandes.html"> Suivi de commande </a></li>
+                <li class="mainMenu central"><a href="../suiviDeCommandes.php"> Suivi de commande </a></li>
                 <li class="nav central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
+                <li class="nav central"><a href="../UI_modifierUtilisateur.php">Modifier mes informations</a></li>
+                <li class="nav central"><a href="../deconnexion.php">Se déconnecter</a></li>
                 <?php
             }
             else
@@ -69,11 +72,11 @@
     </div>
 
     <div class="center">
-        
+
 
     </div>
     <div class="right" >
-       
+
     </div>
 <div class="container">
     <img class="container" src="image/head.jpg" alt="image" />

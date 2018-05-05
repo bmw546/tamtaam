@@ -111,13 +111,13 @@ nav li:hover {
 .txtSuiviComm{
 	text-align: center;
 	border-width: 2px;
-	
+
 }
 
 .txtSuiviComm{
 	text-align: center;
 	border-width: 2px;
-	
+
 }
 
 .btnStyle{
@@ -158,6 +158,17 @@ head {
 body {
     padding:0;
     margin: 0;
+}
+
+.suivi{
+	border:solid black;
+	align:center;
+	margin-top:5%;
+	margin-bottom:10%;
+}
+
+.map{
+	height:500px;
 }
 
 /* Side */
@@ -223,6 +234,17 @@ body {
         margin: 20px;
         margin-left: 5%;
     }
+
+		.suivi{
+			margin:20%;
+			margin-top:5%;
+			margin-bottom:10%;
+		}
+
+		.map{
+			margin-left:10%;
+			height:500px;
+		}
 }
 
 /* Si l'ecran est au moins 768px */
@@ -255,4 +277,14 @@ body {
         padding: 15px;
 
     }
+		.suivi{
+			margin:28%;
+			margin-top:5%;
+			margin-bottom:10%;
+		}
+
+		.map{
+			margin-left:20%;
+			height:500px;
+		}
 }

@@ -14,10 +14,11 @@ Date                    Nom             Description
 =========================================================
 2018-05-02              Roméo           Ajouté CSS
 ********************************************************-->
-<html>
+<html class="transition rebondirversBas">
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="HTML/css/style.css" />
+    <link rel="stylesheet" href="HTML/css/pageTransition.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <title>Nom d'utilisateur oublié</title>
 </head>
@@ -47,7 +48,7 @@ Date                    Nom             Description
                 </p>
                 <p>
                     <input   class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
-                    <button  class="btnInscrire btnStyle" formnovalidate name="cancel" type="reset" value="Annuler">Annuler</button>
+                    <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
                 </p>
             </div>
         </form>
