@@ -59,8 +59,9 @@ Date                    Nom                 Description
                 <input type="text" name="nom" id="nom" size="30" required/>
                 <br><br>
 
-                <label class="label" for="adresse"><b>Adresse :</b></label>
-                <input type="text" name="adresse" id="adresse" size="50" required/>
+                <label class="label" id="_adresse"for="adresse"><b>Adresse :</b></label>
+                <input type="text" id="_txtAdresse" name="adresse" id="adresse" placeholder="32 rue du cegep, Sherbrooke, Qc, J1E 4E2" size="36" required
+                       onblur="check('_txtAdresse', '_adresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(,)?(\s)([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
                 <br><br>
 
                 <input type="radio" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
@@ -126,6 +127,8 @@ Date                    Nom                 Description
 
                 <input  class="btnInscrire btnStyle"name="commander" type="submit" value="Commander"/>
                 <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Annuler</button>
+                <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
+
 
                 <script src="http://code.jquery.com/jquery-3.3.1.js"> </script>
                 <script src="tamtam.js"> </script>

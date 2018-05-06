@@ -50,7 +50,7 @@
 
                 ?>
 
-                <li class="nav central"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
+                <li class="nav central"><a href="../UI_gestCommandes.php"> Placer une commande </a></li>
                 <li class="nav central"><a href="../UIgestCourrielNotification.php"> Notification par courriel </a></li>
                 <li class="nav central"><a href="../SuiviDeCommandes.php"> Suivi de commande </a></li>
                 <li class="nav central"><a href="../UIgestSuggestions.php"> Envoyer un commentaire </a></li>
