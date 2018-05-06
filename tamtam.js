@@ -1,4 +1,5 @@
 var total;
+var count = 1;
 
 function valeur(){
     total = 0;
@@ -35,21 +36,6 @@ function commencer(nb){
     document.getElementById(('tblCommandes')).addEventListener("click", function(){
         ajouterLigne();
     });
-//     var index;
-//     for(i=0; i<=nb;i++){
-//         (function(){
-//             var index = i;
-//             console.log(index);
-//             document.getElementById(("qty"+index)).addEventListener("click", function(){
-//                 clic((index));
-//             });
-//             document.getElementById(("qty"+index)).addEventListener("change", function(){
-//                 clic((index));
-//             });
-//
-//             // Ajouter un EventListener sur chaque case qui appel la méthode clic et lui passe en paramètre l'index de la case
-//         }());
-//     }
 }
 
 function clic (n) {
@@ -103,21 +89,6 @@ function updateTotal(){
     //var grandtotal = (total + parseFloat(document.getElementById(("livraison")).value) )
     document.getElementById("total").value = grandtotal;
 }
-function test(){
-    $("#nouvProduit").click(function(){
-        var elem = $("<select/>",{
-            value: "hisbicuss",
-            name: "produit[]"
-        });
-
-        var removeLink = $("<span/>").html("Supprimer").click(function(){
-            $(elem).remove();
-            $(this).remove();
-        });
-
-        $("#nouvProduit").append(elem).append(removeLink);
-    });
-}
 
 function loadFormat(obj){
     var produit = obj.options[obj.selectedIndex].text;
@@ -135,42 +106,46 @@ function loadFormat(obj){
 }
 
 function ajouterLigne(tblCommandes,array_produit){
+    count++;
     var table = document.getElementById(tblCommandes);
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
+    row.setAttribute("id", "r"+count);
 
     //Produit
     var cell1 = row.insertCell(0);
     var element1 = document.createElement("select");
-    element1.setAttribute("id","listeProduit"+rowCount);
+    element1.setAttribute("id","l"+count);
     var option1 = document.createElement("option");
     option1.innerHTML= "--Choisir un produit--";
-    option1.selected;
-    option1.disabled;
+    option1.selected = true;
+    option1.disabled = true;
     element1.appendChild(option1);
 
     for (var i = 0;i < array_produit.length;i++){
         var option2 = document.createElement("option");
-        option2.value='i';
+        option2.value = array_produit[i][0];
         option2.innerHTML = array_produit[i][0];
         element1.appendChild(option2);
     }
-    cell1.appendChild(element1);
+
 
     //Format
     var cell2 = row.insertCell(1);
     var element2 = document.createElement("select");
     var option1 = document.createElement("option");
+    element2.setAttribute("id","f"+count);
     option1.value="1";
     option1.innerHTML= "--Choisir un format--";
-    option1.selected;
-    option1.disabled;
+    option1.selected = true;
+    option1.disabled = true;
     element2.appendChild(option1);
-    cell2.appendChild(element2);
+
 
     //Prix Unitaire
     var cell3 = row.insertCell(2);
     var element3 = document.createElement("input");
+    element3.setAttribute("id","p"+count);
     element3.type="text";
     element3.maxLength="4";
     element3.size="4";
@@ -181,15 +156,17 @@ function ajouterLigne(tblCommandes,array_produit){
     //Quantite
     var cell4 = row.insertCell(3);
     var element4 = document.createElement("input");
+    element4.setAttribute("id","q"+count);
+    element4.disabled = true;
     element4.type="number";
     element4.min="0";
     element4.max="99";
     element4.value=0;
-    cell4.appendChild(element4);
 
     //Montant
     var cell5 = row.insertCell(4);
     var element5 = document.createElement("input");
+    element5.setAttribute("id","m"+count);
     element5.type="text";
     element5.maxLength="7";
     element5.size="7";
@@ -199,9 +176,17 @@ function ajouterLigne(tblCommandes,array_produit){
     //Bouton Supprimer
     var cell6 = row.insertCell(5);
     var element6 = document.createElement("input");
+    element6.setAttribute("id","s"+count);
+    console.log(element6.id);
     element6.type="button";
     element6.value= "Supprimer";
+
+    //Ajout des fonctions
+    cell1.appendChild(element1);
+    cell2.appendChild(element2);
+    cell4.appendChild(element4);
     cell6.appendChild(element6);
+
 }
 
 
@@ -218,9 +203,10 @@ function check(who, label, myRegex){
         document.getElementById(label).style.color = 'black';
     }
 }
-
-$(document).on('change',('[id^=listeProduit]'),function(){
+$(document).on('change','[id^=l]',function(){
     var prod = this.options[this.selectedIndex].text;
+    var format = "f"+this.id.substr(1);
+
     $.ajax({
         type: 'POST',
         url: 'getFormat.php',
@@ -232,8 +218,8 @@ $(document).on('change',('[id^=listeProduit]'),function(){
             str_away.pop(); //efface la derniere position qui est vide
             console.log(str_away);
 
-            var element = document.getElementById('0');
-            removeOptions(document.getElementById('0'));
+            var element = document.getElementById(format);
+            removeOptions(document.getElementById(format));
 
             str_away.forEach(function(entry){
                 var option2 = document.createElement("option");
@@ -241,29 +227,62 @@ $(document).on('change',('[id^=listeProduit]'),function(){
                 option2.innerHTML = entry;
                 element.appendChild(option2);
             });
+            $("#q1").trigger("input");
         }
     });
 
 
 });
 
-$(document).on('change',('[name^=format]'),function(){
+$(document).on('change','[id^=f]',function(){
     var format = this.options[this.selectedIndex].text;
-    console.log(format);
-    var listeId = "listeProduit"+this.id;
-    console.log(listeId);
-    var prod = document.getElementById(listeId).value;
-    var zoneId = "prix"+this.id;
+    var listeId = "l"+this.id.substr(1);
+    var prod = document.getElementById(listeId);
+    prod = prod.options[prod.selectedIndex].text;
+    var prixId = "p"+this.id.substr(1);
+    var qty = "q"+this.id.substr(1);
     $.ajax({
         type: 'POST',
         url: 'getPrixUnitaire.php',
         data: {produit:prod,qty:format},
         success:function(data){
-            console.log(data);
-            document.getElementById(zoneId).value = data;
+            var n = Number(data);
+            document.getElementById(prixId).value = n.format(2);
+            var q = document.getElementById(qty);
+            q.removeAttribute("disabled");
+            $("#q1").trigger("input");
         }
     });
+});
 
+$(document).on('input','[id^=q]',function(){
+    var idPrix = "p"+this.id.substr(1);
+    var prixUni = document.getElementById(idPrix).value.slice(0,-1);
+    var idMontant = "m"+this.id.substr(1);
+    var montant = prixUni * this.value;
+
+    document.getElementById(idMontant).value = montant.format(2);
+    $("#m1").trigger("change");
+ });
+
+$(document).on('click','[id^=s]',function(){
+    var rowId = "r" +this.id.substr(1);
+    var row = document.getElementById(rowId);
+    row.parentNode.removeChild(row);
+});
+
+$(document).on('change','[id^=m]',function(){
+    var val = 0;
+    $('[id^="m"]').each(function(){
+        val +=  Number(this.value.slice(0,-1));
+
+    })
+
+    var sousTotal = document.getElementById('_soustotal');
+    sousTotal.value = val.format(2);
+    //Total temporaire (pas de livraison)
+    var total = document.getElementById('_total');
+    total.value = val.format(2);;
 });
 
 function removeOptions(selectbox) {
@@ -272,3 +291,8 @@ function removeOptions(selectbox) {
         selectbox.remove(i);
     }
 }
+
+Number.prototype.format = function(n, x) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,') + " $";
+};

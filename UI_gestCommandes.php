@@ -31,7 +31,7 @@ Date                    Nom                 Description
             <h1 style="text-align:center;"><i>Placer une commande</i></h1>
         </header>
 
-        <form id="formUser" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
+        <form id="Commandes" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
             <br>
             <label for="nom" style="padding-right:37px;"><b>Nom :</b></label>
             <input type="text" name="nom" id="nom" size="30" required/>
@@ -44,7 +44,7 @@ Date                    Nom                 Description
             <input type="text" name="adresse" id="adresse" size="50" required/>
             <br><br>
 
-            <input type="radio" name="livraison" checked<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
+            <input type="radio" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
             <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
             <br><br>
 
@@ -62,8 +62,8 @@ Date                    Nom                 Description
 
                 <?php
                 require_once 'MoteurRequeteBD.php';
-                    echo "<tr>
-                        <td><select name=listeProduit id='listeProduit0'>
+                    echo "<tr id='r1'>
+                        <td><select name=listeProduit[] id='l1'>
                         <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
@@ -79,21 +79,17 @@ Date                    Nom                 Description
 
                 <?php
                     echo "</select></td>";
-
-
-                    echo "<td><select name='format0' id='0'>
+                    echo "<td><select name='format[]' id='f1'>
                               <option disabled selected>--Choisir un format-- </option></select>";
-
-
-                    echo "<td align='right' ><input id ='prix0' type=\"text\" maxlength=\"4\"  size=\"4\" value=0 readonly>"."</td>";
-                    echo "<td align='center'><input  type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
-                    echo "<td align='center'><input type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
-
+                    echo "<td align='right' ><input name='prix[]' id ='p1' type=\"text\" maxlength=\"4\"  size=\"4\" value=0 readonly>"."</td>";
+                    echo "<td align='center'><input name ='qty[]' id ='q1' type=\"number\" min=\"0\"  max=\"99\" value=0 disabled>  "."</td>";
+                    echo "<td align='center'><input  name='montant[]' id ='m1' type=\"text\" maxlength=\"6\" size=\"6\" readonly>". "</td>" ;
+                    echo "<td><input id='s1' type='button' value='Supprimer'></td>";
                 $query = ""
                 ?>
             </table>
 
-            <input type="button" id="nouvProduit" href="#" id="addScnt" onclick="ajouterLigne('tblCommandes',array_produit)">Ajouter un produit </input>
+            <input type="button" id="nouvProduit" href="#" id="addScnt" value="Ajouter un produit " onclick="ajouterLigne('tblCommandes',array_produit)"> </input>
 
 
 <!--                --><?php ////Code php pour charger les produits de la BD
@@ -126,7 +122,7 @@ Date                    Nom                 Description
             </table>
             <br><br>
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
-            <input  type="text" maxlength="6" size="6" id="sous_total" readonly"> </input>
+            <input id="_soustotal" type="text" maxlength="6" size="6" readonly"> </input>
             <br><br>
 
             <label  style="padding-right:42px;"><b>Livraison :</b></label>
@@ -134,7 +130,7 @@ Date                    Nom                 Description
             <br><br>
 
             <label  style="padding-right:72px;"><b>Total :</b></label>
-            <input  name="montant" id="total" type="text" maxlength="6" size="6" readonly"> </input>
+            <input  id='_total' type="text"  maxlength="6" size="6" readonly"> </input>
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
