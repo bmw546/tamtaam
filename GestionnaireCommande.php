@@ -80,8 +80,6 @@
                 $output= json_decode($geocode);
                 $latitude = $output->results[0]->geometry->location->lat;
                 $longitude = $output->results[0]->geometry->location->lng;
-                echo "Latitude : " . $latitude;
-                echo "Longitude :" . $longitude;
 
                 //2 jour de livraison est temporaire
                 $date_livraison = date('Y-m-d', strtotime($date. ' + 2 days'));

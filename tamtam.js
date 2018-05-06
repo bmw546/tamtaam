@@ -270,6 +270,14 @@ $(document).on('input','[id^=q]',function(){
 
     document.getElementById(idMontant).value = montant.format(2);
     $("#m1").trigger("change");
+
+    var btn = document.getElementById('_btnCommander');
+    if (this.value > 0){
+       btn.removeAttribute("disabled");
+    }
+    else{
+        btn.disabled = true;
+    }
  });
 
 $(document).on('click','[id^=s]',function(){
@@ -334,4 +342,5 @@ function stop(){
     document.getElementById('Hibiscus').style.display = " none";
     document.getElementById('lightBoxBg').style.display = " none";
 }
+
 
