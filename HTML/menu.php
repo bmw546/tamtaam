@@ -52,8 +52,8 @@
 
                 <li class="nav central"><a href="../UI_gestCommandes.php"> Gestionnaire de commande </a></li>
                 <li class="nav central"><a href="../UIgestCourrielNotification.php"> Notification par courriel </a></li>
-                <li class="mainMenu central"><a href="../suiviDeCommandes.php"> Suivi de commande </a></li>
-                <li class="nav central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
+                <li class="nav central"><a href="../SuiviDeCommandes.php"> Suivi de commande </a></li>
+                <li class="nav central"><a href="../UIgestSuggestions.php"> Envoyer un commentaire </a></li>
                 <li class="nav central"><a href="../UI_modifierUtilisateur.php">Modifier mes informations</a></li>
                 <li class="nav central"><a href="../deconnexion.php">Se déconnecter</a></li>
                 <?php
@@ -62,7 +62,7 @@
             {
                 ?>
                 <li class=" nav central"><a href="../UI_authentification.php"> Authentification </a></li>
-                <li class=" nav central"><a href="../UIgestSuggestions.html"> Envoyer un commentaire </a></li>
+                <li class=" nav central"><a href="../UIgestSuggestions.php"> Envoyer un commentaire </a></li>
                 <li class=" nav central"><a href="../UI_Inscription.php"> Inscription </a></li>
                 <?php
             }
