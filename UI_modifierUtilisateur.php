@@ -75,12 +75,13 @@ Date                    Nom             Description
             <input class="" type="password" name="passwd" id="passwd" size="36" value="<?php echo $passwd ?>" required/>
 
             <br><br>
-            <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
-            <input class="" type="password" name="confirmer" id="confirmer" size="36" value="<?php echo $passwd ?>" required/>
+            <label class="label" for="confirmer" id="lconfirme" ><b>Confirmer votre mot de passe :</b></label>
+            <input class="" type="password" name="confirmer" id="confirmer" size="36" value="<?php echo $passwd ?>" required
+                   onblur="comparePassword('passwd', 'confirmer', 'lconfirme')"/>
             <br><br>
 
             <!-------------------- Validation anti-robot captcha------------------------------>
-            <p><img src="verif_code_gen.php" alt="Code de vérification" /></p>
+            <p class="imgVerifCode"><img src="verif_code_gen.php" alt="Code de vérification" /></p>
             <br>
             <label for="verif_code">Merci de retaper le code de l'image ci-dessus :</label>
             <input type="text" name="verif_code" id="verif_code"/>
@@ -132,6 +133,28 @@ Date                    Nom             Description
         if(!myRegex.test(value)){
             document.getElementById(label).style.color = 'red';
             document.getElementById(who).select();
+        }
+        else{
+            document.getElementById(label).style.color = 'black';
+        }
+    }
+
+    /**
+     * Compare les deux champs pour le mot de passe et vérifie s'il sont semblable
+     * @param pwd le mot de passe entrer
+     * @param pwdConfirmer la confirmation du mot de passe
+     * @param label l'étiquette du champs confirmation
+     */
+    function comparePassword(pwd, pwdConfirmer, label){
+
+        var password;
+        var confirme;
+        password = document.getElementById((pwd)).value;
+        confirme = document.getElementById((pwdConfirmer)).value;
+
+        if(password !== confirme){
+            document.getElementById(label).style.color = 'red';
+            document.getElementById(pwdConfirmer).select();
         }
         else{
             document.getElementById(label).style.color = 'black';

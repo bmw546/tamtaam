@@ -150,7 +150,7 @@ li a:hover {
 }
 
 .formInscription {
-    padding: 30px 30px 100px;
+    padding: 30px 10px 100px;
     border: solid black;
 }
 
@@ -191,7 +191,7 @@ li a:hover {
 }
 
 .imgVerifCode{
-    padding-left: 90px;
+    padding-left: 45px;
 }
 
 .entete{
@@ -230,6 +230,9 @@ body {
     margin:15px;
 }
 
+.inscrireFooter {
+    margin:15px;
+}
 .redText {
     color:red;
 }
@@ -339,8 +342,13 @@ body {
     }
 
     .formInscription{
-        padding-left: 30%;
+        padding-left: 37%;
     }
+
+    .imgVerifCode{
+        padding-left: 180px;
+    }
+
     .labelGrand{
         padding-right: 0;
         margin-right: 0;
