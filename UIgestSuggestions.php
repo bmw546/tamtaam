@@ -26,7 +26,7 @@ Date               Nom                   Description
         <link rel="stylesheet" href="HTML/css/style.css"/>
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     </head>
-    <body class="inscriptionBody" onload="updateDate(dateAujourdhui())">
+    <body class="inscriptionBody">
     <nav class="entete col-12">
         <img src="HTML/image/logo.png" alt="logo"/>
         <ul>
@@ -39,7 +39,7 @@ Date               Nom                   Description
     </nav>
         <div>
             <header class="inscriptionheader" >
-                <div class="inscriptionheader"><i>Commentaire et inscription</i></div>
+                <div class="inscriptionheader"><i>Commentaire et suggestion</i></div>
             </header>
             <fieldset class="adapt">
 
@@ -56,7 +56,7 @@ Date               Nom                   Description
                             $usr = unserialize($_SESSION['utilisateur']);
                             $nom = $usr->getNomUtilisateur();
                             ?>
-                            <input type="text" name="nom" id="nom" value="<?php echo $nom ?>" disabled="disabled"/>
+                            <input type="text" name="nom" id="nom" value="<?php echo $nom ?>" readonly />
                             <?php
                         }
                         else{
@@ -71,7 +71,7 @@ Date               Nom                   Description
                             $usr = unserialize($_SESSION['utilisateur']);
                             $email = $usr->getEmail();  ?>
                             <input type="text" name="courriel" id="courriel" required
-                                   value="<?php echo $email ?>" disabled="disabled"/>
+                                   value="<?php echo $email ?>" readonly />
 
                             <?php
                         }
@@ -93,6 +93,19 @@ Date               Nom                   Description
                     <input  class="btnInscrire btnStyle" name="Envoyer" type="submit" value="Envoyer"/>
                     <button class="btnInscrire btnStyle" type="reset" name="cancel" value="Annuler">Annuler</button>
                     <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"">Retour au menu</button>
+
+                    <div class="inscriptionFooter">
+                        <?php
+                        $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                        if (strpos($fullUrl, "success") == true) {
+                            echo "<p class='greenText'>". "Envoie réussie" ."</p>";
+                        }
+                        elseif (strpos($fullUrl, "failure") == true) {
+                            echo "<p class='redText'>". "Échec de l'envoie" ."</p>";
+                        }
+                        ?>
+                    </div>
                 </form>
             </fieldset>
         </div>

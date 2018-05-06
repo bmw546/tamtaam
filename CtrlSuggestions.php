@@ -19,15 +19,24 @@ Date               Nom                   Description
 2018-04-25		Marc-Étienne			Ajoute de commentaire
 
  *****************************************************************/
-
     include("GestionnaireCourriel.php");
 
-    $Email = new GestionnaireCourriel();
+    if (isset($_POST['Envoyer'])) {
 
-    $nom = $_POST['nom'];
-    $courriel = $_POST['courriel'];
-    $sujet = $_POST['sujet'];
-    $question = $_POST['question'];
+        $Email = new GestionnaireCourriel();
 
-    $Email->sentMail($nom,$courriel,$sujet,$question);
+        $nom = $_POST['nom'];
+        $courriel = $_POST['courriel'];
+        $sujet = $_POST['sujet'];
+        $question = $_POST['question'];
+
+        $Email->sentMail($nom, $courriel, $sujet, $question);
+
+        $msg = 'success';
+        header("Location: UIgestSuggestions.php?$msg");
+    }
+    else{
+        $msg = 'failure';
+        header("Location: UIgestSuggestions.php?$msg");
+    }
 ?>
