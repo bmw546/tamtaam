@@ -63,7 +63,6 @@
                 ?>
                 <li class=" nav central"><a href="../UI_authentification.php"> Authentification </a></li>
                 <li class=" nav central"><a href="../UIgestSuggestions.php"> Envoyer un commentaire </a></li>
-                <li class=" nav central"><a href="../UI_Inscription.php"> Inscription </a></li>
                 <?php
             }
             ?>
