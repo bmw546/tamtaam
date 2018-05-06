@@ -114,15 +114,15 @@ Date                    Nom                 Description
                 </table>
                 <br><br>
                 <label  class="label" ><b>Sous-Total :</b></label>
-                <input id="_soustotal" type="text" maxlength="6" size="6" readonly"> </input>
+                <input id="_soustotal" type="text" maxlength="6" size="6" readonly> </input>
                 <br><br>
 
                 <label  class="label"><b>Livraison :</b></label>
-                <input  type="text" maxlength="6" size="6" id="livraison" readonly"> </input>
+                <input  type="text" maxlength="6" size="6" id="livraison" readonly> </input>
                 <br><br>
 
                 <label  class="label"><b>Total :</b></label>
-                <input  id='_total' name='total' type="text"  maxlength="6" size="6" readonly"> </input>
+                <input  id='_total' name='total' type="text"  maxlength="6" size="6" readonly> </input>
                 <br><br><br><br>
 
                 <input  class="btnInscrire btnStyle" id="_btnCommander"n ame="commander" type="submit" value="Commander" disabled/>

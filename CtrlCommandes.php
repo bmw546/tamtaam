@@ -17,6 +17,8 @@ Date                Nom                 Description
 
     require_once 'GestionnaireCommande.php';
 
+    session_start();
+
     $produit_commande = array();
     $nomProduit = $_POST['listeProduit']   ; //Liste des produits
     $qty = $_POST['qty'];

@@ -16,6 +16,7 @@
     require_once 'MoteurRequeteBD.php';
     require_once 'commande.php';
     require_once 'produit.php';
+    require_once 'Utilisateur.php';
 
     class GestionnaireCommande{
 
@@ -57,9 +58,11 @@
 
             $connection = new Connexion();
 
-            //Id client 1 pour test
+            $user = unserialize($_SESSION['utilisateur']);
+            $str_user = $user->getId();
+
             $query = "INSERT INTO commande(id_client, id_etat,id_type_commande, date, montant, nom )".
-                "VALUES ('1', '$etat', '$type', '$date','$montant','$nomClient')";
+                "VALUES ('$str_user', '$etat', '$type', '$date','$montant','$nomClient')";
             $connection->execution($query);
 
             //Requete du numero de commande
