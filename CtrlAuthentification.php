@@ -33,15 +33,6 @@ if (isset($_POST['connexion'])) {
         $usr = $auth->getUnUtilisateur();
         $_SESSION['utilisateur'] = serialize($usr);
         header("Location: HTML/menu.php");
-
-        //pour avoir accès à la variable dans les autres pages: dans les autres pages:
-        // session_start();
-        // $usr = unserialize($_SESSION['utilisateur']);
-
-        //lors de la déconnexion:
-        //session_unset(
-        // session_destroy();
-        //unset($_SESSION['utilisateur']);
     }
     else{
         header("Location: UI_authentification.php?$msg");
