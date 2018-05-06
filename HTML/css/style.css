@@ -146,7 +146,7 @@ li a:hover {
 
 /* Body */
 .centerForm {
-    text-align: center;
+   text-align: left;
 }
 
 .formInscription {
@@ -170,6 +170,7 @@ li a:hover {
     margin: 35px 35px 0 0;
     width: 100%;
 }
+
 .btnStyle{
     background-color:black;
     color:white;
@@ -180,6 +181,17 @@ li a:hover {
 .label{
     display: inline-block;
     min-width: 199px;
+}
+
+.labelGrand{
+    display: inline-block;
+    min-width: 240px;
+    padding-right: 45px;
+    margin-right: 83px;
+}
+
+.imgVerifCode{
+    padding-left: 90px;
 }
 
 .entete{
@@ -214,7 +226,7 @@ body {
 
 /* Footer */
 .inscriptionFooter {
-    text-align:center;
+    padding-left: 20%;
     margin:15px;
 }
 
@@ -326,6 +338,17 @@ body {
         text-align: center;
     }
 
+    .formInscription{
+        padding-left: 30%;
+    }
+    .labelGrand{
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    .checkBoxAlign{
+        margin-left:248px;
+    }
     .entete{
         padding-left: 95px;
     }
