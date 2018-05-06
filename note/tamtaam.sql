@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 01 mai 2018 à 12:31
+-- Généré le :  jeu. 03 mai 2018 à 16:59
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 
 --
 -- Base de données :  `tamtaam`
+CREATE DATABASE tamtaam;
+USE tamtaam;
 --
 
 -- --------------------------------------------------------
@@ -119,18 +121,13 @@ CREATE TABLE `livraison` (
 
 CREATE TABLE `notification` (
   `id_notification` int(11) NOT NULL,
-  `courriel` varchar(100) NOT NULL,
-  `telephone` bigint(20) NOT NULL,
   `sms` tinytext NOT NULL,
-  `notification` tinytext NOT NULL
+  `notification` tinytext NOT NULL,
+  `nouvelle` tinyint(1) NOT NULL,
+  `reception` tinyint(1) NOT NULL,
+  `etat` tinyint(1) NOT NULL,
+  `id_client` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `notification`
---
-
-INSERT INTO `notification` (`id_notification`, `courriel`, `telephone`, `sms`, `notification`) VALUES
-(2, 'remi.let123@gmail.com', 8193425058, 'oui', 'non');
 
 -- --------------------------------------------------------
 
@@ -290,7 +287,8 @@ ALTER TABLE `livraison`
 -- Index pour la table `notification`
 --
 ALTER TABLE `notification`
-  ADD PRIMARY KEY (`id_notification`);
+  ADD PRIMARY KEY (`id_notification`),
+  ADD UNIQUE KEY `id_client` (`id_client`);
 
 --
 -- Index pour la table `produit`

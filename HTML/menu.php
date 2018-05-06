@@ -5,7 +5,7 @@
     <title>Ma page Web</title>
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-    <script src="tamtam.js"></script>
+    <script src="../tamtam.js"></script>
 </head>
 <body class="backgroudgrey" onload="updateDate(dateAujourdhui())">
 <nav class="entete col-12">
