@@ -55,7 +55,7 @@ Date                    Nom             Description
                 elseif (strpos($fullUrl, "emailEnvoye") == true) {
                     echo "<p class='greenText'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
                 }
-                ?>
+                ?><br><br>
                 <p>
                     <input   class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
                     <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
