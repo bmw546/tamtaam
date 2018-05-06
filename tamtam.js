@@ -116,6 +116,7 @@ function ajouterLigne(tblCommandes,array_produit){
     var cell1 = row.insertCell(0);
     var element1 = document.createElement("select");
     element1.setAttribute("id","l"+count);
+    element1.setAttribute("name","listeProduit[]");
     var option1 = document.createElement("option");
     option1.innerHTML= "--Choisir un produit--";
     option1.selected = true;
@@ -123,11 +124,13 @@ function ajouterLigne(tblCommandes,array_produit){
     element1.appendChild(option1);
     cell1.appendChild(element1);
 
+    var value = 1;
     for (var i = 0;i < array_produit.length;i++){
         var option2 = document.createElement("option");
         option2.value = array_produit[i][0];
         option2.innerHTML = array_produit[i][0];
         element1.appendChild(option2);
+        value++;
     }
 
 
@@ -136,6 +139,7 @@ function ajouterLigne(tblCommandes,array_produit){
     var element2 = document.createElement("select");
     var option1 = document.createElement("option");
     element2.setAttribute("id","f"+count);
+    element2.setAttribute("name","format[]");
     option1.value="1";
     option1.innerHTML= "--Choisir un format--";
     option1.selected = true;
@@ -149,9 +153,9 @@ function ajouterLigne(tblCommandes,array_produit){
     var element3 = document.createElement("input");
     element3.setAttribute("id","p"+count);
     element3.type="text";
-    element3.maxLength="4";
-    element3.size="4";
-    element3.value=0;
+    element3.maxLength=4;
+    element3.size=4;
+    element3.value='0';
     element3.readOnly = true;
     cell3.appendChild(element3);
 
@@ -159,11 +163,12 @@ function ajouterLigne(tblCommandes,array_produit){
     var cell4 = row.insertCell(3);
     var element4 = document.createElement("input");
     element4.setAttribute("id","q"+count);
+    element4.setAttribute("name","qty[]");
     element4.disabled = true;
     element4.type="number";
     element4.min="0";
     element4.max="99";
-    element4.value=0;
+    element4.value='0';
     cell4.appendChild(element4);
 
     //Montant
@@ -216,18 +221,16 @@ $(document).on('change','[id^=l]',function(){
         url: 'getFormat.php',
         data: {produit:prod},
         success:function(data){
-            console.log(data);
             var str_away = data.split(',');
             str_away[0] = str_away[0].replace(/^\s*/, "").replace(/\s*$/, "");
             str_away.pop(); //efface la derniere position qui est vide
-            console.log(str_away);
 
             var element = document.getElementById(format);
             removeOptions(document.getElementById(format));
 
             str_away.forEach(function(entry){
                 var option2 = document.createElement("option");
-                option2.value='entry';
+                option2.value=entry;
                 option2.innerHTML = entry;
                 element.appendChild(option2);
             });
@@ -331,3 +334,4 @@ function stop(){
     document.getElementById('Hibiscus').style.display = " none";
     document.getElementById('lightBoxBg').style.display = " none";
 }
+

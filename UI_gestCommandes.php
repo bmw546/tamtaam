@@ -89,11 +89,12 @@ Date                    Nom                 Description
                         <option disabled selected>--Choisir un produit--</option>";
 
                     $connection = new Connexion();
-                    $query  = "SELECT DISTINCT  nom FROM `produit` ORDER BY nom";
+                    $query  = "SELECT DISTINCT  nom FROM `produit`";
                     $result = $connection->execution_avec_return($query);
-                    $i=0;
+                    $i=1;
                     foreach ($result as $rs) {
                         echo "<option value='$rs[0]'>$rs[0]</option>";
+                        $i++;
                     }
                        ?>
 
@@ -114,34 +115,6 @@ Date                    Nom                 Description
 
             <input type="button" id="nouvProduit" href="#" id="addScnt" value="Ajouter un produit " onclick="ajouterLigne('tblCommandes',array_produit)"> </input>
 
-
-<!--                --><?php ////Code php pour charger les produits de la BD
-//                require_once 'MoteurRequeteBD.php';
-//
-//                $connection = new Connexion();
-//                $query  = "SELECT COUNT(*) FROM `produit`";
-//                $result = array();
-//                $result = $connection->execution_avec_return($query);
-//                $nbProduit = $result[0][0];
-//
-//                $query2 = "SELECT * FROM `produit`";
-//                $result = $connection->execution_avec_return($query2);
-//
-//                for ($x =0; $x < $nbProduit; $x++){
-//                    $produit = $result[$x];
-//                    $qty = "qty"."$x";
-//                    $nb = $qty."nb";
-//                    $mnt = "mnt"."$x";
-//                    $price = number_format($produit[3],2);
-//                    echo "<tr>";
-//                        echo "<td>" .$produit[1]. "</td>" ;
-//                        echo "<td align='center'>" . $produit[2]. "</td>" ;
-//                        echo "<td align='right' >"."<input name=$qty id='$nb' type=\"text\" maxlength=\"2\"  size=\"2\" value=$price readonly >  "." $"."</td>"    ;
-//                        echo "<td align='center'>"."<input name=qty[] id='$qty' type=\"number\" min=\"0\"  max=\"99\" value=0>  "."</td>";
-//                        echo "<td align='center'>" ."<input name=$mnt id='$mnt' type=\"text\" maxlength=\"6\" size=\"6\"  readonly>". "</td>" ;
-//                    echo "</tr>";
-//                }
-//                ?>
             </table>
             <br><br>
             <label  style="padding-right:37px;"><b>Sous-Total :</b></label>
@@ -153,7 +126,7 @@ Date                    Nom                 Description
             <br><br>
 
             <label  style="padding-right:72px;"><b>Total :</b></label>
-            <input  id='_total' type="text"  maxlength="6" size="6" readonly"> </input>
+            <input  name = "total" id='_total' type="text"  maxlength="6" size="6" readonly"> </input>
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
