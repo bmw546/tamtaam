@@ -76,7 +76,7 @@ Date                    Nom             Description
                 <br><br>
 
                 <!-------------------- Validation anti-robot captcha------------------------------>
-                <p class="imgVerifCode"><img class="imgVerifCode" src="verif_code_gen.php" alt="Code de vérification"/></p>
+                <p class="imgVerifCode"><img src="verif_code_gen.php" alt="Code de vérification"/></p>
                 <br>
                 <label for="verif_code">Merci de retaper le code de l'image ci-dessus :</label>
                 <input type="text" name="verif_code" id="verif_code"/>
@@ -85,7 +85,7 @@ Date                    Nom             Description
                 <!-------------------------------Bouton inscrire et annuler ------------------------>
                 <input class="btnInscrire btnStyle" name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
-                <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour</button>
+                <button class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour</button>
 
                 <!-- message qui indique l'état de l'inscription -->
                 <div class="inscrireFooter">

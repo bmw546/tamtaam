@@ -80,7 +80,7 @@ Date                    Nom             Description
             <br><br>
 
             <!-------------------- Validation anti-robot captcha------------------------------>
-            <p><img src="verif_code_gen.php" alt="Code de vérification" /></p>
+            <p class="imgVerifCode"><img src="verif_code_gen.php" alt="Code de vérification" /></p>
             <br>
             <label for="verif_code">Merci de retaper le code de l'image ci-dessus :</label>
             <input type="text" name="verif_code" id="verif_code"/>
