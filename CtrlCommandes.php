@@ -17,20 +17,20 @@ Date                Nom                 Description
 
     require_once 'GestionnaireCommande.php';
 
+if (isset($_POST['commander'])) {
     session_start();
-
     $produit_commande = array();
-    $nomProduit = $_POST['listeProduit']   ; //Liste des produits
+    $nomProduit = $_POST['listeProduit']; //Liste des produits
     $qty = $_POST['qty'];
     $format = $_POST['format'];
 
     $connection = new Connexion();
 
     //Ignore les quantités 0
-    $i=0;
-    foreach ($qty as $q){
+    $i = 0;
+    foreach ($qty as $q) {
         if ($q > 0) {
-            $query  = "SELECT id_produit FROM produit WHERE nom = '$nomProduit[$i]' AND description ='$format[$i]'";
+            $query = "SELECT id_produit FROM produit WHERE nom = '$nomProduit[$i]' AND description ='$format[$i]'";
             $result = $connection->execution_avec_return($query);
             $idProduit = $result[0][0];
 
@@ -39,10 +39,12 @@ Date                Nom                 Description
         }
     }
 
-    $manager = new GestionnaireCommande(0,$_POST['nom'],$_POST['adresse'],date("Y-m-d"),
-        $_POST['total'],1,$_POST['livraison'],$produit_commande);
-    $manager->ajouterCommande();
 
-    $msg = "Commande effectué";
+    $manager = new GestionnaireCommande(0, $_POST['nom'], $_POST['adresse'], date("Y-m-d"),
+        $_POST['total'], 1, $_POST['livraison'], $produit_commande);
+    $manager->ajouterCommande();
+    $msg = "Commande";
     header("Location: UI_gestCommandes.php?$msg");
+
+}
  ?>

@@ -125,10 +125,19 @@ Date                    Nom                 Description
                 <input  id='_total' name='total' type="text"  maxlength="6" size="6" readonly> </input>
                 <br><br><br><br>
 
-                <input  class="btnInscrire btnStyle" id="_btnCommander"n ame="commander" type="submit" value="Commander" disabled/>
+                <input  class="btnInscrire btnStyle" name="commander" id="_btnCommander"n ame="commander" type="submit" value="Commander" disabled/>
                 <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Effacer</button>
                 <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
 
+                <!-- message qui indique l'état de l'inscription -->
+                <div class="inscrireFooter">
+                    <?php
+                    $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    if (strpos($fullUrl, "Commande") == true) {
+                        echo "<p class='greenText'>". "La commande a été envoyé avec succès." ."</p>";
+                    }
+                    ?>
+                </div>
 
                 <script src="http://code.jquery.com/jquery-3.3.1.js"> </script>
                 <script src="tamtam.js"> </script>
