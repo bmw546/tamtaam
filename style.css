@@ -1,4 +1,4 @@
-/**CSS RESET **/
+﻿/**CSS RESET **/
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -170,6 +170,24 @@ body {
 .map{
 	height:500px;
 }
+
+.lightBoxBg	{
+             position: absolute;
+             top: 0px;
+            left: 0px;
+            opacity: 0.5;
+            display: none;
+            background-color: #000000;
+            height: 100%;
+            width: 100%;
+        }
+
+.lightBox{
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            display: none;
+        }
 
 /* Side */
 

@@ -53,7 +53,7 @@ function commencer(valeur){
 
 function clic (n) {
 
-        remove(n);
+    remove(n);
 
     var w = ("qty" + n);
     var b = (w + "nb");
@@ -70,7 +70,7 @@ function clic (n) {
     chercher = "mnt" + n;
     document.getElementById(chercher).value = resultat;
 
-        addbox(n);
+    addbox(n);
 }
 
 function addbox(index){
@@ -132,3 +132,20 @@ function check(who, label, myRegex){
         document.getElementById(label).style.color = 'black';
     }
 }
+
+
+// pour les lightbox( aka "shadowbox")
+function lightbox(who){
+    who.style.display = "block";
+    lightBoxBg.style.display = "block";
+
+}
+function stop(){
+    // insérer tous les id d'image ici
+    Gingembre.style.display = " none";
+    Hibiscus.style.display = " none";
+    lightBoxBg.style.display = "none";
+}
+
+// A SUPPRIMER : http://aarlangdi.blogspot.ca/2015/01/how-to-create-lightbox-using-html5-css.html
+// DOC POUR SAVOIR COMMENT CE CODE FONCTIONNE
