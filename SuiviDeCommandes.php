@@ -79,7 +79,7 @@ Date                    Nom             Description
 		
 
 		<div id="googleMap" class="col-8 col-t-10 map"></div>
-
+        <p class="col-12"><button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button></p>
 <script>
 function myMap() {
 	var directionsService = new google.maps.DirectionsService;
