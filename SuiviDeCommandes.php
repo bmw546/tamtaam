@@ -52,7 +52,7 @@ Date                    Nom             Description
 		    </ul>
 		</nav>
 		<header class="inscriptionheader col-12">
-			SuiviDeCommandes
+			Suivi de commandes
 		</header>
 		<table class="col-5 col-t-8 suivi">
 			<tr>
