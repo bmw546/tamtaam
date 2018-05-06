@@ -71,8 +71,8 @@ Date                    Nom             Description
                 <input class="" type="password" name="passwd" id="passwd" size="36" required/>
 
                 <br><br>
-                <label class="label" for="confirmer" ><b>Confirmer votre mot de passe :</b></label>
-                <input class="" type="password" name="confirmer" id="confirmer" size="36" required/>
+                <label class="label" for="confirmer" id="lconfirme"><b>Confirmer votre mot de passe :</b></label>
+                <input class="" type="password" name="confirmer" id="confirmer" size="36" required onblur="comparePassword('passwd', 'confirmer', 'lconfirme')"/>
                 <br><br>
 
                 <!-------------------- Validation anti-robot captcha------------------------------>
@@ -83,12 +83,12 @@ Date                    Nom             Description
                 <br>
 
                 <!-------------------------------Bouton inscrire et annuler ------------------------>
-                <input class="btnInscrire btnStyle" style="margin-right: 130px;" name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
+                <input class="btnInscrire btnStyle" name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
                 <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour</button>
 
                 <!-- message qui indique l'état de l'inscription -->
-                <div class="inscriptionFooter">
+                <div class="inscrireFooter">
                     <?php
                     $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                     if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
@@ -131,6 +131,28 @@ Date                    Nom             Description
             document.getElementById(who).select();
             //a mettre si l'on veut empecher inscrire avec erreur : document.getElementById("btnInscrire").disabled = true; ajouter un parametre pour le bouton
             //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
+        }
+        else{
+            document.getElementById(label).style.color = 'black';
+        }
+    }
+
+    /**
+     * Compare les deux champs pour le mot de passe et vérifie s'il sont semblable
+     * @param pwd le mot de passe entrer
+     * @param pwdConfirmer la confirmation du mot de passe
+     * @param label l'étiquette du champs confirmation
+     */
+    function comparePassword(pwd, pwdConfirmer, label){
+
+        var password;
+        var confirme;
+        password = document.getElementById((pwd)).value;
+        confirme = document.getElementById((pwdConfirmer)).value;
+
+        if(password !== confirme){
+            document.getElementById(label).style.color = 'red';
+            document.getElementById(pwdConfirmer).select();
         }
         else{
             document.getElementById(label).style.color = 'black';
