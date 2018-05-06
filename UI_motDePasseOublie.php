@@ -54,14 +54,14 @@ Date                    Nom             Description
                 </p>
             </div>
         </form>
-        <footer class="inscriptionFooter">
+        <footer class="inscrireFooter">
             <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if (strpos($fullUrl, "emailInvalide") == true) {
-                echo  "<p style='color:red;'>". "Adresse email non valide" ."</p>";
+                echo  "<p class='redText'>". "Adresse email non valide" ."</p>";
             }
             elseif (strpos($fullUrl, "emailEnvoye") == true) {
-                echo "<p style='color:green;'>" . "Votre mot de passe a été envoyé à votre adresse email" ."</p>";
+                echo "<p class='greenText' '>" . "Votre mot de passe a été envoyé à votre adresse email" ."</p>";
             }
             ?>
         </footer>

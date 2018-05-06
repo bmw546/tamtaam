@@ -51,19 +51,18 @@ Date                    Nom             Description
                     <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
                 </p>
             </div>
+            <br><br><br><footer class="inscriptionFooter">
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                if (strpos($fullUrl, "emailInvalide") == true) {
+                    echo "<p class='redText'>".  "Adresse email non valide" ."</p>";
+                }
+                elseif (strpos($fullUrl, "emailEnvoye") == true) {
+                    echo "<p class='greenText'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
+                }
+                ?>
+            </footer>
         </form>
-
-        <footer class="inscriptionFooter">
-            <?php
-            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            if (strpos($fullUrl, "emailInvalide") == true) {
-                echo "<p style='color:red;'>".  "Adresse email non valide" ."</p>";
-            }
-            elseif (strpos($fullUrl, "emailEnvoye") == true) {
-                echo "<p style='color:green;'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
-            }
-            ?>
-        </footer>
     </fieldset>
 </section>
 </body>

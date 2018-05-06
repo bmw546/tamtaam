@@ -94,7 +94,7 @@ Date                    Nom             Description
         <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour</button>
 
         <!-- message qui indique l'état de l'inscription -->
-        <div class="inscriptionFooter">
+        <div class="inscrireFooter">
             <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {

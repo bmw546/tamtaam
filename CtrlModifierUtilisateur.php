@@ -23,15 +23,29 @@ if (isset($_POST['modifier'])) {
     session_start();
     if (isset($_SESSION['utilisateur']))
     {
-        $user = unserialize($_SESSION['utilisateur']);
-        $gest = new GestionnaireUtilisateur;
-        $gest->setUnUtilisateur($user);
-        $gest->modifier($_POST['user'], $_POST['email'], $_POST['passwd'], $_POST['adresse'], $_POST['noTelephone']);
-        $msg = $gest->getEtat();
-        session_start();
-        $user = $gest->getUnUtilisateur();
-        $_SESSION['utilisateur'] = serialize($user);
-        header("Location: UI_modifierUtilisateur.php?$msg");
+        if (IsSet($_POST['verif_code']) AND !Empty($_POST['verif_code'])){
+            if($_POST['verif_code']==$_SESSION['aleat_nbr']){
+
+                $user = unserialize($_SESSION['utilisateur']);
+                $gest = new GestionnaireUtilisateur;
+                $gest->setUnUtilisateur($user);
+                $gest->modifier($_POST['user'], $_POST['email'], $_POST['passwd'], $_POST['adresse'], $_POST['noTelephone']);
+                $msg = $gest->getEtat();
+                session_start();
+                $user = $gest->getUnUtilisateur();
+                $_SESSION['utilisateur'] = serialize($user);
+                header("Location: UI_modifierUtilisateur.php?$msg");
+            }
+            else{
+                $msg = 'mauvais';
+                header("Location: UI_Inscription.php?$msg");
+            }
+        }
+        else{
+            $msg = 'nothing';
+            header("Location: UI_modifierUtilisateur.php?$msg");
+        }
+
     }
     else{
         header("Location: HTML/menu.php");

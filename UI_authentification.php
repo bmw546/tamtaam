@@ -60,17 +60,17 @@ Date               Nom                   Description
                 <p class="col-12">
                     <input  class="btnInscrire btnStyle " name="connexion" type="submit" value="Se connecter"/>
                     <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"> Annuler</button>
-                </p>
+                </p><br><br>
             </div>
         </form>
-        <footer class="inscriptionFooter">
+        <footer class="inscriptionFooter" style="background-color: green;">
             <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-                echo "<p style='color:red;'>". "Nom d'utilisateur invalide" ."</p>";
+                echo "<p class='redText'>". "Nom d'utilisateur invalide" ."</p>";
             }
             elseif (strpos($fullUrl, "mdpInvalide") == true) {
-                echo "<p style='color:red;'>". "Mot de passe invalide" ."</p>";
+                echo "<p class='redText'>". "Mot de passe invalide" ."</p>";
             }
             ?>
             <br>
