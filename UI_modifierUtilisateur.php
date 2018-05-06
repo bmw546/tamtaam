@@ -98,19 +98,19 @@ Date                    Nom             Description
             <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-                echo "<p class='redText'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
+                echo "<p class='msg redText'>". "Nom d'utilisateur déja utilisé. Veuillez en entrer un autre." ."</p>";
             }
             elseif (strpos($fullUrl, "emailInvalide") == true) {
-                echo "<p class='redText'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
+                echo "<p class='msg redText'>". "Adresse email déja utilisée. Veuillez en entrer une autre." ."</p>";
             }
             elseif (strpos($fullUrl, "success") == true) {
-                echo "<p class='greenText'>". "Votre compte a été modifié." ."</p>";
+                echo "<p class='msg greenText'>". "Votre compte a été modifié." ."</p>";
             }
             elseif (strpos($fullUrl, "mauvais") == true) {
-                echo "<p class='redText'>". "Votre code de confirmation n'est pas bon ! Merci de réessayer." ."</p>";
+                echo "<p class='msg redText'>". "Votre code de confirmation n'est pas bon ! Merci de réessayer." ."</p>";
             }
             elseif (strpos($fullUrl, "nothing") == true) {
-                echo "<p class='redText'>". "Vous devez remplir le champ du code de confirmation !" ."</p>";
+                echo "<p class='msg redText'>". "Vous devez remplir le champ du code de confirmation !" ."</p>";
             }
             ?>
         </div>

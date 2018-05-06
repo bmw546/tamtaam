@@ -56,22 +56,23 @@ Date               Nom                   Description
                     <label class="label" for="mot_de_passe">Mot de passe: </label>
                     <input type="password" name="mot_de_passe" id="mot_de_passe" required/>
                 </p>
-
                 <br><br>
+
                 <?php
                 $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-                    echo "<p class='redText'>". "Nom d'utilisateur invalide" ."</p>";
+                    echo "<p class='msg redText'>". "Nom d'utilisateur invalide" ."</p>";
                 }
                 elseif (strpos($fullUrl, "mdpInvalide") == true) {
-                    echo "<p class='redText'>". "Mot de passe invalide" ."</p>";
+                    echo "<p class='msg redText'>". "Mot de passe invalide" ."</p>";
                 }
                 ?>
 
                 <p class="col-12">
                     <input  class="btnInscrire btnStyle " name="connexion" type="submit" value="Se connecter"/>
                     <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"> Annuler</button>
-                </p><br><br>
+                </p>
+                <br><br>
             </div>
         </form>
         <footer class="inscriptionFooter">

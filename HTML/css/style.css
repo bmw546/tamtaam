@@ -171,6 +171,11 @@ li a:hover {
     width: 100%;
 }
 
+.msg{
+    text-align: center;
+    width: 100%;
+}
+
 .btnStyle{
     background-color:black;
     color:white;

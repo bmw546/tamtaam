@@ -50,10 +50,10 @@ Date                    Nom             Description
                 <?php
                 $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 if (strpos($fullUrl, "emailInvalide") == true) {
-                    echo "<p class='redText'>".  "Adresse email non valide" ."</p>";
+                    echo "<p class='msg redText'>".  "Adresse email non valide" ."</p>";
                 }
                 elseif (strpos($fullUrl, "emailEnvoye") == true) {
-                    echo "<p class='greenText'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
+                    echo "<p class='msg greenText'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
                 }
                 ?><br><br>
                 <p>
