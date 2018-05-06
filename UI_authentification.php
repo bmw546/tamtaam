@@ -59,7 +59,7 @@ Date               Nom                   Description
 
                 <p class="col-12">
                     <input  class="btnInscrire btnStyle " name="connexion" type="submit" value="Se connecter"/>
-                    <button class="btnInscrire btnStyle " name="cancel" type="reset" value="Annuler">Annuler</button>
+                    <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"> Annuler</button>
                 </p>
             </div>
         </form>

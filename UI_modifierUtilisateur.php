@@ -90,7 +90,7 @@ Date                    Nom             Description
         <?php }else{echo "Vous n'êtes pas connecté"; echo "<br>";} ?>
         <input class="btnInscrire btnStyle " name="modifier" id="btnModifier" type="submit" value="Modifier"/>
         <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Réinitialiser</button>
-        <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"">Retour</button>
+        <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour</button>
 
         <!-- message qui indique l'état de l'inscription -->
         <div class="inscriptionFooter">
