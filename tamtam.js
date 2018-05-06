@@ -1,10 +1,6 @@
-var total;
-var count = 1;
+var count = 1; //Pour avoir des id unique
 
-function valeur(){
-    total = 0;
-
-}
+//Affiche la date du jour
 function dateAujourdhui(){
     var today = new Date();
     var dd = today.getDate();
@@ -26,85 +22,7 @@ function updateDate(valeur){
     document.getElementById("date").value = valeur;
 }
 
-function updateMontant(prix, idQty,idMnt) {
-    var montant;
-    montant = document.getElementById(idQty).value;
-    document.getElementById("idMnt").value = montant;
-}
-
-function commencer(nb){
-    document.getElementById(('tblCommandes')).addEventListener("click", function(){
-        ajouterLigne();
-    });
-}
-
-function clic (n) {
-
-        remove(n);
-
-    var w = ("qty" + n);
-    var b = (w + "nb");
-    prix = document.getElementById((b)).value;
-    qt = document.getElementById((w)).value;
-    if (qt==null||qt==""){
-        qt=0;
-    }
-
-    price = parseFloat(prix);
-    quantite = parseFloat(qt);
-    var resultat = (price*quantite);
-    //console.log(resultat);
-    chercher = "mnt" + n;
-    document.getElementById(chercher).value = resultat;
-
-        addbox(n);
-}
-
-function addbox(index){
-    var temp =  (document.getElementById(("mnt"+index)).value);
-    if (temp==null||temp==""){
-        temp=0;
-    }
-    var newtotal = parseFloat(temp);
-    total += newtotal;
-    console.log(total);
-    updateTotal();
-}
-function remove(index){
-    var temp =  (document.getElementById(("mnt"+index)).value);
-    if (temp==null||temp==""){
-        temp=0;
-    }
-    var newtotal = parseFloat(temp);
-    total -= newtotal;
-
-    //var newtotal = (total - parseFloat(document.getElementById(("mnt"+index)).value));
-    //total = newtotal;
-    console.log(total);
-    updateTotal();
-}
-function updateTotal(){
-    document.getElementById("sous_total").value = total;
-    var grandtotal = (total + 0 )
-    //var grandtotal = (total + parseFloat(document.getElementById(("livraison")).value) )
-    document.getElementById("total").value = grandtotal;
-}
-
-function loadFormat(obj){
-    var produit = obj.options[obj.selectedIndex].text;
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST","getFormat.php",true);
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState ==4 && xhr.status==200){
-            var text = xhr.responseText;
-            var target = document.getElementById("format");
-            target.innerHTML = text;
-        }
-    }
-    xhr.setRequestHeader("Content-type","application/x-www.-form-urlencoded");
-    xhr.send("produit");
-}
-
+//Ajoute une ligne dans la table
 function ajouterLigne(tblCommandes,array_produit){
     count++;
     var table = document.getElementById(tblCommandes);
@@ -133,7 +51,6 @@ function ajouterLigne(tblCommandes,array_produit){
         value++;
     }
 
-
     //Format
     var cell2 = row.insertCell(1);
     var element2 = document.createElement("select");
@@ -146,7 +63,6 @@ function ajouterLigne(tblCommandes,array_produit){
     option1.disabled = true;
     element2.appendChild(option1);
     cell2.appendChild(element2);
-
 
     //Prix Unitaire
     var cell3 = row.insertCell(2);
@@ -198,24 +114,65 @@ function ajouterLigne(tblCommandes,array_produit){
     cell7.appendChild(element7);
 }
 
-
+//Verificateur de Regex
 function check(who, label, myRegex){
-
     var value;
     value = document.getElementById((who)).value;
     if(!myRegex.test(value)){
         document.getElementById(label).style.color = 'red';
-        document.getElementById(who).select();
         //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
     }
     else{
         document.getElementById(label).style.color = 'black';
     }
 }
+
+//Enleve les options d'un combobox
+function removeOptions(selectbox) {
+    var i;
+    for (i = selectbox.options.length - 1; i > 0; i--) {
+        selectbox.remove(i);
+    }
+}
+
+//Reset le formulaire commandes
+function resetForms() {
+    document.forms['_Commandes'].reset();
+}
+
+// pour les lightbox( aka "shadowbox")
+function lightbox(who){
+    document.getElementById(who).style.display = "block";
+    document.getElementById('lightBoxBg').style.display = "block";
+
+}
+function stop(){
+    // insérer tous les id d'image ici
+    document.getElementById('Gingembre').style.display = " none";
+    document.getElementById('Hibiscus').style.display = " none";
+    document.getElementById('lightBoxBg').style.display = " none";
+}
+//Format les chifrre en dollars
+Number.prototype.format = function(n, x) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,') + " $";
+};
+
+
+// ----------JQUERY + AJAX-------------
+
+//A faire au démarrage de la page
+$(document).ready(function () {
+    resetForms();
+    stop();
+});
+
+//Verifie les changement sur le produit selectionné
 $(document).on('change','[id^=l]',function(){
     var prod = this.options[this.selectedIndex].text;
     var format = "f"+this.id.substr(1);
 
+    //Requete des format disponible pour l'objet selectionné
     $.ajax({
         type: 'POST',
         url: 'getFormat.php',
@@ -241,6 +198,7 @@ $(document).on('change','[id^=l]',function(){
 
 });
 
+//Vérifie les changement sur le format
 $(document).on('change','[id^=f]',function(){
     var format = this.options[this.selectedIndex].text;
     var listeId = "l"+this.id.substr(1);
@@ -248,6 +206,8 @@ $(document).on('change','[id^=f]',function(){
     prod = prod.options[prod.selectedIndex].text;
     var prixId = "p"+this.id.substr(1);
     var qty = "q"+this.id.substr(1);
+
+    //Requete pour trouver le prix unitaire
     $.ajax({
         type: 'POST',
         url: 'getPrixUnitaire.php',
@@ -262,6 +222,8 @@ $(document).on('change','[id^=f]',function(){
     });
 });
 
+
+//Vérifie les changement sur la quantité
 $(document).on('input','[id^=q]',function(){
     var idPrix = "p"+this.id.substr(1);
     var prixUni = document.getElementById(idPrix).value.slice(0,-1);
@@ -271,6 +233,7 @@ $(document).on('input','[id^=q]',function(){
     document.getElementById(idMontant).value = montant.format(2);
     $("#m1").trigger("change");
 
+    //Disable le bouton commander si la quantité est 0
     var btn = document.getElementById('_btnCommander');
     if (this.value > 0){
        btn.removeAttribute("disabled");
@@ -280,6 +243,7 @@ $(document).on('input','[id^=q]',function(){
     }
  });
 
+//Vérifie les click sur supprimer
 $(document).on('click','[id^=s]',function(){
     var rowId = "r" +this.id.substr(1);
     var row = document.getElementById(rowId);
@@ -287,7 +251,7 @@ $(document).on('click','[id^=s]',function(){
     $("#q1").trigger("input");
 });
 
-//fonction image
+//Vérifie les click sur image
 $(document).on('click','[id^=i]',function(){
     var prodId = "l" +this.id.substr(1);
     var prod = document.getElementById(prodId);
@@ -295,6 +259,7 @@ $(document).on('click','[id^=i]',function(){
     lightbox(string);
 });
 
+//Vérifie les changement sur le montant
 $(document).on('change','[id^=m]',function(){
     var val = 0;
     $('[id^="m"]').each(function(){
@@ -309,38 +274,8 @@ $(document).on('change','[id^=m]',function(){
     total.value = val.format(2);;
 });
 
-function removeOptions(selectbox) {
-    var i;
-    for (i = selectbox.options.length - 1; i > 0; i--) {
-        selectbox.remove(i);
-    }
-}
 
-Number.prototype.format = function(n, x) {
-    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
-    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,') + " $";
-};
 
-$(document).ready(function () {
-    resetForms();
-    stop();
-});
 
-function resetForms() {
-    document.forms['_Commandes'].reset();
-}
-
-// pour les lightbox( aka "shadowbox")
-function lightbox(who){
-    document.getElementById(who).style.display = "block";
-    document.getElementById('lightBoxBg').style.display = "block";
-
-}
-function stop(){
-    // insérer tous les id d'image ici
-    document.getElementById('Gingembre').style.display = " none";
-    document.getElementById('Hibiscus').style.display = " none";
-    document.getElementById('lightBoxBg').style.display = " none";
-}
 
 

@@ -126,7 +126,7 @@ Date                    Nom                 Description
                 <br><br><br><br>
 
                 <input  class="btnInscrire btnStyle" id="_btnCommander"n ame="commander" type="submit" value="Commander" disabled/>
-                <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Annuler</button>
+                <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Effacer</button>
                 <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
 
 
