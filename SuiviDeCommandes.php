@@ -36,7 +36,7 @@ Date                    Nom             Description
 	?>
 	<head>
 		<meta charset='utf-8'/>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="HTML/css/style.css" />
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 		<title>cible suivi des commandes</title>
 	</head>
@@ -52,7 +52,7 @@ Date                    Nom             Description
 		    </ul>
 		</nav>
 		<header class="inscriptionheader col-12">
-			Suivi de commandes
+            <i>Suivi de commandes</i>
 		</header>
 		<table class="col-5 col-t-8 suivi">
 			<tr>

@@ -215,11 +215,22 @@ li a:hover {
     margin: 20px 20px 20px 20%;
 }
 
-.tbl table,th,td{
+.tbl table{
     width: 100%;
     border: 1px solid black;
     text-align: center;
+}
 
+.tbl th{
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.tbl td{
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
 }
 
 head {
@@ -230,6 +241,13 @@ head {
 body {
     padding:0;
     margin: 0;
+}
+
+.suivi{
+    border: solid black;
+    align:center;
+    margin-top:5%;
+    margin-bottom:10%;
 }
 
 .map{
@@ -354,6 +372,12 @@ body {
         color:#FFFFFF;
     }
 
+    .suivi{
+        margin:20%;
+        margin-top:5%;
+        margin-bottom:10%;
+    }
+
     .menu{
         display: block;
         float: left;
@@ -443,5 +467,11 @@ body {
     .map{
         margin-left:20%;
         height:500px;
+    }
+
+    .suivi{
+        margin:28%;
+        margin-top:5%;
+        margin-bottom:10%;
     }
 }

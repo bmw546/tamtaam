@@ -85,7 +85,7 @@ Date                    Nom             Description
                 <!-------------------------------Bouton inscrire et annuler ------------------------>
                 <input class="btnInscrire btnStyle" name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
-                <button class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour</button>
+                <button class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour
 
                 <!-- message qui indique l'état de l'inscription -->
                 <div class="inscrireFooter">
@@ -128,9 +128,6 @@ Date                    Nom             Description
         value = document.getElementById((who)).value;
         if(!myRegex.test(value)){
             document.getElementById(label).style.color = 'red';
-            document.getElementById(who).select();
-            //a mettre si l'on veut empecher inscrire avec erreur : document.getElementById("btnInscrire").disabled = true; ajouter un parametre pour le bouton
-            //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
         }
         else{
             document.getElementById(label).style.color = 'black';

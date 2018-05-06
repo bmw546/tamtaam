@@ -19,6 +19,7 @@ Date                    Nom                 Description
         <meta charset="utf-8" />
         <link rel="stylesheet" href="HTML/css/style.css" />
         <link rel="stylesheet" href="HTML/css/pageTransition.css" />
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <title>Placer une commande</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="tamtam.js"></script>
@@ -59,13 +60,15 @@ Date                    Nom                 Description
                 <input type="text" name="nom" id="nom" size="30" required/>
                 <br><br>
 
-                <label class="label" id="_adresse"for="adresse"><b>Adresse :</b></label>
-                <input type="text" id="_txtAdresse" name="adresse" id="adresse" placeholder="32 rue du cegep, Sherbrooke, Qc, J1E 4E2" size="36" required
+                <label class="label" id="_adresse"for="_txtAdresse"><b>Adresse :</b></label>
+                <input type="text" id="_txtAdresse" name="adresse" placeholder="32 rue du cegep, Sherbrooke, Qc, J1E 4E2" size="36" required
                        onblur="check('_txtAdresse', '_adresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(,)?(\s)([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
                 <br><br>
 
-                <input type="radio" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
-                <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
+                <input type="radio" id="livrer" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">
+                <label for="livrer">Livraison</label><br>
+                <input type="radio" id="magasin" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2">
+                <label for="magasin">Ramassage en magasin</label><br>
                 <br><br>
 
                 <table class="tbl" id='tblCommandes' style="width:60%">
@@ -109,33 +112,33 @@ Date                    Nom                 Description
                 ?>
                 </table>
 
-                <input class="btnInscrire btnStyle" type="button" id="nouvProduit" href="#" id="addScnt" value="Ajouter un produit " onclick="ajouterLigne('tblCommandes',array_produit)"> </input>
+                <input class="btnInscrire btnStyle" type="button" id="nouvProduit" value="Ajouter un produit" onclick="ajouterLigne('tblCommandes',array_produit)">
 
-                </table>
                 <br><br>
-                <label  class="label" ><b>Sous-Total :</b></label>
-                <input id="_soustotal" type="text" maxlength="6" size="6" readonly> </input>
-                <br><br>
-
-                <label  class="label"><b>Livraison :</b></label>
-                <input  type="text" maxlength="6" size="6" id="livraison" readonly> </input>
+                <label for="_soustotal" class="label" ><b>Sous-Total :</b></label>
+                <input id="_soustotal" type="text" maxlength="6" size="6" readonly>
                 <br><br>
 
-                <label  class="label"><b>Total :</b></label>
-                <input  id='_total' name='total' type="text"  maxlength="6" size="6" readonly> </input>
+                <label for="livraison" class="label"><b>Livraison :</b></label>
+                <input  type="text" maxlength="6" size="6" name="livraison" id="livraison" readonly>
+                <br><br>
+
+                <label  for="_total" class="label"><b>Total :</b></label>
+                <input  id='_total' name='total' type="text"  maxlength="6" size="6" readonly>
                 <br><br><br><br>
 
-                <input  class="btnInscrire btnStyle" name="commander" id="_btnCommander"n ame="commander" type="submit" value="Commander" disabled/>
+                <input  class="btnInscrire btnStyle" name="commander" id="_btnCommander" type="submit" value="Commander" disabled/>
                 <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Effacer</button>
                 <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
 
-                <!-- message qui indique l'état de l'inscription -->
+                <!-- message qui indique l'état de la commande -->
                 <div class="inscrireFooter">
                     <?php
                     $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    if (strpos($fullUrl, "Commande") == true) {
-                        echo "<p class='greenText'>". "La commande a été envoyé avec succès." ."</p>";
+                    if (strpos($fullUrl, "commande") == true) {
+                        echo "<p class='greenText'>". "La commande a été envoyé avec succès."."</p>";
                     }
+
                     ?>
                 </div>
 

@@ -43,8 +43,8 @@ if (isset($_POST['commander'])) {
     $manager = new GestionnaireCommande(0, $_POST['nom'], $_POST['adresse'], date("Y-m-d"),
         $_POST['total'], 1, $_POST['livraison'], $produit_commande);
     $manager->ajouterCommande();
-    $msg = "Commande";
-    header("Location: UI_gestCommandes.php?$msg");
 
+    $msg = 'commande';
+    header("Location: UI_gestCommandes.php?$msg");
 }
  ?>

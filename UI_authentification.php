@@ -32,11 +32,11 @@ Date               Nom                   Description
 <nav class="entete col-12">
     <img src="HTML/image/logo.png" alt="logo"/>
     <ul>
-        <li class="menu col-2 col-t-2"><a href="#">Accueil</a></li>
-        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nos produits</a></li>
-        <li class="pointMenu menu col-2 col-t-2"><a href="#">En savoir plus</a></li>
-        <li class="pointMenu menu col-2 col-t-2"><a href="#">Points de ventes</a></li>
-        <li class="pointMenu menu col-2 col-t-2"><a href="#">Nous joindre</a></li>
+        <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
+        <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
     </ul>
 </nav>
 
