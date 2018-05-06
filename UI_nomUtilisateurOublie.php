@@ -46,12 +46,7 @@ Date                    Nom             Description
                     <label class="label" for="email">Entrez votre adresse email</label>
                     <input type="text" name="email" id="email" required/>
                 </p>
-                <p>
-                    <input   class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
-                    <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
-                </p>
-            </div>
-            <br><br><br><footer class="inscriptionFooter">
+                <br><br><br>
                 <?php
                 $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 if (strpos($fullUrl, "emailInvalide") == true) {
@@ -61,7 +56,11 @@ Date                    Nom             Description
                     echo "<p class='greenText'>".  "Votre nom d'utilisateur a été envoyé à votre adresse email" ."</p>";
                 }
                 ?>
-            </footer>
+                <p>
+                    <input   class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
+                    <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
+                </p>
+            </div>
         </form>
     </fieldset>
 </section>

@@ -57,6 +57,17 @@ Date               Nom                   Description
                     <input type="password" name="mot_de_passe" id="mot_de_passe" required/>
                 </p>
 
+                <br><br>
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
+                    echo "<p class='redText'>". "Nom d'utilisateur invalide" ."</p>";
+                }
+                elseif (strpos($fullUrl, "mdpInvalide") == true) {
+                    echo "<p class='redText'>". "Mot de passe invalide" ."</p>";
+                }
+                ?>
+
                 <p class="col-12">
                     <input  class="btnInscrire btnStyle " name="connexion" type="submit" value="Se connecter"/>
                     <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"> Annuler</button>
@@ -64,15 +75,6 @@ Date               Nom                   Description
             </div>
         </form>
         <footer class="inscriptionFooter">
-            <?php
-            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
-                echo "<p class='redText'>". "Nom d'utilisateur invalide" ."</p>";
-            }
-            elseif (strpos($fullUrl, "mdpInvalide") == true) {
-                echo "<p class='redText'>". "Mot de passe invalide" ."</p>";
-            }
-            ?>
             <br>
             <a class="col-4 col-m-4" href="UI_Inscription.php">Créer un compte</a>
             <a class="col-4 col-m-4" href="UI_motDePasseOublie.php">Mot de passe oublié</a>

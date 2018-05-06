@@ -40,7 +40,6 @@ Date                    Nom             Description
     <br>
     <div class="inscriptionheader"><i>Récupérer votre mot de passe</i></div>
     <br>
-    <fieldset>
         <form class="formInscription" action="CtrlMotDePasseOublie.php" method="post">
             <div class="centerForm">
                 <br><br><br>
@@ -48,24 +47,23 @@ Date                    Nom             Description
                     <label class="label" for="email">Entrez votre adresse email</label>
                     <input type="text" name="email" id="email" required/>
                 </p>
+
+                <br><br><br>
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                if (strpos($fullUrl, "emailInvalide") == true) {
+                    echo  "<p class='redText'>". "Adresse email non valide" ."</p>";
+                }
+                elseif (strpos($fullUrl, "emailEnvoye") == true) {
+                    echo "<p class='greenText' '>" . "Votre mot de passe a été envoyé à votre adresse email" ."</p>";
+                }
+                ?>
                 <p>
                     <input  class="btnInscrire btnStyle" name="envoi" type="submit" value="Envoyer"/>
                     <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Annuler</button>
                 </p>
             </div>
         </form>
-        <footer class="inscrireFooter">
-            <?php
-            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-            if (strpos($fullUrl, "emailInvalide") == true) {
-                echo  "<p class='redText'>". "Adresse email non valide" ."</p>";
-            }
-            elseif (strpos($fullUrl, "emailEnvoye") == true) {
-                echo "<p class='greenText' '>" . "Votre mot de passe a été envoyé à votre adresse email" ."</p>";
-            }
-            ?>
-        </footer>
-    </fieldset>
 </section>
 </body>
 </html>
