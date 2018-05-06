@@ -1,6 +1,6 @@
 <!--******************************************************
 Fichier : UI_modifierUtilisateur.php
-Auteur : Roméo
+Auteur : Roméo/Rémi Létourneau
 Fonctionnalité : Modifier les infos d'un utilisateur authentifié (basé sur UI_inscription.php)
 Date : 2018-05-02
 
