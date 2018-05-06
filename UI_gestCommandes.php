@@ -122,10 +122,10 @@ Date                    Nom                 Description
                 <br><br>
 
                 <label  class="label"><b>Total :</b></label>
-                <input  id='_total' type="text"  maxlength="6" size="6" readonly"> </input>
+                <input  id='_total' name='total' type="text"  maxlength="6" size="6" readonly"> </input>
                 <br><br><br><br>
 
-                <input  class="btnInscrire btnStyle"name="commander" type="submit" value="Commander"/>
+                <input  class="btnInscrire btnStyle" id="_btnCommander"n ame="commander" type="submit" value="Commander" disabled/>
                 <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Annuler</button>
                 <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
 

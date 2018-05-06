@@ -33,7 +33,6 @@ Date                Nom                 Description
             $idProduit = $result[0][0];
 
             array_push($produit_commande, $idProduit, $q);
-            echo $idProduit ."<br/>";
             $i++;
         }
     }
@@ -41,4 +40,7 @@ Date                Nom                 Description
     $manager = new GestionnaireCommande(0,$_POST['nom'],$_POST['adresse'],date("Y-m-d"),
         $_POST['total'],1,$_POST['livraison'],$produit_commande);
     $manager->ajouterCommande();
+
+    $msg = "Commande effectué";
+    header("Location: UI_gestCommandes.php?$msg");
  ?>
