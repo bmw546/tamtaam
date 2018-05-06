@@ -44,10 +44,10 @@ Date                    Nom                 Description
     <div id="lightBoxBg" class="lightBoxBg" onclick="stop()">
     </div>
     <div id="Gingembre" class="lightBox">
-        <img src="image/gimger.jpg"/>
+        <img src="HTML/image/GINGER_CADRÉ_PT.jpg"/>
     </div>
     <div id="Hibiscus" class="lightBox">
-        <img src="image/HIBISCUS.jpg"/>
+        <img src="HTML/image/HIBISCUS_CADRÉ_PT.jpg"/>
     </div>
     <!-- ------------------- FIN DE LA SECTION SHADOW BOX --------------------------->
 
@@ -67,8 +67,6 @@ Date                    Nom                 Description
             <input type="radio" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">   Livraison<br>
             <input type="radio" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2"> Ramassage en magasin<br>
             <br><br>
-
-
 
             <table  id='tblCommandes' style="width:60%">
                 <tr>
@@ -106,7 +104,7 @@ Date                    Nom                 Description
                     echo "<td align='center'><input name ='qty[]' id ='q1' type=\"number\" min=\"0\"  max=\"99\" value=0 disabled>  "."</td>";
                     echo "<td align='center'><input  name='montant[]' id ='m1' type=\"text\" maxlength=\"6\" size=\"6\" readonly>". "</td>" ;
                     echo "<td><input id='s1' type='button' value='Supprimer' disabled hidden  ></td>";
-                    echo "<td align='center'><input id='i1' style='width:100%;'type='button'value='Image' onclick=\"lightbox()\"/>   </input></td>";
+                    echo "<td align='center'><input id='i1' style='width:100%;'type='button'value='Image' \"/>   </input></td>";
                 $query = ""
                 ?>
             </table>

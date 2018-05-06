@@ -189,7 +189,7 @@ function ajouterLigne(tblCommandes,array_produit){
     var element7 = document.createElement("input");
     element7.setAttribute("id","i"+count);
     element7.type="button";
-    element7.text = "Image";
+    element7.value = "Image";
     cell7.appendChild(element7);
 }
 
@@ -276,11 +276,12 @@ $(document).on('click','[id^=s]',function(){
     $("#q1").trigger("input");
 });
 
+//fonction image
 $(document).on('click','[id^=i]',function(){
-    var prodId = "p" +this.id.substr(1);
+    var prodId = "l" +this.id.substr(1);
     var prod = document.getElementById(prodId);
-
-    $("#q1").trigger("input");
+    var string = prod.options[prod.selectedIndex].text;
+    lightbox(string);
 });
 
 $(document).on('change','[id^=m]',function(){
@@ -311,8 +312,22 @@ Number.prototype.format = function(n, x) {
 
 $(document).ready(function () {
     resetForms();
+    stop();
 });
 
 function resetForms() {
     document.forms['_Commandes'].reset();
+}
+
+// pour les lightbox( aka "shadowbox")
+function lightbox(who){
+    document.getElementById(who).style.display = "block";
+    document.getElementById('lightBoxBg').style.display = "block";
+
+}
+function stop(){
+    // insérer tous les id d'image ici
+    document.getElementById('Gingembre').style.display = " none";
+    document.getElementById('Hibiscus').style.display = " none";
+    document.getElementById('lightBoxBg').style.display = " none";
 }
