@@ -13,7 +13,7 @@ Date                    Nom             Description
 =========================================================
 
 ***********************************************************-->
-<html class="transition rebondirversBas">
+<html>
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="HTML/css/style.css" />
