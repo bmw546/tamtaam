@@ -50,12 +50,13 @@ Date                    Nom                 Description
 <!-- ------------------- FIN DE LA SECTION SHADOW BOX --------------------------->
 
             <form class="centerForm formInscription" id="_Commandes" action="CtrlCommandes.php" method="post">
-                <br>
-                <label class="label" for="nom" ><b>Nom :</b></label>
-                <input type="text" name="nom" id="nom" size="30" required/>
 
                 <label class="label" for="date" ><b>Date :</b></label>
                 <input type="text" name="date" id="date"  size="30" readonly />
+                <br><br>
+
+                <label class="label" for="nom" ><b>Nom :</b></label>
+                <input type="text" name="nom" id="nom" size="30" required/>
                 <br><br>
 
                 <label class="label" for="adresse"><b>Adresse :</b></label>
