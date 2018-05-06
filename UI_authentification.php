@@ -63,7 +63,7 @@ Date               Nom                   Description
                 </p><br><br>
             </div>
         </form>
-        <footer class="inscriptionFooter" style="background-color: green;">
+        <footer class="inscriptionFooter">
             <?php
             $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             if (strpos($fullUrl, "nomUtilisateurInvalide") == true) {
