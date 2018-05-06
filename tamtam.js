@@ -269,6 +269,7 @@ $(document).on('click','[id^=s]',function(){
     var rowId = "r" +this.id.substr(1);
     var row = document.getElementById(rowId);
     row.parentNode.removeChild(row);
+    $("#q1").trigger("input");
 });
 
 $(document).on('change','[id^=m]',function(){
@@ -296,3 +297,11 @@ Number.prototype.format = function(n, x) {
     var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
     return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,') + " $";
 };
+
+$(document).ready(function () {
+    resetForms();
+});
+
+function resetForms() {
+    document.forms['_Commandes'].reset();
+}

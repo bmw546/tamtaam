@@ -31,7 +31,7 @@ Date                    Nom                 Description
             <h1 style="text-align:center;"><i>Placer une commande</i></h1>
         </header>
 
-        <form id="Commandes" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
+        <form id="_Commandes" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
             <br>
             <label for="nom" style="padding-right:37px;"><b>Nom :</b></label>
             <input type="text" name="nom" id="nom" size="30" required/>
@@ -84,7 +84,7 @@ Date                    Nom                 Description
                     echo "<td align='right' ><input name='prix[]' id ='p1' type=\"text\" maxlength=\"4\"  size=\"4\" value=0 readonly>"."</td>";
                     echo "<td align='center'><input name ='qty[]' id ='q1' type=\"number\" min=\"0\"  max=\"99\" value=0 disabled>  "."</td>";
                     echo "<td align='center'><input  name='montant[]' id ='m1' type=\"text\" maxlength=\"6\" size=\"6\" readonly>". "</td>" ;
-                    echo "<td><input id='s1' type='button' value='Supprimer'></td>";
+                    echo "<td><input id='s1' type='button' value='Supprimer' disabled hidden  ></td>";
                 $query = ""
                 ?>
             </table>
@@ -134,7 +134,7 @@ Date                    Nom                 Description
             <br><br><br><br>
 
             <input  style="margin-left:80px; margin-right:80px; background-color:black; color:white; border-color:black;" name="commander" type="submit" value="Commander"/>
-            <button style="background-color:black; color:white; border-color:black;" name="cancel" value="Annuler">Annuler</button>
+            <button style="background-color:black; color:white; border-color:black;" type='reset' name="cancel" value="Annuler">Annuler</button>
 
             <script src="http://code.jquery.com/jquery-3.3.1.js"> </script>
             <script src="tamtam.js"> </script>
