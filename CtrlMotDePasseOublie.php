@@ -28,5 +28,4 @@ if (isset($_POST['envoi'])) {
   $msg = $gest->getEtat();
   header("Location: UI_motDePasseOublie.php?$msg");
 }
-
 ?>

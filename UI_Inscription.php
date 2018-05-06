@@ -18,6 +18,7 @@ Date                    Nom             Description
 2018-05-01             Rémi             Modification style css
 2018-05-02             Rémi             Ajout nouvelle fonctionnalité (captcha)
 2018-05-03             Rémi             Ajout javascript temporaire pour valider les regex.
+2018-05-06             Roméo            Ajout de nouvelle fonctionalité (transition de page)
 ******************************************************************************************************-->
 <html class="transition rebondirversBas">
 	<head>
@@ -84,6 +85,7 @@ Date                    Nom             Description
                 <!-------------------------------Bouton inscrire et annuler ------------------------>
                 <input class="btnInscrire btnStyle " name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
                 <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
+                <button  class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour</button>
 
                 <!-- message qui indique l'état de l'inscription -->
                 <div class="inscriptionFooter">
