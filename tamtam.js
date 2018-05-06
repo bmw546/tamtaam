@@ -121,6 +121,7 @@ function ajouterLigne(tblCommandes,array_produit){
     option1.selected = true;
     option1.disabled = true;
     element1.appendChild(option1);
+    cell1.appendChild(element1);
 
     for (var i = 0;i < array_produit.length;i++){
         var option2 = document.createElement("option");
@@ -140,6 +141,7 @@ function ajouterLigne(tblCommandes,array_produit){
     option1.selected = true;
     option1.disabled = true;
     element2.appendChild(option1);
+    cell2.appendChild(element2);
 
 
     //Prix Unitaire
@@ -162,6 +164,7 @@ function ajouterLigne(tblCommandes,array_produit){
     element4.min="0";
     element4.max="99";
     element4.value=0;
+    cell4.appendChild(element4);
 
     //Montant
     var cell5 = row.insertCell(4);
@@ -177,16 +180,17 @@ function ajouterLigne(tblCommandes,array_produit){
     var cell6 = row.insertCell(5);
     var element6 = document.createElement("input");
     element6.setAttribute("id","s"+count);
-    console.log(element6.id);
     element6.type="button";
     element6.value= "Supprimer";
-
-    //Ajout des fonctions
-    cell1.appendChild(element1);
-    cell2.appendChild(element2);
-    cell4.appendChild(element4);
     cell6.appendChild(element6);
 
+    //Bouton Image
+    var cell7 = row.insertCell(6);
+    var element7 = document.createElement("input");
+    element7.setAttribute("id","i"+count);
+    element7.type="button";
+    element7.text = "Image";
+    cell7.appendChild(element7);
 }
 
 
@@ -269,6 +273,13 @@ $(document).on('click','[id^=s]',function(){
     var rowId = "r" +this.id.substr(1);
     var row = document.getElementById(rowId);
     row.parentNode.removeChild(row);
+    $("#q1").trigger("input");
+});
+
+$(document).on('click','[id^=i]',function(){
+    var prodId = "p" +this.id.substr(1);
+    var prod = document.getElementById(prodId);
+
     $("#q1").trigger("input");
 });
 

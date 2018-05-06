@@ -27,9 +27,29 @@ Date                    Nom                 Description
         }
     </style>
     <body style="margin:auto; width:950px;" onload="updateDate(dateAujourdhui())">
+    <nav class="entete col-12">
+        <img src="HTML/image/logo.png" alt="logo"/>
+        <ul>
+            <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/a-propos/">En savoir plus</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/points-de-ventes/">Points de ventes</a></li>
+            <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nous-joindre/">Nous joindre</a></li>
+        </ul>
+    </nav>
     <header>
             <h1 style="text-align:center;"><i>Placer une commande</i></h1>
         </header>
+    <!-- ------------------------- section pour shadow box -------------------------->
+    <div id="lightBoxBg" class="lightBoxBg" onclick="stop()">
+    </div>
+    <div id="Gingembre" class="lightBox">
+        <img src="image/gimger.jpg"/>
+    </div>
+    <div id="Hibiscus" class="lightBox">
+        <img src="image/HIBISCUS.jpg"/>
+    </div>
+    <!-- ------------------- FIN DE LA SECTION SHADOW BOX --------------------------->
 
         <form id="_Commandes" action="CtrlCommandes.php" method="post" style="padding:20px; border:solid black;">
             <br>
@@ -58,6 +78,7 @@ Date                    Nom                 Description
                     <th>Quantité</th>
                     <th>Montant</th>
                     <th>Action</th>
+                    <th> Image du produit </th>
                 </tr>
 
                 <?php
@@ -85,6 +106,7 @@ Date                    Nom                 Description
                     echo "<td align='center'><input name ='qty[]' id ='q1' type=\"number\" min=\"0\"  max=\"99\" value=0 disabled>  "."</td>";
                     echo "<td align='center'><input  name='montant[]' id ='m1' type=\"text\" maxlength=\"6\" size=\"6\" readonly>". "</td>" ;
                     echo "<td><input id='s1' type='button' value='Supprimer' disabled hidden  ></td>";
+                    echo "<td align='center'><input id='i1' style='width:100%;'type='button'value='Image' onclick=\"lightbox()\"/>   </input></td>";
                 $query = ""
                 ?>
             </table>
