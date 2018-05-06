@@ -189,7 +189,7 @@ function ajouterLigne(tblCommandes,array_produit){
     var element7 = document.createElement("input");
     element7.setAttribute("id","i"+count);
     element7.type="button";
-    element7.text = "Image";
+    element7.value = "Image";
     cell7.appendChild(element7);
 }
 
