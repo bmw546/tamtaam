@@ -67,7 +67,7 @@ Date                    Nom                 Description
                 if (isset($_SESSION['utilisateur'])) {
                 $usr = unserialize($_SESSION['utilisateur']);
                 $adr = $usr->getAdresse();
-                ?> <input type="text" id="_txtAdresse" name="adresse" value="<?php echo $adr?>" disabled="disabled" size="36" required />       <?php
+                ?> <input type="text" id="_txtAdresse" name="adresse" value="<?php echo $adr?>" disabled="disabled" size="40" required />       <?php
                 }else{
 
                     ?>
