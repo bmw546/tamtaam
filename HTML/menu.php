@@ -14,6 +14,7 @@ Date               Nom                   Approuvé
 Historique de modifications :
 Date               Nom                   Description
 ==================================================================================
+2018-05-06          Roméo                suivi commande apparaît seulement si 'utilisateur à au moins 1 commande
 *******************************************************************************/-->
 <html>
 <head>
@@ -42,11 +43,17 @@ Date               Nom                   Description
 			<li class=" nav central"> <span> <h1 > Bienvenue
                 <?php
                 require_once 'utilisateur.php';
+                require_once  'GestionnaireUtilisateur.php';
                 session_start();
 
 
                 if (isset($_SESSION['utilisateur'])){
                     $usr = unserialize($_SESSION['utilisateur']);
+                    $gest = new GestionnaireUtilisateur();
+                    $gest->setUnUtilisateur($usr);
+                    $gest->chercherSiCommande();
+                    $sicommande = $gest->getUnUtilisateur()->getSiCommande();
+
                     echo $usr->getNomUtilisateur();
                 }
                 ?>
@@ -65,10 +72,15 @@ Date               Nom                   Description
             if (isset($_SESSION['utilisateur'])){
 
                 ?>
-
                 <li class="nav central"><a href="UI_gestCommandes.php"> Placer une commande </a></li>
                 <li class="nav central"><a href="UIgestCourrielNotification.php"> Notification par courriel </a></li>
-                <li class="nav central"><a href="SuiviDeCommandes.php"> Suivi de commande </a></li>
+                <?php
+                if ($sicommande == true){
+
+                    ?><li class="nav central"><a href="SuiviDeCommandes.php"> Suivi de commande </a></li><?php
+                }
+                ?>
+
                 <li class="nav central"><a href="UIgestSuggestions.php"> Envoyer un commentaire </a></li>
                 <li class="nav central"><a href="UI_modifierUtilisateur.php">Modifier mes informations</a></li>
                 <li class="nav central"><a href="deconnexion.php">Se déconnecter</a></li>
