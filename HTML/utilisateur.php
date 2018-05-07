@@ -36,7 +36,7 @@ class Utilisateur {
      * @param $email l'adresse email de l'utilisateur
      * @param $adresse l'adresse de la maison de l'utilisateur
      * @param $telephone le téléphone de l'utilisateur
-	 * @parra $siCommande si l'utilisateur a au moins 1 commande en cours
+	 * @param $siCommande si l'utilisateur a au moins 1 commande en cours
 	*/
 	public function __construct(){
 
