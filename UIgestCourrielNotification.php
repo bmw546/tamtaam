@@ -80,15 +80,27 @@ Date                    Nom             Description
 
             <br><br>
             <label class="labelGrand">Type de notification :</label>
-            <input type="checkbox"  value="true" name="nouveau" id="nouveau"><label for="nouveau">Nouvelles et nouveautés</label><br>
-            <input class="checkBoxAlign" type="checkbox"  value="true" name ="reception" id="reception"><label for="reception">Réception de commande</label><br>
-            <input class="checkBoxAlign" type="checkbox"  value="true" name="etat" id="etat"><label for="etat">Changement sur l'état de la livraison</label>
+            <input type="checkbox"  value="1" name="nouveau" id="nouveau"><label for="nouveau">Nouvelles et nouveautés</label><br>
+            <input class="checkBoxAlign" type="checkbox"  value="2" name ="reception" id="reception"><label for="reception">Réception de commande</label><br>
+            <input class="checkBoxAlign" type="checkbox"  value="3" name="etat" id="etat"><label for="etat">Changement sur l'état de la livraison</label>
 
             <br><br>
             <input class="btnInscrire btnStyle" name="modifier" type="submit" value="Modifier"/>
             <button class="btnInscrire btnStyle" type="reset" name="cancel" value="cancel">Effacer</button>
             <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
 
+            <div class="inscriptionFooter">
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if (strpos($fullUrl, "success") == true) {
+                    echo "<p class='greenText'>". "Modification réussie" ."</p>";
+                }
+                elseif (strpos($fullUrl, "noConnect") == true) {
+                    echo "<p class='redText'>". "Vous n'êtes pas connecté." ."</p>";
+                }
+                ?>
+            </div>
         </form>
 
     </body>

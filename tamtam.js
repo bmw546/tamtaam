@@ -114,13 +114,39 @@ function ajouterLigne(tblCommandes,array_produit){
     cell7.appendChild(element7);
 }
 
-//Verificateur de Regex
+/**
+ * valide les informations des champs d'un formulaire (REGEX)
+ * @param who string  le nom de l'id du champ
+ * @param label l'étiquette associé au champs
+ * @param myRegex l'expression regex pour valider un champ
+ */
 function check(who, label, myRegex){
     var value;
     value = document.getElementById((who)).value;
     if(!myRegex.test(value)){
         document.getElementById(label).style.color = 'red';
-        //alert("ERREUR l'adresse contient des information invalide :"+ value +" veuillez faire comme ceci ex: 475 Rue du Cegep, Sherbrooke, QC J1A 4K1 ");
+    }
+    else{
+        document.getElementById(label).style.color = 'black';
+    }
+}
+
+/**
+ * Compare les deux champs pour le mot de passe et vérifie s'il sont semblable
+ * @param pwd le mot de passe entrer
+ * @param pwdConfirmer la confirmation du mot de passe
+ * @param label l'étiquette du champs confirmation
+ */
+function comparePassword(pwd, pwdConfirmer, label){
+
+    var password;
+    var confirme;
+    password = document.getElementById((pwd)).value;
+    confirme = document.getElementById((pwdConfirmer)).value;
+
+    if(password !== confirme){
+        document.getElementById(label).style.color = 'red';
+        document.getElementById(pwdConfirmer).select();
     }
     else{
         document.getElementById(label).style.color = 'black';

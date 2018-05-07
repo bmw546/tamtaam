@@ -84,8 +84,8 @@ Date                    Nom             Description
 
                 <!-------------------------------Bouton inscrire et annuler ------------------------>
                 <input class="btnInscrire btnStyle" name="inscrire" id="btnInscrire" type="submit" value="S'inscrire"/>
-                <button class="btnInscrire btnStyle " type="reset" name="cancel" value="Annuler">Effacer</button>
-                <button class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button"">Retour
+                <button class="btnInscrire btnStyle" type="reset" name="cancel" value="Annuler">Effacer</button>
+                <button class="btnInscrire btnStyle" onclick="location.href='UI_authentification.php'" type="button">Retour</button>
 
                 <!-- message qui indique l'état de l'inscription -->
                 <div class="inscrireFooter">
@@ -108,12 +108,13 @@ Date                    Nom             Description
                     }
                     ?>
                 </div>
+                <script src="tamtam.js"> </script>
             </form>
         </section>
 	</body>
 </html>
 
-<script>
+<!--<script>
     //pour utiliser dans le formuliare :
     //onblur="check('noTelephone', 'lNoTelephone', /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/)"
     /**
@@ -155,4 +156,4 @@ Date                    Nom             Description
             document.getElementById(label).style.color = 'black';
         }
     }
-</script>
+</script>-->

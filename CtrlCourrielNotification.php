@@ -18,22 +18,29 @@ Date               Nom                   Description
  *****************************************************************/
 require_once  'utilisateur.php';
 include("GestionnaireCourrielNotification.php");
-session_start();
 
-if (isset($_SESSION['utilisateur']))
-{
-    $Email = new CourrielNotification();
-    $usr = unserialize($_SESSION['utilisateur']);
-    $id_client = $usr->getId();
-    $sms = $_POST['sms'];
+if (isset($_POST['modifier'])) {
 
-    $notification = $_POST['notification'];
-    $nouveau = $_POST['nouveau'];
-    $reception = $_POST['reception'];
-    $etat = $_POST['etat'];
-    $Email->chercher_si_existe($id_client,$sms,$notification,$nouveau,$reception,$etat);
+    session_start();
+    if (isset($_SESSION['utilisateur']))
+    {
+        $Email = new CourrielNotification();
+        $usr = unserialize($_SESSION['utilisateur']);
+        $id_client = $usr->getId();
+        $sms = $_POST['sms'];
+
+        $notification = $_POST['notification'];
+        $nouveau = $_POST['nouveau'];
+        $reception = $_POST['reception'];
+        $etat = $_POST['etat'];
+        $Email->chercher_si_existe($id_client,$sms,$notification,$nouveau,$reception,$etat);
+    }
+    else{
+        $msg = 'noConnect';
+        header("Location: UIgestCourrielNotification.php?$msg");
+    }
+    $msg = 'success';
+    header("Location: UIgestCourrielNotification.php?$msg");
 }
-else{
-    echo "Vous n'êtes pas connecté";
-}
+
 ?>
