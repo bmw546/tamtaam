@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.marc_etiennepepin.maps3"
+        applicationId "tamtam.tamtam"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
