@@ -16,7 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gestionnaire_produit" android:exported="true"></activity>
+        <activity
+            android:name=".gestionnaire_produit"
+            android:exported="true" />
+        <activity
+            android:name=".ui_rabais"
+            android:label="@string/title_activity_ui_rabais"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
