@@ -9,7 +9,6 @@
     Date                Nom                 Approuvé
     ====================================================
     2018-04-29          Rémi Létourneau     Oui
-
     Historique de modifications :
     Date                Nom                 Description
     ======================================================
@@ -30,7 +29,15 @@
          * @param $uneCommande
          */
         public function __construct( $numeroCommande,$nomClient, $adresse, $date, $montant, $etat, $type,$listeProduit){
-            $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type,$listeProduit );
+            ##$this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat, $type,$listeProduit );
+            $this->numeroCommande=$numeroCommande;
+            $this->nomClient=$nomClient;
+            $this->adresse=$adresse;
+            $this->date=$date;
+            $this->montant=$montant;
+            $this->etat=$etat;
+            $this->type=$type;
+            $this->listeProduit=$listeProduit;
         }
 
         /**Getteur d'une commande
@@ -49,6 +56,7 @@
 
         //Ajoute une commande dans la base de données
         public function ajouterCommande(){
+            /*
             $nomClient = $this->uneCommande->getNomClient();
             $adresse = $this->uneCommande->getAdresse();
             $date = $this->uneCommande->getDate();
@@ -56,7 +64,14 @@
             $etat = $this->uneCommande->getEtat();
             $type = $this->uneCommande->getType();
             $listeProduit= $this->uneCommande->getListeProduit();
-
+            */
+            $nomClient = $this->nomClient;
+            $adresse = $this->adresse;
+            $date = $this->date;
+            $montant = $this->montant;
+            $etat = $this->etat;
+            $type = $this->type;
+            $listeProduit= $this->listeproduit;
             $connection = new Connexion();
 
             $user = unserialize($_SESSION['utilisateur']);
@@ -84,12 +99,10 @@
                 $output= json_decode($geocode);
                 $latitude = $output->results[0]->geometry->location->lat;
                 $longitude = $output->results[0]->geometry->location->lng;
-
                 //2 jour de livraison est temporaire
                 $date_livraison = date('Y-m-d', strtotime($date. ' + 2 days'));
                 $query2 = "INSERT INTO livraison(id_commande, adresse,adresse_latitude, adresse_longitude, 
-                                                date_livraison_prevue, date_livraison_reel )".
-                    "VALUES ('$id_commande', '$adresse', '$latitude', '$longitude','$date_livraison','NULL')";
+                                                date_livraison_prevue, date_livraison_reel ) VALUES ('$id_commande', '$adresse', '$latitude', '$longitude','$date_livraison','NULL')";
                 $connection->execution($query2);
             }
 

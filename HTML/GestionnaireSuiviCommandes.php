@@ -7,7 +7,7 @@ Date : 2018-04-25
 Vérification :
 Date                    Nom 		    Approuvé
 =========================================================
-2018-05-06              Rémi            Oui
+
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
@@ -56,64 +56,63 @@ class GestionnaireSuiviCommandes{
           next($resultComm);
           $this->longitude = current($resultComm);
 
+
           $montant = $this->calculMontant($numeroCommande);
+
+
     }
+
+
+
       $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,"","");
+
+
+
   }
 
   /**
-   * @return Commande la commande
+   * @return mixed la commande
    */
   public function getUneCommande(){
       return $this->uneCommande;
   }
 
-    /**
-    * retourne la latitude de l'adresse du client
-    * @return float
-    */
-    public function getLatitude(){
-        return $this->latitude;
+  public function getLatitude(){
+    return $this->latitude;
+  }
+
+
+  public function getLongitude(){
+    return $this->longitude;
+  }
+
+  private function calculMontant($numeroCommande){
+    $result = array();
+    //SELECT des informations pour le montant
+    $query  = "SELECT `id_produit`, `nb_produit` FROM `ta_produit_commande` WHERE `id_commande` = '$numeroCommande'";
+    $result = $this->connexion->execution_avec_return($query);
+
+    $montant = 0;
+
+    for ($x =0; $x < sizeof($result); $x++)
+    {
+      $produit = $result[$x];
+
+      $noProduit = $produit[0];
+
+      $quantite = $produit[1];
+
+      $query  = "SELECT `prix` FROM `produit` WHERE `id_produit` = '$noProduit'";
+      $result2 = array();
+
+      $result2 = $this->connexion->execution_avec_return($query);
+
+      //calcul du montant
+      $montant += $result2[0][0]*$quantite;
     }
 
-    /**
-     * retourne la longitude de l'adresse du client
-     * @return float
-     */
-    public function getLongitude(){
-        return $this->longitude;
-    }
+    return $montant;
+  }
 
-    /**
-     * @param $numeroCommande int le numéro de la commande du client
-     * @return float|int
-     */
-    private function calculMontant($numeroCommande){
-        $result = array();
-        //SELECT des informations pour le montant
-        $query  = "SELECT `id_produit`, `nb_produit` FROM `ta_produit_commande` WHERE `id_commande` = '$numeroCommande'";
-        $result = $this->connexion->execution_avec_return($query);
-
-        $montant = 0;
-
-        for ($x =0; $x < sizeof($result); $x++)
-        {
-        $produit = $result[$x];
-
-        $noProduit = $produit[0];
-
-        $quantite = $produit[1];
-
-        $query  = "SELECT `prix` FROM `produit` WHERE `id_produit` = '$noProduit'";
-        $result2 = array();
-
-        $result2 = $this->connexion->execution_avec_return($query);
-
-        //calcul du montant
-        $montant += $result2[0][0]*$quantite;
-        }
-
-        return $montant;
-    }
 }
 ?>

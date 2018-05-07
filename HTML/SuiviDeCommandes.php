@@ -1,4 +1,4 @@
-<!--*******************************************************
+<!--****************************************
 Fichier : SuiviDeCommandes.php
 Auteur : Benoit Audette-Chavigny
 Fonctionnalité : Gestion des demandes et suivi de livraison
@@ -7,12 +7,12 @@ Date : 2018-04-23
 Vérification :
 Date                    Nom 		    Approuvé
 =========================================================
-2018-05-06              Rémi            Oui
+
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
 
-**********************************************************-->
+***********************************************-->
 <?php
 	session_start();
 ?>

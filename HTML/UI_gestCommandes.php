@@ -7,7 +7,7 @@ Date : 2018-04-23
 Vérification :
 Date                    Nom 		    Approuvé
 =========================================================
-2018-05-06              Rémi            Oui
+
 Historique de modifications :
 Date                    Nom                 Description
 =========================================================
@@ -67,7 +67,7 @@ Date                    Nom                 Description
                 if (isset($_SESSION['utilisateur'])) {
                 $usr = unserialize($_SESSION['utilisateur']);
                 $adr = $usr->getAdresse();
-                ?> <input type="text" id="_txtAdresse" name="adresse" value="<?php echo $adr?>" disabled="disabled" size="40" required />       <?php
+                ?> <input type="text" id="_txtAdresse" name="adresse" value="<?php echo $adr?>" readonly size="40" required />       <?php
                 }else{
 
                     ?>

@@ -8,7 +8,6 @@ Date : 2018-05-05
 Vérification :
 Date               Nom                   Approuvé
 ===========================================================
-2018-05-06         Rémi                  Oui
 Historique de modifications :
 Date               Nom                   Description
 ===========================================================

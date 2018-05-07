@@ -50,24 +50,14 @@ table {
 }
 h1{
 	font-size: 24pt;
-}
+}	
+
 /** Fin du CSS RESET **/
+
 /** --------------------------------------------------------------------- **/
-/****************************************************************************
-Fichier : style.css
-Auteur : Tous les membres de l'équipe
-But : Regroupe tout le CSS du site Tam Tam
-Date : 2018-04-30
 
-Vérification :
-Date                    Nom 		    Approuvé
-=========================================================
-2018-05-06              Rémi            Oui
+/** Debut de votre CSS **/
 
-Historique de modifications :
-Date                    Nom                 Description
-=========================================================
-**********************************************************************************/
 
 * {
     box-sizing: border-box;

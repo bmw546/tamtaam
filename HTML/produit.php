@@ -1,19 +1,19 @@
 <?php
-/********************************************************
+/********************************
     Fichier : produit.php
     Auteur : Joel Lapointe
-    Fonctionnalité : Gestion des commandes
+    Fonctionnalité : WEB-02 - Gestion des commandes
     Date : 23 avril 2018
 
     Vérification :
     Date                Nom                 Approuvé
     ====================================================
-    2018-05-06              Rémi            Oui
+
     Historique de modifications :
     Date                Nom                 Description
     ======================================================
 
- ***********************************************************/
+ ********************************/
     class Produit
     {
         public $nom;

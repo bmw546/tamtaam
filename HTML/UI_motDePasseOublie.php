@@ -9,7 +9,6 @@ Vérification :
 Date                    Nom 		    Approuvé
 =========================================================
 2018-04-29         Joel Lapointe         Oui
-
 Historique de modifications :
 Date                    Nom             Description
 =========================================================
