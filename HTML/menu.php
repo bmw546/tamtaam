@@ -1,4 +1,20 @@
 <!Doctype html>
+<!--/****************************************************************************
+Fichier : menu.php
+Auteur : Marc-Étienne Pépin
+but : Sert de menu où toutes les fonctionnalités du système sont regroupé
+Date : 2018-04-23
+
+Vérification :
+Date               Nom                   Approuvé
+=================================================================================
+2018-05-06              Rémi            Oui
+
+
+Historique de modifications :
+Date               Nom                   Description
+==================================================================================
+*******************************************************************************/-->
 <html>
 <head>
     <meta charset="utf-8" />
