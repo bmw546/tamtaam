@@ -1,4 +1,4 @@
-<!--********************************************************
+/********************************************************
 Fichier : tamtam.js
 Auteur : Joel Lapointe
 But : Regroupe toute les fonctions JavaScript du site
@@ -12,7 +12,7 @@ Date                    Nom 		    Approuvé
 Historique de modifications :
 Date                    Nom                 Description
 =========================================================
-***********************************************************-->
+***********************************************************/
 
 var count = 1; //Pour avoir des id unique
 
