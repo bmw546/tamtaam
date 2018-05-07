@@ -8,7 +8,7 @@
  Vérification :
  Date 				Nom 					Approuvé
  =========================================================
- 2018-04-23			Rémi Létourneau			Oui
+ 2018-04-23			Rémi 			        Oui
 
  Historique de modifications :
  Date 				Nom 					Description
