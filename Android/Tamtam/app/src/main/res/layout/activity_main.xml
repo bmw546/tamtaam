@@ -1,62 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/logo" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnClient"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="Clients" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:id="@+id/btnLivraison"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Livraisons" />
+        <Button
+            android:id="@+id/btnClient"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Clients" />
 
-    <Button
-        android:id="@+id/btnProduit"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Produits" />
+        <Button
+            android:id="@+id/btnLivraison"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Livraisons" />
 
-    <Button
-        android:id="@+id/btnRecettes"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Recettes" />
+        <Button
+            android:id="@+id/btnProduit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Produits" />
 
-    <Button
-        android:id="@+id/btnEvenement"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Événements" />
+        <Button
+            android:id="@+id/btnRecettes"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Recettes" />
 
-    <Button
-        android:id="@+id/btnNotification"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Notifications" />
+        <Button
+            android:id="@+id/btnEvenement"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Événements" />
 
-    <Button
-        android:id="@+id/btnRapport"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Rapport des ventes" />
+        <Button
+            android:id="@+id/btnNotification"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Notifications" />
 
-    <Button
-        android:id="@+id/btnSauvegarde"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Exporter" />
-</LinearLayout>
+        <Button
+            android:id="@+id/btnRapport"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Rapport des ventes" />
+
+        <Button
+            android:id="@+id/btnSauvegarde"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Exporter" />
+    </LinearLayout>
+</ScrollView>
