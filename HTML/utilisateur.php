@@ -27,6 +27,7 @@ class Utilisateur {
 	private $email;
 	private $adresse;
 	private $telephone;
+	private $siCommande;
 
 	/**
 	 * Constructeur
@@ -35,6 +36,7 @@ class Utilisateur {
      * @param $email l'adresse email de l'utilisateur
      * @param $adresse l'adresse de la maison de l'utilisateur
      * @param $telephone le téléphone de l'utilisateur
+	 * @parra $siCommande si l'utilisateur a au moins 1 commande en cours
 	*/
 	public function __construct(){
 
@@ -54,6 +56,7 @@ class Utilisateur {
 		$this->setAdresse($adresse);
 		$this->setTelephone($telephone);
 	}
+
 
 
     /**
@@ -76,6 +79,27 @@ class Utilisateur {
     {
         return $this->id;
     }
+
+    /**
+     * modifier si l'utilisateur à 1 commande
+     * @param $siCommande
+     *(Precondition: $id > 0)
+     *(Postcondition: $this->$siCommande == $siCommande)
+     */
+    public function setSiCommande($siCommande){
+        $this->siCommande = $siCommande;
+    }
+
+
+    /**
+     * Retourne si l'utilisateur a une commande
+     * (Precondition: $this->siCommande == true  , $this->siCommande == false)
+     * (Postcondition: getSiCommande() == $this->siCommande)
+     */
+    public function getSiCommande(){
+        return $this->siCommande;
+    }
+
 
 	/**
 	 * Modifie les infos d'un utilisateur

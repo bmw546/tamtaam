@@ -26,6 +26,7 @@ un utilisateur a la BD. (Erreur avec propriété résolue)
 le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
 2018-05-02    Roméo                    Ajout méthode modifierUtilisateur
 2018-05-02    Rémi                     Dans fonction modifier, Ajout requete select nom et email.
+2018-05-06    Roméo                    Ajout fonctions nb de commandes
  ***********************************************************************************************/
 require_once 'utilisateur.php';
 require_once 'GestionnaireCourriel.php';
@@ -154,6 +155,25 @@ class GestionnaireUtilisateur {
             }
         }
     }
+
+    /**
+     * Cherche dans la bd si l'utilisateur à au moins 1 commande
+     */
+    public  function chercherSiCommande()
+    {
+        $id = $this->getUnUtilisateur()->getId();
+        $query = "SELECT * FROM `commande` WHERE id_client = '$id'";
+        $result = $this->connexion->execution_avec_return($query);
+
+        //si il y a une commande
+        if (sizeof($result) > 0){
+            $this->getUnUtilisateur()->setSiCommande(true);
+        }
+        else{
+            $this->getUnUtilisateur()->setSiCommande(false);
+        }
+    }
+
 
     /**
      * Modifie les infos d'un utilisateur
