@@ -27,7 +27,7 @@ le nom d'utilisateur et adresse email n'est pas déja utilisé dans la bd.
 2018-05-02    Roméo                    Ajout méthode modifierUtilisateur
 2018-05-02    Rémi                     Dans fonction modifier, Ajout requete select nom et email.
  ***********************************************************************************************/
-require_once 'Utilisateur.php';
+require_once 'utilisateur.php';
 require_once 'GestionnaireCourriel.php';
 require_once 'MoteurRequeteBD.php';
 

@@ -17,8 +17,8 @@ Date                    Nom                 Description
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="HTML/css/style.css" />
-        <link rel="stylesheet" href="HTML/css/pageTransition.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/pageTransition.css" />
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <title>Placer une commande</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,7 +27,7 @@ Date                    Nom                 Description
     <body class="inscriptionBody" onload="updateDate(dateAujourdhui())">
 
     <nav class="entete col-12">
-        <img src="HTML/image/logo.png" alt="logo"/>
+        <img src="image/logo.png" alt="logo"/>
         <ul>
             <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
             <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
@@ -43,10 +43,10 @@ Date                    Nom                 Description
         <div id="lightBoxBg" class="lightBoxBg" onclick="stop()">
         </div>
         <div id="Gingembre" class="lightBox">
-            <img src="HTML/image/GINGER_CADRÉ_PT.jpg"/>
+            <img src="image/GINGER_CADRÉ_PT.jpg"/>
         </div>
         <div id="Hibiscus" class="lightBox">
-            <img src="HTML/image/HIBISCUS_CADRÉ_PT.jpg"/>
+            <img src="image/HIBISCUS_CADRÉ_PT.jpg"/>
         </div>
 <!-- ------------------- FIN DE LA SECTION SHADOW BOX --------------------------->
 
@@ -129,7 +129,7 @@ Date                    Nom                 Description
 
                 <input  class="btnInscrire btnStyle" name="commander" id="_btnCommander" type="submit" value="Commander" disabled/>
                 <button class="btnInscrire btnStyle" type='reset' name="cancel" value="Annuler">Effacer</button>
-                <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
+                <button class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button">Retour au menu</button>
 
                 <!-- message qui indique l'état de la commande -->
                 <div class="inscrireFooter">

@@ -20,8 +20,8 @@ Date               Nom                   Description
 <html class="transition apparaitreVersGauche">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="HTML/css/style.css" />
-    <link rel="stylesheet" href="HTML/css/pageTransition.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/pageTransition.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <title>Connexion</title>
 </head>
@@ -30,7 +30,7 @@ Date               Nom                   Description
 
 
 <nav class="entete col-12">
-    <img src="HTML/image/logo.png" alt="logo"/>
+    <img src="image/logo.png" alt="logo"/>
     <ul>
         <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
         <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
@@ -70,7 +70,7 @@ Date               Nom                   Description
 
                 <p class="col-12">
                     <input  class="btnInscrire btnStyle " name="connexion" type="submit" value="Se connecter"/>
-                    <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button"> Annuler</button>
+                    <button class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button"> Annuler</button>
                 </p>
                 <br><br>
             </div>

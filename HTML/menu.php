@@ -5,7 +5,7 @@
     <title>Ma page Web</title>
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-    <script src="../tamtam.js"></script>
+    <script src="tamtam.js"></script>
 </head>
 <body class="backgroudgrey" onload="updateDate(dateAujourdhui())">
 <nav class="entete col-12">
@@ -25,7 +25,7 @@
         <ul class="col-m-12 left">
 			<li class=" nav central"> <span> <h1 > Bienvenue
                 <?php
-                require_once '../Utilisateur.php';
+                require_once 'utilisateur.php';
                 session_start();
 
 
@@ -50,19 +50,19 @@
 
                 ?>
 
-                <li class="nav central"><a href="../UI_gestCommandes.php"> Placer une commande </a></li>
-                <li class="nav central"><a href="../UIgestCourrielNotification.php"> Notification par courriel </a></li>
-                <li class="nav central"><a href="../SuiviDeCommandes.php"> Suivi de commande </a></li>
-                <li class="nav central"><a href="../UIgestSuggestions.php"> Envoyer un commentaire </a></li>
-                <li class="nav central"><a href="../UI_modifierUtilisateur.php">Modifier mes informations</a></li>
-                <li class="nav central"><a href="../deconnexion.php">Se déconnecter</a></li>
+                <li class="nav central"><a href="UI_gestCommandes.php"> Placer une commande </a></li>
+                <li class="nav central"><a href="UIgestCourrielNotification.php"> Notification par courriel </a></li>
+                <li class="nav central"><a href="SuiviDeCommandes.php"> Suivi de commande </a></li>
+                <li class="nav central"><a href="UIgestSuggestions.php"> Envoyer un commentaire </a></li>
+                <li class="nav central"><a href="UI_modifierUtilisateur.php">Modifier mes informations</a></li>
+                <li class="nav central"><a href="deconnexion.php">Se déconnecter</a></li>
                 <?php
             }
             else
             {
                 ?>
-                <li class=" nav central"><a href="../UI_authentification.php"> Authentification </a></li>
-                <li class=" nav central"><a href="../UIgestSuggestions.php"> Envoyer un commentaire </a></li>
+                <li class=" nav central"><a href="UI_authentification.php"> Authentification </a></li>
+                <li class=" nav central"><a href="UIgestSuggestions.php"> Envoyer un commentaire </a></li>
                 <?php
             }
             ?>

@@ -18,7 +18,7 @@ Date               Nom                   Description
 
  *****************************************************************/
 
-include ("GestionnaireUtilisateur.php");
+include("GestionnaireUtilisateur.php");
 
 if (isset($_POST['envoi'])) {
   $gest = new GestionnaireUtilisateur;

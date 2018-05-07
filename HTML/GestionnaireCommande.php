@@ -16,7 +16,7 @@
     require_once 'MoteurRequeteBD.php';
     require_once 'commande.php';
     require_once 'produit.php';
-    require_once 'Utilisateur.php';
+    require_once 'utilisateur.php';
 
     class GestionnaireCommande{
 

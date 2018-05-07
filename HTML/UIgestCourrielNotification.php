@@ -21,7 +21,7 @@ Date                    Nom             Description
     <head>
         <meta charset="UTF-8">
         <title>Gestion des courriels et des notifications</title>
-        <link rel="stylesheet" href="HTML/css/style.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     </head>
 
@@ -41,7 +41,7 @@ Date                    Nom             Description
             <div class="inscriptionheader"><i>Gestion des courriels/Notifications</i></div>
         </header>
 
-        <form class="centerForm formInscription "  action="CtrlCourrielNotification.php" method="post">
+        <form class="centerForm formInscription " action="CtrlCourrielNotification.php" method="post">
             <br>
             <label class="labelGrand" for="email" ><b>Courriel de l'utilisateur :</b></label>
             <?php
@@ -87,7 +87,7 @@ Date                    Nom             Description
             <br><br>
             <input class="btnInscrire btnStyle" name="modifier" type="submit" value="Modifier"/>
             <button class="btnInscrire btnStyle" type="reset" name="cancel" value="cancel">Effacer</button>
-            <button class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button>
+            <button class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button">Retour au menu</button>
 
             <div class="inscriptionFooter">
                 <?php

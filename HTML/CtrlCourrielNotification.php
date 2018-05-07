@@ -16,7 +16,7 @@ Date               Nom                   Description
 ===========================================================
 2018-05-05         Roméo                 modifié le php pour qu'il prenne l'utilisateur authentifié
  *****************************************************************/
-require_once  'utilisateur.php';
+require_once 'utilisateur.php';
 include("GestionnaireCourrielNotification.php");
 
 if (isset($_POST['modifier'])) {

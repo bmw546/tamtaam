@@ -297,7 +297,7 @@ $(document).on('change','[id^=m]',function(){
     sousTotal.value = val.format(2);
     //Total temporaire (pas de livraison)
     var total = document.getElementById('_total');
-    total.value = val.format(2);;
+    total.value = val.format(2);
 });
 
 

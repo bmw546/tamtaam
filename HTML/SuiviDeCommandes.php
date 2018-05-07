@@ -36,13 +36,13 @@ Date                    Nom             Description
 	?>
 	<head>
 		<meta charset='utf-8'/>
-		<link rel="stylesheet" href="HTML/css/style.css" />
+		<link rel="stylesheet" href="css/style.css" />
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 		<title>cible suivi des commandes</title>
 	</head>
 	<body class="txtSuiviComm">
 		<nav class="entete col-12">
-		    <img src="HTML/image/logo.png" alt="logo"/>
+		    <img src="image/logo.png" alt="logo"/>
 		    <ul>
                 <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
                 <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
@@ -79,7 +79,7 @@ Date                    Nom             Description
 		
 
 		<div id="googleMap" class="col-8 col-t-10 map"></div>
-        <p class="col-12"><button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour au menu</button></p>
+        <p class="col-12"><button class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button">Retour au menu</button></p>
 <script>
 function myMap() {
 	var directionsService = new google.maps.DirectionsService;

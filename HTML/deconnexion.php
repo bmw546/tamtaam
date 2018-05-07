@@ -18,5 +18,5 @@ session_start();
 if (isset($_SESSION['utilisateur'])){
     session_destroy();
 }
-header('location:HTML/menu.php');
+header('location: menu.php');
 ?>

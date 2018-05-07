@@ -16,8 +16,8 @@ Date                    Nom             Description
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="HTML/css/style.css" />
-    <link rel="stylesheet" href="HTML/css/pageTransition.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/pageTransition.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <title>Modifier les infos du compte</title>
 </head>
@@ -25,7 +25,7 @@ Date                    Nom             Description
 <body class="inscriptionBody">
 
 <nav class="entete col-12">
-    <img  src="HTML/image/logo.png" alt="logo"/>
+    <img src="image/logo.png" alt="logo"/>
     <ul>
         <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
         <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
@@ -37,7 +37,7 @@ Date                    Nom             Description
 
 <section class="sectionInscription col-12">
     <div class="inscriptionheader"><i>Modifier votre compte</i></div>
-    <form  class="centerForm formInscription" action="CtrlModifierUtilisateur.php" method="post">
+    <form class="centerForm formInscription" action="CtrlModifierUtilisateur.php" method="post">
         <!--------------------------Informations du client------------------------>
         <?php
         require_once 'utilisateur.php';
@@ -91,7 +91,7 @@ Date                    Nom             Description
         <?php }else{echo "Vous n'êtes pas connecté"; echo "<br>";} ?>
         <input class="btnInscrire btnStyle " name="modifier" id="btnModifier" type="submit" value="Modifier"/>
         <button class="btnInscrire btnStyle " type="reset" name="reset" value="reset">Réinitialiser</button>
-        <button  class="btnInscrire btnStyle" onclick="location.href='HTML/menu.php'" type="button">Retour</button>
+        <button class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button">Retour</button>
 
         <!-- message qui indique l'état de l'inscription -->
         <div class="inscrireFooter">

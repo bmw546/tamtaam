@@ -16,7 +16,7 @@ $nbr_chiffres = 6;
 
 header("Content-type: image/png");
 
-$_img = imagecreatefrompng('HTML/image/fond_verif_img.png');
+$_img = imagecreatefrompng('image/fond_verif_img.png');
 
 $arriere_plan = imagecolorallocate($_img, 0,0,0);
 

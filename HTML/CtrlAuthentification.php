@@ -17,8 +17,8 @@ Date               Nom                   Description
 
  *****************************************************************/
 
-include 'Utilisateur.php';
-include ("GestionnaireUtilisateur.php");
+include 'utilisateur.php';
+include("GestionnaireUtilisateur.php");
 if (isset($_POST['connexion'])) {
 
     $auth = new GestionnaireUtilisateur;
@@ -32,7 +32,7 @@ if (isset($_POST['connexion'])) {
         session_start();
         $usr = $auth->getUnUtilisateur();
         $_SESSION['utilisateur'] = serialize($usr);
-        header("Location: HTML/menu.php");
+        header("Location: menu.php");
     }
     else{
         header("Location: UI_authentification.php?$msg");

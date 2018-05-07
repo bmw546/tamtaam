@@ -23,8 +23,8 @@ Date                    Nom             Description
 <html class="transition rebondirversBas">
 	<head>
 		<meta charset="utf-8" />
-        <link rel="stylesheet" href="HTML/css/style.css" />
-        <link rel="stylesheet" href="HTML/css/pageTransition.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/pageTransition.css" />
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 		<title>Gestion des comptes utilisateurs</title>
 	</head>
@@ -32,7 +32,7 @@ Date                    Nom             Description
 	<body class="inscriptionBody">
 
         <nav class="entete col-12">
-            <img  src="HTML/image/logo.png" alt="logo"/>
+            <img src="image/logo.png" alt="logo"/>
             <ul>
                 <li class="menu col-2 col-t-2"><a href="https://tamtaam.com/">Accueil</a></li>
                 <li class="pointMenu menu col-2 col-t-2"><a href="https://tamtaam.com/nos-produits/">Nos produits</a></li>
@@ -44,7 +44,7 @@ Date                    Nom             Description
 
         <section class="sectionInscription col-12">
             <div class="inscriptionheader"><i>Inscription des utilisateurs</i></div>
-            <form  class="centerForm formInscription" action="CtrlInscription.php" method="post">
+            <form class="centerForm formInscription" action="CtrlInscription.php" method="post">
                 <!--------------------------Informations du client------------------------>
                 <br>
                 <label class="label" for="user" ><b>Nom d'utilisateur :</b></label>
@@ -113,47 +113,3 @@ Date                    Nom             Description
         </section>
 	</body>
 </html>
-
-<!--<script>
-    //pour utiliser dans le formuliare :
-    //onblur="check('noTelephone', 'lNoTelephone', /(\(?[0-9]{3}\)?)? ?\.?-?[0-9]{3}\.?-?[0-9]{4}/)"
-    /**
-     * valide les informations des champs d'un formulaire
-     * @param who string  le nom de l'id du champ
-     * @param label l'étiquette associé au champs
-     * @param myRegex l'expression regex pour valider un champ
-     */
-    function check(who, label, myRegex){
-
-        var value;
-        value = document.getElementById((who)).value;
-        if(!myRegex.test(value)){
-            document.getElementById(label).style.color = 'red';
-        }
-        else{
-            document.getElementById(label).style.color = 'black';
-        }
-    }
-
-    /**
-     * Compare les deux champs pour le mot de passe et vérifie s'il sont semblable
-     * @param pwd le mot de passe entrer
-     * @param pwdConfirmer la confirmation du mot de passe
-     * @param label l'étiquette du champs confirmation
-     */
-    function comparePassword(pwd, pwdConfirmer, label){
-
-        var password;
-        var confirme;
-        password = document.getElementById((pwd)).value;
-        confirme = document.getElementById((pwdConfirmer)).value;
-
-        if(password !== confirme){
-            document.getElementById(label).style.color = 'red';
-            document.getElementById(pwdConfirmer).select();
-        }
-        else{
-            document.getElementById(label).style.color = 'black';
-        }
-    }
-</script>-->
