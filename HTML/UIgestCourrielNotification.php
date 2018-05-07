@@ -50,12 +50,14 @@ Date                    Nom             Description
                 if (isset($_SESSION['utilisateur'])) {
                     $usr = unserialize($_SESSION['utilisateur']);
                     $email = $usr->getEmail();
+                    $tel = $usr->getTelephone();
             ?>
                 <input type="text" name="email" id="email" size="33" required
                        value="<?php echo $email ?>" disabled="disabled"/>
             <?php
                 }
                 else{
+                    $tel = -1;
             ?>
                 <input type="text" name="email" id="email" size="30" required/>
             <?php
@@ -75,7 +77,17 @@ Date                    Nom             Description
             <!--************************ champs numéro de téléphone ***********************-->
             <br><br>
             <label class="labelGrand" for="noTelephone">Numéro de téléphone :</label>
-            <input type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="24" required/>
+            <?php
+                if ($tel != -1)
+                {
+                   ?> <input type="text" name="noTelephone" id="noTelephone" value="<?php echo $tel ?>" disabled="disabled" size="24" required/>
+             <?php
+                }else{
+
+                    ?><input type="text" name="noTelephone" id="noTelephone" placeholder="000 000 0000" size="24" required/><?php
+                }
+
+            ?>
             <!--****************************************************************************-->
 
             <br><br>

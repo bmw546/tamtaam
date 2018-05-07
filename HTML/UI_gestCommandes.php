@@ -61,10 +61,22 @@ Date                    Nom                 Description
                 <br><br>
 
                 <label class="label" id="_adresse"for="_txtAdresse"><b>Adresse :</b></label>
-                <input type="text" id="_txtAdresse" name="adresse" placeholder="32 rue du cegep, Sherbrooke, Qc, J1E 4E2" size="36" required
-                       onblur="check('_txtAdresse', '_adresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(,)?(\s)([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
-                <br><br>
+                <?php
+                session_start();
+                require_once 'utilisateur.php';
+                if (isset($_SESSION['utilisateur'])) {
+                $usr = unserialize($_SESSION['utilisateur']);
+                $adr = $usr->getAdresse();
+                ?> <input type="text" id="_txtAdresse" name="adresse" value="<?php echo $adr?>" disabled="disabled" size="36" required />       <?php
+                }else{
 
+                    ?>
+                    <input type="text" id="_txtAdresse" name="adresse" placeholder="32 rue du cegep, Sherbrooke, Qc, J1E 4E2" size="36" required
+                     onblur="check('_txtAdresse', '_adresse', /((([0-9]+))(\w+(\s\w+){2,})(,)?(\s{0,})([a-z]{0,})(\s{0,})(,)?(\s{0,})([a-z]{0,})(,)?(\s)([a-z][0-9][a-z] ?[0-9][a-z][0-9])|(([a-z][0-9][a-z])-([0-9][a-z][0-9]))|([a-z][0-9][a-z][0-9][a-z][0-9]))/i)"/>
+                    <?php
+                } ?>
+                <br><br>
+                
                 <input type="radio" id="livrer" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">
                 <label for="livrer">Livraison</label><br>
                 <input type="radio" id="magasin" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2">
