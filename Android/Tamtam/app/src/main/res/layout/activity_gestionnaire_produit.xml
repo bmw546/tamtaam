@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gestionnaire_produit">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_sauvegarder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sauvegarder"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+        <Button
+            android:id="@+id/btn_supprimer"
+            android:layout_width="126dp"
+            android:layout_height="wrap_content"
+            android:text="Supprimer"
+            tools:layout_editor_absoluteX="215dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+        <Button
+            android:id="@+id/btn_listeIngredient"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:text="Liste des ingrédients"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="377dp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="277dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Image"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nom"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="25dp" />
+
+        <Button
+            android:id="@+id/btn_appercu"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:text="Apperçu"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="140dp" />
+
+        <Button
+            android:id="@+id/btn_modifier"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:text="Modifier"
+            tools:layout_editor_absoluteX="222dp"
+            tools:layout_editor_absoluteY="140dp" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="267dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Format"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="193dp" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
