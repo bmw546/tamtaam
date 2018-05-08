@@ -3,7 +3,7 @@ package tamtam.tamtam;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Produits extends AppCompatActivity {
+public class GestionnaireProduits extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

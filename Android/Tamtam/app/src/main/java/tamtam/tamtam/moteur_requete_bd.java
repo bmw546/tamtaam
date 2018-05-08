@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Moteur_requete_bd extends SQLiteOpenHelper{
     public static final String DATABASE_NAME = "tamtaam.db";
+
     public static final String TABLE_NAME = "client_table";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "NOM";
