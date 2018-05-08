@@ -16,7 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui_client"></activity>
+        <activity android:name=".ui_client" />
+        <activity android:name=".Produits" />
+        <activity android:name=".recette" />
+        <activity android:name=".evenement" />
+        <activity android:name=".notification" />
+        <activity android:name=".rapport" />
+        <activity android:name=".sauvegarde"></activity>
     </application>
 
 </manifest>

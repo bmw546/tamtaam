@@ -22,49 +22,56 @@
             android:id="@+id/btnClient"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:onClick="showActivity"
+            android:onClick="showClient"
             android:text="Clients" />
 
         <Button
             android:id="@+id/btnLivraison"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+
             android:text="Livraisons" />
 
         <Button
             android:id="@+id/btnProduit"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="showProduit"
             android:text="Produits" />
 
         <Button
             android:id="@+id/btnRecettes"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="showRecette"
             android:text="Recettes" />
 
         <Button
             android:id="@+id/btnEvenement"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="showEvenement"
             android:text="Événements" />
 
         <Button
             android:id="@+id/btnNotification"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="showNotification"
             android:text="Notifications" />
 
         <Button
             android:id="@+id/btnRapport"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="showRapport"
             android:text="Rapport des ventes" />
 
         <Button
             android:id="@+id/btnSauvegarde"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:onClick="showSauvegarde"
             android:text="Exporter" />
     </LinearLayout>
 </ScrollView>

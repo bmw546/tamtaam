@@ -16,8 +16,38 @@ public class menu extends AppCompatActivity {
 
     }
 
-    public void showActivity(View view){
+    public void showClient(View view){
         Intent intent = new Intent(this, ui_client.class);
+
+        startActivity(intent);
+    }
+    public void showProduit(View view){
+        Intent intent = new Intent(this, Produits.class);
+
+        startActivity(intent);
+    }
+    public void showRecette(View view){
+        Intent intent = new Intent(this, recette.class);
+
+        startActivity(intent);
+    }
+    public void showEvenement(View view){
+        Intent intent = new Intent(this, evenement.class);
+
+        startActivity(intent);
+    }
+    public void showNotification(View view){
+        Intent intent = new Intent(this, notification.class);
+
+        startActivity(intent);
+    }
+    public void showRapport(View view){
+        Intent intent = new Intent(this, rapport.class);
+
+        startActivity(intent);
+    }
+    public void showSauvegarde(View view){
+        Intent intent = new Intent(this, sauvegarde.class);
 
         startActivity(intent);
     }
