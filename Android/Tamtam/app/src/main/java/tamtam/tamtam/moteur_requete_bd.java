@@ -2,12 +2,37 @@ package tamtam.tamtam;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
-public class moteur_requete_bd {
+public class Moteur_requete_bd extends SQLiteOpenHelper{
+    public static final String DATABASE_NAME = "tamtaam.db";
+    public static final String TABLE_NAME = "client_table";
+    public static final String COL_1 = "ID";
+    public static final String COL_2 = "NOM";
+    public static final String COL_3 = "MOT_DE_PASSE";
+    public static final String COL_4 = "COURRIEL";
+    public static final String COL_5 = "ADRESSE";
+    public static final String COL_6 = "TELEPHONE";
 
-    private SQLiteDatabase tamtamDataBase;
-
-    public moteur_requete_bd() {
-
+    public Moteur_requete_bd(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
     }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " NOM VARCHAR(32)," +
+                " MOT_DE_PASSE VARCHAR(32)," +
+                " COURRIEL VARCHAR(64)," +
+                " ADRESSE VARCHAR(64)," +
+                " TELEPHONE BIGINT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+    }
+
+
 }
