@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class Moteur_requete_bd extends SQLiteOpenHelper{
+public class moteur_requete_bd extends SQLiteOpenHelper{
 
     // Logcat tag
     private static final String LOG = "Moteur_requete_bd";
@@ -113,7 +113,7 @@ public class Moteur_requete_bd extends SQLiteOpenHelper{
             + " FOREIGN KEY (" + KEY_ID_PRODUIT + ") REFERENCES "+ TABLE_PRODUIT + "("+ KEY_ID + ")"
             + " FOREIGN KEY (" + KEY_CODE_RABAIS + ") REFERENCES "+ TABLE_RABAIS + "("+ KEY_CODE_RABAIS + ")"+")";
 
-    public Moteur_requete_bd(Context context) {
+    public moteur_requete_bd(Context context) {
         super(context, DATABASE_NAME, null, 1);
         SQLiteDatabase db = this.getWritableDatabase();
     }

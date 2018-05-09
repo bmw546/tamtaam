@@ -5,15 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class Menu extends AppCompatActivity {
+public class menu extends AppCompatActivity {
 
-    private Moteur_requete_bd myBd;
+    private moteur_requete_bd myBd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_menu);
-        myBd = new Moteur_requete_bd(this); //create the local database
+        myBd = new moteur_requete_bd(this); //create the local database
     }
 
     public void showClient(View view){
@@ -48,6 +48,11 @@ public class Menu extends AppCompatActivity {
     }
     public void showSauvegarde(View view){
         Intent intent = new Intent(this, GestionnaireSauvegarde.class);
+
+        startActivity(intent);
+    }
+    public void showRabais(View view){
+        Intent intent = new Intent(this, rabais.class);
 
         startActivity(intent);
     }

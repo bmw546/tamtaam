@@ -9,20 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menu">
+        <activity android:name=".menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GestionnaireClient" android:label="Chercher un client"/>
+        <activity
+            android:name=".GestionnaireClient"
+            android:label="Chercher un client" />
         <activity android:name=".GestionnaireProduits" />
         <activity android:name=".GestionnaireRecette" />
         <activity android:name=".GestionnaireEvenement" />
-        <activity android:name=".GestionnaireNotification"  android:label="Notifications" />
+        <activity
+            android:name=".GestionnaireNotification"
+            android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".GestionnaireSauvegarde" />
+        <activity android:name=".rabais"></activity>
     </application>
 
 </manifest>

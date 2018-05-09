@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/logo" />
 
         <Button
@@ -28,50 +28,56 @@
         <Button
             android:id="@+id/btnLivraison"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
 
             android:text="Livraisons" />
 
         <Button
             android:id="@+id/btnProduit"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:onClick="showProduit"
             android:text="Produits" />
-
+        <Button
+            android:id="@+id/btnRabais"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:onClick="showRabais"
+            android:text="Rabais" />
         <Button
             android:id="@+id/btnRecettes"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:onClick="showRecette"
             android:text="Recettes" />
 
         <Button
             android:id="@+id/btnEvenement"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:onClick="showEvenement"
             android:text="Événements" />
 
         <Button
             android:id="@+id/btnNotification"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:onClick="showNotification"
             android:text="Notifications" />
 
         <Button
             android:id="@+id/btnRapport"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:onClick="showRapport"
             android:text="Rapport des ventes" />
 
         <Button
             android:id="@+id/btnSauvegarde"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:onClick="showSauvegarde"
             android:text="Exporter" />
+
     </LinearLayout>
 </ScrollView>
