@@ -52,7 +52,10 @@
 
         <activity
             android:name=".detail_client"
-            android:label="@string/title_activity_detail_client"></activity>
+            android:label="@string/title_activity_detail_client" />
+        <activity
+            android:name=".livraison_detail"
+            android:label="@string/title_activity_livraison_detail"></activity>
     </application>
 
 </manifest>

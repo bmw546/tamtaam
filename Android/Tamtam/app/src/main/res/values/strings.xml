@@ -3,4 +3,5 @@
     <string name="title_activity_ui_rabais">ui_rabais</string>
     <string name="rabais">RABAIS</string>
     <string name="title_activity_detail_client">Map</string>
+    <string name="title_activity_livraison_detail">Map</string>
 </resources>
