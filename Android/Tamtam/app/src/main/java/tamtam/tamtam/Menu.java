@@ -16,44 +16,55 @@ public class menu extends AppCompatActivity {
         myBd = new moteur_requete_bd(this); //create the local database
     }
 
+    // POUR LES BUTTON
+    /* --------------------------------------------------------------------------------------------
+             ________  ___  ___  _________  _________  ________  ________
+            |\   __  \|\  \|\  \|\___   ___\\___   ___\\   __  \|\   ___  \
+            \ \  \|\ /\ \  \\\  \|___ \  \_\|___ \  \_\ \  \|\  \ \  \\ \  \
+             \ \   __  \ \  \\\  \   \ \  \     \ \  \ \ \  \\\  \ \  \\ \  \
+              \ \  \|\  \ \  \\\  \   \ \  \     \ \  \ \ \  \\\  \ \  \\ \  \
+               \ \_______\ \_______\   \ \__\     \ \__\ \ \_______\ \__\\ \__\
+                \|_______|\|_______|    \|__|      \|__|  \|_______|\|__| \|__|
+
+     --------------------------------------------------------------------------------------------
+    */
     public void showClient(View view){
         Intent intent = new Intent(this, GestionnaireClient.class);
-
         startActivity(intent);
     }
     public void showProduit(View view){
         Intent intent = new Intent(this, GestionnaireProduits.class);
-
         startActivity(intent);
     }
     public void showRecette(View view){
         Intent intent = new Intent(this, GestionnaireRecette.class);
-
         startActivity(intent);
     }
     public void showEvenement(View view){
         Intent intent = new Intent(this, GestionnaireEvenement.class);
-
         startActivity(intent);
     }
     public void showNotification(View view){
         Intent intent = new Intent(this, GestionnaireNotification.class);
-
         startActivity(intent);
     }
     public void showRapport(View view){
         Intent intent = new Intent(this, GestionnaireRapport.class);
-
         startActivity(intent);
     }
     public void showSauvegarde(View view){
         Intent intent = new Intent(this, GestionnaireSauvegarde.class);
-
         startActivity(intent);
     }
     public void showRabais(View view){
         Intent intent = new Intent(this, rabais.class);
-
         startActivity(intent);
     }
+    public void showLivraison(View view){
+        Intent intent = new Intent(this, gestionnaire_livraison.class);
+        startActivity(intent);
+    }
+    // --------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
+
 }
