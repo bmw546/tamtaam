@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Gestion TAM TAM</string>
     <string name="title_activity_ui_rabais">ui_rabais</string>
+    <string name="rabais">RABAIS</string>
 </resources>

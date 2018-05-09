@@ -10,6 +10,7 @@
         android:id="@+id/titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="RABAIS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,4 +75,16 @@
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="219dp" />
+
+        <!--android:layout_marginBottom="459dp"-->
+        <!--android:layout_marginEnd="114dp"-->
+        <!--android:layout_marginLeft="199dp"-->
+        <!--android:layout_marginRight="114dp"-->
+        <!--android:layout_marginStart="199dp"-->
+        <!--android:layout_marginTop="33dp"-->
+        <!--android:text="@string/rabais"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 </android.support.constraint.ConstraintLayout>
