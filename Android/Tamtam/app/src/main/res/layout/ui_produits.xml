@@ -7,11 +7,11 @@
     tools:context=".gestionnaire_produit">
 
 
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="510dp"
-        android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="510dp"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/btn_sauvegarder"
@@ -26,25 +26,28 @@
         android:text="Sauvegarder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_supprimer"
+        app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_listeIngredient" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_listeIngredient"
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/btn_supprimer"
         android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="8dp"
         android:text="Supprimer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_listeIngredient" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_listeIngredient"
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/btn_listeIngredient"
-        android:layout_width="290dp"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
         android:layout_marginEnd="8dp"
@@ -146,4 +149,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         app:layout_constraintVertical_bias="0.873" />
-    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
