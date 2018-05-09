@@ -7,24 +7,6 @@
     tools:context=".GestionnaireNotification">
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:text="Nouveau client"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:text="Activé notification par courriel"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="247dp" />
-
-    <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,38 +16,65 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nouvelle commande"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="89dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="livraison"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="121dp" />
-
-    <TextView
         android:id="@+id/textView9"
-        android:layout_width="match_parent"
+        android:layout_width="93dp"
         android:layout_height="wrap_content"
         android:text="Courriel"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="349dp" />
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="347dp" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="match_parent"
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:text="Notification par email"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="235dp" />
+
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="373dp"
         android:layout_height="wrap_content"
         android:text="Nouveau commentaire"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="205dp" />
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:text="Nouveau client"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:text="Livraison"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="110dp" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:text="Nouvelle Commande"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="69dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="301dp" />
 </android.support.constraint.ConstraintLayout>
