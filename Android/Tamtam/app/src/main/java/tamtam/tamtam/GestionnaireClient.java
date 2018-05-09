@@ -20,7 +20,7 @@ public class GestionnaireClient extends ListActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.ui_client);
         myBd = new moteur_requete_bd(this); //create the local database
-        String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
+        final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
                 "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
                 "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
         setListAdapter(new ArrayAdapter<String>(this, R.layout.ui_client,FRUITS));
@@ -35,11 +35,16 @@ public class GestionnaireClient extends ListActivity {
                /* Toast.makeText(getApplicationContext(),
                         ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
                 */
-                Intent intent = new Intent(view.getContext(), client_detail.class);
+                Intent intent = new Intent(view.getContext(), detail_client.class);
                 Bundle b = new Bundle();
-                b.putInt("key", 1); //Your id
+                b.putInt("key", position); //Your id
+                b.putString("nom",FRUITS[position]);
+               b.putString("adresse",FRUITS[position]+" at fruit.com");
+                b.putDouble("longitude",45.411701);
+                b.putDouble("lat",-71.886361);
                 intent.putExtras(b); //Put your id to your next Intent
                 startActivity(intent);
+                finish();
             }
         });
     }
