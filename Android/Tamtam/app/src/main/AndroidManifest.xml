@@ -16,11 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GestionnaireClient" />
+        <activity android:name=".GestionnaireClient" android:label="Chercher un client"/>
         <activity android:name=".GestionnaireProduits" />
         <activity android:name=".GestionnaireRecette" />
         <activity android:name=".GestionnaireEvenement" />
-        <activity android:name=".GestionnaireNotification" />
+        <activity android:name=".GestionnaireNotification"  android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".GestionnaireSauvegarde" />
     </application>
