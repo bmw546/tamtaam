@@ -21,7 +21,7 @@ public class gestionnaire_livraison extends ListActivity {
         String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
                 "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
                 "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
-        setListAdapter(new ArrayAdapter<String>(this, R.layout.activity_gestionnaire_livraison,FRUITS));
+        setListAdapter(new ArrayAdapter<String>(this, R.layout.ui_livraison,FRUITS));
 
         ListView listView = getListView();
         listView.setTextFilterEnabled(true);
