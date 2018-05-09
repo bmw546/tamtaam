@@ -4,10 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class moteur_requete_bd extends SQLiteOpenHelper{
+public class moteur_requete_bd extends SQLiteOpenHelper {
 
     // Logcat tag
-    private static final String LOG = "Moteur_requete_bd";
+    private static final String LOG = "moteur_requete_bd";
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -84,6 +84,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper{
     private static final String KEY_ETAT = "etat";
 
     // Table Create Statements
+
     // Client table create statement
     private static final String CREATE_TABLE_CLIENT = "CREATE TABLE "
             + TABLE_CLIENT + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NOM
@@ -98,36 +99,128 @@ public class moteur_requete_bd extends SQLiteOpenHelper{
     // rabais table create statement
     private static final String CREATE_TABLE_RABAIS = "CREATE TABLE " + TABLE_RABAIS
             + "(" + KEY_CODE_RABAIS + " VARCHAR(8) PRIMARY KEY," + KEY_MONTANT_RABAIS + " FLOAT,"
-            + KEY_ID_TYPE + " INTEGER," + KEY_DESCRIPTION + " TEXT"
-            + "FOREIGN KEY (" + KEY_ID_TYPE + ") REFERENCES " + TABLE_TYPE_RABAIS + "(" + KEY_ID +")" + ")";
+            + KEY_ID_TYPE + " INTEGER," + KEY_DESCRIPTION + " TEXT,"
+            + " FOREIGN KEY (" + KEY_ID_TYPE + ") REFERENCES " + TABLE_TYPE_RABAIS + "(" + KEY_ID +")" + ")";
 
     // produit table create statement
     private static final String CREATE_TABLE_PRODUIT = "CREATE TABLE " + TABLE_PRODUIT
             + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NOM + " VARCHAR(32),"
-            + KEY_DESCRIPTION + " TEXT" + KEY_PRIX + " FLOAT" +")";
+            + KEY_DESCRIPTION + " TEXT," + KEY_PRIX + " FLOAT" +")";
 
     // rabais_produit table create statement
     private static final String CREATE_TABLE_RABAIS_PRODUIT = "CREATE TABLE "
             + TABLE_RABAIS_PRODUIT + "(" + KEY_ID_PRODUIT + " INTEGER PRIMARY KEY,"
-            + KEY_CODE_RABAIS + " VARCHAR(8)"
-            + " FOREIGN KEY (" + KEY_ID_PRODUIT + ") REFERENCES "+ TABLE_PRODUIT + "("+ KEY_ID + ")"
+            + KEY_CODE_RABAIS + " VARCHAR(8),"
+            + " FOREIGN KEY (" + KEY_ID_PRODUIT + ") REFERENCES "+ TABLE_PRODUIT + "("+ KEY_ID + "),"
             + " FOREIGN KEY (" + KEY_CODE_RABAIS + ") REFERENCES "+ TABLE_RABAIS + "("+ KEY_CODE_RABAIS + ")"+")";
 
+    // Evenement table create statement
+    private static final String CREATE_TABLE_EVENEMENT = "CREATE TABLE "
+            + TABLE_EVENEMENT + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_NOM + " VARCHAR(32)," + KEY_DATE_DEBUT + " DATE " + KEY_DATE_FIN + " DATE "
+            + KEY_DESCRIPTION + " TEXT" +")";
+
+    // Recette table create statement
+    private static final String CREATE_TABLE_RECETTE = "CREATE TABLE "
+            + TABLE_RECETTE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_NOM + " VARCHAR(32),"
+            + KEY_DESCRIPTION + " TEXT" +")";
+
+    // produit_recette table create statement
+    private static final String CREATE_TABLE_PRODUIT_RECETTE = "CREATE TABLE "
+            + TABLE_PRODUIT_RECETTE + "(" + KEY_ID_RECETTE + " INTEGER PRIMARY KEY,"
+            + KEY_ID_PRODUIT + " VARCHAR(8),"
+            + " FOREIGN KEY (" + KEY_ID_RECETTE + ") REFERENCES "+ TABLE_RECETTE + "("+ KEY_ID + "),"
+            + " FOREIGN KEY (" + KEY_ID_PRODUIT + ") REFERENCES "+ TABLE_PRODUIT + "("+ KEY_ID + ")"+")";
+
+    // type_commande table create statement
+    private static final String CREATE_TABLE_TYPE_COMMANDE = "CREATE TABLE "
+            + TABLE_TYPE_COMMANDE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_DESCRIPTION + " TEXT" +")";
+
+    // etat_commande table create statement
+    private static final String CREATE_TABLE_ETAT_COMMANDE = "CREATE TABLE "
+            + TABLE_ETAT_COMMANDE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_NOM + " VARCHAR(16),"
+            + KEY_DESCRIPTION + " TEXT" +")";
+
+    // Commande table create statement
+    private static final String CREATE_TABLE_COMMANDE = "CREATE TABLE "
+            + TABLE_COMMANDE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_ID_CLIENT + " INTEGER,"  + KEY_ID_ETAT + " INTEGER,"  + KEY_ID_TYPE_COMMANDE + " INTEGER,"
+            + KEY_DATE + " DATE," + KEY_MONTANT_COMMANDE + " FLOAT,"  + KEY_NOM_PERSONNE + " VARCHAR(32),"
+            + " FOREIGN KEY (" + KEY_ID_CLIENT + ") REFERENCES "+ TABLE_CLIENT + "("+ KEY_ID + "),"
+            + " FOREIGN KEY (" + KEY_ID_ETAT + ") REFERENCES "+ TABLE_ETAT_COMMANDE + "("+ KEY_ID + "),"
+            + " FOREIGN KEY (" + KEY_ID_TYPE_COMMANDE + ") REFERENCES "+ TABLE_TYPE_COMMANDE + "("+ KEY_ID + ")"+")";
+
+    // produit_commande table create statement
+    private static final String CREATE_TABLE_PRODUIT_COMMANDE = "CREATE TABLE "
+            + TABLE_PRODUIT_COMMANDE + "(" + KEY_ID_PRODUIT + " INTEGER PRIMARY KEY,"
+            + KEY_ID_COMMANDE + " INTEGER," + KEY_NB_PRODUIT + " INTEGER,"
+            + " FOREIGN KEY (" + KEY_ID_PRODUIT + ") REFERENCES "+ TABLE_PRODUIT + "("+ KEY_ID + "),"
+            + " FOREIGN KEY (" + KEY_ID_COMMANDE + ") REFERENCES "+ TABLE_COMMANDE + "("+ KEY_ID + ")"+")";
+
+    // Livraison table create statement
+    private static final String CREATE_TABLE_LIVRAISON = "CREATE TABLE "
+            + TABLE_LIVRAISON + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_ID_COMMANDE + " INTEGER,"
+            + KEY_ADRESSE_LIVRAISON + " VARCHAR(32),"
+            + KEY_ADRESSE_LATITUDE + " FLOAT,"
+            + KEY_ADRESSE_LONGITUDE + " FLOAT,"
+            + KEY_DATE_PREVUE + " DATE,"
+            + KEY_DATE_REEL + " DATE,"
+            + " FOREIGN KEY (" + KEY_ID_COMMANDE + ") REFERENCES "+ TABLE_COMMANDE + "("+ KEY_ID + ")"+")";
+
+    // Notification table create statement
+    private static final String CREATE_TABLE_NOTIFICATION = "CREATE TABLE "
+            + TABLE_NOTIFICATION + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + KEY_SMS + " BOOLEAN,"
+            + KEY_NOTIFICATION + " VARCHAR(32),"
+            + KEY_NOUVELLE + " INTEGER,"
+            + KEY_RECEPTION + " INTEGER,"
+            + KEY_ETAT + " INTEGER,"
+            + KEY_ID_CLIENT + " INTEGER,"
+            + " FOREIGN KEY (" + KEY_ID_CLIENT + ") REFERENCES "+ TABLE_CLIENT + "("+ KEY_ID + ")"+")";
+
     public moteur_requete_bd(Context context) {
-        super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        // creating required tables
+        db.execSQL(CREATE_TABLE_CLIENT);
+        db.execSQL(CREATE_TABLE_TYPE_RABAIS);
+        db.execSQL(CREATE_TABLE_RABAIS);
+        db.execSQL(CREATE_TABLE_PRODUIT);
+        db.execSQL(CREATE_TABLE_RABAIS_PRODUIT);
+        db.execSQL(CREATE_TABLE_EVENEMENT);
+        db.execSQL(CREATE_TABLE_RECETTE);
+        db.execSQL(CREATE_TABLE_PRODUIT_RECETTE);
+        db.execSQL(CREATE_TABLE_TYPE_COMMANDE);
+        db.execSQL(CREATE_TABLE_ETAT_COMMANDE);
+        db.execSQL(CREATE_TABLE_COMMANDE);
+        db.execSQL(CREATE_TABLE_PRODUIT_COMMANDE);
+        db.execSQL(CREATE_TABLE_LIVRAISON);
+        db.execSQL(CREATE_TABLE_NOTIFICATION);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS client_table");
-        db.execSQL("DROP TABLE IF EXISTS rabais_table");
-        db.execSQL("DROP TABLE IF EXISTS type_rabais_table");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CLIENT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE_RABAIS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RABAIS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUIT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RABAIS_PRODUIT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENEMENT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECETTE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUIT_RECETTE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE_COMMANDE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ETAT_COMMANDE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMANDE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUIT_COMMANDE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIVRAISON);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTIFICATION);
 
         onCreate(db);
     }
