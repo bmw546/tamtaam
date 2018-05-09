@@ -16,18 +16,7 @@ public class menu extends AppCompatActivity {
         myBd = new moteur_requete_bd(this); //create the local database
     }
 
-    // POUR LES BUTTON
-    /* --------------------------------------------------------------------------------------------
-             ________  ___  ___  _________  _________  ________  ________
-            |\   __  \|\  \|\  \|\___   ___\\___   ___\\   __  \|\   ___  \
-            \ \  \|\ /\ \  \\\  \|___ \  \_\|___ \  \_\ \  \|\  \ \  \\ \  \
-             \ \   __  \ \  \\\  \   \ \  \     \ \  \ \ \  \\\  \ \  \\ \  \
-              \ \  \|\  \ \  \\\  \   \ \  \     \ \  \ \ \  \\\  \ \  \\ \  \
-               \ \_______\ \_______\   \ \__\     \ \__\ \ \_______\ \__\\ \__\
-                \|_______|\|_______|    \|__|      \|__|  \|_______|\|__| \|__|
-
-     --------------------------------------------------------------------------------------------
-    */
+    // Évévenement POUR LES BUTTON
     public void showClient(View view){
         Intent intent = new Intent(this, GestionnaireClient.class);
         startActivity(intent);
@@ -57,7 +46,7 @@ public class menu extends AppCompatActivity {
         startActivity(intent);
     }
     public void showRabais(View view){
-        Intent intent = new Intent(this, rabais.class);
+        Intent intent = new Intent(this, gestionnaire_rabais.class);
         startActivity(intent);
     }
     public void showLivraison(View view){
