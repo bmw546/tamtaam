@@ -1,37 +1,25 @@
 package tamtam.tamtam;
 
-public class client { // setteur getteur
-    // setteur getteur
-    int longitude;
-    int lag;
-    int id;
-    String nom;
-    String prenom;
-    String adresse;
+public class client {
 
-    public client(int longitude, int lag, int id, String nom, String prenom, String adresse) {
-        this.longitude = longitude;
-        this.lag = lag;
+    private int id;
+    private String nom;
+    private String mot_de_passe;
+    private String courriel;
+    private String adresse;
+    private String telephone;
+    private int longitude;
+    private int latitude;
+
+    public client(int id, String nom, String mot_de_passe, String courriel, String adresse, String telephone, int longitude, int latitude) {
         this.id = id;
         this.nom = nom;
-        this.prenom = prenom;
+        this.mot_de_passe = mot_de_passe;
+        this.courriel = courriel;
         this.adresse = adresse;
-    }
-
-    public int getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(int longitude) {
+        this.telephone = telephone;
         this.longitude = longitude;
-    }
-
-    public int getLag() {
-        return lag;
-    }
-
-    public void setLag(int lag) {
-        this.lag = lag;
+        this.latitude = latitude;
     }
 
     public int getId() {
@@ -50,12 +38,20 @@ public class client { // setteur getteur
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getMot_de_passe() {
+        return mot_de_passe;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setMot_de_passe(String mot_de_passe) {
+        this.mot_de_passe = mot_de_passe;
+    }
+
+    public String getCourriel() {
+        return courriel;
+    }
+
+    public void setCourriel(String courriel) {
+        this.courriel = courriel;
     }
 
     public String getAdresse() {
@@ -64,6 +60,30 @@ public class client { // setteur getteur
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public int getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(int longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(int latitude) {
+        this.latitude = latitude;
     }
 }
 

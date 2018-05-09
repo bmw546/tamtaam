@@ -1,8 +1,11 @@
 package tamtam.tamtam;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class moteur_requete_bd extends SQLiteOpenHelper {
 
@@ -58,7 +61,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     private static final String KEY_NB_PRODUIT = "nb_produit";
     private static final String KEY_ID_CLIENT = "id_client";
 
-    // EVENEMENT Table - column names
+    // EVENEMENT RABAIS Table - column names
     private static final String KEY_DATE_DEBUT = "date_debut";
     private static final String KEY_DATE_FIN = "date_fin";
 
@@ -84,7 +87,6 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     private static final String KEY_ETAT = "etat";
 
     // Table Create Statements
-
     // Client table create statement
     private static final String CREATE_TABLE_CLIENT = "CREATE TABLE "
             + TABLE_CLIENT + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NOM
@@ -99,7 +101,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     // rabais table create statement
     private static final String CREATE_TABLE_RABAIS = "CREATE TABLE " + TABLE_RABAIS
             + "(" + KEY_CODE_RABAIS + " VARCHAR(8) PRIMARY KEY," + KEY_MONTANT_RABAIS + " FLOAT,"
-            + KEY_ID_TYPE + " INTEGER," + KEY_DESCRIPTION + " TEXT,"
+            + KEY_ID_TYPE + " INTEGER," + KEY_DESCRIPTION + " TEXT," + KEY_DATE_DEBUT + " DATE," + KEY_DATE_FIN + " DATE,"
             + " FOREIGN KEY (" + KEY_ID_TYPE + ") REFERENCES " + TABLE_TYPE_RABAIS + "(" + KEY_ID +")" + ")";
 
     // produit table create statement
@@ -117,7 +119,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     // Evenement table create statement
     private static final String CREATE_TABLE_EVENEMENT = "CREATE TABLE "
             + TABLE_EVENEMENT + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + KEY_NOM + " VARCHAR(32)," + KEY_DATE_DEBUT + " DATE " + KEY_DATE_FIN + " DATE "
+            + KEY_NOM + " VARCHAR(32)," + KEY_DATE_DEBUT + " DATE," + KEY_DATE_FIN + " DATE,"
             + KEY_DESCRIPTION + " TEXT" +")";
 
     // Recette table create statement
@@ -223,6 +225,34 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTIFICATION);
 
         onCreate(db);
+    }
+
+    /**
+     * exécute un requete sql comme insert
+     * @param sql String une requete sql
+     */
+    public void execution(String sql) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL(sql);
+    }
+
+    /**
+     * execute une requete sql et retourne un curseur
+     * @param sql String une requete sql
+     * @return Cursor
+     */
+    public Cursor execution_with_return(String sql) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Log.e(LOG, sql);
+
+        Cursor c = db.rawQuery(sql, null);
+
+        if (c != null)
+            c.moveToFirst();
+
+        return c;
     }
 
     // closing database

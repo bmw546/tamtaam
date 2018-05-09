@@ -1,32 +1,39 @@
 package tamtam.tamtam;
 
-public class gestionnaire_rabais {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-    /*
-    * liste de produit (id, prix, nom)   <--- peut-on faire des arraylist en java?
-    * date debut
-    * date fin
-    * rabais (ex: 20, 10, etc.)
-    * type de rabais: (% ou $)
-    * prixApresRabais*/
+public class gestionnaire_rabais extends AppCompatActivity {
 
-    /*
-    * calculer prix après rabais:
-    * Si type = %,  prixRabais = rabais * (prixProduit/100)
-    * prixApresRabais = prixPoduit - prixRabais
-    *
-    * Sinon si le type=$
-    * prixApresRabais = prixProduit - rabais
-    *
-    */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.ui_rabais);
+    }
+}
+/*
+ * liste de produit (id, prix, nom)   <--- peut-on faire des arraylist en java?
+ * date debut
+ * date fin
+ * rabais (ex: 20, 10, etc.)
+ * type de rabais: (% ou $)
+ * prixApresRabais*/
+
+/*
+ * calculer prix après rabais:
+ * Si type = %,  prixRabais = rabais * (prixProduit/100)
+ * prixApresRabais = prixPoduit - prixRabais
+ *
+ * Sinon si le type=$
+ * prixApresRabais = prixProduit - rabais
+ *
+ */
 
     /*Init:
     Faire un select pour tout les produits, les mettres dans un objet produit
     *ou on sauvegarde la clé primaire + nom + prix
     *Mettre chaque objet dans la liste déroulante https://stackoverflow.com/questions/1625249/android-how-to-bind-spinner-to-custom-object-list
     * */
-}
-
 
 /*Plan rabais:
 *
