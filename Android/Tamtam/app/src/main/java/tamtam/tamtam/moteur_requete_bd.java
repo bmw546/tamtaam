@@ -10,13 +10,13 @@ import android.util.Log;
 public class moteur_requete_bd extends SQLiteOpenHelper {
 
     // Logcat tag
-    private static final String LOG = "moteur_requete_bd";
+    private static final String LOG = moteur_requete_bd.class.getName();
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = "tamtaam";
+    private static final String DATABASE_NAME = "tamtaam.db";
 
     // Table Names
     private static final String TABLE_CLIENT = "client";
@@ -68,7 +68,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     // COMMANDE Table - column names
     private static final String KEY_ID_ETAT = "id_etat";
     private static final String KEY_ID_TYPE_COMMANDE = "id_type_commande";
-    private static final String KEY_DATE = "id_type_commande";
+    private static final String KEY_DATE = "date";
     private static final String KEY_MONTANT_COMMANDE = "montant_commande";
     private static final String KEY_NOM_PERSONNE = "nom_personne";
 
@@ -143,14 +143,18 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     // etat_commande table create statement
     private static final String CREATE_TABLE_ETAT_COMMANDE = "CREATE TABLE "
             + TABLE_ETAT_COMMANDE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + KEY_NOM + " VARCHAR(16),"
+            + KEY_NOM + " VARCHAR(32),"
             + KEY_DESCRIPTION + " TEXT" +")";
 
     // Commande table create statement
     private static final String CREATE_TABLE_COMMANDE = "CREATE TABLE "
             + TABLE_COMMANDE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + KEY_ID_CLIENT + " INTEGER,"  + KEY_ID_ETAT + " INTEGER,"  + KEY_ID_TYPE_COMMANDE + " INTEGER,"
-            + KEY_DATE + " DATE," + KEY_MONTANT_COMMANDE + " FLOAT,"  + KEY_NOM_PERSONNE + " VARCHAR(32),"
+            + KEY_ID_CLIENT + " INTEGER,"
+            + KEY_ID_ETAT + " INTEGER,"
+            + KEY_ID_TYPE_COMMANDE + " INTEGER,"
+            + KEY_DATE + " DATE,"
+            + KEY_MONTANT_COMMANDE + " FLOAT,"
+            + KEY_NOM_PERSONNE + " VARCHAR(32),"
             + " FOREIGN KEY (" + KEY_ID_CLIENT + ") REFERENCES "+ TABLE_CLIENT + "("+ KEY_ID + "),"
             + " FOREIGN KEY (" + KEY_ID_ETAT + ") REFERENCES "+ TABLE_ETAT_COMMANDE + "("+ KEY_ID + "),"
             + " FOREIGN KEY (" + KEY_ID_TYPE_COMMANDE + ") REFERENCES "+ TABLE_TYPE_COMMANDE + "("+ KEY_ID + ")"+")";
@@ -186,10 +190,12 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
 
     public moteur_requete_bd(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         // creating required tables
         db.execSQL(CREATE_TABLE_CLIENT);
         db.execSQL(CREATE_TABLE_TYPE_RABAIS);
@@ -201,10 +207,12 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_PRODUIT_RECETTE);
         db.execSQL(CREATE_TABLE_TYPE_COMMANDE);
         db.execSQL(CREATE_TABLE_ETAT_COMMANDE);
+
         db.execSQL(CREATE_TABLE_COMMANDE);
         db.execSQL(CREATE_TABLE_PRODUIT_COMMANDE);
         db.execSQL(CREATE_TABLE_LIVRAISON);
         db.execSQL(CREATE_TABLE_NOTIFICATION);
+
     }
 
     @Override
@@ -219,6 +227,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUIT_RECETTE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE_COMMANDE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ETAT_COMMANDE);
+
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMANDE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUIT_COMMANDE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIVRAISON);

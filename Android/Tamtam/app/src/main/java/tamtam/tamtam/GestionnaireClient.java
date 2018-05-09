@@ -35,7 +35,7 @@ public class GestionnaireClient extends ListActivity {
                /* Toast.makeText(getApplicationContext(),
                         ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
                 */
-                Intent intent = new Intent(view.getContext(), client_detail.class);
+                Intent intent = new Intent(view.getContext(), detail_client.class);
                 Bundle b = new Bundle();
                 b.putInt("key", 1); //Your id
                 intent.putExtras(b); //Put your id to your next Intent
