@@ -7,10 +7,71 @@
     tools:context=".rabais">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RABAIS"
-        tools:layout_editor_absoluteX="199dp"
-        tools:layout_editor_absoluteY="33dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
+    <!--tools:layout_editor_absoluteY="33dp"
+        tools:layout_editor_absoluteX="199dp"-->
+
+    <TextView
+        android:id="@+id/lbl_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CODE:"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <EditText
+        android:id="@+id/txt_code"
+        android:layout_width="235dp"
+        android:layout_height="32dp"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <TextView
+        android:id="@+id/lbl_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type de rabais: "
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation='horizontal'
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="112dp">
+
+        <RadioButton
+            android:id="@+id/radioBtn_dollar"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:text="$" />
+
+        <RadioButton
+            android:id="@+id/radioBtn_pourcent"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:text="%" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/txt_dateDebut"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="219dp" />
+
+    <EditText
+        android:id="@+id/txt_dateFin"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="219dp" />
 </android.support.constraint.ConstraintLayout>
