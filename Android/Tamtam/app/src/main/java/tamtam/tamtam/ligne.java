@@ -1,11 +1,11 @@
 package tamtam.tamtam;
 
-public class row {
+public class ligne {
     // setteur getteur
     int text;
     int message;
     int color;
-    public row(int journe,  int mess, int color){
+    public ligne(int journe,  int mess, int color){
         this.settext(journe);
         this.setMessage(mess);
         this.setColor(color);
