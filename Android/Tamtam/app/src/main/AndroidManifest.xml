@@ -28,7 +28,11 @@
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".GestionnaireSauvegarde" />
         <activity android:name=".rabais" />
-        <activity android:name=".row"></activity>
+        <activity android:name=".row" />
+        <activity android:name=".gestionnaire_livraison" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".livraison_detail" />
+        <activity android:name=".Client_Detail"></activity>
     </application>
 
 </manifest>

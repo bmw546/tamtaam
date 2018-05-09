@@ -29,7 +29,7 @@
             android:id="@+id/btnLivraison"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-
+            android:onClick="showLivraison"
             android:text="Livraisons" />
 
         <Button
