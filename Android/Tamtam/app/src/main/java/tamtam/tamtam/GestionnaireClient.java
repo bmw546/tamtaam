@@ -37,7 +37,7 @@ public class GestionnaireClient extends ListActivity {
                 */
                 Intent intent = new Intent(view.getContext(), detail_client.class);
                 Bundle b = new Bundle();
-                b.putInt("key", 1); //Your id
+                b.putInt("key", position); //Your id
                 b.putString("nom",FRUITS[position]);
                b.putString("adresse",FRUITS[position]+" at fruit.com");
                 b.putDouble("longitude",45.411701);

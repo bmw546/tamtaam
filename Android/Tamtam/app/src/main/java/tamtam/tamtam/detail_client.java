@@ -31,7 +31,8 @@ public class detail_client extends FragmentActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Bundle b = getIntent().getExtras();
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_client);
         TextView name = (TextView) findViewById(R.id.nom);
         TextView numero = (TextView) findViewById(R.id.Numero);
         TextView adress = (TextView) findViewById(R.id.adresse);
@@ -47,12 +48,11 @@ public class detail_client extends FragmentActivity implements OnMapReadyCallbac
             longitude = b.getDouble("longitude");
             latitude = b.getDouble("lat");
         }
-       // name.setText(nom);
-        //numero.setText(""+id);
-        adress.setText("blbalbalbal");
+        name.setText(nom);
+        numero.setText(""+id);
+        adress.setText(adresse);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_client);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
