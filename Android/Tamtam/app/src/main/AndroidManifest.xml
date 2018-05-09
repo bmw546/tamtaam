@@ -27,7 +27,8 @@
             android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".GestionnaireSauvegarde" />
-        <activity android:name=".rabais"></activity>
+        <activity android:name=".rabais" />
+        <activity android:name=".row"></activity>
     </application>
 
 </manifest>
