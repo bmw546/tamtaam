@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class moteur_requete_bd extends SQLiteOpenHelper{
 
     // Logcat tag
-    private static final String LOG = "Moteur_requete_bd";
+    private static final String LOG = "moteur_requete_bd";
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
