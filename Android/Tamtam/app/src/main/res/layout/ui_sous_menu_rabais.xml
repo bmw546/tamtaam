@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sousMenu_rabais"
+    tools:layout_editor_absoluteY="81dp">
+
+    <!--VA CONTERNIR LA LISTE DES RABAIS AVEC LES OPTIONS AJOUTER UN RABAIS,
+    SUPPRIMER UN RABAIS, MODIFIER UN RABAIS
+    VA FALLOIR RAJOUTER L'OPTION AJOUTER UN RABAIS À UN PRODUIT DANS
+    GESTION DES PRODUITS I GUESS-->
+    <TextView
+        android:layout_width="255dp"
+        android:layout_height="39dp"
+        android:text="Gestion des rabais"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
+    <!--ICI IL Y AURA LA LISTE DES RABAIS
+        QUAND ON APPUIE SUR UN RABAIS, UNE FENËTRE S'OUVRE AVEC LES
+        INFOS DU RABAIS (très simmilaire à l'ajout de rabais)
+        ON A EN DESSOUS UN BOUTON MODIFIER, SUPPRIMER et ANNULER-->
+
+    <ListView
+        android:id="@+id/listeRabais"
+        android:layout_width="match_parent"
+        android:layout_height="339dp"
+        tools:layout_editor_absoluteY="66dp"></ListView>
+
+    <Button
+        android:layout_width="327dp"
+        android:layout_height="50dp"
+        android:text="Ajouter un nouveau rabais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="433dp" />
+    <!--<RadioGroup-->
+    <!--android:layout_width="301dp"-->
+    <!--android:layout_height="43dp"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.5"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--tools:layout_editor_absoluteY="72dp">-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/ajouterRabais"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:text="Ajouter"></RadioButton>-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/modifierRabais"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:text="Modifier" />-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/supprimerRabais"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:text="Supprimer" />-->
+    <!--</RadioGroup>-->
+
+</android.support.constraint.ConstraintLayout>

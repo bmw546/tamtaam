@@ -1,18 +1,88 @@
 package tamtam.tamtam;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class gestionnaire_rabais extends AppCompatActivity {
+
+    private static final String TAG = "gestionnaire_rabais";
+    private TextView dateDebut;
+    private TextView dateFin;
+    private DatePickerDialog.OnDateSetListener dateDebutListener;
+    private DatePickerDialog.OnDateSetListener dateFinListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_rabais);
+        dateDebut = (TextView) findViewById(R.id.dateDebut);
+        dateFin = (TextView) findViewById(R.id.dateFin);
+
+        dateDebut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int annee = cal.get(Calendar.YEAR);
+                int mois = cal.get(Calendar.MONTH);
+                int jour = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        gestionnaire_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
+                        dateDebutListener, annee, mois, jour);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+        dateFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int annee = cal.get(Calendar.YEAR);
+                int mois = cal.get(Calendar.MONTH);
+                int jour = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        gestionnaire_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
+                        dateFinListener, annee, mois, jour);
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+        dateDebutListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int annee, int mois, int jour) {
+                mois++;
+              String date = mois + "/"  + jour + "/" + annee;
+              dateDebut.setText(date);
+            }
+        };
+
+        dateFinListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int annee, int mois, int jour) {
+                mois++;
+                String date = mois + "/"  + jour + "/" + annee;
+                dateFin.setText(date);
+            }
+        };
     }
 }
 /*
- * liste de produit (id, prix, nom)   <--- peut-on faire des arraylist en java?
+ * liste de produit (id, prix, nom)
  * date debut
  * date fin
  * rabais (ex: 20, 10, etc.)
