@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class gestionnaire_rabais extends AppCompatActivity {
+public class ui_ajouter_modifier_rabais extends AppCompatActivity {
 
-    private static final String TAG = "gestionnaire_rabais";
+    private static final String TAG = "ui_ajouter_modifier_rabais";
     private TextView dateDebut;
     private TextView dateFin;
     private DatePickerDialog.OnDateSetListener dateDebutListener;
@@ -35,7 +35,7 @@ public class gestionnaire_rabais extends AppCompatActivity {
                 int jour = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        gestionnaire_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
+                        ui_ajouter_modifier_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
                         dateDebutListener, annee, mois, jour);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -53,7 +53,7 @@ public class gestionnaire_rabais extends AppCompatActivity {
                 int jour = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        gestionnaire_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
+                        ui_ajouter_modifier_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
                         dateFinListener, annee, mois, jour);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

@@ -4,32 +4,32 @@ import java.util.Date;
 
 public class rabais {
 
-    private String code_rabais;
+    private String code;
     private float montant;
     private String description;
     private String dateDebut;
     private String dateFin;
-    private int id_type;
+    private int type; //lire l'id du type (1=%, 2=$) et mettre la bonne val dans cette var
 
     public rabais() {
 
     }
 
-    public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, int id_type) {
-        this.code_rabais = code_rabais;
+    public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, int type) {
+        this.code = code_rabais;
         this.montant = montant;
         this.description = description;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
-        this.id_type = id_type;
+        this.type = type;
     }
 
-    public String getCode_rabais() {
-        return code_rabais;
+    public String getCode() {
+        return code;
     }
 
-    public void setCode_rabais(String code_rabais) {
-        this.code_rabais = code_rabais;
+    public void setCode(String code_rabais) {
+        this.code = code_rabais;
     }
 
     public float getMontant() {
@@ -64,11 +64,17 @@ public class rabais {
         this.dateFin = dateFin;
     }
 
-    public int getId_type() {
-        return id_type;
+    public String getType() {
+        String type = "mauvais type";
+        if (this.type == 1){
+            type = "$";
+        }else if(this.type == 2){
+            type = "%";
+        }
+        return  type;
     }
 
-    public void setId_type(int id_type) {
-        this.id_type = id_type;
+    public void setIdType(int id_type) {
+        this.type = id_type;
     }
 }

@@ -36,7 +36,7 @@
     <EditText
         android:id="@+id/txt_code"
         android:layout_width="0dp"
-        android:layout_height="37dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="43dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
@@ -150,23 +150,11 @@
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="88dp"
         android:text="Ajouter"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_dateFin" />
 
-    <Button
-        android:id="@+id/btnAnnuuler"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="46dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginStart="18dp"
-        android:text="Annuler"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

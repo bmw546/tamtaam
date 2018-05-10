@@ -12,14 +12,16 @@
     VA FALLOIR RAJOUTER L'OPTION AJOUTER UN RABAIS À UN PRODUIT DANS
     GESTION DES PRODUITS I GUESS-->
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="255dp"
-        android:layout_height="39dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
         android:text="Gestion des rabais"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/listeRabais"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
     <!--ICI IL Y AURA LA LISTE DES RABAIS
         QUAND ON APPUIE SUR UN RABAIS, UNE FENËTRE S'OUVRE AVEC LES
         INFOS DU RABAIS (très simmilaire à l'ajout de rabais)
@@ -27,18 +29,31 @@
 
     <ListView
         android:id="@+id/listeRabais"
-        android:layout_width="match_parent"
-        android:layout_height="339dp"
-        tools:layout_editor_absoluteY="66dp"></ListView>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="29dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAjouter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ListView>
 
     <Button
-        android:layout_width="327dp"
-        android:layout_height="50dp"
+        android:id="@+id/buttonAjouter"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="49dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginStart="28dp"
         android:text="Ajouter un nouveau rabais"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="433dp" />
+        app:layout_constraintTop_toBottomOf="@+id/listeRabais" />
+
     <!--<RadioGroup-->
     <!--android:layout_width="301dp"-->
     <!--android:layout_height="43dp"-->

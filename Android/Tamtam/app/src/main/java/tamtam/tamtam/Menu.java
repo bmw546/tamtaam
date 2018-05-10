@@ -46,7 +46,7 @@ public class menu extends AppCompatActivity {
         startActivity(intent);
     }
     public void showRabais(View view){
-        Intent intent = new Intent(this, gestionnaire_rabais.class);
+        Intent intent = new Intent(this, sousMenu_rabais.class);
         startActivity(intent);
     }
     public void showLivraison(View view){

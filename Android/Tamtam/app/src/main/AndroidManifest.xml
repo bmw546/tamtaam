@@ -36,7 +36,7 @@
             android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".GestionnaireSauvegarde" />
-        <activity android:name=".gestionnaire_rabais" />
+        <activity android:name=".ui_ajouter_modifier_rabais" />
         <activity android:name=".gestionnaire_livraison" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
