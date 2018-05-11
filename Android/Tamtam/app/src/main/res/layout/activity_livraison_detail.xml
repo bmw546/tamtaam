@@ -12,6 +12,17 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/etat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+            android:textSize="18sp"
+            android:background="#000611"
+            app:layout_constraintBottom_toTopOf="@+id/adresse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Numero" />
+        <TextView
             android:id="@+id/nom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
