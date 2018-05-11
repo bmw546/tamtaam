@@ -48,7 +48,7 @@ public class sousMenu_rabais extends AppCompatActivity {
 
                 b.putString("code",gestRabais.getListeRabais().get(position).getCode());
                 b.putFloat("montant", gestRabais.getListeRabais().get(position).getMontant());
-                b.putString("type", gestRabais.getListeRabais().get(position).getType());
+                b.putChar("type", gestRabais.getListeRabais().get(position).getType());
                 b.putString("dateDebut", gestRabais.getListeRabais().get(position).getDateDebut());
                 b.putString("dateFin", gestRabais.getListeRabais().get(position).getDateFin());
                 b.putString("description", gestRabais.getListeRabais().get(position).getDescription());
@@ -94,7 +94,7 @@ public class sousMenu_rabais extends AppCompatActivity {
             lblValeur.setText(Float.toString(gestRabais.getListeRabais().get(i).getMontant()));
             lblDateDebut.setText(gestRabais.getListeRabais().get(i).getDateDebut());
             lblDateFin.setText(gestRabais.getListeRabais().get(i).getDateFin());
-            lblType.setText(gestRabais.getListeRabais().get(i).getType());
+            lblType.setText(Character.toString(gestRabais.getListeRabais().get(i).getType()));
             lblDesc.setText(gestRabais.getListeRabais().get(i).getDescription());
 
             return view;

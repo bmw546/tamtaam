@@ -25,7 +25,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
     private Button btnSupprimer;
     private TextView dateDebut;
     private TextView dateFin;
-    private String chkType;
+    private char chkType;
     //type (radio button, voir comment faire)
 
     private TextView txtDescription;
@@ -46,29 +46,19 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         dateDebut = (TextView) findViewById(R.id.dateDebut);
         dateFin = (TextView) findViewById(R.id.dateFin);
         txtDescription = (EditText) findViewById(R.id.txtDescription);
-
-        addListenerOnButton();
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        //addListenerOnButton();
 
         String code;
         float montant = 0;
-        String type;
+        char type;
         String rabaisDateDebut;
         String rabaisDateFin;
         String description;
-
-
-//      b.putString("code",gestRabais.getListeRabais().get(position).getCode());
-//      b.putFloat("montant", gestRabais.getListeRabais().get(position).getMontant());
-//      b.putString("type", gestRabais.getListeRabais().get(position).getType());
-//      b.putString("dateDebut", gestRabais.getListeRabais().get(position).getDateDebut());
-//      b.putString("dateFin", gestRabais.getListeRabais().get(position).getDateFin());
-//      b.putString("description", gestRabais.getListeRabais().get(position).getDescription());
-
-
-
+        
         code = b.getString("code");
         montant = b.getFloat("montant");
-        type = b.getString("type");
+        type = b.getChar("type");
         rabaisDateDebut = b.getString("dateDebut");
         rabaisDateFin = b.getString("dateFin");
         description = b.getString("description");
@@ -76,9 +66,9 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         txtCode.setText(code);
         txtValeur.setText(Float.toString(montant));
 
-        if (type == "$"){
+        if (type == '$'){
             radioGroup.check(R.id.radioBtn_dollar);
-        }else if(type == "%"){
+        }else if(type == '%'){
             radioGroup.check(R.id.radioBtn_pourcent);
         }
 
@@ -156,10 +146,14 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         };
     }
 
-    public void addListenerOnButton() {
+    //bouton supprimer à coder
 
-        radioGroup = (RadioGroup) findViewById(R.id.radio);
-        btnModifier = (Button) findViewById(R.id.btnAjouter);
+
+    //bouton modifier à coder (commencement ci-dessous)
+    /*public void addListenerOnButton() {
+
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        btnModifier = (Button) findViewById(R.id.btn_modifier);
 
         btnModifier.setOnClickListener(new View.OnClickListener() {
 
@@ -171,11 +165,11 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
 
                 // find the radiobutton by returned id
                 radioButton = (RadioButton) findViewById(selectedId);
-                chkType = (String) radioButton.getText();
+                chkType = radioButton.getText().charAt(0);
 
                 // rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type)
                 rabais r = new rabais(txtCode.getText().toString(), Float.parseFloat(txtValeur.getText().toString()), txtDescription.getText().toString(),
-                        dateDebut.getText().toString(), dateFin.getText().toString(), chkType.charAt(0) );
+                        dateDebut.getText().toString(), dateFin.getText().toString(), chkType);
 
 
                 GestionnaireRabais gest = new GestionnaireRabais();
@@ -185,5 +179,5 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
 
         });
 
-    }
+    }*/
 }

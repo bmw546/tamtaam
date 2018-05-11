@@ -64,14 +64,8 @@ public class rabais {
         this.dateFin = dateFin;
     }
 
-    public String getType() {
-        String type = "mauvais type";
-        if (this.type == 1){
-            type = "$";
-        }else if(this.type == 2){
-            type = "%";
-        }
-        return  type;
+    public char  getType() {
+        return type;
     }
 
     public int getNoType(){
