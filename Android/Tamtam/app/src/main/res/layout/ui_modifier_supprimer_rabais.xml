@@ -4,77 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".rabais"
+    tools:context=".modifier_supprimer_rabais"
     tools:layout_editor_absoluteY="81dp">
+
 
     <TextView
         android:id="@+id/titre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter un rabais"
-        android:textSize="30sp"
+        android:text="Modifier/supprimer un rabais"
+        android:textSize="29sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--tools:layout_editor_absoluteY="33dp"
-        tools:layout_editor_absoluteX="199dp"-->
 
     <TextView
         android:id="@+id/lbl_code"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
-        android:layout_marginBottom="56dp"
-        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="77dp"
         android:layout_marginLeft="17dp"
-        android:layout_marginRight="91dp"
         android:layout_marginStart="17dp"
+        android:layout_marginTop="78dp"
         android:text="CODE:"
-        app:layout_constraintBottom_toTopOf="@+id/lbl_type"
-        app:layout_constraintEnd_toStartOf="@+id/txt_code"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/lbl_type"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txt_code"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="43dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="26dp"
         app:layout_constraintBottom_toTopOf="@+id/valeur_rabais"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lbl_code"
+        app:layout_constraintEnd_toEndOf="@+id/txtDescription"
+        app:layout_constraintStart_toEndOf="@+id/lbl_type"
         app:layout_constraintTop_toBottomOf="@+id/titre" />
 
     <TextView
         android:id="@+id/lbl_type"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
         android:text="Valeur du rabais: "
         app:layout_constraintBaseline_toBaselineOf="@+id/valeur_rabais"
-        app:layout_constraintEnd_toStartOf="@+id/valeur_rabais" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/valeur_rabais"
         android:layout_width="63dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup" />
+        android:layout_marginEnd="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_code"
+        app:layout_constraintStart_toStartOf="@+id/btnAjouter"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginTop="153dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginStart="28dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="@+id/valeur_rabais"
+        app:layout_constraintEnd_toEndOf="@+id/btnAjouter"
+        app:layout_constraintStart_toEndOf="@+id/valeur_rabais">
 
         <RadioButton
             android:id="@+id/radioBtn_dollar"
@@ -93,28 +100,30 @@
         android:id="@+id/dateDebut"
         android:layout_width="0dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="37dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginRight="90dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="104dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginTop="103dp"
         android:text="@string/dateRabais"
-        app:layout_constraintBottom_toTopOf="@+id/dateFin"
+        app:layout_constraintBottom_toTopOf="@+id/lblDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbl_dateDebut"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_type" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_code" />
 
     <TextView
 
         android:id="@+id/dateFin"
         android:layout_width="0dp"
         android:layout_height="16dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginRight="90dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginBottom="94dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginRight="89dp"
+        android:layout_marginTop="95dp"
         android:text="@string/dateRabais"
+        app:layout_constraintBottom_toTopOf="@+id/btnAjouter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbl_dateFin"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_type" />
 
     <TextView
         android:id="@+id/lbl_dateDebut"
@@ -146,15 +155,53 @@
         android:id="@+id/btnAjouter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:layout_marginEnd="18dp"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="88dp"
-        android:text="Ajouter"
+        android:text="Modifier"
+        app:layout_constraintBottom_toTopOf="@+id/btnSupprimer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_dateFin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnSupprimer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginStart="18dp"
+        android:text="Supprimer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:text="Description:"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAjouter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lbl_dateFin" />
+
+    <EditText
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        app:layout_constraintBottom_toTopOf="@+id/btnAjouter"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

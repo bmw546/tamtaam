@@ -36,7 +36,7 @@
             android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".GestionnaireSauvegarde" />
-        <activity android:name=".ui_ajouter_modifier_rabais" />
+        <activity android:name=".ui_ajouter_rabais" />
         <activity android:name=".gestionnaire_livraison" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -53,10 +53,11 @@
         <activity
             android:name=".detail_client"
             android:label="@string/title_activity_detail_client" />
-        <activity android:name=".sousMenu_rabais"></activity>
+        <activity android:name=".sousMenu_rabais" />
         <activity
             android:name=".livraison_detail"
-            android:label="@string/title_activity_livraison_detail"></activity>
+            android:label="@string/title_activity_livraison_detail" />
+        <activity android:name=".modifier_supprimer_rabais"></activity>
     </application>
 
 </manifest>
