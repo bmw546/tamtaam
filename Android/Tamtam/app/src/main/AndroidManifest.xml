@@ -25,15 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".GestionnaireClient"
-            android:label="Chercher un client" />
+        <activity android:name=".GestionnaireClient" android:label="Chercher un client" />
         <activity android:name=".GestionnaireProduits" />
         <activity android:name=".GestionnaireRecette" />
         <activity android:name=".GestionnaireEvenement" />
-        <activity
-            android:name=".GestionnaireNotification"
-            android:label="Notifications" />
+        <activity android:name=".GestionnaireNotification" android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".Rapport" />
         <activity android:name=".GestionnaireSauvegarde" />
@@ -54,10 +50,8 @@
         <activity
             android:name=".detail_client"
             android:label="@string/title_activity_detail_client" />
-        <activity android:name=".sousMenu_rabais"></activity>
-        <activity
-            android:name=".livraison_detail"
-            android:label="@string/title_activity_livraison_detail"></activity>
+        <activity android:name=".sousMenu_rabais"/>
+        <activity android:name=".livraison_detail" android:label="@string/title_activity_livraison_detail"/>
     </application>
 
 </manifest>
