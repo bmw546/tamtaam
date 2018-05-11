@@ -4,8 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.io.File;
 
 public class moteur_requete_bd extends SQLiteOpenHelper {
 
@@ -75,7 +78,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     // Livraison Table - column names
     private static final String KEY_ADRESSE_LIVRAISON = "adresse_livraison";
     private static final String KEY_ADRESSE_LATITUDE = "adresse_latitude";
-    private static final String KEY_ADRESSE_LONGITUDE = "adresse_logitude";
+    private static final String KEY_ADRESSE_LONGITUDE = "adresse_longitude";
     private static final String KEY_DATE_PREVUE = "date_prevue";
     private static final String KEY_DATE_REEL = "date_reel";
 
@@ -100,7 +103,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
 
     // rabais table create statement
     private static final String CREATE_TABLE_RABAIS = "CREATE TABLE " + TABLE_RABAIS
-            + "(" + KEY_CODE_RABAIS + " VARCHAR(8) PRIMARY KEY," + KEY_MONTANT_RABAIS + " FLOAT,"
+            + "(" + KEY_CODE + " VARCHAR(8) PRIMARY KEY," + KEY_MONTANT_RABAIS + " FLOAT,"
             + KEY_ID_TYPE + " INTEGER," + KEY_DESCRIPTION + " TEXT," + KEY_DATE_DEBUT + " DATE," + KEY_DATE_FIN + " DATE,"
             + " FOREIGN KEY (" + KEY_ID_TYPE + ") REFERENCES " + TABLE_TYPE_RABAIS + "(" + KEY_ID +")" + ")";
 
@@ -130,7 +133,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
 
     // produit_recette table create statement
     private static final String CREATE_TABLE_PRODUIT_RECETTE = "CREATE TABLE "
-            + TABLE_PRODUIT_RECETTE + "(" + KEY_ID_RECETTE + " INTEGER PRIMARY KEY,"
+            + TABLE_PRODUIT_RECETTE + "(" + KEY_ID_RECETTE + " INTEGER,"
             + KEY_ID_PRODUIT + " VARCHAR(8),"
             + " FOREIGN KEY (" + KEY_ID_RECETTE + ") REFERENCES "+ TABLE_RECETTE + "("+ KEY_ID + "),"
             + " FOREIGN KEY (" + KEY_ID_PRODUIT + ") REFERENCES "+ TABLE_PRODUIT + "("+ KEY_ID + ")"+")";
@@ -181,16 +184,73 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_NOTIFICATION = "CREATE TABLE "
             + TABLE_NOTIFICATION + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + KEY_SMS + " BOOLEAN,"
-            + KEY_NOTIFICATION + " VARCHAR(32),"
-            + KEY_NOUVELLE + " INTEGER,"
-            + KEY_RECEPTION + " INTEGER,"
-            + KEY_ETAT + " INTEGER,"
+            + KEY_NOTIFICATION + " BOOLEAN,"
+            + KEY_NOUVELLE + " BOOLEAN,"
+            + KEY_RECEPTION + " BOOLEAN,"
+            + KEY_ETAT + " BOOLEAN,"
             + KEY_ID_CLIENT + " INTEGER,"
             + " FOREIGN KEY (" + KEY_ID_CLIENT + ") REFERENCES "+ TABLE_CLIENT + "("+ KEY_ID + ")"+")";
 
     public moteur_requete_bd(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         SQLiteDatabase db = this.getWritableDatabase();
+    }
+
+    /** Méthode pour obtenir le nom des tables  **/
+    public String getTableClient() {
+        return TABLE_CLIENT;
+    }
+
+    public String getTableTypeRabais() {
+        return TABLE_TYPE_RABAIS;
+    }
+
+    public String getTableRabais() {
+        return TABLE_RABAIS;
+    }
+
+    public String getTableProduit() {
+        return TABLE_PRODUIT;
+    }
+
+    public String getTableRabaisProduit() {
+        return TABLE_RABAIS_PRODUIT;
+    }
+
+    public String getTableEvenement() {
+        return TABLE_EVENEMENT;
+    }
+
+    public String getTableRecette() {
+        return TABLE_RECETTE;
+    }
+
+    public String getTableProduitRecette() {
+        return TABLE_PRODUIT_RECETTE;
+    }
+
+    public String getTableTypeCommande() {
+        return TABLE_TYPE_COMMANDE;
+    }
+
+    public String getTableEtatCommande() {
+        return TABLE_ETAT_COMMANDE;
+    }
+
+    public String getTableCommande() {
+        return TABLE_COMMANDE;
+    }
+
+    public String getTableProduitCommande() {
+        return TABLE_PRODUIT_COMMANDE;
+    }
+
+    public String getTableLivraison() {
+        return TABLE_LIVRAISON;
+    }
+
+    public String getTableNotification() {
+        return TABLE_NOTIFICATION;
     }
 
     @Override
@@ -240,7 +300,7 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
      * exécute un requete sql comme insert
      * @param sql String une requete sql
      */
-    public void execution(String sql) {
+    public void execution(String sql){
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.execSQL(sql);
@@ -262,6 +322,11 @@ public class moteur_requete_bd extends SQLiteOpenHelper {
             c.moveToFirst();
 
         return c;
+    }
+
+    public boolean doesDatabaseExist(Context context, String dbName) {
+        File dbFile = context.getDatabasePath(dbName);
+        return dbFile.exists();
     }
 
     // closing database

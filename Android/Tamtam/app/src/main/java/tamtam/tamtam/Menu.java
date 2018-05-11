@@ -14,6 +14,10 @@ public class menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_menu);
         myBd = new moteur_requete_bd(this); //create the local database
+
+        //insere des donnée dans la base de donnée une seule fois.
+        insertData insertData = new insertData(myBd,this);
+        insertData.insert();
     }
 
     // Évévenement POUR LES BUTTON
