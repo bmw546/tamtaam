@@ -17,10 +17,9 @@ public class gestionnaire_livraison extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        myBd = new moteur_requete_bd(this); //create the local database
         super.onCreate(savedInstanceState);
-
         //setContentView(R.layout.ui_client);
+        myBd = new moteur_requete_bd(this); //create the local database
         final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
                 "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
                 "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
@@ -39,6 +38,7 @@ public class gestionnaire_livraison extends ListActivity {
                 Intent intent = new Intent(view.getContext(), livraison_detail.class);
                 Bundle b = new Bundle();
                 b.putInt("key", position); //Your id
+                b.putString("nom",FRUITS[position]);
                 b.putString("adresse",FRUITS[position]+" at fruit.com");
                 b.putDouble("longitude",45.411701);
                 b.putDouble("lat",-71.886361);
