@@ -99,7 +99,8 @@
         app:layout_constraintBottom_toTopOf="@+id/dateFin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbl_dateDebut"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_type" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_type"
+        android:textStyle="bold" />
 
     <TextView
 
@@ -112,7 +113,8 @@
         android:text="@string/dateRabais"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbl_dateFin"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/lbl_dateDebut"
@@ -150,6 +152,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="156dp"
         android:text="Ajouter"
+        android:onClick="nouveauRabais"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

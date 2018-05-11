@@ -2,6 +2,7 @@ package tamtam.tamtam;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -26,6 +28,12 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
     private TextView dateDebut;
     private TextView dateFin;
     private char chkType;
+    private String code;
+    private float montant = 0;
+    private char type;
+    private String rabaisDateDebut;
+    private String rabaisDateFin;
+    private String description;
     //type (radio button, voir comment faire)
 
     private TextView txtDescription;
@@ -45,17 +53,16 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         //type (radio group/button)
         dateDebut = (TextView) findViewById(R.id.dateDebut);
         dateFin = (TextView) findViewById(R.id.dateFin);
+
+        dateDebut.setPaintFlags(dateDebut.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        dateFin.setPaintFlags(dateFin.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         //addListenerOnButton();
 
-        String code;
-        float montant = 0;
-        char type;
-        String rabaisDateDebut;
-        String rabaisDateFin;
-        String description;
 
+        //IMPORTANT: FAIRE CRÉER UN OBJET RABAIS AVEC CES INFOS POUR ÉVITER LA RÉPÉTITION
         code = b.getString("code");
         montant = b.getFloat("montant");
         type = b.getChar("type");
@@ -144,6 +151,42 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
                 dateFin.setText(date);
             }
         };
+    }
+
+    public void modifierRabais(View view) {
+        GestionnaireRabais gest = new GestionnaireRabais();
+
+        //code
+        String newCode = txtCode.getText().toString();
+
+        //type
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        radioButton = (RadioButton) findViewById(selectedId);
+        char newType = radioButton.getText().charAt(0);
+
+        //montant
+        float newMontant = Float.parseFloat(txtValeur.getText().toString());
+
+        //description
+        String newDescription = txtDescription.getText().toString();
+
+        //date debut
+        String newDateDebut = dateDebut.getText().toString();
+
+        //date fin
+        String newDateFin = dateFin.getText().toString();
+
+        //rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type)
+        rabais newRabais = new rabais(newCode, newMontant, newDescription, newDateDebut, newDateFin, newType);
+
+        if (gest.modifierRabais(code, newRabais)){
+            Toast.makeText(this,"Le rabais a été modifé", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this,"Ce code est déja utilisé par un autre rabais.", Toast.LENGTH_LONG).show();
+        }
+
+
+
     }
 
     //bouton supprimer à coder

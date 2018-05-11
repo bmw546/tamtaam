@@ -90,8 +90,8 @@ public class ui_ajouter_rabais extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int annee, int mois, int jour) {
                 mois++;
-              String date = mois + "/"  + jour + "/" + annee;
-              dateDebut.setText(date);
+                String date = mois + "/"  + jour + "/" + annee;
+                dateDebut.setText(date);
             }
         };
 
@@ -106,6 +106,16 @@ public class ui_ajouter_rabais extends AppCompatActivity {
 
     }
 
+    public void nouveauRabais(View view) {
+        //saisir tt les textboxs et les mettre dans un rabais
+        rabais r = new rabais();
+        GestionnaireRabais gest = new GestionnaireRabais();
+        if(gest.ajouterRabais(r)){
+            Toast.makeText(this, "Le rabais a été ajouté", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Ce code est déja utilisé", Toast.LENGTH_LONG).show();
+        }
+    }
     //bouton ajouter à coder (ci-dessous)
     /*public void addListenerOnButton() {
 

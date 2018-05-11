@@ -10,10 +10,10 @@
 
     <TextView
         android:id="@+id/titre"
-        android:layout_width="wrap_content"
+        android:layout_width="373dp"
         android:layout_height="wrap_content"
         android:text="Modifier/supprimer un rabais"
-        android:textSize="29sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -108,7 +108,8 @@
         app:layout_constraintBottom_toTopOf="@+id/lblDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbl_dateDebut"
-        app:layout_constraintTop_toBottomOf="@+id/txt_code" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_code"
+        android:textStyle="bold" />
 
     <TextView
 
@@ -123,7 +124,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnAjouter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lbl_dateFin"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_type" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_type"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/lbl_dateDebut"
@@ -161,6 +163,7 @@
         android:layout_marginRight="18dp"
         android:layout_marginStart="18dp"
         android:text="Modifier"
+        android:onClick="modifierRabais"
         app:layout_constraintBottom_toTopOf="@+id/btnSupprimer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
