@@ -20,11 +20,11 @@ public class sousMenu_rabais extends AppCompatActivity {
     rabais r2 =  new rabais("xyz123", 50,"Anotha test", "2018-01-01", "2019-01-01", '$');
     rabais r3 =  new rabais("freeshit", 100,"Test no 3", "2018-05-11", "2020-01-01", '%');
 
-    /*
+
     public void ajouterRabais(View view){
         Intent intent = new Intent(this, ui_ajouter_rabais.class);
         startActivity(intent);
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

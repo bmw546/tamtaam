@@ -24,30 +24,31 @@ public class ui_ajouter_rabais extends AppCompatActivity {
     private TextView dateFin;
     private DatePickerDialog.OnDateSetListener dateDebutListener;
     private DatePickerDialog.OnDateSetListener dateFinListener;
-    private RadioGroup radioGroup;
+
+    /*private RadioGroup radioGroup;
     private RadioButton radioButton;
     private Button btnAjouter;
-    private String type;
+    private char type;
     private TextView txtDescription;
     private EditText txtCode;
-    private EditText txtValeur;
+    private EditText txtValeur;*/
 
-    public void ajouterRabais()
+    /*public void ajouterRabais()
     {
         rabais newRabais = new rabais();
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_ajouter_rabais);
-        txtCode = (EditText) findViewById(R.id.txt_code);
+        /*txtCode = (EditText) findViewById(R.id.txt_code);
         txtValeur = (EditText) findViewById(R.id.valeur_rabais);
-        txtDescription = (EditText) findViewById(R.id.txtDescription);
+        txtDescription = (EditText) findViewById(R.id.txtDescription);*/
         dateDebut = (TextView) findViewById(R.id.dateDebut);
         dateFin = (TextView) findViewById(R.id.dateFin);
 
-        addListenerOnButton();
+        //addListenerOnButton();
 
         dateDebut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +106,8 @@ public class ui_ajouter_rabais extends AppCompatActivity {
 
     }
 
-    public void addListenerOnButton() {
+    //bouton ajouter à coder (ci-dessous)
+    /*public void addListenerOnButton() {
 
         radioGroup = (RadioGroup) findViewById(R.id.radio);
         btnAjouter = (Button) findViewById(R.id.btnAjouter);
@@ -133,7 +135,7 @@ public class ui_ajouter_rabais extends AppCompatActivity {
 
         });
 
-    }
+    }*/
 
 }
 /*

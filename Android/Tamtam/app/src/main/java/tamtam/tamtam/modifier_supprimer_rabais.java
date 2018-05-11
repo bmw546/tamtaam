@@ -55,7 +55,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         String rabaisDateDebut;
         String rabaisDateFin;
         String description;
-        
+
         code = b.getString("code");
         montant = b.getFloat("montant");
         type = b.getChar("type");
@@ -149,7 +149,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
     //bouton supprimer à coder
 
 
-    //bouton modifier à coder (commencement ci-dessous)
+    //bouton modifier à coder (commencement ci-dessous) (pas correct, voir btnAjouter dans ui_sous_menu_rbais/sous_menu_rabais
     /*public void addListenerOnButton() {
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
