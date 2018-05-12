@@ -57,7 +57,8 @@
         <activity
             android:name=".livraison_detail"
             android:label="@string/title_activity_livraison_detail" />
-        <activity android:name=".modifier_supprimer_rabais"></activity>
+        <activity android:name=".modifier_supprimer_rabais" />
+        <activity android:name=".sous_menu_evenement"></activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ public class GestionnaireRabais {
     private ArrayList<rabais> listeRabais = new ArrayList<rabais>();
 
     GestionnaireRabais(){
+
         selectRabais();
     }
     public ArrayList<rabais> getListeRabais() {
@@ -24,12 +25,14 @@ public class GestionnaireRabais {
     }
     public Boolean ajouterRabais(rabais r){
 
+        for(int i =0; i< listeRabais.size(); i++){
+            if (listeRabais.get(i).getCode() == r.getCode())
+            {
+                return false;
+            }
+        }
+
         listeRabais.add(r);
-        //+ ajouter le rabais selon le code;
-
-        //si un autre rabais a le meme code
-        //return false
-
         return true;
     }
 
