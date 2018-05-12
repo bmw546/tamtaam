@@ -32,7 +32,7 @@
         <activity android:name=".GestionnaireNotification" android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".Rapport" />
-        <activity android:name=".GestionnaireSauvegarde" />
+        <activity android:name=".GestionnaireSauvegarde" android:label="Exporter"/>
         <activity android:name=".ui_ajouter_modifier_rabais" />
         <activity android:name=".gestionnaire_livraison" />
         <!--

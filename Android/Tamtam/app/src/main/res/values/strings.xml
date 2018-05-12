@@ -5,4 +5,8 @@
     <string name="title_activity_detail_client">Map</string>
     <string name="dateRabais"><b><u>Sélectionner une date</u></b></string>
     <string name="title_activity_livraison_detail">Map</string>
+    <string name="btnParcourir">parcourir</string>
+    <string name="btnSauvegarderStr">Créer une sauvegarde</string>
+    <string name="btnModifierStr">Sauvegarder</string>
+    <string name="btnSupprimerStr">Supprimer</string>
 </resources>
