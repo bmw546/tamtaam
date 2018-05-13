@@ -9,4 +9,6 @@
     <string name="btnSauvegarderStr">Créer une sauvegarde</string>
     <string name="btnModifierStr">Sauvegarder</string>
     <string name="btnSupprimerStr">Supprimer</string>
+    <string name="oui">Oui</string>
+    <string name="no">Non</string>
 </resources>

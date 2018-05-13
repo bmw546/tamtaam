@@ -1,6 +1,8 @@
 package tamtam.tamtam;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -213,15 +215,35 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
     public void deleteFile(View view) {
 
         if(uri != null) {
-            try {
-                DocumentsContract.deleteDocument(getContentResolver(), uri);
-                fileName.setText("");
-                uri = null;
-                messageText.setTextColor(Color.rgb(102, 153, 0));
-                messageText.setText("Le fichier a été supprimé");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //Ajout du bouton Oui
+            builder.setPositiveButton(R.string.oui, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    try {
+                        DocumentsContract.deleteDocument(getContentResolver(), uri);
+                        fileName.setText("");
+                        uri = null;
+                        messageText.setTextColor(Color.RED);
+                        messageText.setText("Le fichier a été supprimé");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            //Ajout du bouton non
+            builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            // Modifie d'autres propriété du dialogue
+            builder.setMessage("Êtes-vous certains de vouloir supprimer ce fichier ?")
+                    .setTitle("Suppression de fichier");
+            // Crée le dialogue
+            AlertDialog dialog = builder.create();
+            // Affiche la boite de dialogue
+            builder.show();
+
         }else{
             messageText.setTextColor(Color.RED);
             messageText.setText("Aucun fichier sélectionné!");
@@ -229,7 +251,7 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
     }
 
     /**
-     * récupere le nom du fichier et le met dans l'editView
+     * Récupere le nom du fichier et le met dans l'editView
      * @param uri le file path
      */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
