@@ -32,9 +32,10 @@ public class sousMenu_rabais extends AppCompatActivity {
         setContentView(R.layout.ui_sous_menu_rabais);
         //les rabais vont être ajoutés à partir de la bd
         //tests now vu que j'ai pas accès à la bd
-        gestRabais.ajouterRabais(r1);
+
+        /*gestRabais.ajouterRabais(r1);
         gestRabais.ajouterRabais(r2);
-        gestRabais.ajouterRabais(r3);
+        gestRabais.ajouterRabais(r3);*/
         ListView listView=(ListView)findViewById(R.id.listeRabais);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);
