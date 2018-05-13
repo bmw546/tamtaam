@@ -38,8 +38,9 @@ public class GestionnaireRabais {
 
     public void supprimerRabais(rabais r){
 
+        //delete where code = r.getCode();
         listeRabais.remove(r);
-        //+ supprimer le rabais selon le code;
+
 
     }
 
