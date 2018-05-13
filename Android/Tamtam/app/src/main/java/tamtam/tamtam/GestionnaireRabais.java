@@ -12,6 +12,7 @@ public class GestionnaireRabais {
 
     GestionnaireRabais(){
 
+        //bd = new moteur_requete_bd(this);
         selectRabais();
     }
 
@@ -25,28 +26,28 @@ public class GestionnaireRabais {
 
     public void selectRabais(){
         //va select les rabais dans la bd et les mettre dans l'arraylist
-//        Cursor c = bd.execution_with_return("SELECT * FROM " + bd.getTableRabais());
-//        if (c.getCount() > 0){
-//            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-//                rabais r = new rabais();
-//                //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
-//                r.setCode(c.getString(c.getColumnIndex("code")));
-//                r.setMontant(c.getFloat(c.getColumnIndex("montant_rabais")));
-//                r.setDescription(c.getString(c.getColumnIndex("description")));
-//                int id_type = c.getInt(c.getColumnIndex("id_type"));
-//                if (id_type == 1){
-//                    r.setType('$');
-//                }else{
-//                    r.setType('%');
-//                }
-//                r.setDateDebut(c.getString(c.getColumnIndex("date_debut")));
-//                r.setDateFin(c.getString(c.getColumnIndex("date_fin")));
-//
-//                listeRabais.add(r);
-//            }
-//
-//        }
-//        c.close();
+        Cursor c = bd.execution_with_return("SELECT * FROM " + bd.getTableRabais());
+        if (c.getCount() > 0){
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                rabais r = new rabais();
+                //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
+                r.setCode(c.getString(c.getColumnIndex("code")));
+                r.setMontant(c.getFloat(c.getColumnIndex("montant_rabais")));
+                r.setDescription(c.getString(c.getColumnIndex("description")));
+                int id_type = c.getInt(c.getColumnIndex("id_type"));
+                if (id_type == 1){
+                    r.setType('$');
+                }else{
+                    r.setType('%');
+                }
+                r.setDateDebut(c.getString(c.getColumnIndex("date_debut")));
+                r.setDateFin(c.getString(c.getColumnIndex("date_fin")));
+
+                listeRabais.add(r);
+            }
+
+        }
+        c.close();
     }
     public Boolean ajouterRabais(rabais r){
 
