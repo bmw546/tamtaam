@@ -21,7 +21,7 @@ public class GestionnaireRapport extends AppCompatActivity {
         final Button button = findViewById(R.id.buttonVisionner);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Code here executes on main thread after user presses button
+
                 EditText txtDateDebut = findViewById(R.id.txt_dateDebut);
                 String dateDebut = String.valueOf(txtDateDebut.getText());
                 EditText txtDateFin = findViewById(R.id.txt_dateFin);
