@@ -27,7 +27,7 @@ public class GestionnaireRabais {
     public void selectRabais(){
         //va select les rabais dans la bd et les mettre dans l'arraylist
         Cursor result = bd.execution_with_return("SELECT * FROM " + bd.getTableRabais());
-        if (result.getCount() > 0){
+
             for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
                 rabais r = new rabais();
                 //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
@@ -46,7 +46,7 @@ public class GestionnaireRabais {
                 listeRabais.add(r);
             }
 
-        }
+
         result.close();
     }
 
