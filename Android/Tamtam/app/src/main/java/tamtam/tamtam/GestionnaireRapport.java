@@ -28,12 +28,51 @@ public class GestionnaireRapport extends AppCompatActivity {
                 String dateFin = String.valueOf(txtDateFin.getText());
                 EditText txtProduits = findViewById(R.id.txt_produits);
                 String produits = String.valueOf(txtProduits.getText());
-                Cursor result =moteurRequete.execution_with_return("SELECT `nb_produit`,`date` FROM `ta_produit_commande` JOIN `commande` ON `commande`.`id`=`ta_produit_commande`.`id_commande` JOIN `produit` ON `produit`.`id` = `ta_produit_commande`.`id_produit` WHERE `produit`.`nom`='"+ produits +"' AND `commande`.`date`>'"+dateDebut+"' AND `commande`.`date`<'"+dateFin+"'");
-                if(result != null){
+                Cursor result;
+                boolean isFirstConstraint = true;
+                String query = "SELECT `nb_produit`,`date`, `produit`.`nom`, `produit`.`description` FROM `ta_produit_commande` JOIN `commande` ON `commande`.`id`=`ta_produit_commande`.`id_commande` JOIN `produit` ON `produit`.`id` = `ta_produit_commande`.`id_produit`";
+
+                if(!produits.equals("")){
+                    isFirstConstraint=false;
+                    query = query+" WHERE `produit`.`nom`='"+ produits+"'";
+                }
+
+                if(!dateDebut.equals("")){
+                    if(isFirstConstraint){
+                        query=query+" WHERE ";
+                        isFirstConstraint=false;
+                    }
+                    else{
+                        query=query+" AND ";
+                    }
+                    query=query+"`commande`.`date`>'"+dateDebut+"'";
+                }
+
+                if(!dateFin.equals("")){
+                    if(isFirstConstraint){
+                        query=query+" WHERE ";
+                        isFirstConstraint=false;
+                    }
+                    else{
+                        query=query+" AND ";
+                    }
+                    query=query+"`commande`.`date`<'"+dateFin+"'";
+                }
+                result =moteurRequete.execution_with_return(query);
+
+                if(result.getCount() > 0){
+                    String[] rapport = new String[result.getCount()];
                     String dateCommande;
                     if(result.moveToFirst()){
-                        dateCommande = result.getString(result.getColumnIndex("date"));
-                        intent.putExtra("dateCommande",dateCommande);
+                        int count = 0;
+                        do{
+                            dateCommande = result.getString(result.getColumnIndex("date"))+"  "+result.getString(result.getColumnIndex("nom"))
+                            +" "+result.getString(result.getColumnIndex("description"))+ "  "+result.getString(result.getColumnIndex("nb_produit"));
+                            rapport[count] = dateCommande;
+                            count++;
+                        }while(result.moveToNext());
+
+                        intent.putExtra("rapport",rapport);
                     }
                     startActivity(intent);
                 }

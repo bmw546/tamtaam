@@ -26,9 +26,7 @@ public class Rapport extends AppCompatActivity {
 
 
 
-        String[] values = new String[] { 
-                getIntent().getStringExtra("dateCommande")
-        };
+        String[] values = getIntent().getStringArrayExtra("rapport");
         // Define a new Adapter
         // First parameter - Context
         // Second parameter - Layout for the row
