@@ -21,10 +21,12 @@ public class ui_ajouter_rabais extends AppCompatActivity {
 
     private static final String TAG = "ui_ajouter_rabais";
     private EditText code;
-    private EditText rabais;
+    private EditText montant;
     private EditText description;
     private TextView dateDebut;
     private TextView dateFin;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     private DatePickerDialog.OnDateSetListener dateDebutListener;
     private DatePickerDialog.OnDateSetListener dateFinListener;
 
@@ -45,12 +47,15 @@ public class ui_ajouter_rabais extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_ajouter_rabais);
+        code = (EditText) findViewById(R.id.txt_code);
+        montant = (EditText) findViewById(R.id.valeur_rabais);
+        description = (EditText) findViewById(R.id.txtDescription) ;
         /*txtCode = (EditText) findViewById(R.id.txt_code);
         txtValeur = (EditText) findViewById(R.id.valeur_rabais);
         txtDescription = (EditText) findViewById(R.id.txtDescription);*/
         dateDebut = (TextView) findViewById(R.id.dateDebut);
         dateFin = (TextView) findViewById(R.id.dateFin);
-
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         //addListenerOnButton();
 
         dateDebut.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +98,7 @@ public class ui_ajouter_rabais extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int annee, int mois, int jour) {
                 mois++;
-                String date = mois + "/"  + jour + "/" + annee;
+                String date = mois + "-"  + jour + "-" + annee;
                 dateDebut.setText(date);
             }
         };
@@ -102,7 +107,7 @@ public class ui_ajouter_rabais extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int annee, int mois, int jour) {
                 mois++;
-                String date = mois + "/"  + jour + "/" + annee;
+                String date = mois + "-"  + jour + "-" + annee;
                 dateFin.setText(date);
             }
         };
@@ -111,7 +116,16 @@ public class ui_ajouter_rabais extends AppCompatActivity {
 
     public void nouveauRabais(View view) {
         //saisir tt les textboxs et les mettre dans un rabais
-        rabais r = new rabais();
+        //type
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        radioButton = (RadioButton) findViewById(selectedId);
+        char newType = radioButton.getText().charAt(0);
+
+        //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
+
+        rabais r = new rabais(code.getText().toString(), Float.parseFloat(montant.getText().toString()), description.getText().toString(),
+                dateDebut.getText().toString(), dateFin.getText().toString(), newType);
+
         GestionnaireRabais gest = new GestionnaireRabais();
         moteur_requete_bd myBD = new moteur_requete_bd(this);
         gest.init(myBD);

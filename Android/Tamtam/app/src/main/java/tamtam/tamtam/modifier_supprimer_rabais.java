@@ -92,7 +92,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         final int moisDebut = Integer.parseInt(dateDebutDecomposee[1]);
         final int jourDebut = Integer.parseInt(dateDebutDecomposee[2]);
 
-        String date = moisDebut + "/"  + jourDebut + "/" + anneeDebut;
+        String date = moisDebut + "-"  + jourDebut + "-" + anneeDebut;
         dateDebut.setText(date);
 
         String dateFinDecomposee[] = rabaisDateFin.split("-");
@@ -100,7 +100,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         final int moisFin = Integer.parseInt(dateFinDecomposee[1]);
         final int jourFin = Integer.parseInt(dateFinDecomposee[2]);
 
-        date = moisFin + "/"  + jourFin + "/" + anneeFin;
+        date = moisFin + "-"  + jourFin + "-" + anneeFin;
         dateFin.setText(date);
 
         dateDebut.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +165,9 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         moteur_requete_bd myBD = new moteur_requete_bd(this);
         gest.init(myBD);
         gest.supprimerRabais(rabaisSelectionne);
+        Toast.makeText(this,"Le rabais a été supprimé.", Toast.LENGTH_LONG).show();
+
+
     }
 
     public void modifierRabais(View view) {

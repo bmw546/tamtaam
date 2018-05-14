@@ -17,9 +17,9 @@ public class sousMenu_rabais extends AppCompatActivity {
     //les mettre dans les objets rabais qu'on va utiliser pour mettre les infos dans la liste
     GestionnaireRabais gestRabais = new GestionnaireRabais();
     //rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, int type)
-    rabais r1 = new rabais("abc123", 20,"Rabais de test my dudes", "2018-05-10", "2018-06-19", '%');
-    rabais r2 =  new rabais("xyz123", 50,"Anotha test", "2018-01-01", "2019-01-01", '$');
-    rabais r3 =  new rabais("freeshit", 100,"Test no 3", "2018-05-11", "2020-01-01", '%');
+rabais r1 = new rabais("abc123", 20,"Rabais de test my dudes", "2018-05-10", "2018-06-19", '%');
+rabais r2 =  new rabais("xyz123", 50,"Anotha test", "2018-01-01", "2019-01-01", '$');
+rabais r3 =  new rabais("freeshit", 100,"Test no 3", "2018-05-11", "2020-01-01", '%');
 
 
     public void ajouterRabais(View view){
@@ -50,7 +50,6 @@ public class sousMenu_rabais extends AppCompatActivity {
 
                 Intent intent = new Intent(view.getContext(), modifier_supprimer_rabais.class);
                 Bundle b = new Bundle();
-
                 b.putString("code",gestRabais.getListeRabais().get(position).getCode());
                 b.putFloat("montant", gestRabais.getListeRabais().get(position).getMontant());
                 b.putChar("type", gestRabais.getListeRabais().get(position).getType());
@@ -71,7 +70,6 @@ public class sousMenu_rabais extends AppCompatActivity {
         @Override
         public int getCount() {
             System.out.println(gestRabais.getListeRabais().size());
-            //rabais.length(); quand j'aura le arraylist des rabais
             return gestRabais.getListeRabais().size();
         }
 

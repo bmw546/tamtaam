@@ -71,7 +71,7 @@ public class GestionnaireRabais {
         "VALUES ('" + r.getCode() + "', " + r.getMontant() + ", " + r.getNoType() + ", '"+ r.getDescription() +"', " +
                 "'"+ r.getDateDebut() + "', '" + r.getDateFin() + "')";
 
-        bd.execution(sql);
+    bd.execution(sql);
 
       return true;
     }
@@ -84,7 +84,7 @@ public class GestionnaireRabais {
                 listeRabais.remove(i);
             }
         }
-        bd.execution("DELETE FROM" + bd.getTableRabais() + " WHERE code =" + "'" + r.getCode() + "'");
+        bd.execution("DELETE FROM " + bd.getTableRabais() + " WHERE code =" + "'" + r.getCode() + "'");
     }
 
     public Boolean modifierRabais(String oldCode,rabais r){
@@ -93,8 +93,8 @@ public class GestionnaireRabais {
         temp.setCode(oldCode);
 
         for (int i = 0; i < listeRabais.size(); i++){
-
-            if (listeRabais.get(i) == temp){
+            //À RETCHEKER
+            if (listeRabais.get(i) != temp && r.getCode() == oldCode){
             listeRabais.set(i, r);
              bd.execution("UPDATE" + bd.getTableRabais() + "SET 'code' = '" +r.getCode()+ "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
              r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "'");

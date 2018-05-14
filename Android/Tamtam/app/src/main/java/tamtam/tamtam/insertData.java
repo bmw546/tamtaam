@@ -63,8 +63,8 @@ public class insertData {
 
         //INSERT IN TABLE RABAIS
         if(getCountTable(bd.getTableRabais()) == 0){
-            bd.execution("INSERT INTO " + bd.getTableRabais() + " (code, montant_rabais, id_type, description, date_debut, date_fin) VALUES ('abc1', 10.00, 1, 'un rabais de 10$ sur un produit avec le code abc1.', '2018-05-11', '2018-07-11')");
-            bd.execution("INSERT INTO " + bd.getTableRabais() + " (code, montant_rabais, id_type, description, date_debut, date_fin) VALUES ('sav1', 5, 2, 'un rabais de 5% sur un produit avec le code sav1', '2018-06-13', '2018-08-13')");
+//            bd.execution("INSERT INTO " + bd.getTableRabais() + " (code, montant_rabais, id_type, description, date_debut, date_fin) VALUES ('abc1', 10.00, 1, 'un rabais de 10$ sur un produit avec le code abc1.', '2018-05-11', '2018-07-11')");
+//            bd.execution("INSERT INTO " + bd.getTableRabais() + " (code, montant_rabais, id_type, description, date_debut, date_fin) VALUES ('sav1', 5, 2, 'un rabais de 5% sur un produit avec le code sav1', '2018-06-13', '2018-08-13')");
         }
 
         //INSERT IN TABLE PRODUIT
