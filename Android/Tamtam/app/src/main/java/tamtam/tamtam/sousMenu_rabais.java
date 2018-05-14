@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class sousMenu_rabais extends AppCompatActivity {
 
+
     //array list code rabais: need select dans la bd qui va saisir tout les rabais et
     //les mettre dans les objets rabais qu'on va utiliser pour mettre les infos dans la liste
     GestionnaireRabais gestRabais = new GestionnaireRabais();
@@ -28,14 +29,17 @@ public class sousMenu_rabais extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        moteur_requete_bd myBD = new moteur_requete_bd(this); //create the local database
+        gestRabais.init(myBD);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_sous_menu_rabais);
         //les rabais vont être ajoutés à partir de la bd
         //tests now vu que j'ai pas accès à la bd
 
-        gestRabais.ajouterRabais(r1);
-        gestRabais.ajouterRabais(r2);
-        gestRabais.ajouterRabais(r3);
+//        gestRabais.ajouterRabais(r1);
+//        gestRabais.ajouterRabais(r2);
+//        gestRabais.ajouterRabais(r3);
         ListView listView=(ListView)findViewById(R.id.listeRabais);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);

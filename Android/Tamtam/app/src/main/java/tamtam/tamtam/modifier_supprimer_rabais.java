@@ -45,6 +45,10 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        moteur_requete_bd myBd = new moteur_requete_bd(this); //create the local database
+
         Bundle b = getIntent().getExtras();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_modifier_supprimer_rabais);
@@ -158,13 +162,15 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
 
     public void supprimerRabais(View view){
         GestionnaireRabais gest = new GestionnaireRabais();
-
+        moteur_requete_bd myBD = new moteur_requete_bd(this);
+        gest.init(myBD);
         gest.supprimerRabais(rabaisSelectionne);
     }
 
     public void modifierRabais(View view) {
         GestionnaireRabais gest = new GestionnaireRabais();
-
+        moteur_requete_bd myBD = new moteur_requete_bd(this);
+        gest.init(myBD);
         //code
         String newCode = txtCode.getText().toString();
 
