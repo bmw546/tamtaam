@@ -20,6 +20,9 @@ import java.util.Calendar;
 public class ui_ajouter_rabais extends AppCompatActivity {
 
     private static final String TAG = "ui_ajouter_rabais";
+    private EditText code;
+    private EditText rabais;
+    private EditText description;
     private TextView dateDebut;
     private TextView dateFin;
     private DatePickerDialog.OnDateSetListener dateDebutListener;
@@ -110,6 +113,9 @@ public class ui_ajouter_rabais extends AppCompatActivity {
         //saisir tt les textboxs et les mettre dans un rabais
         rabais r = new rabais();
         GestionnaireRabais gest = new GestionnaireRabais();
+        moteur_requete_bd myBD = new moteur_requete_bd(this);
+        gest.init(myBD);
+
         if(gest.ajouterRabais(r)){
             Toast.makeText(this, "Le rabais a été ajouté", Toast.LENGTH_LONG).show();
         }else{
