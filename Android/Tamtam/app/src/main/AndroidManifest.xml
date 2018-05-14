@@ -30,7 +30,6 @@
             android:label="Chercher un client" />
         <activity android:name=".GestionnaireProduits" />
         <activity android:name=".GestionnaireRecette" />
-        <activity android:name=".GestionnaireEvenement" />
         <activity
             android:name=".GestionnaireNotification"
             android:label="Notifications" />

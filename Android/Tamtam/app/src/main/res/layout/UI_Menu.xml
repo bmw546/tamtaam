@@ -51,12 +51,6 @@
             android:onClick="showRecette"
             android:text="Recettes" />
 
-        <Button
-            android:id="@+id/btnEvenement"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:onClick="showEvenement"
-            android:text="Événements" />
 
         <Button
             android:id="@+id/btnNotification"
