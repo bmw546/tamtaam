@@ -40,6 +40,7 @@
 
     <Button
         android:id="@+id/buttonAjouter"
+        android:onClick="ajouterRabais"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginBottom="49dp"
@@ -53,33 +54,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listeRabais" />
-
-    <!--<RadioGroup-->
-    <!--android:layout_width="301dp"-->
-    <!--android:layout_height="43dp"-->
-    <!--android:orientation="horizontal"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintHorizontal_bias="0.5"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--tools:layout_editor_absoluteY="72dp">-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/ajouterRabais"-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:text="Ajouter"></RadioButton>-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/modifierRabais"-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:text="Modifier" />-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/supprimerRabais"-->
-    <!--android:layout_width="100dp"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:text="Supprimer" />-->
-    <!--</RadioGroup>-->
 
 </android.support.constraint.ConstraintLayout>

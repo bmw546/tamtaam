@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class menu extends AppCompatActivity {
 
@@ -13,6 +14,7 @@ public class menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_menu);
+
         myBd = new moteur_requete_bd(this); //create the local database
 
         //insere des donnée dans la base de donnée une seule fois.
@@ -33,10 +35,7 @@ public class menu extends AppCompatActivity {
         Intent intent = new Intent(this, GestionnaireRecette.class);
         startActivity(intent);
     }
-    public void showEvenement(View view){
-        Intent intent = new Intent(this, GestionnaireEvenement.class);
-        startActivity(intent);
-    }
+
     public void showNotification(View view){
         Intent intent = new Intent(this, GestionnaireNotification.class);
         startActivity(intent);

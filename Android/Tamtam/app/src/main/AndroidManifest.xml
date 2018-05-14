@@ -25,15 +25,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GestionnaireClient" android:label="Chercher un client" />
+        <activity
+            android:name=".GestionnaireClient"
+            android:label="Chercher un client" />
         <activity android:name=".GestionnaireProduits" />
         <activity android:name=".GestionnaireRecette" />
-        <activity android:name=".GestionnaireEvenement" />
-        <activity android:name=".GestionnaireNotification" android:label="Notifications" />
+        <activity
+            android:name=".GestionnaireNotification"
+            android:label="Notifications" />
         <activity android:name=".GestionnaireRapport" />
         <activity android:name=".Rapport" />
-        <activity android:name=".GestionnaireSauvegarde" android:label="Exporter"/>
-        <activity android:name=".ui_ajouter_modifier_rabais" />
+        <activity
+            android:name=".GestionnaireSauvegarde"
+            android:label="Exporter" />
+        <activity android:name=".ui_ajouter_rabais" />
         <activity android:name=".gestionnaire_livraison" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -50,8 +55,11 @@
         <activity
             android:name=".detail_client"
             android:label="@string/title_activity_detail_client" />
-        <activity android:name=".sousMenu_rabais"/>
-        <activity android:name=".livraison_detail" android:label="@string/title_activity_livraison_detail"/>
+        <activity android:name=".sousMenu_rabais" />
+        <activity
+            android:name=".livraison_detail"
+            android:label="@string/title_activity_livraison_detail" />
+        <activity android:name=".modifier_supprimer_rabais"></activity>
     </application>
 
 </manifest>

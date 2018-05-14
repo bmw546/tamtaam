@@ -68,7 +68,7 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
      * @param resultCode le résultat si c'est OK ou annuler
      * @param resultData les donnée du fichier sélectionner
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent resultData) {
@@ -94,7 +94,9 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
                 Log.i(TAG, uri.toString());
                 getNameFile(uri);
                 messageText.setTextColor(Color.rgb(102, 153, 0));
+                modifierDocument(uri);
                 messageText.setText("Le fichier a été créer avec succès");
+
             }
         }
     }
@@ -105,6 +107,7 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void createSave(View view){
+
         createFile("csv/plain", "exportData.csv");
     }
 
