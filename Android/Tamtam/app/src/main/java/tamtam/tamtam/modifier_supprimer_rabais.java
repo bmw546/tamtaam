@@ -34,6 +34,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
     private String rabaisDateDebut;
     private String rabaisDateFin;
     private String description;
+    private rabais rabaisSelectionne;
     //type (radio button, voir comment faire)
 
     private TextView txtDescription;
@@ -70,6 +71,8 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         rabaisDateFin = b.getString("dateFin");
         description = b.getString("description");
 
+        //    public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
+        rabaisSelectionne = new rabais(code,montant, description,rabaisDateDebut,rabaisDateFin,type);
         txtCode.setText(code);
         txtValeur.setText(Float.toString(montant));
 
@@ -153,6 +156,12 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         };
     }
 
+    public void supprimerRabais(View view){
+        GestionnaireRabais gest = new GestionnaireRabais();
+
+        gest.supprimerRabais(rabaisSelectionne);
+    }
+
     public void modifierRabais(View view) {
         GestionnaireRabais gest = new GestionnaireRabais();
 
@@ -161,13 +170,9 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
 
         //type
         int selectedId = radioGroup.getCheckedRadioButtonId();
-        Toast.makeText(this, "ID: " + selectedId ,
-                Toast.LENGTH_LONG).show();
         radioButton = (RadioButton) findViewById(selectedId);
         char newType = radioButton.getText().charAt(0);
 
-        Toast.makeText(this, "ID: " + selectedId + "new ID: " + newType,
-                Toast.LENGTH_LONG).show();
         //montant
         float newMontant = Float.parseFloat(txtValeur.getText().toString());
 
@@ -188,8 +193,6 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
         }else{
             Toast.makeText(this,"Ce code est déja utilisé par un autre rabais.", Toast.LENGTH_LONG).show();
         }
-
-
 
     }
 

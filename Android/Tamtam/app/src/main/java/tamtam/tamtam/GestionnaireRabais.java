@@ -80,24 +80,31 @@ public class GestionnaireRabais {
     }
 
     public Boolean modifierRabais(String oldCode,rabais r){
-        int idNewcode = 0;
+
+        rabais temp = r;
+        temp.setCode(oldCode);
+
         for (int i = 0; i < listeRabais.size(); i++){
-            if (listeRabais.get(i).getCode() == r.getCode()){
-                return  false;
-            }
-            if (listeRabais.get(i).getCode() == oldCode){
-                idNewcode = i;
+//            if (listeRabais.get(i).getCode() == r.getCode() && ){
+//                return  false;
+//            }
+
+            if (listeRabais.get(i) == temp){
+                listeRabais.set(i, r);
+                return true;
+             /*bd.execution("UPDATE" + bd.getTableRabais() + "SET 'code' = '" +r.getCode()+ "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
+             r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "'");*/
             }
         }
         //pour bd: set rabais where code = oldcode, etc.
 
         //si un autre rabais a le meme code
         //return false
-        listeRabais.set(idNewcode, r);
-        //code, montant_rabais, id_type, description, date_debut, date_fin) "
-       /* bd.execution("UPDATE" + bd.getTableRabais() + "SET 'code' = '" +r.getCode()+ "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
-             r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "'");*/
 
-        return true;
+        //code, montant_rabais, id_type, description, date_debut, date_fin) "
+        /*bd.execution("UPDATE" + bd.getTableRabais() + "SET 'code' = '" +r.getCode()+ "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
+             r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "'");
+*/
+        return false;
     }
 }
