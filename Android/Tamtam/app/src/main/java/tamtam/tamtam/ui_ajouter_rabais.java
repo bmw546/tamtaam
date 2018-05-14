@@ -6,25 +6,49 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.app.Activity;
 
 import java.util.Calendar;
 
-public class ui_ajouter_modifier_rabais extends AppCompatActivity {
+public class ui_ajouter_rabais extends AppCompatActivity {
 
-    private static final String TAG = "ui_ajouter_modifier_rabais";
+    private static final String TAG = "ui_ajouter_rabais";
     private TextView dateDebut;
     private TextView dateFin;
     private DatePickerDialog.OnDateSetListener dateDebutListener;
     private DatePickerDialog.OnDateSetListener dateFinListener;
 
+    /*private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private Button btnAjouter;
+    private char type;
+    private TextView txtDescription;
+    private EditText txtCode;
+    private EditText txtValeur;*/
+
+    /*public void ajouterRabais()
+    {
+        rabais newRabais = new rabais();
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ui_rabais);
+        setContentView(R.layout.ui_ajouter_rabais);
+        /*txtCode = (EditText) findViewById(R.id.txt_code);
+        txtValeur = (EditText) findViewById(R.id.valeur_rabais);
+        txtDescription = (EditText) findViewById(R.id.txtDescription);*/
         dateDebut = (TextView) findViewById(R.id.dateDebut);
         dateFin = (TextView) findViewById(R.id.dateFin);
+
+        //addListenerOnButton();
 
         dateDebut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,7 +59,7 @@ public class ui_ajouter_modifier_rabais extends AppCompatActivity {
                 int jour = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        ui_ajouter_modifier_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
+                        ui_ajouter_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
                         dateDebutListener, annee, mois, jour);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -53,7 +77,7 @@ public class ui_ajouter_modifier_rabais extends AppCompatActivity {
                 int jour = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        ui_ajouter_modifier_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
+                        ui_ajouter_rabais.this,android.R.style.Theme_Holo_Dialog_MinWidth,
                         dateFinListener, annee, mois, jour);
 
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -66,8 +90,8 @@ public class ui_ajouter_modifier_rabais extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int annee, int mois, int jour) {
                 mois++;
-              String date = mois + "/"  + jour + "/" + annee;
-              dateDebut.setText(date);
+                String date = mois + "/"  + jour + "/" + annee;
+                dateDebut.setText(date);
             }
         };
 
@@ -79,7 +103,50 @@ public class ui_ajouter_modifier_rabais extends AppCompatActivity {
                 dateFin.setText(date);
             }
         };
+
     }
+
+    public void nouveauRabais(View view) {
+        //saisir tt les textboxs et les mettre dans un rabais
+        rabais r = new rabais();
+        GestionnaireRabais gest = new GestionnaireRabais();
+        if(gest.ajouterRabais(r)){
+            Toast.makeText(this, "Le rabais a été ajouté", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Ce code est déja utilisé", Toast.LENGTH_LONG).show();
+        }
+    }
+    //bouton ajouter à coder (ci-dessous)
+    /*public void addListenerOnButton() {
+
+        radioGroup = (RadioGroup) findViewById(R.id.radio);
+        btnAjouter = (Button) findViewById(R.id.btnAjouter);
+
+        btnAjouter.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                // get selected radio button from radioGroup
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioButton = (RadioButton) findViewById(selectedId);
+                type = (String) radioButton.getText();
+
+                // rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type)
+                rabais r = new rabais(txtCode.getText().toString(), Float.parseFloat(txtValeur.getText().toString()), txtDescription.getText().toString(),
+                        dateDebut.getText().toString(), dateFin.getText().toString(), type.charAt(0) );
+
+                GestionnaireRabais gest = new GestionnaireRabais();
+                //va l'ajouter dans la bd
+                gest.ajouterRabais(r);
+            }
+
+        });
+
+    }*/
+
 }
 /*
  * liste de produit (id, prix, nom)
@@ -144,6 +211,6 @@ dans gestionProduit? + rajouter un bouton dans ajouter/modifier un produit*/
 /*
 * manifext.xml:
 * <activity>
-*     android:name=".ui_rabais"
+*     android:name=".ui_ajouter_rabais"
 *     android:label="@string/title_activity_ui_rabais"
 *     invisible shit..  "@style/AppTheme.NoActionBar"></activity>*/
