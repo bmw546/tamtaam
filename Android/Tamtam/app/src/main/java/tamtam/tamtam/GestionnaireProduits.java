@@ -48,8 +48,9 @@ public class GestionnaireProduits extends AppCompatActivity {
 
     private int counter;
     TableLayout l;
-    ArrayList list_format;
-    ArrayList list_prix;
+    ArrayList<String> list_format;
+    ArrayList<String> list_prix;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,9 @@ public class GestionnaireProduits extends AppCompatActivity {
         setContentView(R.layout.ui_produits);
         EditText produit = (EditText) findViewById(R.id.nomProduit);
         l = (TableLayout) findViewById(R.id.tl_produit);
+        list_format = new ArrayList<String>();
+        list_prix = new ArrayList<String>();
+
         if (b != null) {
             String nom = b.getString("nom");
             produit.setText(nom);
@@ -80,7 +84,28 @@ public class GestionnaireProduits extends AppCompatActivity {
     }
 
     public void addFormat() {
-        TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
+        final TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
+        final int index = list_format.size()-1;
+        ((CheckBox) row.findViewById(R.id.attrib_check)).setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            {
+                                String format  = ((EditText) row.findViewById(R.id.attrib_format)).getText().toString();
+                                list_format.add(format);
+                                String prix = ((EditText) row.findViewById(R.id.attrib_prix)).getText().toString();
+                                list_prix.add(prix);
+                                addFormat();
+                            }
+                        }
+                        if (!isChecked){
+                            list_format.remove(index);
+                            list_prix.remove(index);
+                        }
+                    }
+                }
+        );
         l.addView(row);
     }
 
@@ -90,11 +115,11 @@ public class GestionnaireProduits extends AppCompatActivity {
         Cursor cursor = myBd.execution_with_return("SELECT description,prix FROM produit WHERE nom = '" + nom + "'");
         int i = 0;
         do {
-            String format = cursor.getString(cursor.getColumnIndex("description"));
-            String prix = cursor.getString(cursor.getColumnIndex("prix"));
+            final String format = cursor.getString(cursor.getColumnIndex("description"));
+            final String prix = cursor.getString(cursor.getColumnIndex("prix"));
+            list_format.add(format);
+            list_prix.add(prix);
             final int index = i;
-//            list_format.add(format);
-//            list_prix.add(prix);
             TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
             ((EditText) row.findViewById(R.id.attrib_format)).setText(format);
             ((EditText) row.findViewById(R.id.attrib_prix)).setText(prix);
@@ -105,12 +130,14 @@ public class GestionnaireProduits extends AppCompatActivity {
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             if (isChecked) {
                                 {
+                                    list_format.add(format);
+                                    list_prix.add(prix);
                                     addFormat();
                                 }
                             }
                             if (!isChecked){
-//                                list_format.remove(index);
-//                                list_prix.remove(index);
+                                list_format.remove(index);
+                                list_prix.remove(index);
                             }
                         }
                     }
@@ -122,23 +149,21 @@ public class GestionnaireProduits extends AppCompatActivity {
         cursor.close();
     }
 
-    //TODO
-    public void sauvegarder() {
+    public void sauvegarderProduit(View v) {
         Bundle b = getIntent().getExtras();
         moteur_requete_bd myBd;
         myBd = new moteur_requete_bd(this);
         EditText produit = (EditText) findViewById(R.id.nomProduit);
         String str_produit = produit.getText().toString();
         if (b == null){
-
-
             for (int i = 0; i< list_format.size();i++){
                 myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES '" + str_produit + "','" +
                 list_format.get(i) + "','"+ list_prix.get(i) + "'");
             }
         }
-        else if (list_format.size() > counter){
-            for (int i = counter; i<list_format.size();i++){
+        else if (str_produit!= ""){
+            myBd.execution("DELETE FROM produit WHERE nom ='"+str_produit+"'");
+            for (int i = 0; i<list_format.size();i++){
                 myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES '" + str_produit + "','" +
                         list_format.get(i) + "','"+ list_prix.get(i) + "'");
             }
