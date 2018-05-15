@@ -66,6 +66,7 @@
         android:layout_marginRight="130dp"
         android:layout_marginStart="130dp"
         android:layout_marginTop="140dp"
+        android:inputType="number|numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/txt_code"
         app:layout_constraintStart_toStartOf="@+id/btnAjouter"
         app:layout_constraintTop_toTopOf="parent" />

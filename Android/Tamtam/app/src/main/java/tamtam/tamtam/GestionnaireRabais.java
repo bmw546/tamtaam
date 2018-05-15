@@ -1,6 +1,8 @@
 package tamtam.tamtam;
 
+import android.content.Context;
 import android.database.Cursor;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -9,13 +11,15 @@ public class GestionnaireRabais {
 
     private moteur_requete_bd bd;
     private ArrayList<rabais> listeRabais = new ArrayList<rabais>();
+    private Context context;
 
-
-    GestionnaireRabais() {
+    public void setContext(Context c){
+        context = c;
     }
 
     public void init(moteur_requete_bd myBD) {
         bd = myBD;
+
         selectRabais();
     }
 
@@ -81,42 +85,53 @@ public class GestionnaireRabais {
         bd.execution("DELETE FROM " + bd.getTableRabais() + " WHERE code =" + "'" + r.getCode() + "'");
     }
 
+    public void toastMeThis(String message){
+        Toast.makeText(context,message, Toast.LENGTH_LONG).show();
+    }
+
 
     public Boolean modifierRabais(String oldCode, rabais r) {
 
-//        //marche pas si le on modifie un code déja présent. WHY?
-//
-//        //trouver l'index de l'arraylist à modifier
-//        int index = 0;
-//
-//        //pour chaque indices
-//        for (int i = 0; i < listeRabais.size(); i++){
-//            //si le code d 'indice est le meme que l'ancien code, on connait
-//            //l'indice du rabais à modifier
-//            if (listeRabais.get(i).getCode().equals(oldCode)){
-//                //on saisit l'index
-//                index = i;
-//            }
-//        }
-//
-//        //si on change le code
-//        if (!oldCode.matches(r.getCode())){
-//
-//            //on regarde si un code est déja dans l'arraylist autre que le
-//            for (int i = 0; i<listeRabais.size(); i++){
-//                if (listeRabais.get(i).getCode() == r.getCode() && i != index){
-//                    return  false;
-//                }
-//            }
-//        }
-//
-//        listeRabais.set(index, r);
-//        bd.execution("UPDATE " + bd.getTableRabais() + " SET 'code' = '" +r.getCode()+ "', 'montant_rabais' = '" + r.getMontant() + "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
-//                r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "' " +
-//                "WHERE code ="+"'"+ oldCode +"';");
+        int indiceTrouve = -1;
+        //si on change pas le code
+        if(oldCode.equals(r.getCode())){
 
-        return true;
+        for (int i = 0; i < listeRabais.size(); i++){
+            if (listeRabais.get(i).getCode().equals(r.getCode())){
+                listeRabais.set(i,r);
+                break;
+            }
+        }
+        bd.execution("UPDATE " + bd.getTableRabais() + " SET 'montant_rabais' = '" + r.getMontant() + "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
+                r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "' " +
+                "WHERE code ="+"'"+ oldCode +"';");
 
+        return  true;
+        }
+        //sinon on change le code, ça veut dire que il faut regarder si le nouveau code est déja présent dans l'arraylist
+        else{
+            for (int i = 0; i<listeRabais.size(); i++){
+                if (listeRabais.get(i).getCode().equals(r.getCode())){
+                    return  false;
+                }
+                if (listeRabais.get(i).getCode().equals(r.getCode())){
+                    indiceTrouve = i;
+                }
+            }
+
+            if (indiceTrouve != 1) {
+                listeRabais.set(indiceTrouve, r);
+
+                //sinon le code na pas été trouvé alors on le modifie
+                bd.execution("UPDATE " + bd.getTableRabais() + " SET 'code' = '" + r.getCode() + "', 'montant_rabais' = '" + r.getMontant() + "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
+                        r.getDescription() + "', 'date_debut' = '" + r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "' " +
+                        "WHERE code =" + "'" + oldCode + "';");
+
+                return true;
+            }else{
+                return  false;
+            }
+        }
     }
 }
 

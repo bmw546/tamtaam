@@ -186,6 +186,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
             GestionnaireRabais gest = new GestionnaireRabais();
             moteur_requete_bd myBD = new moteur_requete_bd(this);
             gest.init(myBD);
+            gest.setContext(this);
             //code
             String newCode = txtCode.getText().toString();
             //type
@@ -213,7 +214,7 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
                 Intent intent = new Intent(this, sousMenu_rabais.class);
                 startActivity(intent);
             }else{
-                Toast.makeText(this,"Ce code est déja utilisé par un autre rabais.", Toast.LENGTH_LONG).show();
+               Toast.makeText(this,"Ce code est déja utilisé par un autre rabais.", Toast.LENGTH_LONG).show();
             }
         }
     }
