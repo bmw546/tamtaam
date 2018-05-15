@@ -27,12 +27,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 
-
-
 public class ListeProduit extends ListActivity {
     ArrayList<String> listItems=new ArrayList<String>();
     ArrayAdapter<String> adapter;
-
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -43,6 +40,7 @@ public class ListeProduit extends ListActivity {
         moteur_requete_bd myBd;
         myBd = new moteur_requete_bd(this);
         Cursor cursor = myBd.execution_with_return("SELECT DISTINCT nom FROM produit");
+        //Ajoute chaque produit dans la liste
         do{
             listItems.add(cursor.getString(0));
         }while (cursor.moveToNext());
@@ -65,7 +63,7 @@ public class ListeProduit extends ListActivity {
             }
         });
     }
-
+    //Ajouter un nouveau produit
     public void addItems(View v) {
         Intent intent = new Intent(this, GestionnaireProduits.class);
         startActivity(intent);
