@@ -50,6 +50,7 @@ public class GestionnaireClient extends ListActivity {
             adresse.add(result.getString(result.getColumnIndex("adresse")));
             String myLocation = (result.getString(result.getColumnIndex("adresse")));
             LatLng place = getLocationFromAddress(myLocation);
+
             longi.add( place.longitude);
             lag.add(place.latitude);
 
@@ -64,18 +65,13 @@ public class GestionnaireClient extends ListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // When clicked, show a toast with the TextView text
-               /* Toast.makeText(getApplicationContext(),
-                        ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-                */
                 Intent intent = new Intent(view.getContext(), detail_client.class);
                 Bundle b = new Bundle();
-
                 b.putInt("key", chiffre.get(position)); //Your id
                 b.putString("nom",nom.get(position));
                b.putString("adresse",adresse.get(position));
-                b.putDouble("longitude",45.411701);
-                b.putDouble("lat",-71.886361);
+                b.putDouble("longitude",lag.get(position));
+                b.putDouble("lat",longi.get(position));
                 intent.putExtras(b); //Put your id to your next Intent
                 startActivity(intent);
                 finish();
@@ -83,21 +79,22 @@ public class GestionnaireClient extends ListActivity {
         });
     }
 
+    // sert a trouvé des position GPS d'une adresse
     public LatLng getLocationFromAddress(String strAddress)
     {
-        //Create coder with Activity context - this
         Geocoder coder = new Geocoder(this);
         List<Address> address;
+        // par défaut c'est le cégep
         LatLng defaul = new LatLng(-71.886361, 45.411701);
         try {
-            //Get latLng from String
+            // va prendre l'adresse et la transformer pour laa requete
             address = coder.getFromLocationName(strAddress,5);
 
             //check for null
             if (address == null) {
             }
             else{
-                //Lets take first possibility from the all possibilities.
+                // va recevoir les longitude et lattitude
                 Address location=address.get(0);
                 defaul = new LatLng(location.getLatitude(), location.getLongitude());
             }

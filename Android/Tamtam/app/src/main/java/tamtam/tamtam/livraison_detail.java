@@ -90,8 +90,6 @@ public class livraison_detail extends FragmentActivity implements LocationListen
              latitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
             longitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
             adresse = result.getString(result.getColumnIndex("adresse_livraison"));
-            Toast.makeText(getApplicationContext(), result.getString(result.getColumnIndex("adresse_longitude")), Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(), result.getString(result.getColumnIndex("adresse_latitude")), Toast.LENGTH_LONG).show();
         }
 
         TextView name = (TextView) findViewById(R.id.nom);
