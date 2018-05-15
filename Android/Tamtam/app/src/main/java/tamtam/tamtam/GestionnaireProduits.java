@@ -34,6 +34,8 @@ public class GestionnaireProduits extends AppCompatActivity {
     ArrayList list_format;
     ArrayList list_prix;
     final int CHECK_BUTTON_ID = 1234;
+    
+
     int ids_check[];
     boolean bool_check[];
 
@@ -60,10 +62,8 @@ public class GestionnaireProduits extends AppCompatActivity {
     public void addFormat() {
 
         TextView t1 = new TextView(this);
-        t1.setHint("Format");
+        t1.setHint("Ajouter un format");
         TextView t2 = new TextView(this);
-        t2.setHint("$");
-        t2.setFilters(new InputFilter[]{new CurrencyFormatInputFilter()});
         CheckBox box = new CheckBox(this);
 
         box.setChecked(false);
