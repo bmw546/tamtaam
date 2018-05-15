@@ -35,6 +35,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:text="Sauvegarder"
+        android:onClick="sauvegarderProduit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_supprimer"
         app:layout_constraintHorizontal_bias="0.238"
