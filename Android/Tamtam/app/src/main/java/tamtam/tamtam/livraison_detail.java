@@ -79,48 +79,61 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         Double montant =0.00;
         longitude = 0;
         latitude = 0;
+        String adresse ="";
         if(b != null){
             id = b.getInt("key");
             montant = b.getDouble("montant");
             etat = b.getString("etat");
             nom = b.getString("nom");
-           //adresse= b.getString("adresse");
-            //longitude = b.getDouble("longitude");
-            //latitude = b.getDouble("lat");
         }
-        // setter ce que on sait "" d'avance "" qui vient de l'autre méthode
-        TextView name = (TextView) findViewById(R.id.nom);
-        TextView numero = (TextView) findViewById(R.id.Numero);
-        TextView adress = (TextView) findViewById(R.id.adresse);
-        name.setText(nom);
-        numero.setText(""+id);
-        TextView total = (TextView) findViewById(R.id.TOTAL);
-        total.setText(""+montant);
-
-        Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableLivraison() + " WHERE id==" + id );
+        Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableLivraison() + " WHERE id_commande==" + id );
         for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
              latitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
             longitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
+            adresse = result.getString(result.getColumnIndex("adresse_livraison"));
             Toast.makeText(getApplicationContext(), result.getString(result.getColumnIndex("adresse_longitude")), Toast.LENGTH_LONG).show();
             Toast.makeText(getApplicationContext(), result.getString(result.getColumnIndex("adresse_latitude")), Toast.LENGTH_LONG).show();
         }
+
+        TextView name = (TextView) findViewById(R.id.nom);
+        TextView numero = (TextView) findViewById(R.id.Numero);
+        TextView adress = (TextView) findViewById(R.id.adresse);
+        TextView etats = (TextView) findViewById(R.id.etat);
+        TextView total = (TextView) findViewById(R.id.TOTAL);
+        name.setText(nom);
+        numero.setText(""+id);
+        etats.setText(etat);
+        total.setText(" Total_______________"+montant + "   $");
+        adress.setText(adresse);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        //adress.setText(adresse);
-        // --------------------------------------------------------------
-
 
         //---------------------------------------------------------------
-        final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
-                "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
-                "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
+        final ArrayList<String> nom_produit = new ArrayList<String>();
+        final ArrayList<String> quantité = new ArrayList<String>();
+        Integer id_produit;
+        final List<Double> prix = new ArrayList<Double>();
+        myBd = new moteur_requete_bd(this); //create the local database
+        // imprimme la liste dans le téléphone
         TextView textView = (TextView) findViewById(R.id.listeprix);
         textView.append(System.getProperty("line.separator"));
-        for (int i=0; i < FRUITS.length;i++){
-            textView.append("Voici produit"+FRUITS[i]+" quantité blabla  Price " + System.getProperty("line.separator"));
+        //--------------------------------
+        int i = 0;
+        Cursor result2 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduitCommande() + "  WHERE id_commande=="+id);
+        for (result2.moveToFirst(); !result2.isAfterLast(); result2.moveToNext()) {
+            i++;
+            id_produit = (result2.getColumnIndex("id_produit"));
+            Cursor result3 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduit() + "  WHERE id=="+id_produit);
+            for (result3.moveToFirst(); !result3.isAfterLast(); result3.moveToNext()) {
+                textView.append(i + ".   ");
+                textView.append(result.getString(result.getColumnIndex("nom")));
+                textView.append(result.getString(result.getColumnIndex("prix")));
+                textView.append(System.getProperty("line.separator"));
+                Toast.makeText(getApplicationContext(), "Demande d'sd GPS : ", Toast.LENGTH_LONG).show();
+            }
         }
         // -------------------------------------------------------------------------------------------------------------------------------------
         // sert a initialiser la carte et la position gps peut aussi demander l'autorisaton si nécessaire
