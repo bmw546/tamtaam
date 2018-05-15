@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -58,6 +59,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
     LatLng origin;
     private GoogleApiClient mGoogleApiClient;
     private LocationManager locationManager;
+    private moteur_requete_bd myBd;
     //private LocationManager locationManager;
     //public static final String TAG = MapsActivity.class.getSimpleName();
 
@@ -74,22 +76,37 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         // prend les donnée de l'activity précédente
         Bundle b = getIntent().getExtras();
         int id = -1; // or other values
-        String adresse="blank";
+        String etat="blank";
+        String nom = "blank";
+        Double montant =0.00;
         longitude = 0;
         latitude = 0;
-
         if(b != null){
             id = b.getInt("key");
-            adresse= b.getString("adresse");
-            longitude = b.getDouble("longitude");
-            latitude = b.getDouble("lat");
+            montant = b.getDouble("montant");
+            etat = b.getString("etat");
+            nom = b.getString("nom");
+           //adresse= b.getString("adresse");
+            //longitude = b.getDouble("longitude");
+            //latitude = b.getDouble("lat");
         }
+        // setter ce que on sait "" d'avance "" qui vient de l'autre méthode
         TextView name = (TextView) findViewById(R.id.nom);
         TextView numero = (TextView) findViewById(R.id.Numero);
         TextView adress = (TextView) findViewById(R.id.adresse);
-        name.setText("name");
+        name.setText(nom);
         numero.setText(""+id);
-        adress.setText(adresse);
+        TextView total = (TextView) findViewById(R.id.TOTAL);
+        total.setText(""+montant);
+
+        Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableLivraison() + " WHERE id==" + id );
+        //for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
+            //longitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
+           // latitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
+        //}
+
+
+        //adress.setText(adresse);
         // --------------------------------------------------------------
 
 
