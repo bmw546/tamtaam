@@ -65,6 +65,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        myBd = new moteur_requete_bd(this); //create the local database
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livraison_detail);
 
@@ -100,10 +101,10 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         total.setText(""+montant);
 
         Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableLivraison() + " WHERE id==" + id );
-        //for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
-            //longitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
-           // latitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
-        //}
+        for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
+            longitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
+            latitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
+        }
 
 
         //adress.setText(adresse);
