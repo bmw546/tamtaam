@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : GestionnaireProduits.java
+ Auteur : Joel Lapointe
+ Fonctionnalité : gestion des produits
+ Date : 7 mai 2018
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package tamtam.tamtam;
 
 import android.app.ListActivity;
@@ -33,11 +50,6 @@ public class GestionnaireProduits extends AppCompatActivity {
     TableLayout l;
     ArrayList list_format;
     ArrayList list_prix;
-    final int CHECK_BUTTON_ID = 1234;
-    
-
-    int ids_check[];
-    boolean bool_check[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,43 +61,40 @@ public class GestionnaireProduits extends AppCompatActivity {
         if (b != null) {
             String nom = b.getString("nom");
             produit.setText(nom);
+            produit.setFocusable(false);
             loadFormat(nom);
         }
         TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
+        ((CheckBox) row.findViewById(R.id.attrib_check)).setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                                addFormat();
+                            }
+                        }
+                }
+        );
         l.addView(row);
 
-
-
-        counter = l.getChildCount();
     }
 
     public void addFormat() {
-
-        TextView t1 = new TextView(this);
-        t1.setHint("Ajouter un format");
-        TextView t2 = new TextView(this);
-        CheckBox box = new CheckBox(this);
-
-        box.setChecked(false);
-        box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-                if (arg0.isChecked() == true) {
-
-                } else {
-                }
-            }
-        });
+        TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
+        l.addView(row);
     }
 
     public void loadFormat(String nom) {
         moteur_requete_bd myBd;
         myBd = new moteur_requete_bd(this);
         Cursor cursor = myBd.execution_with_return("SELECT description,prix FROM produit WHERE nom = '" + nom + "'");
+        int i = 0;
         do {
             String format = cursor.getString(cursor.getColumnIndex("description"));
             String prix = cursor.getString(cursor.getColumnIndex("prix"));
-            list_format.add("format");
-            list_prix.add("prix");
+            final int index = i;
+//            list_format.add(format);
+//            list_prix.add(prix);
             TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
             ((EditText) row.findViewById(R.id.attrib_format)).setText(format);
             ((EditText) row.findViewById(R.id.attrib_prix)).setText(prix);
@@ -95,14 +104,21 @@ public class GestionnaireProduits extends AppCompatActivity {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             if (isChecked) {
-                                ;
+                                {
+                                    addFormat();
+                                }
                             }
-
+                            if (!isChecked){
+//                                list_format.remove(index);
+//                                list_prix.remove(index);
+                            }
                         }
                     }
             );
+            i++;
             l.addView(row);
         } while (cursor.moveToNext());
+        counter = i;
         cursor.close();
     }
 
@@ -111,17 +127,22 @@ public class GestionnaireProduits extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         moteur_requete_bd myBd;
         myBd = new moteur_requete_bd(this);
-
+        EditText produit = (EditText) findViewById(R.id.nomProduit);
+        String str_produit = produit.getText().toString();
         if (b == null){
-            EditText produit = (EditText) findViewById(R.id.nomProduit);
-            String str_produit = produit.getText().toString();
 
 
-            //for each checked row in table
-                myBd.execution("INSERT INTO produit ('nom','description',prix) VALUES " + str_produit + "");
-
+            for (int i = 0; i< list_format.size();i++){
+                myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES '" + str_produit + "','" +
+                list_format.get(i) + "','"+ list_prix.get(i) + "'");
+            }
         }
-
+        else if (list_format.size() > counter){
+            for (int i = counter; i<list_format.size();i++){
+                myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES '" + str_produit + "','" +
+                        list_format.get(i) + "','"+ list_prix.get(i) + "'");
+            }
+        }
     }
     //TODO : Confirmation de la suppression
     public void supprimer(View v) {

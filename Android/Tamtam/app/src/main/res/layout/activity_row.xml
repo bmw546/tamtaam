@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!--Fichier : activity_row-->
+    <!--Auteur : Joel Lapointe-->
+    <!--Fonctionnalité : -->
+    <!--Date : 10 mai 2018-->
+
+    <!--Vérification :-->
+    <!--Date               Nom                   Approuvé-->
+    <!--=========================================================-->
+
+
+    <!--Historique de modifications :-->
+    <!--Date               Nom                   Description-->
+    <!--=========================================================-->
+
+
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent">
     <EditText

@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!--Fichier : ui_produits.xml-->
+    <!--Auteur : Joel Lapointe-->
+    <!--Fonctionnalité : Gestion des produits-->
+    <!--Date : 7 mai 2018-->
+
+    <!--Vérification :-->
+    <!--Date               Nom                   Approuvé-->
+    <!--=========================================================-->
+
+
+    <!--Historique de modifications :-->
+    <!--Date               Nom                   Description-->
+    <!--=========================================================-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

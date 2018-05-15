@@ -1,3 +1,20 @@
+/****************************************
+ Fichier : produit.java
+ Auteur : Joel Lapointe
+ Fonctionnalité :
+ Date : 7 mai 2018
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ ****************************************/
+
 package tamtam.tamtam;
 
 public class produit {
