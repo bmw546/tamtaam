@@ -62,6 +62,11 @@ public class livraison_detail extends FragmentActivity implements LocationListen
     private LocationManager locationManager;
     private moteur_requete_bd myBd;
     private int id = 0;
+
+    /**
+     *  va créer notre layout, y insérer les information nécessaire (map, montant, nom ,etc ...)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         myBd = new moteur_requete_bd(this); //create the local database
@@ -150,18 +155,31 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
     }
 
+    /**
+     *  va changer l'etat de la commande actuel a livré
+     * @param v
+     */
     public void livre(View v){
         myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set id_etat =" + 1 + " WHERE id= "+ id );
         TextView etats = (TextView) findViewById(R.id.etat);
         Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id= 1");
         etats.setText(result2.getString(result2.getColumnIndex("nom")));
     }
+    /**
+     *  va changer l'etat de la commande actuel a pas livré
+     * @param v
+     */
     public void paslivre(View v){
         myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set id_etat =" + 2 + " WHERE id= "+ id );
         TextView etats = (TextView) findViewById(R.id.etat);
         Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id= 2");
         etats.setText(result2.getString(result2.getColumnIndex("nom")));
     }
+
+    /**
+     * va afficher notre position et la position du client
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -179,6 +197,10 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
     }
 
+    /**
+     *  va mettre un point actuel a notre position est updater les directions
+     * @param location
+     */
     @Override
     public void onLocationChanged(Location location) {
         origin = new LatLng(location.getLatitude(),location.getLongitude());
@@ -196,16 +218,29 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         taskRequestDirections.execute(url);
     }
 
+    /**
+     * nécessaire pour que cela fonctionne
+     * @param provider
+     * @param status
+     * @param extras
+     */
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 
     }
 
+    /**
+     * va avertir quand le provider sera activé
+     * @param provider
+     */
     @Override
     public void onProviderEnabled(String provider) {
         Toast.makeText(getApplicationContext(), provider+" is enabled", Toast.LENGTH_LONG).show();
     }
-
+    /**
+     * va avertir quand le provider sera désactivé
+     * @param provider
+     */
     @Override
     public void onProviderDisabled(String provider) {
         Toast.makeText(getApplicationContext(), provider+" is disabled", Toast.LENGTH_LONG).show();
@@ -213,24 +248,30 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
 
     // ---------------------------------------------------------------------------------------------------
+
+    /**
+     *  // sert a créer une URL pour la google map
+     * @param origin point d'origine
+     * @param dest point de destination
+     * @return retourne l'url pour le chemin
+     */
     private String getRequestUrl(LatLng origin, LatLng dest) {
-        //Value of origin
         String str_org = "origin=" + origin.latitude +","+origin.longitude;
-        //Value of destination
         String str_dest = "destination=" + dest.latitude+","+dest.longitude;
-        //Set value enable the sensor
         String sensor = "sensor=false";
-        //Mode for find direction
         String mode = "mode=driving";
-        //Build the full param
         String param = str_org +"&" + str_dest + "&" +sensor+"&" +mode;
-        //Output format
-        String output = "json";
-        //Create url to request
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + param;
+
+        String url = "https://maps.googleapis.com/maps/api/directions/json?" + param;
         return url;
     }
 
+    /**
+     *  va demander a DirectionsParser les point GPS
+     * @param reqUrl l'url de googlemaps
+     * @return retourne un string contenant la liste des pts GPS
+     * @throws IOException
+     */
     private String requestDirection(String reqUrl) throws IOException {
         String responseString = "";
         InputStream inputStream = null;
@@ -240,7 +281,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
             httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.connect();
 
-            //Get the response result
+            //Recoit les reponse du result
             inputStream = httpURLConnection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -266,7 +307,9 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         return responseString;
     }
 
-
+    /**
+     *  va updater la direction en background
+     */
     public class TaskRequestDirections extends AsyncTask<String, Void, String> {
 
         @Override
@@ -289,6 +332,10 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         }
     }
 
+
+    /**
+     * Va ajouter les points de polygone dans la map
+     */
     public class TaskParser extends AsyncTask<String, Void, List<List<HashMap<String, String>>> > {
 
         @Override
@@ -307,7 +354,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
         @Override
         protected void onPostExecute(List<List<HashMap<String, String>>> lists) {
-            //Get list route and display it into the map
+            //Prend la liste et l'affiche dans la map
 
             ArrayList points = null;
 
