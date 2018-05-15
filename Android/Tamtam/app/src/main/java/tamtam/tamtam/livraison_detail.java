@@ -69,10 +69,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livraison_detail);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
         // -------------------------------------------------------------------------------------------------------------------------------------
         // prend les donnée de l'activity précédente
         Bundle b = getIntent().getExtras();
@@ -102,11 +99,16 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
         Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableLivraison() + " WHERE id==" + id );
         for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
-            longitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
-            latitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
+             latitude = result.getDouble(result.getColumnIndex("adresse_longitude"));
+            longitude = result.getDouble(result.getColumnIndex("adresse_latitude"));
+            Toast.makeText(getApplicationContext(), result.getString(result.getColumnIndex("adresse_longitude")), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), result.getString(result.getColumnIndex("adresse_latitude")), Toast.LENGTH_LONG).show();
         }
 
-
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         //adress.setText(adresse);
         // --------------------------------------------------------------
 
