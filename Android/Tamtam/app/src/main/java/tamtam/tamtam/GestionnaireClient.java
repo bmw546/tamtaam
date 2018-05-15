@@ -56,9 +56,6 @@ public class GestionnaireClient extends ListActivity {
         }
 
         //--------------------------------
-       // final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
-       //         "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
-       //         "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
         setListAdapter(new ArrayAdapter<String>(this, R.layout.ui_client,nom));
 
         ListView listView = getListView();

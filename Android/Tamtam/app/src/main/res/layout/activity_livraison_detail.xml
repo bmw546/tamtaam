@@ -122,7 +122,9 @@
                 android:layout_height="match_parent"
                 android:text="Livré"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="livre"
+                />
 
             <Button
                 android:id="@+id/Annulez"
@@ -131,7 +133,8 @@
                 android:layout_height="match_parent"
                 android:text="Annuler"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="paslivre"/>
 
         </LinearLayout>
 

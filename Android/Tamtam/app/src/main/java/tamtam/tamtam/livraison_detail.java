@@ -15,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,9 +61,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
     private GoogleApiClient mGoogleApiClient;
     private LocationManager locationManager;
     private moteur_requete_bd myBd;
-    //private LocationManager locationManager;
-    //public static final String TAG = MapsActivity.class.getSimpleName();
-
+    private int id = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         myBd = new moteur_requete_bd(this); //create the local database
@@ -73,7 +72,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         // -------------------------------------------------------------------------------------------------------------------------------------
         // prend les donnée de l'activity précédente
         Bundle b = getIntent().getExtras();
-        int id = 1; // or other values
+
         String etat="blank";
         String nom = "blank";
         Double montant =0.00;
@@ -124,15 +123,20 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         Cursor result2 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduitCommande() + "  WHERE id_commande="+id);
         for (result2.moveToFirst(); !result2.isAfterLast(); result2.moveToNext()) {
             id_produit = result2.getInt(result2.getColumnIndex("id_produit"));
-            //toast.makeText(getApplicationContext(), id_produit, Toast.LENGTH_LONG).show();
+            textView.append(String.valueOf(result2.getInt(result2.getColumnIndex("nb_produit"))));
+            textView.append(" X ");
             Cursor result3 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduit() + "  WHERE id="+id_produit);
             for (result3.moveToFirst(); !result3.isAfterLast(); result3.moveToNext()) {
-                textView.append(".   ");
+                textView.append("    ");
                 textView.append(result3.getString(result3.getColumnIndex("nom")));
-                textView.append(result3.getString(result3.getColumnIndex("prix")));
-                textView.append(System.getProperty("line.separator"));
-                Toast.makeText(getApplicationContext(), "Demande d'sd GPS : ", Toast.LENGTH_LONG).show();
+                textView.append("    ");
+                textView.append(result3.getString(result3.getColumnIndex("description")));
+                textView.append("   ");
+                textView.append(String.valueOf(result3.getDouble(result3.getColumnIndex("prix"))));
+                textView.append(" $");
+
             }
+            textView.append(System.getProperty("line.separator"));
         }
 
         // -------------------------------------------------------------------------------------------------------------------------------------
@@ -148,16 +152,18 @@ public class livraison_detail extends FragmentActivity implements LocationListen
 
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near client, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    public void livre(View v){
+        myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set `id_etat` values =" + 1 + " WHERE id= "+ id );
+        TextView etats = (TextView) findViewById(R.id.etat);
+        Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id==" + id);
+        etats.setText(result2.getString(result2.getColumnIndex("nom")));
+    }
+    public void paslivre(View v){
+        myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set `id_etat` values =" + 2 + " WHERE id= "+ id );
+        TextView etats = (TextView) findViewById(R.id.etat);
+        Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id==" + id);
+        etats.setText(result2.getString(result2.getColumnIndex("nom")));
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
