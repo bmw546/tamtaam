@@ -22,7 +22,7 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nom"
+        android:hint="Nom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Description"
+        android:hint="Description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNom" />
 
