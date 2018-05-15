@@ -58,10 +58,8 @@ public class sousMenu_rabais extends AppCompatActivity {
                 intent.putExtras(b); //Put your id to your next Intent
                 startActivity(intent);
                 finish();
-
             }
         });
-
     }
 
     class CustomAdapter extends BaseAdapter{

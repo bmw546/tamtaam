@@ -28,7 +28,7 @@ public class menu extends AppCompatActivity {
         startActivity(intent);
     }
     public void showProduit(View view){
-        Intent intent = new Intent(this, GestionnaireProduits.class);
+        Intent intent = new Intent(this, ListeProduit.class);
         startActivity(intent);
     }
     public void showRecette(View view){

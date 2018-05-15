@@ -81,29 +81,39 @@ public class GestionnaireRabais {
         bd.execution("DELETE FROM " + bd.getTableRabais() + " WHERE code =" + "'" + r.getCode() + "'");
     }
 
+
     public Boolean modifierRabais(String oldCode, rabais r) {
-        int index = 0;
-        for (int i = 0; i < listeRabais.size(); i++){
-            if (listeRabais.get(i).getCode().equals(oldCode)){
-                index = i;
-            }
-        }
 
-        //si on change le code
-        if (!oldCode.matches(r.getCode())){
-
-            //on regarde si un code est déja dedans
-            for (int i = 0; i<listeRabais.size(); i++){
-                if (listeRabais.get(i).getCode() == r.getCode()){
-                    return  false;
-                }
-            }
-
-        }
-        listeRabais.set(index, r);
-        bd.execution("UPDATE " + bd.getTableRabais() + " SET 'code' = '" +r.getCode()+ "', 'montant_rabais' = '" + r.getMontant() + "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
-                r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "' " +
-                "WHERE code ="+"'"+ oldCode +"';");
+//        //marche pas si le on modifie un code déja présent. WHY?
+//
+//        //trouver l'index de l'arraylist à modifier
+//        int index = 0;
+//
+//        //pour chaque indices
+//        for (int i = 0; i < listeRabais.size(); i++){
+//            //si le code d 'indice est le meme que l'ancien code, on connait
+//            //l'indice du rabais à modifier
+//            if (listeRabais.get(i).getCode().equals(oldCode)){
+//                //on saisit l'index
+//                index = i;
+//            }
+//        }
+//
+//        //si on change le code
+//        if (!oldCode.matches(r.getCode())){
+//
+//            //on regarde si un code est déja dans l'arraylist autre que le
+//            for (int i = 0; i<listeRabais.size(); i++){
+//                if (listeRabais.get(i).getCode() == r.getCode() && i != index){
+//                    return  false;
+//                }
+//            }
+//        }
+//
+//        listeRabais.set(index, r);
+//        bd.execution("UPDATE " + bd.getTableRabais() + " SET 'code' = '" +r.getCode()+ "', 'montant_rabais' = '" + r.getMontant() + "', 'id_type' = '" + r.getNoType() + "', 'description' = '" +
+//                r.getDescription() + "', 'date_debut' = '" +r.getDateDebut() + "', 'date_fin' = '" + r.getDateFin() + "' " +
+//                "WHERE code ="+"'"+ oldCode +"';");
 
         return true;
 

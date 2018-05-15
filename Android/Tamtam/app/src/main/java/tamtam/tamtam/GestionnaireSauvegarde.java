@@ -1,3 +1,19 @@
+/*********************************************************
+ Fichier : GestionnaireSauvegarde.java
+ Auteur : Rémi Létourneau
+ Fonctionnalité : AN-05, gestion de sauvegarde
+ Date : 2018-05-07
+
+ Vérification :
+ Date               Nom                   Approuvé
+ =========================================================
+
+
+ Historique de modifications :
+ Date               Nom                   Description
+ =========================================================
+
+ *********************************************************/
 package tamtam.tamtam;
 
 import android.app.Activity;
@@ -36,14 +52,15 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_sauvegarde);
 
-        fileName = (TextView) findViewById(R.id.filePath);
-        messageText = (TextView) findViewById(R.id.message);
+        fileName = findViewById(R.id.filePath);
+        messageText = findViewById(R.id.message);
     }
 
     // Évévenement POUR LES BUTTON
 
     /**
      * ouvre un interface de recherche de fichier et sélectionne un document.
+     * @param view le bouton qui exécute la fonction
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void rechercheFichier(View view) {
@@ -103,7 +120,7 @@ public class GestionnaireSauvegarde extends AppCompatActivity {
 
     /**
      * Créer une sauvegarde des donnée
-     * @param view
+     * @param view le bouton qui exécute la fonction
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void createSave(View view){

@@ -59,7 +59,7 @@ public class gestionnaire_livraison extends ListActivity {
                                     int position, long id) {
                 Intent intent = new Intent(view.getContext(), livraison_detail.class);
                 Bundle b = new Bundle();
-               
+
 
                 b.putInt("key", chiffre.get(position)); //Your id
                 b.putDouble("montant",prix.get(position));
