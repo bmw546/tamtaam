@@ -6,6 +6,12 @@ public class produit {
     float prix;
     String format;
 
+    public produit(String nom, float prix, String format) {
+        this.nom = nom;
+        this.prix = prix;
+        this.format = format;
+    }
+
     public String getNom() {
         return nom;
     }
