@@ -43,7 +43,7 @@ public class gestionnaire_livraison extends ListActivity {
             nom.add(result.getString(result.getColumnIndex("nom_personne")));
             prix.add(result.getDouble(result.getColumnIndex("montant_commande")));
             int id = result.getInt(result.getColumnIndex("id_etat"));
-            Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id==" + id);
+            Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id=" + id);
             etat.add(result2.getString(result2.getColumnIndex("nom")));
             chiffre.add(result.getInt(result.getColumnIndex("id")));
             list.add(result.getString(result.getColumnIndex("id"))+ "  " + result.getString(result.getColumnIndex("nom_personne")) + "  " +  result.getDouble(result.getColumnIndex("montant_commande")) + "     " + result2.getString(result2.getColumnIndex("nom")) );

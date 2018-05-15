@@ -153,15 +153,15 @@ public class livraison_detail extends FragmentActivity implements LocationListen
     }
 
     public void livre(View v){
-        myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set `id_etat` values =" + 1 + " WHERE id= "+ id );
+        myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set id_etat =" + 1 + " WHERE id= "+ id );
         TextView etats = (TextView) findViewById(R.id.etat);
-        Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id==" + id);
+        Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id= 1");
         etats.setText(result2.getString(result2.getColumnIndex("nom")));
     }
     public void paslivre(View v){
-        myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set `id_etat` values =" + 2 + " WHERE id= "+ id );
+        myBd.execution("UPDATE `"+ myBd.getTableCommande() +"` set id_etat =" + 2 + " WHERE id= "+ id );
         TextView etats = (TextView) findViewById(R.id.etat);
-        Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id==" + id);
+        Cursor result2 = myBd.execution_with_return("SELECT nom FROM " + myBd.getTableEtatCommande() + " WHERE id= 2");
         etats.setText(result2.getString(result2.getColumnIndex("nom")));
     }
     @Override
