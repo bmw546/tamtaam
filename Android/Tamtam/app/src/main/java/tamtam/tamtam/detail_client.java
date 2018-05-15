@@ -28,6 +28,10 @@ public class detail_client extends FragmentActivity implements OnMapReadyCallbac
     private double longitude;
     private double latitude;
 
+    /**
+     * va commcencer la requete, démarré la map et prendre toute les information de l'activiré précédente
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Bundle b = getIntent().getExtras();
@@ -58,6 +62,11 @@ public class detail_client extends FragmentActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
+
+    /**
+     * ajoute le point sur la map, zoom dessus et convertis la map en satellite
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

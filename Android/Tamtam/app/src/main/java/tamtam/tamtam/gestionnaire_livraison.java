@@ -21,6 +21,10 @@ public class gestionnaire_livraison extends ListActivity {
 
     private moteur_requete_bd myBd;
 
+    /**
+     * va créer une liste de commande avec comme information L'id, le nom du client, le montant que il doit et son etat (en mots)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         myBd = new moteur_requete_bd(this); //create the local database
@@ -36,10 +40,9 @@ public class gestionnaire_livraison extends ListActivity {
         myBd = new moteur_requete_bd(this); //create the local database
 
         //--------------------------------
+        // crée un array de commande (qui conteint tout les information)
         Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableCommande());
-
         for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
-            //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
             nom.add(result.getString(result.getColumnIndex("nom_personne")));
             prix.add(result.getDouble(result.getColumnIndex("montant_commande")));
             int id = result.getInt(result.getColumnIndex("id_etat"));
@@ -53,7 +56,7 @@ public class gestionnaire_livraison extends ListActivity {
 
         ListView listView = getListView();
         listView.setTextFilterEnabled(true);
-
+        // quand on click on va ouvrir une nouvelle activité en lui donnant les informations essentiel de la commande
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

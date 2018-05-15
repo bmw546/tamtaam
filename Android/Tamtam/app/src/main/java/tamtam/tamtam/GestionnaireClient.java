@@ -29,6 +29,10 @@ public class GestionnaireClient extends ListActivity {
 
     private moteur_requete_bd myBd;
 
+    /**
+     * va afficher une liste de client est garde en note ces différente information (nom, adresse, id, etc ...)
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +45,8 @@ public class GestionnaireClient extends ListActivity {
         myBd = new moteur_requete_bd(this); //create the local database
 
         //--------------------------------
+        // va créer une list de client (tout les information partir de la bd
         Cursor result = myBd.execution_with_return("SELECT * FROM " + myBd.getTableClient());
-
         for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
             //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
             chiffre.add(result.getColumnIndex("id"));
@@ -61,7 +65,7 @@ public class GestionnaireClient extends ListActivity {
 
         ListView listView = getListView();
         listView.setTextFilterEnabled(true);
-
+        // va ouvrir une nouvelle activité quand on clique sur le client et lui donnée ces information
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
