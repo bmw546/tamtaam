@@ -9,7 +9,7 @@ public class rabais {
     private String description;
     private String dateDebut;
     private String dateFin;
-    private char type; //lire l'id du type (1=%, 2=$) et mettre la bonne val dans cette var
+    private char type;
 
     public rabais() {
 
