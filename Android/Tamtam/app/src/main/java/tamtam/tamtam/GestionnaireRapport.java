@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class GestionnaireRapport extends AppCompatActivity {
 
@@ -18,10 +19,12 @@ public class GestionnaireRapport extends AppCompatActivity {
 
         final Intent intent= new Intent(this,Rapport.class);
         final moteur_requete_bd moteurRequete = new moteur_requete_bd(this);
-        final Button button = findViewById(R.id.buttonVisionner);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        final Button btnVisionner = findViewById(R.id.buttonVisionner);
 
+        //commence la recherche
+        btnVisionner.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //initialisation des paramètres
                 EditText txtDateDebut = findViewById(R.id.txt_dateDebut);
                 String dateDebut = String.valueOf(txtDateDebut.getText());
                 EditText txtDateFin = findViewById(R.id.txt_dateFin);
@@ -30,8 +33,10 @@ public class GestionnaireRapport extends AppCompatActivity {
                 String produits = String.valueOf(txtProduits.getText());
                 Cursor result;
                 boolean isFirstConstraint = true;
+                //query de base
                 String query = "SELECT `nb_produit`,`date`, `produit`.`nom`, `produit`.`description` FROM `ta_produit_commande` JOIN `commande` ON `commande`.`id`=`ta_produit_commande`.`id_commande` JOIN `produit` ON `produit`.`id` = `ta_produit_commande`.`id_produit`";
 
+                //ajoute seulement les paramètres requis à la query
                 if(!produits.equals("")){
                     isFirstConstraint=false;
                     query = query+" WHERE `produit`.`nom`='"+ produits+"'";
@@ -51,15 +56,16 @@ public class GestionnaireRapport extends AppCompatActivity {
                 if(!dateFin.equals("")){
                     if(isFirstConstraint){
                         query=query+" WHERE ";
-                        isFirstConstraint=false;
                     }
                     else{
                         query=query+" AND ";
                     }
                     query=query+"`commande`.`date`<'"+dateFin+"'";
                 }
+                //execute la query
                 result =moteurRequete.execution_with_return(query);
 
+                //Batit une array de string pour créer la liste
                 if(result.getCount() > 0){
                     String[] rapport = new String[result.getCount()];
                     String dateCommande;
@@ -75,6 +81,11 @@ public class GestionnaireRapport extends AppCompatActivity {
                         intent.putExtra("rapport",rapport);
                     }
                     startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),
+                            "Aucun resultats" , Toast.LENGTH_LONG)
+                            .show();
                 }
             }
         });

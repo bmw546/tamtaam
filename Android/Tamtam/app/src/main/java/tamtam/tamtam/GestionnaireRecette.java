@@ -19,6 +19,7 @@ public class GestionnaireRecette extends AppCompatActivity {
         final Button btnSauvegarder = findViewById(R.id.btnSauvegarder);
         final Button btnSupprimer = findViewById(R.id.btnSupprimer);
 
+        //créer une nouvelle recette
         btnSauvegarder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 EditText txtNom = findViewById(R.id.txtNom);
@@ -27,6 +28,7 @@ public class GestionnaireRecette extends AppCompatActivity {
                 String nom = String.valueOf(txtNom.getText());
                 String description = String.valueOf(txtDescription.getText());
 
+                //s'applique seulement si il y a un nom et une description
                 if(!nom.equals("")&&!description.equals("")){
                     moteurRequete.execution("INSERT INTO `recette`(`nom`, `description`) VALUES ('"+nom+"','"+description+"')");
                     Toast.makeText(getApplicationContext(),
@@ -41,11 +43,13 @@ public class GestionnaireRecette extends AppCompatActivity {
             }
         });
 
+        //supprimer une recette
         btnSupprimer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 EditText txtNom = findViewById(R.id.txtNom);
                 String nom = String.valueOf(txtNom.getText());
 
+                //s'applique seulement si il y a un nom
                 if(!nom.equals("")){
                     moteurRequete.execution("DELETE FROM `recette` WHERE `nom`='"+nom+"'");
                     Toast.makeText(getApplicationContext(),
