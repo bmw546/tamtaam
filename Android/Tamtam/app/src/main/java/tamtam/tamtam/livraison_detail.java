@@ -73,7 +73,7 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         // -------------------------------------------------------------------------------------------------------------------------------------
         // prend les donnée de l'activity précédente
         Bundle b = getIntent().getExtras();
-        int id = -1; // or other values
+        int id = 1; // or other values
         String etat="blank";
         String nom = "blank";
         Double montant =0.00;
@@ -121,20 +121,20 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         TextView textView = (TextView) findViewById(R.id.listeprix);
         textView.append(System.getProperty("line.separator"));
         //--------------------------------
-        int i = 0;
-        Cursor result2 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduitCommande() + "  WHERE id_commande=="+id);
+        Cursor result2 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduitCommande() + "  WHERE id_commande="+id);
         for (result2.moveToFirst(); !result2.isAfterLast(); result2.moveToNext()) {
-            i++;
-            id_produit = (result2.getColumnIndex("id_produit"));
-            Cursor result3 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduit() + "  WHERE id=="+id_produit);
+            id_produit = result2.getInt(result2.getColumnIndex("id_produit"));
+            //toast.makeText(getApplicationContext(), id_produit, Toast.LENGTH_LONG).show();
+            Cursor result3 = myBd.execution_with_return("SELECT * FROM " + myBd.getTableProduit() + "  WHERE id="+id_produit);
             for (result3.moveToFirst(); !result3.isAfterLast(); result3.moveToNext()) {
-                textView.append(i + ".   ");
-                textView.append(result.getString(result.getColumnIndex("nom")));
-                textView.append(result.getString(result.getColumnIndex("prix")));
+                textView.append(".   ");
+                textView.append(result3.getString(result3.getColumnIndex("nom")));
+                textView.append(result3.getString(result3.getColumnIndex("prix")));
                 textView.append(System.getProperty("line.separator"));
                 Toast.makeText(getApplicationContext(), "Demande d'sd GPS : ", Toast.LENGTH_LONG).show();
             }
         }
+
         // -------------------------------------------------------------------------------------------------------------------------------------
         // sert a initialiser la carte et la position gps peut aussi demander l'autorisaton si nécessaire
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
