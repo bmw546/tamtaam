@@ -66,22 +66,6 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livraison_detail);
 
-        final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
-                "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
-                "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
-        TextView textView = (TextView) findViewById(R.id.listeprix);
-        textView.append(System.getProperty("line.separator"));
-        for (int i=0; i < FRUITS.length;i++){
-            textView.append("Voici produit"+FRUITS[i]+" quantité blabla  Price " + System.getProperty("line.separator"));
-        }
-        // -------------------------------------------------------------------------------------------------------------------------------------
-        // sert a initialiser la carte et la position gps peut aussi demander l'autorisaton si nécessaire
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        List<String> providers = locationManager.getProviders(true);
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},3);
-            Toast.makeText(getApplicationContext(), "Demande d'acces GPS : ", Toast.LENGTH_LONG).show();
-        }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -106,6 +90,27 @@ public class livraison_detail extends FragmentActivity implements LocationListen
         name.setText("name");
         numero.setText(""+id);
         adress.setText(adresse);
+        // --------------------------------------------------------------
+
+
+        //---------------------------------------------------------------
+        final String[] FRUITS = new String[] { "Apple", "Avocado", "Banana",
+                "Blueberry", "Coconut", "Durian", "Guava", "Kiwifruit",
+                "Jackfruit", "Mango", "Olive", "Pear", "Sugar-apple" };
+        TextView textView = (TextView) findViewById(R.id.listeprix);
+        textView.append(System.getProperty("line.separator"));
+        for (int i=0; i < FRUITS.length;i++){
+            textView.append("Voici produit"+FRUITS[i]+" quantité blabla  Price " + System.getProperty("line.separator"));
+        }
+        // -------------------------------------------------------------------------------------------------------------------------------------
+        // sert a initialiser la carte et la position gps peut aussi demander l'autorisaton si nécessaire
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        List<String> providers = locationManager.getProviders(true);
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},3);
+            Toast.makeText(getApplicationContext(), "Demande d'acces GPS : ", Toast.LENGTH_LONG).show();
+        }
+
 
 
     }
