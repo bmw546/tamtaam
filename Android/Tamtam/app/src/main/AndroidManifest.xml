@@ -5,7 +5,7 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -38,7 +38,7 @@
         <activity
             android:name=".GestionnaireSauvegarde"
             android:label="Exporter" />
-        <activity android:name=".ui_ajouter_rabais" />
+        <activity android:name=".ui_ajouter_rabais" android:screenOrientation="portrait" />
         <activity android:name=".gestionnaire_livraison" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -46,7 +46,7 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -55,11 +55,10 @@
         <activity
             android:name=".detail_client"
             android:label="@string/title_activity_detail_client" />
-        <activity android:name=".sousMenu_rabais" />
-        <activity
+        <activity android:name=".sousMenu_rabais" android:screenOrientation="portrait" /><activity
             android:name=".livraison_detail"
             android:label="@string/title_activity_livraison_detail" />
-        <activity android:name=".modifier_supprimer_rabais"></activity>
+        <activity android:name=".modifier_supprimer_rabais" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

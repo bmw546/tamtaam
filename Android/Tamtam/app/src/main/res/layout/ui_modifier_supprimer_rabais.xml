@@ -41,6 +41,7 @@
         android:layout_marginRight="22dp"
         android:layout_marginStart="23dp"
         android:layout_marginTop="26dp"
+        android:maxLength="8"
         app:layout_constraintBottom_toTopOf="@+id/valeur_rabais"
         app:layout_constraintEnd_toEndOf="@+id/txtDescription"
         app:layout_constraintStart_toEndOf="@+id/lbl_type"
