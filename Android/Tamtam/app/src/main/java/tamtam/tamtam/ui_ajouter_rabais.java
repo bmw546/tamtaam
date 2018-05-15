@@ -36,7 +36,6 @@ public class ui_ajouter_rabais extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             Intent intent = new Intent(this, sousMenu_rabais.class);
             startActivity(intent);
-            //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -123,8 +122,6 @@ public class ui_ajouter_rabais extends AppCompatActivity {
             int selectedId = radioGroup.getCheckedRadioButtonId();
             radioButton = (RadioButton) findViewById(selectedId);
             char newType = radioButton.getText().charAt(0);
-
-            //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
 
             rabais r = new rabais(code.getText().toString(), Float.parseFloat(montant.getText().toString()), description.getText().toString(),
                     dateDebut.getText().toString(), dateFin.getText().toString(), newType);

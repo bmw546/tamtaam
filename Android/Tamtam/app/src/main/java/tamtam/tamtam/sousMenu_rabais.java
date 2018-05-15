@@ -27,7 +27,6 @@ public class sousMenu_rabais extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             Intent intent = new Intent(this, menu.class);
             startActivity(intent);
-            //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
             return true;
         }
         return super.onKeyDown(keyCode, event);

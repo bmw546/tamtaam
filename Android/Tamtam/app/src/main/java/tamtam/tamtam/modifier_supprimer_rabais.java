@@ -40,14 +40,11 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateDebutListener;
     private DatePickerDialog.OnDateSetListener dateFinListener;
 
-
-    //a revérifier
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             Intent intent = new Intent(this, sousMenu_rabais.class);
             startActivity(intent);
-            //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -110,8 +107,6 @@ public class modifier_supprimer_rabais extends AppCompatActivity {
 
         dateDebut.setOnClickListener(new View.OnClickListener() {
             @Override
-            //je vais devoir rajouter + tard quand je cliques sur une partir à la date qui etait setée précedemment et non
-            //le reste... bref, à voir
             public void onClick(View v) {
                 Calendar cal = Calendar.getInstance();
                 int annee = cal.get(Calendar.YEAR);
