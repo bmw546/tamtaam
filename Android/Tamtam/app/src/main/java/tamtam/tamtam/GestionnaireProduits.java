@@ -68,24 +68,33 @@ public class GestionnaireProduits extends AppCompatActivity {
             produit.setFocusable(false);
             loadFormat(nom);
         }
-        TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
+        final TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
+        final int index = list_format.size();
         ((CheckBox) row.findViewById(R.id.attrib_check)).setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         if (isChecked) {
+                            {
+                                String format  = ((EditText) row.findViewById(R.id.attrib_format)).getText().toString();
+                                list_format.add(format);
+                                String prix = ((EditText) row.findViewById(R.id.attrib_prix)).getText().toString();
+                                list_prix.add(prix);
                                 addFormat();
                             }
                         }
-                }
+                        if (!isChecked){
+                            list_format.remove(index);
+                            list_prix.remove(index);
+                        }
+                }}
         );
         l.addView(row);
-
     }
 
     public void addFormat() {
         final TableRow row = (TableRow) LayoutInflater.from(GestionnaireProduits.this).inflate(R.layout.activity_row, null);
-        final int index = list_format.size()-1;
+        final int index = list_format.size();
         ((CheckBox) row.findViewById(R.id.attrib_check)).setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
@@ -155,17 +164,17 @@ public class GestionnaireProduits extends AppCompatActivity {
         myBd = new moteur_requete_bd(this);
         EditText produit = (EditText) findViewById(R.id.nomProduit);
         String str_produit = produit.getText().toString();
-        if (b == null){
+        if (b == null && str_produit!= "" ){
             for (int i = 0; i< list_format.size();i++){
-                myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES '" + str_produit + "','" +
-                list_format.get(i) + "','"+ list_prix.get(i) + "'");
+                myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES ('" + str_produit + "','" +
+                list_format.get(i) + "','"+ list_prix.get(i) + "')");
             }
         }
         else if (str_produit!= ""){
             myBd.execution("DELETE FROM produit WHERE nom ='"+str_produit+"'");
             for (int i = 0; i<list_format.size();i++){
-                myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES '" + str_produit + "','" +
-                        list_format.get(i) + "','"+ list_prix.get(i) + "'");
+                myBd.execution("INSERT INTO produit ('nom','description','prix') VALUES ('" + str_produit + "','" +
+                        list_format.get(i) + "','"+ list_prix.get(i) + "')");
             }
         }
     }
