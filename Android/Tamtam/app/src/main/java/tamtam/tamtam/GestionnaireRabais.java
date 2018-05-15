@@ -13,24 +13,37 @@ public class GestionnaireRabais {
     private ArrayList<rabais> listeRabais = new ArrayList<rabais>();
     private Context context;
 
+    /**
+     *  Set le context de l'activity courrante
+     * @param c
+     */
     public void setContext(Context c){
         context = c;
     }
 
+    /**
+     * Set la bd et selectionnes les rabais dans l'arraylist
+     * @param myBD
+     */
     public void init(moteur_requete_bd myBD) {
         bd = myBD;
 
         selectRabais();
     }
 
+
+    /**
+     *  Retourne la liste des rabais
+     * @return listeRabais
+     */
     public ArrayList<rabais> getListeRabais() {
         return listeRabais;
     }
 
-    public void setListeRabais(ArrayList<rabais> listeRabais) {
-        this.listeRabais = listeRabais;
-    }
-
+    /**
+     *  Sélectionnes les rabais dans la bd et les mets dans l'arraylist
+     *
+     */
     public void selectRabais() {
         //va select les rabais dans la bd et les mettre dans l'arraylist
         Cursor result = bd.execution_with_return("SELECT * FROM " + bd.getTableRabais());
@@ -57,6 +70,11 @@ public class GestionnaireRabais {
         result.close();
     }
 
+    /**
+     *  ajoute un rabais. Retourne vrai si succès, faux sinon.
+     * @param r
+     * @return  boolean
+     */
     public Boolean ajouterRabais(rabais r) {
 
         Cursor result = bd.execution_with_return("SELECT * FROM " + bd.getTableRabais() + " WHERE code = '" + r.getCode() + "'");
@@ -78,9 +96,12 @@ public class GestionnaireRabais {
         return true;
     }
 
+    /**
+     *  supprimer un rabais
+     * @param r
+     */
     public void supprimerRabais(rabais r) {
 
-        //delete where code = r.getCode();
         listeRabais.remove(r);
         bd.execution("DELETE FROM " + bd.getTableRabais() + " WHERE code =" + "'" + r.getCode() + "'");
     }
@@ -90,6 +111,12 @@ public class GestionnaireRabais {
     }
 
 
+    /**
+     * Modifie un rabais dans l'arraylist et dans la bd
+     * @param oldCode
+     * @param  r
+     * @return  boolean
+     */
     public Boolean modifierRabais(String oldCode, rabais r) {
 
         int indiceTrouve = -1;
