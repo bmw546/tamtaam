@@ -14,8 +14,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GestionnaireClient extends ListActivity {
 
@@ -28,6 +36,8 @@ public class GestionnaireClient extends ListActivity {
         final ArrayList<String> nom = new ArrayList<String>();
         final ArrayList<String> adresse = new ArrayList<String>();
         final ArrayList<Integer> chiffre = new ArrayList<Integer>();
+        final List<Double> longi = new ArrayList<Double>();
+        final List<Double> lag = new ArrayList<Double>();
         myBd = new moteur_requete_bd(this); //create the local database
 
         //--------------------------------
@@ -35,9 +45,14 @@ public class GestionnaireClient extends ListActivity {
 
         for (result.moveToFirst(); !result.isAfterLast(); result.moveToNext()) {
             //public rabais(String code_rabais, float montant, String description, String dateDebut, String dateFin, char type) {
-            chiffre.add(result.getColumnIndex("id_client"));
-            nom.add(result.getString(result.getColumnIndex("nom_utilisateur")));
+            chiffre.add(result.getColumnIndex("id"));
+            nom.add(result.getString(result.getColumnIndex("nom")));
             adresse.add(result.getString(result.getColumnIndex("adresse")));
+            String myLocation = (result.getString(result.getColumnIndex("adresse")));
+            LatLng place = getLocationFromAddress(myLocation);
+            longi.add( place.longitude);
+            lag.add(place.latitude);
+
         }
 
         //--------------------------------
@@ -69,5 +84,30 @@ public class GestionnaireClient extends ListActivity {
                 finish();
             }
         });
+    }
+
+    public LatLng getLocationFromAddress(String strAddress)
+    {
+        //Create coder with Activity context - this
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+        LatLng defaul = new LatLng(-71.886361, 45.411701);
+        try {
+            //Get latLng from String
+            address = coder.getFromLocationName(strAddress,5);
+
+            //check for null
+            if (address == null) {
+            }
+            else{
+                //Lets take first possibility from the all possibilities.
+                Address location=address.get(0);
+                defaul = new LatLng(location.getLatitude(), location.getLongitude());
+            }
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return defaul;
     }
 }
