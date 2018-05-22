@@ -172,11 +172,11 @@ function lightbox(who){
     document.getElementById('lightBoxBg').style.display = "block";
 
 }
-function stop(){
+function stop(nb){
     // insérer tous les id d'image ici
-    document.getElementById('Gingembre').style.display = " none";
-    document.getElementById('Hibiscus').style.display = " none";
-    document.getElementById('lightBoxBg').style.display = " none";
+    for (i = nb - 1; i > 0; i--) {
+        document.getElementById(i).style.display = " none";
+    }
 }
 //Format les chifrre en dollars
 Number.prototype.format = function(n, x) {
