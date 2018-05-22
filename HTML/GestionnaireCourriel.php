@@ -41,8 +41,8 @@ class GestionnaireCourriel {
      * @param $corps     String Le body du email
      * (Precondition: $nom != null && $courriel != null && $sujet != null && $question != null)
      */
-    function sentMail($nom, $courriel, $sujet, $corps){
-    $header="MIME-Version: 1.0\r\n";
+    function sendMail($nom, $courriel, $sujet, $corps){
+        $header="MIME-Version: 1.0\r\n";
 		$header.='From:"'.$nom.'"<'.$courriel.'>'."\n";
 		$header.='Content-Type:text/html; charset="uft-8"'."\n";
 		$header.='Content-Transfer-Encoding: 8bit';

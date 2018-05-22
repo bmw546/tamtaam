@@ -48,6 +48,7 @@ Date               Nom                   Description
 
 
                 if (isset($_SESSION['utilisateur'])){
+
                     $usr = unserialize($_SESSION['utilisateur']);
                     $gest = new GestionnaireUtilisateur();
                     $gest->setUnUtilisateur($usr);
