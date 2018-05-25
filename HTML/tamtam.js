@@ -165,18 +165,24 @@ function removeOptions(selectbox) {
 function resetForms() {
     document.forms['_Commandes'].reset();
 }
-
+// -------------------------- LIGHT BOX ------------------------------------------
 // pour les lightbox( aka "shadowbox")
 function lightbox(who){
     document.getElementById(who).style.display = "block";
     document.getElementById('lightBoxBg').style.display = "block";
 
 }
-function stop(nb){
-    // insérer tous les id d'image ici
-    for (i = nb - 1; i > 0; i--) {
-        document.getElementById(i).style.display = " none";
+// tour de passe passe pour que l'image soit au dessus. (si on le fait direct javascript vérifier les class name avant
+// que le reste du code php soit executer for some reason)
+function stop(){
+    stop2();
+}
+function stop2(){
+    var elements = document.getElementsByClassName('lightBox');
+    for(var i=0; i<elements.length; i++) {
+        elements[i].style.display='none';
     }
+    document.getElementById('lightBoxBg').style.display = "none";
 }
 //Format les chifrre en dollars
 Number.prototype.format = function(n, x) {
@@ -190,7 +196,6 @@ Number.prototype.format = function(n, x) {
 //A faire au démarrage de la page
 $(document).ready(function () {
     resetForms();
-    stop();
 });
 
 //Verifie les changement sur le produit selectionné

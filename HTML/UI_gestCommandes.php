@@ -45,9 +45,6 @@ Date                    Nom                 Description
         $connection = new Connexion();
         $query  = "SELECT image, nom FROM produit";
         $result = $connection->execution_avec_return($query);
-
-        ##$nbimage = mysqli_num_rows($result);
-        ##<?php echo $nbimage
         ?>
         <div id="lightBoxBg" class="lightBoxBg" onclick="stop()">
         </div>
@@ -55,10 +52,11 @@ Date                    Nom                 Description
         foreach ($result as $row){
             echo '<div id='.$row['nom'].' class="lightBox"> 
                 <img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'"/>
-                </div>';
+               </div>';
         }
 
         ?>
+
 <!-- ------------------- FIN DE LA SECTION SHADOW BOX --------------------------->
 
             <form class="centerForm formInscription" id="_Commandes" action="CtrlCommandes.php" method="post">
