@@ -23,6 +23,7 @@ class GestionnaireSuiviCommandes{
   private $connexion;
   private $latitude;
   private $longitude;
+  private $type;
 
   /**
    *  GestionnaireSuiviCommandes constructor.
@@ -32,39 +33,78 @@ class GestionnaireSuiviCommandes{
       $this->connexion   = new Connexion;
       $result = array();
       //SELECT de la plupart des informations
-      $query  = "SELECT commande.id_commande, livraison.adresse, livraison.date_livraison_prevue, etat_commande.description_etat, livraison.adresse_latitude, livraison.adresse_longitude FROM commande JOIN client ON commande.id_client=client.id_client JOIN livraison ON commande.id_commande=livraison.id_commande JOIN etat_commande ON commande.id_etat=etat_commande.id_etat WHERE client.nom_utilisateur = '$nomClient'";
+      $query = "SELECT type_commande.description_type_commande FROM commande JOIN  type_commande ON commande.id_type_commande=type_commande.id_type_commande JOIN client ON client.id_client=commande.id_client WHERE client.nom_utilisateur = '$nomClient' ORDER BY commande.id_commande";
       $result = $this->connexion->execution_avec_return($query);
 
-      if (sizeof($result)>0) {
-          $resultComm = array();
-          $resultComm=end($result);
+        if (sizeof($result)>0){
+          $resultType = array();
+          $resultType = end($result);
+          $this->type=current($resultType);
 
-          $numeroCommande = current($resultComm);
-          next($resultComm);
-          next($resultComm);
-          $adresse = current($resultComm);
-          next($resultComm);
-          next($resultComm);
-          $date = current($resultComm);
-          next($resultComm);
-          next($resultComm);
-          $etat = current($resultComm);
-          next($resultComm);
-          next($resultComm);
-          $this->latitude = current($resultComm);
-          next($resultComm);
-          next($resultComm);
-          $this->longitude = current($resultComm);
+        }
+
+        if ($this->type=="Livraison"){
+          $query  = "SELECT commande.id_commande, livraison.adresse, livraison.date_livraison_prevue, etat_commande.description_etat, livraison.adresse_latitude, livraison.adresse_longitude FROM commande JOIN client ON commande.id_client=client.id_client JOIN livraison ON commande.id_commande=livraison.id_commande JOIN etat_commande ON commande.id_etat=etat_commande.id_etat WHERE client.nom_utilisateur = '$nomClient'";
+          $result = $this->connexion->execution_avec_return($query);
+
+          if (sizeof($result)>0) {
+              $resultComm = array();
+              $resultComm=end($result);
+
+              $numeroCommande = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $adresse = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $date = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $etat = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $this->latitude = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $this->longitude = current($resultComm);
 
 
-          $montant = $this->calculMontant($numeroCommande);
+              $montant = $this->calculMontant($numeroCommande);
 
 
-    }
+        }
+        }
+        else{
+          $query  = "SELECT commande.id_commande,  commande.date, etat_commande.description_etat FROM commande JOIN client ON commande.id_client=client.id_client JOIN etat_commande ON commande.id_etat=etat_commande.id_etat WHERE client.nom_utilisateur = '$nomClient'";
+          $result = $this->connexion->execution_avec_return($query);
+
+          if (sizeof($result)>0) {
+              $resultComm = array();
+              $resultComm=end($result);
+
+              $numeroCommande = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $adresse = "5136 Boul. Bourque, Sherbrooke";
+
+              $date = current($resultComm);
+              next($resultComm);
+              next($resultComm);
+              $etat = current($resultComm);
+
+              $this->latitude = "45.368069";
+
+              $this->longitude = "-71.992946";
 
 
+              $montant = $this->calculMontant($numeroCommande);
 
-      $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,"","");
+        }
+
+      }
+
+
+      $this->uneCommande = new Commande($numeroCommande, $nomClient, $adresse, $date, $montant, $etat,$this->type,"");
 
 
 

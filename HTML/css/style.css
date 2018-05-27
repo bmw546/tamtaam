@@ -50,7 +50,7 @@ table {
 }
 h1{
 	font-size: 24pt;
-}	
+}
 
 /** Fin du CSS RESET **/
 
@@ -106,11 +106,11 @@ h1{
 	vertical-align: middle;
 	display: inline-block;
 	}
-	
+
 .right{
 	float: right;
 	}
-	
+
 .left{
 	background-color: #292929 ;
     text-align: left;
@@ -118,10 +118,10 @@ h1{
 }
 .backgroudgrey{
 	background-color: #292929 ;
-}	
+}
 .white{
 	background-color: white ;
-}	
+}
 ul a{
     color:white;
     text-decoration: none;
@@ -157,13 +157,13 @@ li a:hover {
 .txtSuiviComm{
 	text-align: center;
 	border-width: 2px;
-	
+
 }
 
 .txtSuiviComm{
 	text-align: center;
 	border-width: 2px;
-	
+
 }
 
 .btnInscrire{
@@ -314,6 +314,10 @@ body {
 }
 .argent input {
     border: 0;
+}
+
+.hidden{
+	visibility: hidden;
 }
 
 /****** Section Responsive *******/

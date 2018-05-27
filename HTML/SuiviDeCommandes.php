@@ -33,6 +33,7 @@ Date                    Nom             Description
 		$montant = $uneCommande->getMontant();
 		$lat = $gestionnaire->getLatitude();
 		$lon = $gestionnaire->getLongitude();
+		$type = $uneCommande->getType();
 	?>
 	<head>
 		<meta charset='utf-8'/>
@@ -60,7 +61,7 @@ Date                    Nom             Description
 				<td><?php echo $noCommande;?></td>
 			</tr>
 			<tr>
-				<td>Date de livraison prévue :</td>
+				<td>Date :</td>
 				<td><?php echo $datePrevue;?></td>
 			</tr>
 			<tr>
@@ -68,7 +69,7 @@ Date                    Nom             Description
 				<td><?php echo $etatCommande;?></td>
 			</tr>
 			<tr>
-				<td>Adresse de livraison :</td>
+				<td>Adresse :</td>
 				<td><?php echo $adresse;?></td>
 			</tr>
 			<tr>
@@ -76,12 +77,21 @@ Date                    Nom             Description
 				<td><?php echo $montant;?>$</td>
 			</tr>
 		</table>
-		
+
 
 		<div id="googleMap" class="col-8 col-t-10 map"></div>
         <p class="col-12"><button class="btnInscrire btnStyle" onclick="location.href='menu.php'" type="button">Retour au menu</button></p>
 <script>
+
 function myMap() {
+
+	var type = "<?php echo $type;?>";
+
+	if (type == "Livraison"){
+		var x = document.getElementById("googleMap");
+		x.classList.remove("map");
+	}
+
 	var directionsService = new google.maps.DirectionsService;
 	var directionsDisplay = new google.maps.DirectionsRenderer;
   var myCenter = new google.maps.LatLng(<?php echo json_encode($lat);?>,<?php echo json_encode($lon);?>);
