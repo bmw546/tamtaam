@@ -7,7 +7,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/pageTransition</item>
-
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -21,9 +20,13 @@
 
 
     <style name="pageTransition" parent="@android:style/Animation.Activity">
+        <!--rentrer à droite-->
     <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <!--sortir à gauche-->
     <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <!--rentrer à gauche-->
     <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <!--sortir à droite-->
     <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 

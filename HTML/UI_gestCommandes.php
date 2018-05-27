@@ -40,14 +40,23 @@ Date                    Nom                 Description
     <section class="sectionInscription col-12">
         <div class="inscriptionheader"><i>Placer une commande</i></div>
         <!-- ------------------------- section pour shadow box -------------------------->
+        <?php
+        require_once 'MoteurRequeteBD.php';
+        $connection = new Connexion();
+        $query  = "SELECT image, nom FROM produit";
+        $result = $connection->execution_avec_return($query);
+        ?>
         <div id="lightBoxBg" class="lightBoxBg" onclick="stop()">
         </div>
-        <div id="Gingembre" class="lightBox">
-            <img src="image/GINGER_CADRÉ_PT.jpg"/>
-        </div>
-        <div id="Hibiscus" class="lightBox">
-            <img src="image/HIBISCUS_CADRÉ_PT.jpg"/>
-        </div>
+        <?php
+        foreach ($result as $row){
+            echo '<div id='.$row['nom'].' class="lightBox"> 
+                <img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'"/>
+               </div>';
+        }
+
+        ?>
+
 <!-- ------------------- FIN DE LA SECTION SHADOW BOX --------------------------->
 
             <form class="centerForm formInscription" id="_Commandes" action="CtrlCommandes.php" method="post">
@@ -76,7 +85,7 @@ Date                    Nom                 Description
                     <?php
                 } ?>
                 <br><br>
-                
+
                 <input type="radio" id="livrer" name="livraison" required<?php if (isset($livraison) && $livraison=="1");?> value = "1">
                 <label for="livrer">Livraison</label><br>
                 <input type="radio" id="magasin" name="livraison" <?php if (isset($livraison) && $livraison=="2");?> value = "2">
