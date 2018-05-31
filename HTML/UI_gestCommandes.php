@@ -41,6 +41,7 @@ Date                    Nom                 Description
         <div class="inscriptionheader"><i>Placer une commande</i></div>
         <!-- ------------------------- section pour shadow box -------------------------->
         <?php
+        session_start();
         require_once 'MoteurRequeteBD.php';
         $connection = new Connexion();
         $query  = "SELECT image, nom FROM produit";
@@ -71,7 +72,6 @@ Date                    Nom                 Description
 
                 <label class="label" id="_adresse"for="_txtAdresse"><b>Adresse :</b></label>
                 <?php
-                session_start();
                 require_once 'utilisateur.php';
                 if (isset($_SESSION['utilisateur'])) {
                 $usr = unserialize($_SESSION['utilisateur']);
